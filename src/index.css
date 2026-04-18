@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    /* ── Hustle Labs Brand Palette — Charcoal · Lime-Yellow · White ── */
+
+    /* Backgrounds — warm charcoal, not cold black */
+    --background: 220 15% 8%;
+    --foreground: 60 20% 96%;
+
+    --card: 220 14% 11%;
+    --card-foreground: 60 20% 96%;
+
+    --popover: 220 14% 11%;
+    --popover-foreground: 60 20% 96%;
+
+    /* Lime-Yellow — #c5da4e — primary brand color from logo */
+    --primary: 72 62% 58%;
+    --primary-foreground: 220 15% 8%;
+    --primary-deep: 72 65% 42%;
+    --primary-soft: 72 55% 68%;
+
+    /* Surfaces */
+    --secondary: 220 13% 13%;
+    --secondary-foreground: 60 10% 60%;
+
+    --muted: 220 13% 13%;
+    --muted-foreground: 220 8% 52%;
+
+    /* Lighter lime — accent highlight */
+    --accent: 74 58% 62%;
+    --accent-foreground: 220 15% 8%;
+    --accent-glow: 72 65% 70%;
+
+    --destructive: 4 80% 58%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 12% 16%;
+    --input: 220 12% 16%;
+    --ring: 72 62% 58%;
+
+    --radius: 0.875rem;
+
+    --sidebar-background: 220 14% 9%;
+    --sidebar-foreground: 220 8% 60%;
+    --sidebar-primary: 72 62% 58%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 13% 13%;
+    --sidebar-accent-foreground: 220 8% 60%;
+    --sidebar-border: 220 12% 16%;
+    --sidebar-ring: 72 62% 58%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Glow effects — lime */
+    --glow-primary: 0 0 30px hsl(72 62% 58% / 0.12);
+    --glow-primary-strong: 0 0 60px hsl(72 62% 58% / 0.22);
+    --glow-accent: 0 0 24px hsl(74 58% 62% / 0.12);
+    
+    /* Animation Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: hsl(var(--muted-foreground));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    color: hsl(var(--foreground));
+  }
+
+  /* Subtle grain overlay for premium texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.014;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220 12% 22%);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(72 62% 58% / 0.55);
+  }
+}
+
+@layer utilities {
+
+  /* ── Text Gradient — Lime ── */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(72 62% 55%), hsl(80 65% 72%));
+  }
+
+  /* ── Text Gradient — Pink ── */
+  .text-gradient-pink {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(330 81% 60%), hsl(330 100% 70%));
+  }
+
+  /* ── Text Gradient — Violet ── */
+  .text-gradient-violet {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(265 89% 65%), hsl(245 89% 65%));
+  }
+
+  /* ── Text Gradient — Hustle Blend (Green to Pink) ── */
+  .text-gradient-hustle-blend {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(72 62% 58%), hsl(330 80% 60%));
+  }
+
+  /* ── Text Gradient — Hustle Offers (Green to Red) ── */
+  .text-gradient-hustle-offers {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(72 62% 58%), hsl(0 84% 60%));
+  }
+
+  /* ── Glows ── */
+  .glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-strong {
+    box-shadow: var(--glow-primary-strong);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .glow-amber {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* ── Glass ── */
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/40;
+  }
+
+  .smooth-fade-down {
+    background: linear-gradient(
+      to bottom,
+      var(--fade-from, transparent) 0%,
+      var(--fade-from, transparent) 10%,
+      var(--fade-to, transparent) 90%,
+      var(--fade-to, transparent) 100%
+    );
+  }
+
+  /* Multi-stop easing for natural fades */
+  .fade-edge-top {
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent 100%);
+  }
+
+  .section-mask-dark-to-light {
+    background: linear-gradient(
+      to bottom,
+      #080808 0%,
+      #080808 20%,
+      rgba(8, 8, 8, 0.8) 40%,
+      rgba(249, 249, 249, 0.2) 80%,
+      #f9f9f9 100%
+    );
+  }
+
+  .section-mask-light-to-dark {
+    background: linear-gradient(
+      to bottom,
+      #f9f9f9 0%,
+      #f9f9f9 20%,
+      rgba(249, 249, 249, 0.8) 40%,
+      rgba(5, 5, 5, 0.2) 80%,
+      #050505 100%
+    );
+  }
+
+  .amber-dot {
+    @apply inline-block w-1 h-1 rounded-full;
+    background: hsl(var(--accent));
+  }
+
+  .section-fade-top {
+    @apply relative;
+  }
+
+  .section-fade-top::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-24 pointer-events-none;
+    background: linear-gradient(to bottom, hsl(var(--background)), transparent);
+  }
+
+  /* ── Gradient Mesh Background — limey warm ── */
+  .gradient-mesh {
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 25%, hsl(72 62% 58% / 0.07), transparent),
+      radial-gradient(ellipse 55% 65% at 80% 55%, hsl(74 50% 50% / 0.05), transparent),
+      radial-gradient(ellipse 45% 40% at 50% 15%, hsl(80 55% 60% / 0.05), transparent),
+      radial-gradient(ellipse 80% 45% at 50% 85%, hsl(72 65% 35% / 0.06), transparent),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 14% 10%) 100%);
+  }
+
+  /* ── Glass Card ── */
+  .glass-card {
+    @apply bg-card/30 backdrop-blur-xl border border-border/30;
+    transition: all 0.6s var(--ease-out-expo);
+  }
+
+  .glass-card:hover {
+    @apply bg-card/50 border-primary/20 -translate-y-1.5;
+    box-shadow: 
+      0 20px 40px -15px rgba(0, 0, 0, 0.4),
+      0 0 32px hsl(72 62% 58% / 0.1),
+      inset 0 1px 0 hsl(var(--foreground) / 0.05);
+  }
+
+  /* ── General Hover Lift ── */
+  .hover-lift {
+    transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+
+  /* ── Subtle Reveal Hover ── */
+  .hover-reveal {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .hover-reveal:hover {
+    @apply border-primary/30 shadow-glow;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Light Section ── */
+  .section-light {
+    --sl-bg: 60 20% 97%;
+    --sl-fg: 220 20% 10%;
+    --sl-muted: 220 10% 35%;
+    --sl-border: 220 10% 86%;
+    --sl-card: 0 0% 100%;
+    --sl-primary-label: 72 60% 38%;
+
+    background-color: hsl(var(--sl-bg));
+    color: hsl(var(--sl-muted));
+  }
+
+  .section-light h1,
+  .section-light h2,
+  .section-light h3,
+  .section-light h4,
+  .section-light h5,
+  .section-light h6 {
+    color: hsl(var(--sl-fg));
+  }
+
+  .section-light .text-foreground {
+    color: hsl(var(--sl-fg)) !important;
+  }
+
+  .section-light .text-foreground\/90 {
+    color: hsl(var(--sl-fg) / 0.9) !important;
+  }
+
+  .section-light .text-foreground\/80 {
+    color: hsl(var(--sl-fg) / 0.8) !important;
+  }
+
+  .section-light .text-foreground\/70 {
+    color: hsl(var(--sl-fg) / 0.7) !important;
+  }
+
+  .section-light .text-foreground\/60 {
+    color: hsl(var(--sl-fg) / 0.65) !important;
+  }
+
+  .section-light .text-foreground\/50 {
+    color: hsl(var(--sl-fg) / 0.55) !important;
+  }
+
+  .section-light .text-foreground\/40 {
+    color: hsl(var(--sl-fg) / 0.45) !important;
+  }
+
+  .section-light .text-muted-foreground {
+    color: hsl(var(--sl-muted)) !important;
+  }
+
+  .section-light .text-muted-foreground\/60 {
+    color: hsl(var(--sl-muted) / 0.7) !important;
+  }
+
+  .section-light .text-muted-foreground\/40 {
+    color: hsl(var(--sl-muted) / 0.5) !important;
+  }
+
+  .section-light .text-primary-soft {
+    color: hsl(var(--sl-primary-label)) !important;
+  }
+
+  .section-light .text-primary\/80 {
+    color: hsl(72 60% 38% / 0.8) !important;
+  }
+
+  .section-light .border-border {
+    border-color: hsl(var(--sl-border)) !important;
+  }
+
+  .section-light .border-border\/40 {
+    border-color: hsl(var(--sl-border) / 0.6) !important;
+  }
+
+  .section-light .border-border\/30 {
+    border-color: hsl(var(--sl-border) / 0.5) !important;
+  }
+
+  .section-light .bg-card {
+    background-color: hsl(var(--sl-card)) !important;
+  }
+
+  .section-light .bg-card\/40 {
+    background-color: hsl(var(--sl-card) / 0.6) !important;
+  }
+
+  .section-light .bg-card\/30 {
+    background-color: hsl(var(--sl-card) / 0.5) !important;
+  }
+
+  .section-light .bg-card\/20 {
+    background-color: hsl(var(--sl-card) / 0.3) !important;
+  }
+
+  .section-light .bg-background\/60 {
+    background-color: hsl(var(--sl-bg) / 0.8) !important;
+  }
+
+  .section-light .bg-secondary {
+    background-color: hsl(60 15% 93%) !important;
+  }
+
+  .section-light .glass-card {
+    background-color: hsl(var(--sl-card) / 0.7) !important;
+    border-color: hsl(var(--sl-border) / 0.5) !important;
+  }
+
+  .section-light .text-gradient {
+    background-image: linear-gradient(135deg, hsl(72 65% 35%), hsl(80 58% 48%)) !important;
+  }
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Marquee Animations ── */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

@@ -60,8 +60,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         </div>
 
         <div className="relative z-10">
-          <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 mb-4 block italic">Next Project</span>
-          <h3 className="text-3xl font-normal font-display text-white/40 italic uppercase tracking-normal">Something <br/> BIG.</h3>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mb-4 block">Next Deployment</span>
+          <h3 className="text-3xl font-bold font-display text-white/40 tracking-tight leading-tight">Something <br/> BIG.</h3>
         </div>
       </motion.div>
     );
@@ -90,7 +90,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
             />
             
             <div className="absolute top-6 left-6">
-              <span className="px-4 py-1.5 rounded-full bg-primary text-black text-[9px] font-black uppercase tracking-widest italic flex items-center gap-2 shadow-2xl">
+              <span className="px-3 py-1 rounded-full bg-primary text-black text-[8px] font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
                 <Rocket size={10} />
                 Built with Hustle
               </span>
@@ -99,17 +99,17 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         </div>
 
         {/* Info Section */}
-        <div className="p-8 md:p-10 pt-4 flex flex-col">
+        <div className="p-8 md:p-12 pt-6 flex flex-col">
           <div className="mb-8">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 mb-3 block italic group-hover:text-primary transition-colors">{category}</span>
-            <h3 className="text-4xl md:text-5xl font-normal font-display text-white italic uppercase tracking-normal leading-[0.9] group-hover:translate-x-2 transition-transform duration-700">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mb-4 block group-hover:text-primary transition-colors">{category}</span>
+            <h3 className="text-3xl md:text-5xl font-bold font-display text-white tracking-tight leading-[1.1] transition-transform duration-700">
               {title}
             </h3>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/5 pt-8 opacity-40 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50 italic">View Case Study</span>
-            <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors hover:scale-105">
+          <div className="flex items-center justify-between border-t border-white/5 pt-8 opacity-40 group-hover:opacity-100 transition-all duration-700">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">View Case Study</span>
+            <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
               <ArrowRight size={20} />
             </div>
           </div>

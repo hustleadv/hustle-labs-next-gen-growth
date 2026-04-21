@@ -1008,11 +1008,11 @@ const Work = () => {
              </div>
 
              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
-                <h2 className="font-display uppercase leading-[0.9]">
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/10">
+                <h2 className="font-display leading-[1] mb-12">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white/10">
                     Deployed
                   </span>
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
                     AI Agents.
                   </span>
                 </h2>
@@ -1052,7 +1052,7 @@ const Work = () => {
                     </div>
                   </div>
 
-                  <h3 className="font-display text-2xl md:text-3xl font-black text-white italic uppercase tracking-tight mb-2">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white tracking-tight mb-2">
                     {agent.name}
                   </h3>
                   <div className="text-[9px] md:text-[10px] font-semibold text-primary/60 uppercase tracking-[0.2em] mb-6 md:mb-8">
@@ -1099,11 +1099,11 @@ const Work = () => {
 
             {/* Main headline */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-20">
-              <h2 className="font-display uppercase leading-[0.9] flex-1">
-                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/15">
+              <h2 className="font-display leading-[1] flex-1">
+                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white/15">
                   {t('portfolio.archive.title1')}
                 </span>
-                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
                   {t('portfolio.archive.title2')}
                 </span>
               </h2>
@@ -1175,9 +1175,9 @@ const Work = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
            >
-              <h2 className="font-display text-[15vw] lg:text-[10vw] leading-none font-black italic uppercase tracking-tighter text-white inline-block relative">
-                 MORE PROJECTS
-                 <span className="block text-primary text-right text-[8vw] lg:text-[5vw] -mt-[3vw] lg:-mt-[2vw] tracking-normal">COMING SOON.</span>
+              <h2 className="font-display text-[12vw] lg:text-[8vw] leading-[0.8] font-bold tracking-tighter text-white inline-block relative">
+                 More projects
+                 <span className="block text-primary text-right text-[6vw] lg:text-[4vw] tracking-normal mt-2">COMING SOON.</span>
               </h2>
               <div className="mt-12 flex justify-center gap-10 opacity-20">
                  {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-1 rounded-full bg-white" />)}
@@ -1205,11 +1205,11 @@ const Work = () => {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
               {/* Left: main headline */}
               <div className="flex-1">
-                <h2 className="font-display uppercase leading-[0.95]">
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/15">
+                <h2 className="font-display leading-[1]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white/15">
                     Hustle Backed
                   </span>
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
                     Projects.
                   </span>
                 </h2>

@@ -30,7 +30,7 @@ const Ecosystem = () => {
         
         {/* Subtle radial glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.04),transparent_70%)] pointer-events-none" />
-
+        
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             {/* Badge */}
@@ -40,7 +40,6 @@ const Ecosystem = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
-
               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">{t('ecosystem.hero.badge')}</span>
             </motion.div>
 
@@ -48,7 +47,7 @@ const Ecosystem = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-12"
+              className="font-sans text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] mb-12"
             >
               {t('ecosystem.hero.title1')} <br />
               <span className="text-primary tracking-normal">{t('ecosystem.hero.title2')}</span>
@@ -58,7 +57,7 @@ const Ecosystem = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-tight"
+              className="font-sans text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-snug"
             >
               {t('ecosystem.hero.subtitle')}
             </motion.p>
@@ -88,13 +87,13 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fadeInUp} className="text-center">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('ecosystem.structure.badge')}</span>
-              <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-8 block">{t('ecosystem.structure.badge')}</span>
+              <h2 className="font-sans text-4xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
                 {t('ecosystem.structure.title1')} <br />
                 {t('ecosystem.structure.title2')} <br />
                 <span className="text-white/20">{t('ecosystem.structure.title3')}</span>
               </h2>
-              <p className="text-xl text-white/60 font-medium italic mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl text-white/60 font-medium mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto">
                 {t('ecosystem.structure.text')}
               </p>
               
@@ -104,7 +103,7 @@ const Ecosystem = () => {
                     <Monitor size={24} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-lg font-semibold mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
+                    <h4 className="font-sans text-lg font-bold mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
                     <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
                   </div>
                 </div>
@@ -113,7 +112,7 @@ const Ecosystem = () => {
                     <Rocket size={24} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-lg font-semibold mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
+                    <h4 className="font-sans text-lg font-bold mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
                     <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
                   </div>
                 </div>
@@ -128,8 +127,8 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-32 max-w-4xl mx-auto">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic tracking-[0.6em]">{t('ecosystem.universe.badge')}</span>
-              <h2 className="font-display text-5xl md:text-8xl font-bold tracking-tighter leading-none px-4">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-10 block tracking-[0.6em]">{t('ecosystem.universe.badge')}</span>
+              <h2 className="font-sans text-5xl md:text-8xl font-bold tracking-tight leading-none px-4">
                 {t('ecosystem.universe.title')}
               </h2>
             </motion.div>
@@ -157,16 +156,16 @@ const Ecosystem = () => {
                     <s.icon size={32} strokeWidth={1} />
                   </div>
                   {s.soon && (
-                    <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary italic tracking-widest">
+                    <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase text-primary tracking-widest">
                        {t('ecosystem.universe.soon')}
                     </span>
                   )}
                 </div>
 
-                <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 tracking-tight">{s.title}</h3>
+                <h3 className="font-sans text-3xl md:text-4xl font-bold mb-6 tracking-tight">{s.title}</h3>
                 <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm">{s.desc}</p>
                 
-                <Link to={s.link} className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all">
+                <Link to={s.link} className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all">
                    {t('ecosystem.universe.explore')} {s.label} <ArrowRight size={16} />
                 </Link>
               </motion.div>
@@ -180,12 +179,12 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mb-24">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('ecosystem.network.badge')}</span>
-              <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-8 block">{t('ecosystem.network.badge')}</span>
+              <h2 className="font-sans text-4xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
                 {t('ecosystem.network.title')} <br />
                 <span className="text-white/20">{t('ecosystem.network.title_span')}</span>
               </h2>
-              <p className="text-xl text-white/40 font-medium italic max-w-2xl">
+              <p className="text-xl text-white/40 font-medium max-w-2xl leading-relaxed">
                  {t('ecosystem.network.text')}
               </p>
             </motion.div>
@@ -224,7 +223,7 @@ const Ecosystem = () => {
           </div>
 
           <div className="mt-24 text-center">
-            <Button variant="outline" size="xl" className="rounded-full px-16 h-20 text-lg font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+            <Button variant="outline" size="xl" className="rounded-full px-16 h-20 text-lg font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
                <Link to="/clients">{t('ecosystem.network.cta')}</Link>
             </Button>
           </div>
@@ -241,12 +240,12 @@ const Ecosystem = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
           >
-            <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-20 px-4">
+            <h2 className="font-sans text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-20 px-4">
               {t('ecosystem.manifesto.title')} <br />
               <span className="text-primary">{t('ecosystem.manifesto.title_span')}</span>
             </h2>
             <div className="w-20 h-px bg-primary mx-auto mb-20 shadow-glow" />
-            <p className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight">
+            <p className="font-sans text-3xl md:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight">
                {t('ecosystem.manifesto.text')}
             </p>
           </motion.div>
@@ -257,8 +256,8 @@ const Ecosystem = () => {
       <section className="py-32 md:py-48 relative bg-[#050505]">
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeInUp}>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">{t('ecosystem.final.badge')}</span>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-20 px-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-12 block">{t('ecosystem.final.badge')}</span>
+            <h2 className="font-sans text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] mb-20 px-4">
               {t('ecosystem.final.title1')} <br />
               <span className="text-primary animate-glow">{t('ecosystem.final.title2')}</span>
             </h2>
@@ -274,7 +273,7 @@ const Ecosystem = () => {
               </Button>
             </div>
             
-            <p className="text-xl md:text-2xl font-display font-medium text-white/30 italic tracking-tight tracking-[0.4em] font-black">
+            <p className="text-xl md:text-2xl font-sans font-bold text-white/30 tracking-[0.4em] uppercase">
                {t('ecosystem.final.quote')}
             </p>
           </motion.div>

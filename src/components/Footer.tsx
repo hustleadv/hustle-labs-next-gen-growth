@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Twitter, Mail } from "lucide-react";
+import { Instagram, Facebook, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -32,11 +32,11 @@ const Footer = () => {
           <div className="space-y-12">
             <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Navigation</h4>
             <nav className="flex flex-col gap-8">
-              <Link to="/services" className="text-xs font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors italic">Services</Link>
-              <Link to="/portfolio" className="text-xs font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors italic">Projects</Link>
-              <Link to="/roster" className="text-xs font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors italic">The Roster</Link>
-              <Link to="/contact" className="text-xs font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors italic">Contact</Link>
-              <Link to="/book-call-call" className="text-xs font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors italic">Book a call</Link>
+              <Link to="/services" className="text-xs font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors italic">Services</Link>
+              <Link to="/portfolio" className="text-xs font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors italic">Projects</Link>
+              <Link to="/roster" className="text-xs font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors italic">The Roster</Link>
+              <Link to="/contact" className="text-xs font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors italic">Contact</Link>
+              <Link to="/book-call" className="text-xs font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors italic">Book a call</Link>
             </nav>
           </div>
 
@@ -44,16 +44,16 @@ const Footer = () => {
           <div className="space-y-12">
             <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Connect</h4>
             <div className="flex gap-10">
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="#" target="_blank" className="text-white/30 transition-colors">
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.instagram.com/hustlelabs.gr/" target="_blank" className="text-white/60 transition-colors">
                 <Instagram size={28} />
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="#" target="_blank" className="text-white/30 transition-colors">
-                <Linkedin size={28} />
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://web.facebook.com/profile.php?id=61586295570858" target="_blank" className="text-white/60 transition-colors">
+                <Facebook size={28} />
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="#" target="_blank" className="text-white/30 transition-colors">
-                <Twitter size={28} />
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.tiktok.com/@hustlelabs.gr" target="_blank" className="text-white/60 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="mailto:info@hustlelabs.gr" className="text-white/30 transition-colors">
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="mailto:info@hustlelabs.gr" className="text-white/60 transition-colors">
                 <Mail size={28} />
               </motion.a>
             </div>
@@ -63,12 +63,12 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between gap-12 sm:gap-6 flex-wrap">
-          <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/10 italic order-2 md:order-1 tracking-widest">
+          <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 italic order-2 md:order-1 tracking-widest">
             © {new Date().getFullYear()} Hustle Labs. Handcrafted for the bold.
           </p>
           <div className="flex gap-12 order-1 md:order-2 flex-wrap sm:flex-nowrap">
-            <Link to="/privacy" className="text-[10px] font-black uppercase tracking-[0.5em] text-white/10 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-[10px] font-black uppercase tracking-[0.5em] text-white/10 hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

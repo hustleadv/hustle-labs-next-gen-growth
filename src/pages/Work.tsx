@@ -856,7 +856,7 @@ const Work = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wide leading-[1.0] mb-8 md:mb-12 uppercase italic"
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[1.0] mb-8 md:mb-12"
             >
               {t('portfolio.hero.title1')} <br />
               <span className="text-primary">{t('portfolio.hero.title2')}</span>
@@ -918,11 +918,11 @@ const Work = () => {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
               {/* Left: main headline */}
               <div className="flex-1">
-                <h2 className="font-display uppercase leading-[0.95]">
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                <h2 className="font-display leading-[0.95]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
                     Το μεγαλύτερο
                   </span>
-                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                     <span className="text-primary">build</span>
                     <span className="text-white/20 ml-4">της Hustle.</span>
                   </span>
@@ -957,7 +957,7 @@ const Work = () => {
                     <span className="px-4 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-semibold uppercase tracking-[0.15em] backdrop-blur-sm">Agentic AI & Engineering</span>
                     <span className="px-4 py-1.5 rounded-full bg-white/10 text-primary text-[10px] font-semibold uppercase tracking-[0.15em] backdrop-blur-sm">Vibe Commerce Pioneer</span>
                   </div>
-                  <h3 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.0] uppercase text-white mb-4">
+                  <h3 className="font-display text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.0] text-white mb-4">
                     Sigmalabs AI
                   </h3>
                   <p className="text-white/60 text-base md:text-lg font-normal max-w-2xl leading-relaxed tracking-normal">
@@ -975,7 +975,7 @@ const Work = () => {
                   { value: "12+", label: "Months R&D" },
                 ].map((stat) => (
                   <div key={stat.label} className="border-t border-white/10 pt-6">
-                    <div className="font-display text-3xl md:text-5xl font-black text-primary tracking-wide uppercase mb-2">{stat.value}</div>
+                    <div className="font-display text-3xl md:text-5xl font-bold text-primary tracking-tight mb-2">{stat.value}</div>
                     <div className="text-xs text-white/40 font-semibold uppercase tracking-[0.15em] leading-snug">{stat.label}</div>
                   </div>
                 ))}
@@ -1258,7 +1258,7 @@ const Work = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div {...fadeUp()}>
             <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-12 block">{t('portfolio.cta.badge')}</span>
-            <h2 className="font-display text-5xl md:text-7xl lg:text-9xl font-black tracking-wide uppercase leading-[1.05] mb-10">
+            <h2 className="font-display text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight leading-[1.05] mb-10">
               {t('portfolio.cta.title1')} <br /><span className="text-white/20">{t('portfolio.cta.title2')}</span>
             </h2>
             <p className="text-primary font-semibold uppercase tracking-[0.2em] text-lg md:text-xl mb-16 md:mb-24">

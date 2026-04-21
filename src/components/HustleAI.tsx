@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Sparkles, ArrowRight, Bot, User, Zap } from "lucide-react";
 import { Button } from "./ui/button";
@@ -8,6 +9,10 @@ interface Message {
   text: string;
   sender: "user" | "ai";
   timestamp: Date;
+  action?: {
+    label: string;
+    link: string;
+  };
 }
 
 const HustleAI = () => {
@@ -46,33 +51,55 @@ const HustleAI = () => {
 
     // Mock AI Response Logic
     setTimeout(() => {
-      const response = getAIResponse(input);
+      const responseObj = getAIResponse(input);
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
-        text: response,
+        text: responseObj.text,
         sender: "ai",
         timestamp: new Date(),
+        action: responseObj.action,
       };
       setMessages((prev) => [...prev, aiMsg]);
       setIsTyping(false);
     }, 1200);
   };
 
-  const getAIResponse = (query: string): string => {
+  const getAIResponse = (query: string): { text: string; action?: { label: string; link: string } } => {
     const q = query.toLowerCase();
     if (q.includes("academy") || q.includes("μαθημα") || q.includes("σεμιναριο")) {
-      return "Στην Hustle Academy προσφέρουμε πρακτικά workshops για Ads, AI Automation και Website Building. Το πρώτο project σου μπορεί να είναι έτοιμο σε μόλις 4 εβδομάδες!";
+      return { 
+        text: "Στην Hustle Academy μαθαίνεις να χτίζεις κερδοφόρα digital projects.", 
+        action: { label: "Δες την Academy", link: "/academy" } 
+      };
     }
     if (q.includes("website") || q.includes("ιστοσελιδα") || q.includes("φτιαξε")) {
-      return "Στη Hustle Labs δεν φτιάχνουμε απλώς websites, χτίζουμε μηχανές ανάπτυξης. Χρησιμοποιούμε Next.js και Tailwind για μέγιστη ταχύτητα και SEO.";
+      return { 
+        text: "Χτίζουμε ταχύτατες 'μηχανές ανάπτυξης' με Next.js και Tailwind.", 
+        action: { label: "Ξεκίνα Project", link: "/project-brief" } 
+      };
     }
     if (q.includes("κοστος") || q.includes("τιμη") || q.includes("ποσο")) {
-      return "Οι τιμές μας ξεκινούν από €25 για workshops και €1.200 για starter websites. Κάθε project είναι μοναδικό, οπότε το καλύτερο είναι να ξεκινήσεις ένα Brief!";
+      return { 
+        text: "Κάθε project είναι μοναδικό. Ξεκίνα το Brief για ακριβή κοστολόγηση.", 
+        action: { label: "Συμπλήρωσε το Brief", link: "/project-brief" } 
+      };
     }
     if (q.includes("space") || q.includes("χανια") || q.includes("coworking")) {
-      return "Το Hustle Space βρίσκεται στα Χανιά και είναι ένας χώρος σχεδιασμένος για Deep Work και στρατηγική συνεργασία. Έχουμε Day Passes και μηνιαίες συνδρομές.";
+      return { 
+        text: "Το Hustle Space στα Χανιά είναι σχεδιασμένο για Deep Work & δικτύωση.", 
+        action: { label: "Δες το Space", link: "/space" } 
+      };
     }
-    return "Πολύ ενδιαφέρον! Στη Hustle Labs εστιάζουμε στο αποτέλεσμα (Execution over theory). Θα ήθελες να μου πεις περισσότερα για την ιδέα σου ή να κλείσουμε μια κλήση στρατηγικής;";
+    if (q.includes("contact") || q.includes("επικοινωνια") || q.includes("κλεισε")) {
+      return { 
+        text: "Θέλεις να συζητήσουμε την ιδέα σου σε μια κλήση στρατηγικής;", 
+        action: { label: "Book a Call", link: "/book-call" } 
+      };
+    }
+    return { 
+      text: "Ενδιαφέρον! Θέλεις να μου πεις περισσότερα για την ιδέα σου ή να κλείσουμε μια κλήση;", 
+      action: { label: "Επικοινωνία", link: "/contact" } 
+    };
   };
 
   const suggestions = [
@@ -133,16 +160,32 @@ const HustleAI = () => {
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm font-medium leading-relaxed ${
-                    msg.sender === "user" 
-                    ? "bg-primary text-black rounded-tr-none" 
-                    : "bg-white/5 text-white/80 border border-white/10 rounded-tl-none"
-                  }`}>
-                    {msg.text}
+                  <div className={`max-w-[88%] space-y-3 ${msg.sender === "user" ? "text-right" : "text-left"}`}>
+                    <div className={`p-4 rounded-2xl text-sm font-medium leading-relaxed ${
+                      msg.sender === "user" 
+                      ? "bg-primary text-black rounded-tr-none" 
+                      : "bg-white/5 text-white/80 border border-white/10 rounded-tl-none"
+                    }`}>
+                      {msg.text}
+                    </div>
+                    {msg.action && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex justify-start"
+                      >
+                        <Button size="sm" className="rounded-xl bg-primary text-black text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-all h-10 px-4 border-none shadow-glow" asChild>
+                          <Link to={msg.action.link} className="flex items-center gap-2">
+                            {msg.action.label} <ArrowRight size={12} />
+                          </Link>
+                        </Button>
+                      </motion.div>
+                    )}
                   </div>
                 </motion.div>
               ))}

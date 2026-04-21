@@ -73,7 +73,7 @@ const Index = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight leading-[1.1] mb-8 md:mb-12"
             >
-              <span className="block hover:text-primary transition-colors duration-500 cursor-default">{t('hero.title1')}</span>
+              <span className="block cursor-default">{t('hero.title1')}</span>
               <span className="text-primary block group-hover:scale-[1.02] transition-transform duration-700">{t('hero.title2')}</span>
             </motion.h1>
 
@@ -174,7 +174,7 @@ const Index = () => {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-primary mb-12 group-hover:scale-110 transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow/20">
                 <Monitor size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 group-hover:text-primary transition-colors h-[2em] whitespace-pre-wrap">{t('forBusinesses.title')}</h3>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 h-[2em] whitespace-pre-wrap">{t('forBusinesses.title')}</h3>
               <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forBusinesses.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-16 leading-relaxed max-w-md italic">
                 {t('forBusinesses.text')}
@@ -200,7 +200,7 @@ const Index = () => {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-white/40 mb-12 group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow">
                 <Rocket size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 group-hover:text-white transition-colors h-[2em] whitespace-pre-wrap">{t('forFounders.title')}</h3>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 h-[2em] whitespace-pre-wrap">{t('forFounders.title')}</h3>
               <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forFounders.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-10 leading-relaxed max-w-md italic pr-2">
                 {t('forFounders.text1')}

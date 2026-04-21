@@ -103,7 +103,7 @@ const Studio = () => {
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Studio Status: Project in Progress</span>
           </div>
           
-          <h1 className="font-display text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tighter leading-[0.9]">
+          <h1 className="font-sans text-3xl md:text-5xl lg:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.0]">
             Loading <br />
             <span className="text-gradient">Premium Experience.</span>
           </h1>
@@ -116,12 +116,12 @@ const Studio = () => {
           <div className="max-w-xs mx-auto mb-10 px-4">
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] font-black uppercase tracking-widest text-white/40">Construction Progress</span>
-              <span className="text-[10px] font-black text-primary uppercase">85%</span>
+              <span className="text-[10px] font-black text-primary uppercase">95%</span>
             </div>
             <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
               <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: '85%' }}
+                animate={{ width: '95%' }}
                 transition={{ duration: 2, delay: 0.5, ease: "circOut" }}
                 className="h-full bg-gradient-to-r from-primary/60 to-primary" 
               />

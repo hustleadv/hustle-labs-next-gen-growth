@@ -1040,17 +1040,43 @@ const Work = () => {
       {/* ── SECTION 4: HUSTLE BACKED / VENTURES ── */}
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mb-24">
-            <motion.div {...fadeUp()}>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.investments.badge')}</span>
-              <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-wide leading-[1.1] uppercase mb-8">
-                {t('portfolio.investments.title')}
-              </h2>
-              <p className="text-lg md:text-xl text-white/50 leading-relaxed max-w-3xl font-normal tracking-normal">
-                {t('portfolio.investments.subtitle')}
-              </p>
-            </motion.div>
-          </div>
+          {/* Label + Title — Editorial Layout */}
+          <motion.div {...fadeUp()} className="mb-16 md:mb-24">
+            {/* Top eyebrow */}
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-8 h-px bg-primary" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-primary opacity-80">
+                {t('portfolio.investments.badge')}
+              </span>
+              <div className="h-px flex-1 bg-white/5" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/20">Venture Studio</span>
+            </div>
+
+            {/* Split headline */}
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+              {/* Left: main headline */}
+              <div className="flex-1">
+                <h2 className="font-display uppercase leading-[0.95]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/15">
+                    Hustle Backed
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                    Projects.
+                  </span>
+                </h2>
+              </div>
+
+              {/* Right: descriptor */}
+              <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
+                <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
+                  {t('portfolio.investments.subtitle')}
+                </p>
+              </div>
+            </div>
+            
+            {/* Bottom divider */}
+            <div className="mt-10 h-px bg-gradient-to-r from-primary/30 via-white/5 to-transparent" />
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-24">
             <div className="md:col-span-12 lg:col-span-7">

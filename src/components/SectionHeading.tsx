@@ -49,7 +49,7 @@ const SectionHeading = ({ label, title, highlight, description, align = "center"
           {label}
         </span>
       )}
-      <h2 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black ${textColor} mb-6 leading-[1] tracking-tighter`}>
+      <h2 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-normal ${textColor} mb-6 leading-[1.1] tracking-normal`}>
         {renderTitle()}
       </h2>
       {description && (

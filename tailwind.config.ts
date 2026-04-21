@@ -14,8 +14,13 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
+        display: ['Anton', 'Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+      },
+      letterSpacing: {
+        tighter: "-0.01em",
+        tight: "-0.005em",
+        widest: "0.4em",
       },
       colors: {
         border: "hsl(var(--border))",

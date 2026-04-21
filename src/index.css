@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -53,7 +53,7 @@
     --sidebar-border: 220 12% 16%;
     --sidebar-ring: 72 62% 58%;
 
-    --font-display: 'Space Grotesk', sans-serif;
+    --font-display: 'Anton', 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Glow effects — lime */
@@ -87,6 +87,9 @@
   h6 {
     font-family: var(--font-display);
     color: hsl(var(--foreground));
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
   }
 
   /* Subtle grain overlay for premium texture */

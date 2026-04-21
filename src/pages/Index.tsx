@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building2, Mic, Heart } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building2, Mic, Heart, MousePointer2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LabBackground from "@/components/LabBackground";
+import Magnetic from "@/components/Magnetic";
+import { useLanguage } from "@/contexts/LanguageContext";
+import PortfolioCard from "@/components/PortfolioCard";
 
 const Index = () => {
   const fadeInUp = {
@@ -14,24 +17,42 @@ const Index = () => {
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }
   };
 
-  const staggerContainer = {
-    initial: {},
-    whileInView: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    },
-    viewport: { once: true }
+  const { t } = useLanguage();
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
       
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5">
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5 group/hero"
+      >
         <LabBackground />
         
-        {/* Subtle radial glow */}
+        {/* Interactive Mouse Spotlight */}
+        <motion.div 
+          className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+          style={{
+            background: useTransform(
+              [springX, springY],
+              ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(208,255,0,0.06), transparent 80%)`
+            )
+          }}
+        />
+
+        {/* Static subtle radial glow (fallback) */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.03),transparent_70%)] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -43,17 +64,17 @@ const Index = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-8 md:mb-12"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">Startup Studio . Digital Agency . Private Hub</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('hero.badge')}</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl font-black tracking-tighter leading-[0.85] mb-8 md:mb-12 uppercase italic"
+              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl font-normal tracking-normal leading-[1.1] mb-8 md:mb-12 uppercase italic"
             >
-              We don’t build websites. <br />
-              <span className="text-primary tracking-normal">We build businesses.</span>
+              <span className="block hover:text-primary transition-colors duration-500 cursor-default">{t('hero.title1')}</span>
+              <span className="text-primary tracking-normal block group-hover:scale-[1.02] transition-transform duration-700">{t('hero.title2')}</span>
             </motion.h1>
 
             <div className="space-y-8 md:space-y-12 mb-12 md:mb-16">
@@ -63,8 +84,8 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
                 className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/70 tracking-tight italic"
               >
-                <p>Some we build for clients.</p>
-                <p>Some we build with.</p>
+                <p>{t('hero.subtitle1')}</p>
+                <p>{t('hero.subtitle2')}</p>
               </motion.div>
               
               <motion.div 
@@ -83,17 +104,21 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8"
             >
-              <Button size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow" asChild>
-                <Link to="/project-brief">
-                  Build my project
-                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
-                <Link to="/book-call">Pitch your idea</Link>
-              </Button>
+              <Magnetic strength={0.2}>
+                <Button size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow" asChild>
+                  <Link to="/project-brief">
+                    {t('hero.cta1')}
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+                  <Link to="/book-call">{t('hero.cta2')}</Link>
+                </Button>
+              </Magnetic>
             </motion.div>
 
             <motion.p 
@@ -102,7 +127,7 @@ const Index = () => {
               transition={{ duration: 1, delay: 1 }}
               className="text-[10px] uppercase font-black tracking-[0.5em] text-white/50"
             >
-              Athens . London . Dubai
+              {t('hero.locations')}
             </motion.p>
           </div>
         </div>
@@ -119,20 +144,18 @@ const Index = () => {
       <section className="py-32 md:py-48 relative border-t border-white/5 overflow-hidden bg-[#0a0a0a]">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic tracking-[0.6em]">The Lab Identity</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black tracking-tighter leading-[0.85] mb-16 uppercase italic px-2">
-              Not an agency. <br />
-              Not a coworking. <br />
-              <span className="text-white/20 italic">Not for everyone.</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic tracking-[0.6em]">{t('intro.badge')}</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-normal tracking-normal leading-[1.1] mb-16 uppercase italic px-2">
+              {t('intro.title1')} <br />
+              {t('intro.title2')} <br />
+              <span className="text-white/20 italic">{t('intro.title3')}</span>
             </h2>
             <div className="space-y-12 md:space-y-16 max-w-4xl mx-auto px-4">
               <p className="text-2xl md:text-4xl lg:text-5xl font-medium text-white/80 leading-[1.1] italic tracking-tight">
-                HustleLabs is where ideas become real. <br className="hidden md:block" />
-                And some of them become companies.
+                {t('intro.text1')}
               </p>
               <p className="text-xl md:text-2xl lg:text-3xl font-medium text-white/40 leading-relaxed italic">
-                We combine strategy, technology and execution <br className="hidden md:block" />
-                to turn concepts into something that actually works.
+                {t('intro.text2')}
               </p>
             </div>
           </motion.div>
@@ -147,14 +170,14 @@ const Index = () => {
           <div className="p-10 md:p-16 lg:p-20 xl:p-24 border-b lg:border-b-0 lg:border-r border-white/5 hover:bg-white/[0.02] transition-all duration-700 group relative overflow-hidden">
             <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 mb-10 block group-hover:text-primary transition-colors italic">FOR BUSINESSES</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 mb-10 block group-hover:text-primary transition-colors italic">{t('forBusinesses.badge')}</span>
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-primary mb-12 group-hover:scale-110 transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow/20">
                 <Monitor size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 italic uppercase group-hover:text-primary transition-colors">Build<br/>for you</h3>
-              <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">You bring the business. We build the engine.</p>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal tracking-normal leading-tight mb-6 italic uppercase group-hover:text-primary transition-colors h-[2em] whitespace-pre-wrap">{t('forBusinesses.title')}</h3>
+              <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forBusinesses.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-16 leading-relaxed max-w-md italic">
-                We create high-performance websites, systems and marketing strategies for businesses that want to grow fast and properly.
+                {t('forBusinesses.text')}
               </p>
               <ul className="grid grid-cols-1 gap-y-5 mb-24 pr-4">
                 {["Websites & Platforms", "Automation & AI Tools", "Marketing Systems", "Growth Strategy"].map((item) => (
@@ -164,7 +187,7 @@ const Index = () => {
                 ))}
               </ul>
               <Button size="xl" className="w-full sm:w-auto rounded-full h-20 md:h-24 px-12 md:px-16 text-xl md:text-2xl italic font-black bg-white text-black hover:bg-primary transition-all border-none shadow-xl hover:shadow-glow" asChild>
-                <Link to="/project-brief">Start a project</Link>
+                <Link to="/project-brief">{t('forBusinesses.cta')}</Link>
               </Button>
             </motion.div>
           </div>
@@ -173,17 +196,16 @@ const Index = () => {
           <div className="p-10 md:p-16 lg:p-20 xl:p-24 hover:bg-primary/[0.02] transition-all duration-700 group relative overflow-hidden">
             <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 mb-10 block group-hover:text-primary transition-colors italic">FOR FOUNDERS</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 mb-10 block group-hover:text-primary transition-colors italic">{t('forFounders.badge')}</span>
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-white/40 mb-12 group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow">
                 <Rocket size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 italic uppercase group-hover:text-white transition-colors">Build<br/>with you</h3>
-              <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">You bring the idea. We build it together.</p>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal tracking-normal leading-tight mb-6 italic uppercase group-hover:text-white transition-colors h-[2em] whitespace-pre-wrap">{t('forFounders.title')}</h3>
+              <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forFounders.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-10 leading-relaxed max-w-md italic pr-2">
-                Some ideas need more than a service. <br />
-                They need a partner.
+                {t('forFounders.text1')}
               </p>
-              <p className="text-[10px] md:text-[11px] text-white/20 italic mb-16 uppercase tracking-[0.4em] font-black leading-relaxed">In selected cases, we collaborate, build <br/> and grow projects together.</p>
+              <p className="text-[10px] md:text-[11px] text-white/20 italic mb-16 uppercase tracking-[0.4em] font-black leading-relaxed">{t('forFounders.text2')}</p>
               <ul className="grid grid-cols-1 gap-y-5 mb-24">
                 {["Startup Development", "Strategic Partnership", "Product Building", "Growth Execution"].map((item) => (
                   <li key={item} className="flex items-center gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white/20 border-l border-white/10 pl-8 group-hover:border-primary/50 transition-all italic">
@@ -192,7 +214,7 @@ const Index = () => {
                 ))}
               </ul>
               <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full h-20 md:h-24 px-12 md:px-16 text-xl md:text-2xl italic font-black border-white/10 hover:bg-white hover:text-black transition-all" asChild>
-                <Link to="/book-call">Pitch your idea</Link>
+                <Link to="/book-call">{t('forFounders.cta')}</Link>
               </Button>
             </motion.div>
           </div>
@@ -205,58 +227,72 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-16 md:mb-24">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">The Hustle Roster</span>
-              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
-                We don’t back everyone. <span className="text-white/20 text-2xl md:text-4xl lg:text-5xl tracking-normal md:whitespace-nowrap">But when we do we go all in.</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('roster.badge')}</span>
+              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[0.9] mb-12 italic uppercase">
+                {t('roster.title1')} <span className="text-white/20 text-2xl md:text-4xl lg:text-5xl tracking-normal md:whitespace-nowrap">{t('roster.title2')}</span>
               </h2>
               
               <div className="space-y-4 md:space-y-6 mt-12 md:mt-16">
-                <p className="text-primary font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-sm md:text-base italic animate-pulse">No clients. No templates. Just real builds.</p>
+                <p className="text-primary font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-sm md:text-base italic animate-pulse">{t('roster.subtitle1')}</p>
                 <div className="h-px w-20 bg-white/10" />
                 <p className="text-xl md:text-2xl text-white/50 max-w-2xl leading-relaxed italic">
-                  These are not client projects. <br/>
-                  These are businesses we chose to build.
+                  {t('roster.subtitle2')}
                 </p>
               </div>
-            </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-24">
+            <div className="md:col-span-7">
+              <PortfolioCard 
+                index={0}
+                title="Skiathos Travellers"
+                category="Tourism Engine"
+                image="/images/skiathostravellers.png"
+                link="/portfolio/skiathos-travellers"
+                className="aspect-[4/5] md:aspect-square lg:aspect-[4/5]"
+              />
+            </div>
+            <div className="md:col-span-5 md:mt-24">
+              <PortfolioCard 
+                index={1}
+                title="Sigmalabs AI"
+                category="Agentic AI"
+                image="/images/sigmalabs.jpg"
+                link="/portfolio/sigmalabs-ai"
+                className="aspect-[4/5]"
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="group relative h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px] rounded-[2rem] overflow-hidden border border-white/5 bg-secondary/30"
-            >
-              <img src="/images/skiathostravellers.png" alt="Skiathos Travellers" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-10 md:p-12">
-                <div className="mb-8 overflow-hidden">
-                  <span className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase tracking-widest text-primary mb-4 italic">BUILT WITH HUSTLE</span>
-                  <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">Skiathos <br/> Travellers</h3>
-                </div>
-                <div className="flex items-center justify-between border-t border-white/10 pt-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                  <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40 italic">Tourism Engine</span>
-                  <Link to="/portfolio/skiathos-travellers" className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-black hover:bg-primary transition-colors">
-                    <ArrowRight size={20} />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="group relative h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px] rounded-[2rem] overflow-hidden border border-white/5 bg-secondary/30"
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                 <span className="text-white/5 font-black text-7xl md:text-9xl rotate-12 -tracking-widest uppercase italic">SOON</span>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-12">
-                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/20 italic">Next Project</span>
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+            <div className="md:col-span-4">
+              <PortfolioCard 
+                index={2}
+                title="Liv Tours"
+                category="Automation Hub"
+                image="/images/liv-tours-main.png"
+                link="/portfolio/liv-tours-transfers"
+                className="aspect-[4/5]"
+              />
+            </div>
+            <div className="md:col-span-4 md:mt-12 lg:mt-24">
+              <PortfolioCard 
+                index={3}
+                title="Harmony Apartments"
+                category="Booking System"
+                image="/images/harmony-apartments.jpg"
+                link="/portfolio/harmony-apartments"
+                className="aspect-[4/5]"
+              />
+            </div>
+            <div className="md:col-span-4 md:mt-24 lg:mt-48">
+              <PortfolioCard 
+                index={4}
+                title="Next Venture"
+                category="In Development"
+                isSoon
+                className="aspect-[4/5]"
+              />
+            </div>
+          </div>          </motion.div>
           </div>
         </div>
       </section>
@@ -266,9 +302,9 @@ const Index = () => {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="text-center mb-16 md:mb-24">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Scale your vision</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter italic uppercase mb-12">Growth <span className="text-white/20">Systems</span></h2>
-            <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto italic">Transparent pricing for projects that want to disrupt the status quo.</p>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('growth.badge')}</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-normal tracking-normal italic uppercase mb-12">{t('growth.title1')} <span className="text-white/20">{t('growth.title2')}</span></h2>
+            <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto italic">{t('growth.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -304,11 +340,11 @@ const Index = () => {
                   pkg.popular ? "bg-[#080808] border-primary/20 shadow-glow" : "bg-card/30 border-white/5 hover:border-white/10"
                 )}
               >
-                {pkg.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-black text-[10px] font-black uppercase tracking-widest italic">Most Efficient</span>}
+                {pkg.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-black text-[10px] font-black uppercase tracking-widest italic">{t('growth.badge_most_efficient')}</span>}
                 <div className="mb-10">
-                  <h3 className="text-2xl font-black text-white italic uppercase tracking-wider mb-2">{pkg.name}</h3>
-                  <div className="text-3xl font-black text-primary italic mb-6">{pkg.price}</div>
-                  <p className="text-sm text-white/50 leading-relaxed italic">{pkg.desc}</p>
+                  <h3 className="text-2xl font-black text-white italic uppercase tracking-wider mb-2">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.name`)}</h3>
+                  <div className="text-3xl font-black text-primary italic mb-6">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.price`)}</div>
+                  <p className="text-sm text-white/50 leading-relaxed italic">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.desc`)}</p>
                 </div>
                 <ul className="space-y-4 mb-12 flex-1">
                   {pkg.features.map(f => (
@@ -319,7 +355,7 @@ const Index = () => {
                   ))}
                 </ul>
                 <Button variant={pkg.popular ? "default" : "outline"} className={cn("w-full h-16 rounded-full font-black uppercase tracking-widest italic transition-all", pkg.popular ? "bg-primary text-black hover:bg-white" : "border-white/10 hover:bg-white hover:text-black")} asChild>
-                  <Link to="/project-brief">Request Access</Link>
+                  <Link to="/project-brief">{t('growth.cta')}</Link>
                 </Button>
               </motion.div>
             ))}
@@ -333,14 +369,14 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8 py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Physical HQ</span>
-              <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter italic uppercase mb-10 leading-[0.9]">Hustle <br/> Space</h2>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('space.badge')}</span>
+              <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter italic uppercase mb-10 leading-[0.9] h-[2em] whitespace-pre-wrap">{t('space.title')}</h2>
               <p className="text-xl md:text-2xl text-white/60 mb-12 leading-relaxed italic max-w-xl">
-                Our premium hybrid hub in Chania. Co-working, networking and experimentation for restless minds.
+                {t('space.text')}
               </p>
               <div className="flex flex-wrap gap-4">
                  <Button size="xl" className="rounded-full h-20 px-12 bg-white text-black font-black uppercase tracking-widest italic hover:bg-primary transition-all shadow-2xl border-none" asChild>
-                   <Link to="/hustle-space">Visit the Space</Link>
+                   <Link to="/hustle-space">{t('space.cta')}</Link>
                  </Button>
               </div>
             </motion.div>

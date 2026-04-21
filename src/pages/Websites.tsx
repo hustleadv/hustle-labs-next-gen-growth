@@ -180,7 +180,7 @@ const Websites = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.div {...fadeUp()} className="max-w-4xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">The Hustle Standard</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-normal tracking-normal leading-[1.1] mb-12 italic uppercase">
               Δεν φτιάχνουμε sites <br className="hidden md:block" /> για να υπάρχουν. <br />
               <span className="text-white/20">Τα φτιάχνουμε για να αποδίδουν.</span>
             </h2>
@@ -277,7 +277,7 @@ const Websites = () => {
       <section className="py-24 md:py-48 relative bg-[#050505] border-b border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-5xl md:text-8xl font-black mb-10 tracking-tighter text-white italic uppercase leading-[0.9]">
+            <h2 className="font-display text-5xl md:text-8xl font-normal tracking-normal text-white italic uppercase leading-[1.1]">
               Έχεις ήδη <br /> <span className="text-primary italic">website;</span>
             </h2>
             <p className="text-white text-xl md:text-3xl font-black mb-6 italic uppercase tracking-tight">Κάθε pixel πρέπει να δουλεύει για εσένα.</p>
@@ -337,7 +337,7 @@ const Websites = () => {
         <div className="container mx-auto px-4 lg:px-8">
            <motion.div {...fadeUp()} className="text-center mb-32 md:mb-48 max-w-5xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">The Protocol</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85]">This is how we <br /> build websites <br/> that actually work.</h2>
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1]">This is how we <br /> build websites <br/> that actually work.</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
@@ -542,7 +542,7 @@ const Websites = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div {...fadeUp()} className="max-w-5xl mx-auto mb-20">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">Knowledge</span>
-            <h2 className="font-display text-5xl md:text-8xl font-black text-white mb-12 italic uppercase tracking-tighter leading-[0.9]">
+            <h2 className="font-display text-5xl md:text-8xl font-normal text-white mb-12 italic uppercase tracking-normal leading-[1.1]">
               Common <br className="md:hidden" /> <span className="text-primary italic animate-glow">Questions.</span>
             </h2>
           </motion.div>
@@ -559,7 +559,7 @@ const Websites = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div {...fadeUp()}>
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">Start Now</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-12 px-4">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1] mb-12 px-4">
               Θέλεις website <br /> που πραγματικά <br /> <span className="text-primary italic animate-glow">δουλεύει;</span>
             </h2>
             <p className="text-2xl md:text-4xl text-white font-black mb-24 italic uppercase tracking-tighter">

@@ -268,7 +268,7 @@ const Academy = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-10 uppercase italic"
+              className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-normal tracking-normal leading-[1.1] mb-10 uppercase italic"
             >
               Δεν χρειάζεσαι <br />
               <span className="text-primary">άλλα courses.</span>
@@ -315,7 +315,7 @@ const Academy = () => {
               transition={{ duration: 1, delay: 0.4 }}
               className="flex flex-wrap justify-center gap-x-10 md:gap-x-16 gap-y-3 text-primary font-black uppercase tracking-[0.4em] text-xs md:text-sm italic"
             >
-              <span>3 εβδ. για το Πρώτο project</span>
+              <span>4 εβδ. για το Πρώτο project</span>
               <span>90% hands-on</span>
               <span>€25 ξεκινάει από</span>
             </motion.div>
@@ -336,7 +336,7 @@ const Academy = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div {...fadeUp} className="max-w-5xl mx-auto text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Τι κερδίζεις</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-14 uppercase italic px-2">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-normal tracking-normal leading-[1.1] mb-14 uppercase italic px-2">
               Όχι videos. <br />
               Όχι notes. <br />
               <span className="text-white/20">Αποτελέσματα.</span>
@@ -372,7 +372,7 @@ const Academy = () => {
                 <div className="w-14 h-14 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-white/20 mb-12 group-hover:bg-primary group-hover:text-black group-hover:scale-110 transition-all duration-500 border border-white/10 group-hover:border-transparent">
                   <pillar.icon size={32} strokeWidth={1} />
                 </div>
-                <h3 className="font-display text-4xl md:text-6xl font-black tracking-tighter mb-6 italic uppercase group-hover:text-primary transition-colors">{pillar.title}</h3>
+                <h3 className="font-display text-4xl md:text-6xl font-normal tracking-normal mb-6 italic uppercase group-hover:text-primary transition-colors leading-[1.1]">{pillar.title}</h3>
                 <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-primary mb-10 italic">{pillar.learn}</p>
                 <p className="text-lg md:text-xl text-white/40 leading-relaxed italic pr-4">{pillar.achieve}</p>
               </motion.div>
@@ -388,7 +388,7 @@ const Academy = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto lg:mx-0 mb-20 md:mb-32">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Ομαδική Μάθηση</span>
-            <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-8 italic uppercase">
+            <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[1.1] mb-8 italic uppercase">
               Ένα workshop. <span className="text-white/20 text-xl md:text-4xl lg:text-5xl tracking-normal">Ένα πραγματικό αποτέλεσμα.</span>
             </h2>
             <p className="text-primary font-black uppercase tracking-[0.4em] text-sm italic animate-pulse">
@@ -406,10 +406,7 @@ const Academy = () => {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-primary/40 to-transparent group-hover:h-20 transition-all duration-1000" />
 
                 {/* Duration badge */}
-                <div className="flex items-center justify-center gap-2 mb-10">
-                  <Clock size={12} className="text-white/20" />
                   <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 italic">{w.duration}</span>
-                </div>
 
                 {/* Icon */}
                 <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center text-white/10 mb-12 mx-auto group-hover:bg-primary group-hover:text-black transition-all duration-700 border border-white/10 group-hover:border-transparent group-hover:shadow-[0_0_40px_rgba(208,255,0,0.2)]">
@@ -482,7 +479,7 @@ const Academy = () => {
 
           <motion.div {...fadeUp} className="text-center mb-20 md:mb-32 max-w-5xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">1-on-1 Sessions</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-8">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1] mb-8">
               Private <br /><span className="text-white/20">Mentoring.</span>
             </h2>
             <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl italic animate-pulse">
@@ -516,7 +513,7 @@ const Academy = () => {
             <div className="p-10 md:p-16 lg:p-20 hover:bg-primary/[0.015] transition-colors group flex flex-col justify-center">
               <motion.div {...fadeUpDelay(0.2)}>
                 <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20 mb-6 block group-hover:text-primary transition-colors italic">1-on-1 · 90 λεπτά</span>
-                <p className="font-display text-7xl md:text-9xl font-black text-primary italic tracking-tighter leading-none mb-2">€120</p>
+                <p className="font-display text-7xl md:text-9xl font-normal text-primary italic tracking-normal leading-none mb-2">€120</p>
                 <p className="text-white/20 text-xs font-black uppercase tracking-widest italic mb-16">/ session</p>
                 <p className="text-[9px] md:text-[10px] text-white/20 italic mb-10 uppercase tracking-[0.3em] font-black leading-relaxed">
                   Video recording & post-session action plan.<br/>Chat support μεταξύ sessions.
@@ -598,7 +595,7 @@ const Academy = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div {...fadeUp} className="text-center mb-20 md:mb-32 max-w-4xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Έχεις Απορίες;</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85]">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1]">
               Απαντάμε <br />
               <span className="text-white/20">ουσιαστικά.</span>
             </h2>
@@ -648,7 +645,7 @@ const Academy = () => {
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeUp}>
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">Ξεκίνα τώρα</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-8 px-2">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1] mb-8 px-2">
               Ξεκίνα τώρα. <br />
               <span className="text-white/20">Ή μείνε στο ίδιο σημείο.</span>
             </h2>

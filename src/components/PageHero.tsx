@@ -212,7 +212,7 @@ const PageHero = ({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display font-black text-foreground mb-8 leading-[1] tracking-tighter ${
+            className={`font-display font-normal text-foreground mb-8 leading-[1.1] tracking-normal ${
                 size === "large" 
                     ? "text-5xl sm:text-6xl md:text-8xl lg:text-9xl" 
                     : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"

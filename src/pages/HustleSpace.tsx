@@ -196,7 +196,7 @@ const HustleSpace = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">THE ENVIRONMENT</span>
-            <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+            <h2 className="font-display text-4xl md:text-7xl font-normal tracking-normal leading-[1.1] mb-12 italic uppercase">
               Designed for <br />
               <span className="text-gradient">high-output work.</span>
             </h2>
@@ -285,7 +285,7 @@ const HustleSpace = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">CHOOSE YOUR ACCESS</span>
-            <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter italic uppercase leading-[0.85] mb-8">
+            <h2 className="font-display text-4xl md:text-8xl font-normal italic uppercase leading-[1.1] mb-8">
               Access the <br />
               <span className="text-gradient">Ecosystem.</span>
             </h2>
@@ -354,7 +354,7 @@ const HustleSpace = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">INFRASTRUCTURE</span>
-            <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter italic uppercase leading-[0.9] mb-8">
+            <h2 className="font-display text-4xl md:text-7xl font-normal italic uppercase leading-[1.1] mb-8">
               The <span className="text-white/20">Specs.</span>
             </h2>
           </div>
@@ -382,7 +382,7 @@ const HustleSpace = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">FREQUENTLY ASKED</span>
-            <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter italic uppercase leading-[0.9]">
+            <h2 className="font-display text-4xl md:text-7xl font-normal italic uppercase leading-[1.1]">
               Lab <span className="text-gradient">Protocols.</span>
             </h2>
           </div>
@@ -435,7 +435,7 @@ const HustleSpace = () => {
                       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-8 italic">
                         <CreditCard size={12} /> PROTOCOL ACTIVATION
                       </div>
-                      <h2 className="font-display text-5xl md:text-7xl font-black text-white mb-6 uppercase italic tracking-tighter">Your Details</h2>
+                      <h2 className="font-display text-5xl md:text-7xl font-normal text-white mb-6 uppercase italic tracking-normal leading-[1.1]">Your Details</h2>
                       <p className="text-white/40 text-lg italic">Complete the form to activate your {selectedPass?.title}.</p>
                     </div>
 
@@ -499,7 +499,7 @@ const HustleSpace = () => {
                     <div className="w-32 h-32 rounded-[2.5rem] bg-primary/10 flex items-center justify-center mx-auto mb-16 border border-primary/20">
                       <CheckCircle2 size={72} className="text-primary" />
                     </div>
-                    <h2 className="font-display text-5xl md:text-7xl font-black text-white mb-8 italic uppercase tracking-tighter leading-none">Μεταφορά στο <span className="text-primary">Stripe.</span></h2>
+                    <h2 className="font-display text-5xl md:text-7xl font-normal text-white mb-8 italic uppercase tracking-normal leading-[1.1]">Μεταφορά στο <span className="text-primary">Stripe.</span></h2>
                     <p className="text-white/40 text-xl mb-12 max-w-lg mx-auto leading-relaxed italic">
                       Ανοίξαμε το Stripe Checkout σε νέο tab. Εάν δεν άνοιξε αυτόματα, πάτησε το κουμπί παρακάτω.
                     </p>
@@ -524,7 +524,7 @@ const HustleSpace = () => {
                     <div className="w-32 h-32 rounded-[2.5rem] bg-primary/10 flex items-center justify-center mx-auto mb-16 border border-primary/20">
                       <CheckCircle2 size={72} className="text-primary" />
                     </div>
-                    <h2 className="font-display text-5xl md:text-8xl font-black text-white mb-8 italic uppercase tracking-tighter leading-none">Ready to <span className="text-primary tracking-normal">Hustle.</span></h2>
+                    <h2 className="font-display text-5xl md:text-8xl font-normal text-white mb-8 italic uppercase tracking-normal leading-[1.1]">Ready to <span className="text-primary tracking-normal">Hustle.</span></h2>
                     <p className="text-white/40 text-xl mb-20 max-w-lg mx-auto leading-relaxed italic">
                       Your access to the {selectedPass?.title} has been initialized. Check your inbox for the Lab arrival protocols.
                     </p>

@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import LabBackground from "@/components/LabBackground";
+import PortfolioCard from "@/components/PortfolioCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 import TOPTRAVEL_HOME from "@/assets/TOPTRAVEL-HOME.png";
 
 const fadeUp = (delay = 0) => ({
@@ -776,6 +778,7 @@ const categories = [
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const { t } = useLanguage();
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return caseStudies;
@@ -806,7 +809,7 @@ const Work = () => {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20 mb-8 md:mb-12"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">The Archive · Strategy · Execution</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('portfolio.hero.badge')}</span>
             </motion.div>
 
             <motion.h1 
@@ -815,8 +818,8 @@ const Work = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-8 md:mb-12 uppercase italic"
             >
-              Real Projects. <br />
-              <span className="text-primary tracking-normal">Built to scale.</span>
+              {t('portfolio.hero.title1')} <br />
+              <span className="text-primary tracking-normal">{t('portfolio.hero.title2')}</span>
             </motion.h1>
 
             <div className="space-y-8 md:space-y-12 mb-12 md:mb-16">
@@ -826,8 +829,8 @@ const Work = () => {
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
                 className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic"
               >
-                <p>We don't build just websites.</p>
-                <p>We build high-performance digital engines.</p>
+                <p>{t('portfolio.hero.subtitle1')}</p>
+                <p>{t('portfolio.hero.subtitle2')}</p>
               </motion.div>
             </div>
 
@@ -838,11 +841,11 @@ const Work = () => {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             >
               <Button onClick={scrollToArchive} size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow">
-                Explore Deployments
+                {t('portfolio.hero.explore')}
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
-                <Link to="/project-brief">Start Your Project</Link>
+                <Link to="/project-brief">{t('portfolio.hero.start')}</Link>
               </Button>
             </motion.div>
           </div>
@@ -859,11 +862,11 @@ const Work = () => {
       <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp()} className="max-w-4xl mb-24 md:mb-40">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">High Impact</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.featured.badge')}</span>
             <h2 className="font-display text-3xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
-              Selected <span className="text-white/20">Works.</span>
+              {t('portfolio.featured.title1')} <span className="text-white/20">{t('portfolio.featured.title2')}</span>
             </h2>
-            <p className="text-primary font-black uppercase tracking-[0.4em] text-sm italic animate-pulse">Case studies that prove the ROI.</p>
+            <p className="text-primary font-black uppercase tracking-[0.4em] text-sm italic animate-pulse">{t('portfolio.featured.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-32">
@@ -909,9 +912,9 @@ const Work = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-20 md:mb-32">
             <motion.div {...fadeUp()} className="max-w-xl">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">The Archive</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.archive.badge')}</span>
               <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] italic uppercase">
-                All <br/><span className="text-white/20">Builds.</span>
+                {t('portfolio.archive.title1')} <br/><span className="text-white/20">{t('portfolio.archive.title2')}</span>
               </h2>
             </motion.div>
 
@@ -966,7 +969,7 @@ const Work = () => {
             {filteredProjects.length === 0 && (
               <div className="text-center py-40 rounded-[3.5rem] border border-dashed border-white/10 bg-white/[0.01]">
                 <Filter size={48} className="text-white/5 mx-auto mb-6" />
-                <p className="text-white/20 font-black uppercase tracking-[0.4em] text-xs italic italic">No deployments found in this sector.</p>
+                <p className="text-white/20 font-black uppercase tracking-[0.4em] text-xs italic italic">{t('portfolio.archive.empty')}</p>
               </div>
             )}
           </div>
@@ -978,24 +981,65 @@ const Work = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div {...fadeUp()}>
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">Scale With The Lab</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">{t('portfolio.cta.badge')}</span>
             <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-12">
-              Ready to <br /><span className="text-white/20">Dominate?</span>
+              {t('portfolio.cta.title1')} <br /><span className="text-white/20">{t('portfolio.cta.title2')}</span>
             </h2>
             <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl mb-16 md:mb-24 italic">
-              Let's build your next success story.
+              {t('portfolio.cta.subtitle')}
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-20 h-20 md:h-28 text-xl md:text-3xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
                 <Link to="/project-brief">
-                  Start Your Project
+                  {t('portfolio.cta.button')}
                 </Link>
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* ── SECTION: HUSTLE BACKED / VENTURES ── */}
+      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-4xl mb-24 text-center md:text-left">
+            <motion.div {...fadeUp()}>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.investments.badge')}</span>
+              <h2 className="font-display text-4xl md:text-7xl font-normal tracking-normal italic uppercase mb-12">
+                {t('portfolio.investments.title')}
+              </h2>
+              <p className="text-xl md:text-2xl text-white/50 leading-relaxed italic max-w-3xl">
+                {t('portfolio.investments.subtitle')}
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-24">
+            <div className="md:col-span-12 lg:col-span-7">
+              <PortfolioCard 
+                index={0}
+                title="Skiathos Travellers"
+                category="Tourism Engine"
+                image="/images/skiathostravellers.png"
+                link="/portfolio/skiathos-travellers"
+                className="aspect-[4/5] md:aspect-video lg:aspect-[16/10]"
+              />
+            </div>
+            <div className="md:col-span-12 lg:col-span-5 md:mt-24">
+              <PortfolioCard 
+                index={1}
+                title="Next Venture"
+                category="In Development"
+                isSoon
+                className="aspect-[4/5] md:aspect-video lg:aspect-auto"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2" />
+      </section>
+      
     </div>
   );
 };

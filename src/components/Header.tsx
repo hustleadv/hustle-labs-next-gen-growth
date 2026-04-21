@@ -11,24 +11,25 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const NAV_SERVICES = [
-  { label: "Websites", path: "/websites", icon: Monitor, desc: "High-end custom development" },
-  { label: "Growth", path: "/growth", icon: TrendingUp, desc: "Marketing & sales systems" },
-  { label: "AI Lab", path: "/ai-lab", icon: Cpu, desc: "Automation & Artificial Intelligence" },
+  { label: "nav.websites", path: "/websites", icon: Monitor, desc: "High-end custom development" },
+  { label: "nav.growth", path: "/growth", icon: TrendingUp, desc: "Marketing & sales systems" },
+  { label: "nav.ai_lab", path: "/ai-lab", icon: Cpu, desc: "Automation & Artificial Intelligence" },
 ];
 
 const navItems = [
-  { label: "Ecosystem", path: "/ecosystem", icon: Layers },
+  { label: "nav.home", path: "/", icon: Layers },
   {
-    label: "Services",
+    label: "nav.services",
     path: "/services",
     icon: Rocket,
     submenu: NAV_SERVICES
   },
-  { label: "Studio", path: "/studio", icon: Palette, badge: "Soon" },
-  { label: "Portfolio", path: "/portfolio", icon: Briefcase },
-  { label: "Academy", path: "/academy", icon: GraduationCap },
+  { label: "nav.studio", path: "/studio", icon: Palette, badge: "Soon" },
+  { label: "nav.portfolio", path: "/portfolio", icon: Briefcase },
+  { label: "nav.academy", path: "/academy", icon: GraduationCap },
 ];
 
 const Header = () => {
@@ -40,6 +41,7 @@ const Header = () => {
   const [activeTooltip, setActiveTooltip] = useState<"daypass" | "project" | null>(null);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { language, setLanguage, t } = useLanguage();
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -133,7 +135,7 @@ const Header = () => {
                       isActive ? "text-foreground" : "text-muted-foreground"
                     )}
                   >
-                    {item.label}
+                    {t(item.label)}
                     <ChevronDown size={14} className={cn("transition-transform duration-200", servicesDropdownOpen && "rotate-180")} />
                   </button>
 
@@ -187,7 +189,7 @@ const Header = () => {
                     : isOverLight ? "text-slate-500 hover:text-slate-900" : "text-muted-foreground"
                 )}
               >
-                {item.label}
+                {t(item.label)}
                 {item.badge && (
                   <span className="text-[8px] bg-primary/20 text-primary px-1 rounded-sm font-black uppercase leading-tight scale-90">
                     {item.badge}
@@ -214,7 +216,7 @@ const Header = () => {
               )}
             >
               <FolderKanban size={13} className="shrink-0" />
-              Start a Project
+              {t('nav.brief')}
             </Link>
             <AnimatePresence>
               {activeTooltip === "project" && (
@@ -243,7 +245,7 @@ const Header = () => {
               className="group relative flex items-center gap-2 h-9 px-5 rounded-full bg-primary text-primary-foreground text-xs font-black uppercase tracking-widest transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_20px_hsl(72_62%_58%_/_0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <CalendarDays size={13} className="shrink-0" />
-              Get Your Day Pass
+              {t('nav.space')}
             </Link>
             <AnimatePresence>
               {activeTooltip === "daypass" && (
@@ -261,6 +263,29 @@ const Header = () => {
                 </motion.div>
               )}
             </AnimatePresence>
+          </div>
+
+          {/* Language Toggle */}
+          <div className="flex items-center gap-1.5 ml-2 border-l border-white/10 pl-4 h-6">
+            <button
+              onClick={() => setLanguage("gr")}
+              className={cn(
+                "text-[10px] font-black tracking-widest uppercase transition-colors",
+                language === "gr" ? "text-primary" : "text-white/20 hover:text-white/40"
+              )}
+            >
+              GR
+            </button>
+            <span className="text-[10px] text-white/10">/</span>
+            <button
+              onClick={() => setLanguage("en")}
+              className={cn(
+                "text-[10px] font-black tracking-widest uppercase transition-colors",
+                language === "en" ? "text-primary" : "text-white/20 hover:text-white/40"
+              )}
+            >
+              EN
+            </button>
           </div>
         </div>
 

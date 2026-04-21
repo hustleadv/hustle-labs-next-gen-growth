@@ -87,19 +87,19 @@ const HustleAI = () => {
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full bg-primary text-black flex items-center justify-center shadow-glow-strong border-none focus:outline-none"
+        className="fixed bottom-6 right-6 z-[100] w-12 h-12 rounded-full bg-black/80 backdrop-blur-xl text-primary flex items-center justify-center shadow-2xl border border-primary/20 hover:border-primary/50 transition-all focus:outline-none"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
-              <X size={28} />
+              <X size={20} />
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <Zap size={28} fill="black" />
+              <Sparkles size={20} className="fill-current" />
             </motion.div>
           )}
         </AnimatePresence>

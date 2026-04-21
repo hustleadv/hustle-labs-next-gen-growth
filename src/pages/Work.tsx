@@ -7,7 +7,8 @@ import {
   CalendarDays, RefreshCcw, LayoutDashboard,
   Bell, Truck, CreditCard, Lock, Smartphone,
   Bot, Cpu, Activity, Handshake, Trophy,
-  Monitor, Sparkles, Filter, CheckCircle2, Users
+  Monitor, Sparkles, Filter, CheckCircle2, Users,
+  MessageSquare, ShieldCheck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -951,6 +952,100 @@ const Work = () => {
               </div>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 2.5: AI AGENTS REGISTRY ── */}
+      <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
+        {/* Technical Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+             style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          {/* Header */}
+          <motion.div {...fadeUp()} className="mb-20 md:mb-32">
+             <div className="flex items-center gap-3 mb-10">
+                <Cpu size={14} className="text-primary animate-pulse" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-primary/70">Autonomous Systems · Active Registry</span>
+             </div>
+
+             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+                <h2 className="font-display uppercase leading-[0.9]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/10">
+                    Deployed
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                    AI Agents.
+                  </span>
+                </h2>
+                <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
+                  <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
+                    5 Ενεργοί AI Agents που εκτελούν σύνθετες λειτουργίες, από αυτοματοποιημένο concierge μέχρι trade execution και strategic analysis.
+                  </p>
+                </div>
+             </div>
+          </motion.div>
+
+          {/* Agents Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+            {[
+              { name: "SIGMA-1", role: "Ops Orchestrator", tech: "GPT-4o / Vector DB", status: "Live", client: "SigmaLabs AI", icon: Cpu },
+              { name: "LIVY", role: "Elite Concierge", tech: "Claude 3.5 / Whisper", status: "Live", client: "Liv Tours", icon: MessageSquare },
+              { name: "ATLAS", role: "Strategic Analysis", tech: "Llama 3 (Custom)", status: "Internal", client: "Hustle Labs", icon: BarChart3 },
+              { name: "VIBE-CORE", role: "Commerce Agent", tech: "GPT-4 / Shopify API", status: "Active", client: "Vibe Commerce", icon: Zap },
+              { name: "AEGIS", role: "Security & Audit", tech: "Automated Pentest", status: "Deployed", client: "Hustle Backed", icon: ShieldCheck }
+            ].map((agent, i) => (
+              <motion.div 
+                key={agent.name}
+                {...fadeUp(i * 0.1)}
+                className="group relative p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
+                   <agent.icon size={80} strokeWidth={0.5} />
+                </div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-10">
+                    <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[9px] font-black text-primary uppercase tracking-widest italic">
+                       {agent.status}
+                    </div>
+                    <div className="text-[10px] font-medium text-white/20 font-mono">
+                       01001-0{i+1}
+                    </div>
+                  </div>
+
+                  <h3 className="font-display text-3xl font-black text-white italic uppercase tracking-tight mb-2">
+                    {agent.name}
+                  </h3>
+                  <div className="text-[10px] font-semibold text-primary/60 uppercase tracking-[0.2em] mb-8">
+                    {agent.role}
+                  </div>
+
+                  <div className="mt-auto space-y-4 pt-6 border-t border-white/5">
+                    <div className="flex items-center justify-between">
+                       <span className="text-[9px] font-medium text-white/20 uppercase tracking-widest">Stack</span>
+                       <span className="text-[10px] font-semibold text-white/50">{agent.tech}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                       <span className="text-[9px] font-medium text-white/20 uppercase tracking-widest">Integrated At</span>
+                       <span className="text-[10px] font-semibold text-white/70">{agent.client}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Empty Slot for "Next Agent" */}
+            <motion.div 
+              {...fadeUp(0.6)}
+              className="group relative p-8 rounded-[2.5rem] bg-transparent border border-dashed border-white/10 flex flex-col items-center justify-center text-center gap-4 hover:border-primary/20 transition-all"
+            >
+               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:text-primary transition-colors text-2xl font-black">
+                  +
+               </div>
+               <p className="text-[10px] font-bold text-white/10 uppercase tracking-[0.3em]">Next Deployment <br/> In Progress</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 

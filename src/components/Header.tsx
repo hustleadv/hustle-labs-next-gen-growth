@@ -20,7 +20,6 @@ const NAV_SERVICES = [
 ];
 
 const navItems = [
-  { label: "nav.home", path: "/", icon: Layers },
   {
     label: "nav.services",
     path: "/services",

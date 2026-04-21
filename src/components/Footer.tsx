@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Links */}
           <div className="space-y-12">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Navigation</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/50">Navigation</h4>
             <nav className="flex flex-col gap-8">
               <Link to="/services" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Services</Link>
               <Link to="/portfolio" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Projects</Link>
@@ -42,7 +42,7 @@ const Footer = () => {
 
           {/* Social */}
           <div className="space-y-12">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Connect</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/50">Connect</h4>
             <div className="flex gap-10">
               <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.instagram.com/hustlelabs.gr/" target="_blank" className="text-white/80 transition-colors">
                 <Instagram size={28} />

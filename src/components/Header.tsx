@@ -28,6 +28,7 @@ const navItems = [
   },
   { label: "nav.studio", path: "/studio", icon: Palette, badge: "Soon" },
   { label: "nav.portfolio", path: "/portfolio", icon: Briefcase },
+  { label: "nav.ecosystem", path: "/ecosystem", icon: Layers },
   { label: "nav.academy", path: "/academy", icon: GraduationCap },
 ];
 

@@ -993,7 +993,7 @@ const Work = () => {
               { name: "LIVY", role: "Elite Concierge", tech: "Claude 3.5 / Whisper", status: "Live", client: "Liv Tours", icon: MessageSquare },
               { name: "LAB BUDDY", role: "Internal Assistant", tech: "GPT-4o / Context", status: "Live", client: "Hustle Labs", icon: Bot },
               { name: "ΝΕΣΤΩΡ", role: "Villa Concierge", tech: "GPT-4o / Hospitality", status: "Active", client: "Olive Nest", icon: MessageSquare },
-              { name: "AEGIS", role: "Security & Audit", tech: "Automated Pentest", status: "Deployed", client: "Hustle Backed", icon: ShieldCheck }
+              { name: "ΕΡΜΗΣ", role: "Travel Assistant", tech: "GPT-4o / Real-time", status: "Deployed", client: "TopTravel", icon: MessageSquare }
             ].map((agent, i) => (
               <motion.div 
                 key={agent.name}

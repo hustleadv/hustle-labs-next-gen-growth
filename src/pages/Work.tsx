@@ -809,25 +809,25 @@ const Work = () => {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20 mb-8 md:mb-12"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('portfolio.hero.badge')}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80">{t('portfolio.hero.badge')}</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-8 md:mb-12 uppercase italic"
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wide leading-[1.0] mb-8 md:mb-12 uppercase italic"
             >
               {t('portfolio.hero.title1')} <br />
-              <span className="text-primary tracking-normal">{t('portfolio.hero.title2')}</span>
+              <span className="text-primary">{t('portfolio.hero.title2')}</span>
             </motion.h1>
 
-            <div className="space-y-8 md:space-y-12 mb-12 md:mb-16">
+            <div className="space-y-4 mb-12 md:mb-16">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-                className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic"
+                className="text-lg md:text-xl lg:text-2xl font-normal text-white/40 tracking-normal leading-relaxed"
               >
                 <p>{t('portfolio.hero.subtitle1')}</p>
                 <p>{t('portfolio.hero.subtitle2')}</p>
@@ -840,11 +840,11 @@ const Work = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             >
-              <Button onClick={scrollToArchive} size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow">
+              <Button onClick={scrollToArchive} size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-semibold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow">
                 {t('portfolio.hero.explore')}
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+              <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-8 md:px-12 h-16 md:h-20 text-lg md:text-xl font-semibold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
                 <Link to="/project-brief">{t('portfolio.hero.start')}</Link>
               </Button>
             </motion.div>
@@ -862,11 +862,11 @@ const Work = () => {
       <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp()} className="max-w-4xl mb-24 md:mb-40">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.featured.badge')}</span>
-            <h2 className="font-display text-3xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.featured.badge')}</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.05] mb-8 uppercase">
               {t('portfolio.featured.title1')} <span className="text-white/20">{t('portfolio.featured.title2')}</span>
             </h2>
-            <p className="text-primary font-black uppercase tracking-[0.4em] text-sm italic animate-pulse">{t('portfolio.featured.subtitle')}</p>
+            <p className="text-primary font-semibold uppercase tracking-[0.2em] text-sm">{t('portfolio.featured.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-32">
@@ -884,19 +884,19 @@ const Work = () => {
                       className="w-full h-full object-cover grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" 
                     />
                     <div className="absolute top-6 left-6 md:top-10 md:left-10">
-                      <span className="px-5 py-2 md:px-8 md:py-2.5 rounded-full bg-primary text-black text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] italic shadow-glow-strong">
+                      <span className="px-5 py-2 md:px-8 md:py-2.5 rounded-full bg-primary text-black text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] shadow-glow-strong">
                         {project.metric} {project.outcome}
                       </span>
                     </div>
                   </div>
                   <div className="px-4 md:px-6">
-                    <div className="flex items-center gap-3 mb-2">
-                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/60 italic">{project.type}</span>
+                    <div className="flex items-center gap-3 mb-3">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-primary/60">{project.type}</span>
                     </div>
-                    <h4 className="font-display text-2xl md:text-4xl lg:text-5xl font-black text-white italic uppercase mb-2 md:mb-3 tracking-tighter">
+                    <h4 className="font-display text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase mb-3 md:mb-4 tracking-wide leading-[1.1]">
                       {project.business}
                     </h4>
-                    <p className="text-white/20 text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] leading-relaxed italic">
+                    <p className="text-white/40 text-sm md:text-base font-normal leading-relaxed tracking-normal">
                       {project.whatWeBuilt}
                     </p>
                   </div>
@@ -912,8 +912,8 @@ const Work = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-20 md:mb-32">
             <motion.div {...fadeUp()} className="max-w-xl">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.archive.badge')}</span>
-              <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] italic uppercase">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.archive.badge')}</span>
+              <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.05] uppercase">
                 {t('portfolio.archive.title1')} <br/><span className="text-white/20">{t('portfolio.archive.title2')}</span>
               </h2>
             </motion.div>
@@ -924,8 +924,8 @@ const Work = () => {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`group relative text-[10px] font-black uppercase tracking-[0.4em] italic transition-colors py-2 ${
-                    activeCategory === cat.id ? "text-primary" : "text-white/20 hover:text-white/50"
+                  className={`group relative text-xs font-semibold uppercase tracking-[0.15em] transition-colors py-2 ${
+                    activeCategory === cat.id ? "text-primary" : "text-white/25 hover:text-white/60"
                   }`}
                 >
                   {cat.label}
@@ -969,47 +969,23 @@ const Work = () => {
             {filteredProjects.length === 0 && (
               <div className="text-center py-40 rounded-[3.5rem] border border-dashed border-white/10 bg-white/[0.01]">
                 <Filter size={48} className="text-white/5 mx-auto mb-6" />
-                <p className="text-white/20 font-black uppercase tracking-[0.4em] text-xs italic italic">{t('portfolio.archive.empty')}</p>
+                <p className="text-white/30 font-semibold uppercase tracking-[0.2em] text-sm">{t('portfolio.archive.empty')}</p>
               </div>
             )}
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 4: FINAL CTA ── */}
-      <section className="py-32 md:py-48 lg:py-64 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div {...fadeUp()}>
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">{t('portfolio.cta.badge')}</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-12">
-              {t('portfolio.cta.title1')} <br /><span className="text-white/20">{t('portfolio.cta.title2')}</span>
-            </h2>
-            <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl mb-16 md:mb-24 italic">
-              {t('portfolio.cta.subtitle')}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-20 h-20 md:h-28 text-xl md:text-3xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
-                <Link to="/project-brief">
-                  {t('portfolio.cta.button')}
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── SECTION: HUSTLE BACKED / VENTURES ── */}
+      {/* ── SECTION 4: HUSTLE BACKED / VENTURES ── */}
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mb-24 text-center md:text-left">
+          <div className="max-w-4xl mb-24">
             <motion.div {...fadeUp()}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('portfolio.investments.badge')}</span>
-              <h2 className="font-display text-4xl md:text-7xl font-normal tracking-normal italic uppercase mb-12">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.investments.badge')}</span>
+              <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-wide leading-[1.1] uppercase mb-8">
                 {t('portfolio.investments.title')}
               </h2>
-              <p className="text-xl md:text-2xl text-white/50 leading-relaxed italic max-w-3xl">
+              <p className="text-lg md:text-xl text-white/50 leading-relaxed max-w-3xl font-normal tracking-normal">
                 {t('portfolio.investments.subtitle')}
               </p>
             </motion.div>
@@ -1039,9 +1015,31 @@ const Work = () => {
         </div>
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2" />
       </section>
+
+      {/* ── SECTION 5: FINAL CTA ── */}
+      <section className="py-32 md:py-48 lg:py-64 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div {...fadeUp()}>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-12 block">{t('portfolio.cta.badge')}</span>
+            <h2 className="font-display text-5xl md:text-7xl lg:text-9xl font-black tracking-wide uppercase leading-[1.05] mb-10">
+              {t('portfolio.cta.title1')} <br /><span className="text-white/20">{t('portfolio.cta.title2')}</span>
+            </h2>
+            <p className="text-primary font-semibold uppercase tracking-[0.2em] text-lg md:text-xl mb-16 md:mb-24">
+              {t('portfolio.cta.subtitle')}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-20 h-20 md:h-28 text-xl md:text-3xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
+                <Link to="/project-brief">
+                  {t('portfolio.cta.button')}
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       
     </div>
-  );
-};
 
 export default Work;

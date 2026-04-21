@@ -1022,10 +1022,7 @@ const Work = () => {
                   </div>
 
                   <div className="mt-auto space-y-4 pt-6 border-t border-white/5">
-                    <div className="flex items-center justify-between">
-                       <span className="text-[9px] font-medium text-white/20 uppercase tracking-widest">Stack</span>
-                       <span className="text-[10px] font-semibold text-white/50">{agent.tech}</span>
-                    </div>
+
                     <div className="flex items-center justify-between">
                        <span className="text-[9px] font-medium text-white/20 uppercase tracking-widest">Integrated At</span>
                        <span className="text-[10px] font-semibold text-white/70">{agent.client}</span>

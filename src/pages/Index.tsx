@@ -229,8 +229,10 @@ const Index = () => {
             className="flex gap-20 items-center whitespace-nowrap px-10"
           >
             {[
-              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Stripe", "Supabase", "OpenAI", "Node.js", "PostgreSQL",
-              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Stripe", "Supabase", "OpenAI", "Node.js", "PostgreSQL"
+              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "OpenAI", "Anthropic", "LangChain", "Supabase", "PostgreSQL",
+              "Stripe", "Shopify", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone",
+              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "OpenAI", "Anthropic", "LangChain", "Supabase", "PostgreSQL",
+              "Stripe", "Shopify", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone"
             ].map((tech, i) => (
               <span key={i} className="text-3xl md:text-5xl font-bold font-display text-white/10 group-hover:text-primary/40 transition-colors duration-700">
                 {tech}

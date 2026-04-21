@@ -104,7 +104,7 @@ const Ecosystem = () => {
                     <Monitor size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-bold mb-2 tracking-normal">{t('ecosystem.structure.agency.title')}</h4>
+                    <h4 className="font-sans text-lg font-semibold mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
                     <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const Ecosystem = () => {
                     <Rocket size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-bold mb-2 tracking-normal">{t('ecosystem.structure.studio.title')}</h4>
+                    <h4 className="font-sans text-lg font-semibold mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
                     <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
                   </div>
                 </div>

@@ -81,16 +81,28 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
     >
       <Link to={link || "#"} className="flex flex-col h-full cursor-pointer">
         {/* Image Section */}
-        <div className="relative w-full flex-1 overflow-hidden p-6 pb-2">
-          <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white/5 relative flex items-center justify-center">
-            <img 
-              src={image} 
-              alt={title} 
-              className="w-[90%] h-[90%] object-contain transition-transform duration-1000 group-hover:scale-[1.05]" 
-            />
+        <div className="relative w-full flex-1 overflow-hidden transition-all duration-700">
+          <div className="w-full h-full relative overflow-hidden bg-[#0a0a0a]">
+            {image && (
+              <>
+                <img 
+                  src={image} 
+                  alt={title} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                />
+                {/* Subtle overlay to help with texture and depth */}
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
+              </>
+            )}
             
-            <div className="absolute top-6 left-6">
-              <span className="px-3 py-1 rounded-full bg-primary text-black text-[8px] font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+            {!image && (
+              <div className="w-full h-full flex items-center justify-center bg-white/5">
+                <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">No Image Available</span>
+              </div>
+            )}
+
+            <div className="absolute top-6 left-6 z-20">
+              <span className="px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-black text-[8px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-2xl">
                 <Rocket size={10} />
                 Built with Hustle
               </span>

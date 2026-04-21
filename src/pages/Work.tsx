@@ -1167,6 +1167,40 @@ const Work = () => {
         </div>
       </section>
 
+
+      {/* ── SECTION: MORE PROJECTS COMING SOON ── */}
+      <section className="py-20 lg:py-32 relative bg-[#050505] overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="relative p-12 lg:p-24 rounded-[4rem] border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent flex flex-col items-center justify-center text-center group transition-all duration-1000 hover:border-primary/20">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.02),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.95 }}
+                 whileInView={{ opacity: 1, scale: 1 }}
+                 viewport={{ once: true }}
+                 className="relative z-10 space-y-8"
+              >
+                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] text-white/30 italic">
+                    <Rocket size={12} className="text-primary animate-pulse" />
+                    Project Pipeline
+                 </div>
+                 
+                 <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-white/40 group-hover:text-white transition-colors duration-1000 leading-tight">
+                    More Projects <br className="md:hidden" /> <span className="text-primary">Coming Soon.</span>
+                 </h2>
+                 
+                 <p className="text-[10px] md:text-xs font-medium text-white/20 uppercase tracking-[0.5em] italic">
+                    Στρατηγική & Υλοποίηση σε εξέλιξη.
+                 </p>
+              </motion.div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-10 left-10 w-20 h-20 border-l border-t border-white/10 rounded-tl-3xl opacity-20" />
+              <div className="absolute bottom-10 right-10 w-20 h-20 border-r border-b border-white/10 rounded-br-3xl opacity-20" />
+           </div>
+        </div>
+      </section>
+
       {/* ── SECTION 4: HUSTLE BACKED / VENTURES ── */}
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">

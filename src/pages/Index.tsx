@@ -220,72 +220,65 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-16 md:mb-24">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('roster.badge')}</span>
-              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
-                {t('roster.title1')} <span className="text-white/20 text-2xl md:text-4xl lg:text-5xl tracking-normal md:whitespace-nowrap">{t('roster.title2')}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-8 block">{t('roster.badge')}</span>
+              <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-12">
+                {t('roster.title1')} <span className="text-white/20 text-3xl md:text-5xl lg:text-7xl tracking-normal md:whitespace-nowrap">{t('roster.title2')}</span>
               </h2>
               
               <div className="space-y-4 md:space-y-6 mt-12 md:mt-16">
-                <p className="text-primary font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-sm md:text-base italic animate-pulse">{t('roster.subtitle1')}</p>
+                <p className="text-primary font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-sm md:text-base animate-pulse">{t('roster.subtitle1')}</p>
                 <div className="h-px w-20 bg-white/10" />
-                <p className="text-xl md:text-2xl text-white/50 max-w-2xl leading-relaxed italic">
+                <p className="text-xl md:text-2xl text-white/50 max-w-2xl leading-relaxed">
                   {t('roster.subtitle2')}
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-24">
-            <div className="md:col-span-7">
-              <PortfolioCard 
-                index={0}
-                title="Skiathos Travellers"
-                category="Tourism Engine"
-                image="/images/skiathostravellers.png"
-                link="/portfolio/skiathos-travellers"
-                className="aspect-[4/5] md:aspect-square lg:aspect-[4/5]"
-              />
-            </div>
-            <div className="md:col-span-5 md:mt-24">
-              <PortfolioCard 
-                index={1}
-                title="Sigmalabs AI"
-                category="Agentic AI"
-                image="/images/sigmalabs.jpg"
-                link="/portfolio/sigmalabs-ai"
-                className="aspect-[4/5]"
-              />
-            </div>
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pb-24">
+                <div className="md:col-span-1">
+                  <PortfolioCard 
+                    index={0}
+                    title="Sigmalabs AI"
+                    category="Agentic AI"
+                    image="/images/sigmalabs.jpg"
+                    link="/portfolio/sigmalabs-ai"
+                    className="aspect-[4/5] lg:aspect-[3/4]"
+                  />
+                </div>
+                <div className="md:col-span-1 md:mt-12">
+                  <PortfolioCard 
+                    index={1}
+                    title="Skiathos Travellers"
+                    category="Tourism Engine"
+                    image="/images/skiathostravellers.png"
+                    link="/portfolio/skiathos-travellers"
+                    className="aspect-[4/5] lg:aspect-[3/4]"
+                  />
+                </div>
+                <div className="md:col-span-1 md:mt-24">
+                  <PortfolioCard 
+                    index={2}
+                    title="Liv Tours"
+                    category="Automation Hub"
+                    image="/images/liv-tours-main.png"
+                    link="/portfolio/liv-tours-transfers"
+                    className="aspect-[4/5] lg:aspect-[3/4]"
+                  />
+                </div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
-            <div className="md:col-span-4">
-              <PortfolioCard 
-                index={2}
-                title="Liv Tours"
-                category="Automation Hub"
-                image="/images/liv-tours-main.png"
-                link="/portfolio/liv-tours-transfers"
-                className="aspect-[4/5]"
-              />
-            </div>
-            <div className="md:col-span-4 md:mt-12 lg:mt-24">
-              <PortfolioCard 
-                index={3}
-                title="Harmony Apartments"
-                category="Booking System"
-                image="/images/harmony-apartments.jpg"
-                link="/portfolio/harmony-apartments"
-                className="aspect-[4/5]"
-              />
-            </div>
-            <div className="md:col-span-4 md:mt-24 lg:mt-48">
-              <PortfolioCard 
-                index={4}
-                title="Next Venture"
-                category="In Development"
-                isSoon
-                className="aspect-[4/5]"
-              />
-            </div>
-          </div>          </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex justify-center"
+              >
+                <Button variant="outline" size="xl" className="rounded-full px-12 h-20 text-lg font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
+                  <Link to="/portfolio" className="flex items-center gap-3">
+                    {t('portfolio.hero.explore')} <ArrowRight size={20} />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>

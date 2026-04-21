@@ -131,7 +131,7 @@ const Header = () => {
                 >
                   <button
                     className={cn(
-                      "flex items-center gap-1 text-sm font-display font-bold transition-colors hover:text-accent focus-visible:outline-none rounded-sm px-1 py-0.5",
+                      "flex items-center gap-1 text-sm font-medium tracking-wide transition-colors hover:text-accent focus-visible:outline-none rounded-sm px-1 py-0.5",
                       isActive ? "text-foreground" : "text-muted-foreground"
                     )}
                   >
@@ -160,7 +160,7 @@ const Header = () => {
                                   <sub.icon size={18} className="text-primary group-hover:scale-110 transition-transform" />
                                 </div>
                                 <div>
-                                  <div className="text-sm font-display font-bold text-foreground">{sub.label}</div>
+                                  <div className="text-sm font-semibold tracking-wide text-foreground">{t(sub.label)}</div>
                                   <div className="text-[10px] text-muted-foreground leading-tight">{sub.desc}</div>
                                 </div>
                               </Link>
@@ -183,7 +183,7 @@ const Header = () => {
                 to={item.path}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "text-sm font-display font-bold transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm px-1 py-0.5 relative group/navitem flex items-center gap-1",
+                  "text-sm font-medium tracking-wide transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm px-1 py-0.5 relative group/navitem flex items-center gap-1",
                   isActive
                     ? isOverLight ? "text-slate-900 border-b border-primary" : "text-foreground border-b border-accent"
                     : isOverLight ? "text-slate-500 hover:text-slate-900" : "text-muted-foreground"
@@ -209,7 +209,7 @@ const Header = () => {
               onMouseEnter={() => setActiveTooltip("project")}
               onMouseLeave={() => setActiveTooltip(null)}
               className={cn(
-                "flex items-center gap-2 h-9 px-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300",
+                "flex items-center gap-2 h-9 px-4 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300",
                 isOverLight
                   ? "text-slate-600 border border-slate-200 hover:border-slate-400 hover:text-slate-900 bg-transparent"
                   : "text-white/60 border border-white/10 hover:border-white/25 hover:text-white/90 bg-white/[0.03] hover:bg-white/[0.06]"
@@ -242,7 +242,7 @@ const Header = () => {
               to="/hustle-space"
               onMouseEnter={() => setActiveTooltip("daypass")}
               onMouseLeave={() => setActiveTooltip(null)}
-              className="group relative flex items-center gap-2 h-9 px-5 rounded-full bg-primary text-primary-foreground text-xs font-black uppercase tracking-widest transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_20px_hsl(72_62%_58%_/_0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="group relative flex items-center gap-2 h-9 px-5 rounded-full bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_20px_hsl(72_62%_58%_/_0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <CalendarDays size={13} className="shrink-0" />
               {t('nav.space')}

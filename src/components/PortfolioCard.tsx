@@ -75,54 +75,52 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true }}
       className={cn(
-        "group relative overflow-hidden rounded-[3rem] border border-white/5 bg-[#080808] flex flex-col hover:border-primary/20 transition-all duration-500",
+        "group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#080808] aspect-[4/5] md:aspect-[3/4] flex flex-col justify-end hover:border-primary/40 transition-all duration-700",
         className
       )}
     >
-      <Link to={link || "#"} className="flex flex-col h-full cursor-pointer">
-        {/* Image Section */}
-        <div className="relative w-full flex-1 overflow-hidden transition-all duration-700">
-          <div className="w-full h-full relative overflow-hidden bg-[#0a0a0a]">
-            {image && (
-              <>
-                <img 
-                  src={image} 
-                  alt={title} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                />
-                {/* Subtle overlay to help with texture and depth */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
-              </>
-            )}
-            
-            {!image && (
-              <div className="w-full h-full flex items-center justify-center bg-white/5">
-                <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">No Image Available</span>
-              </div>
-            )}
-
-            <div className="absolute top-6 left-6 z-20">
-              <span className="px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-black text-[8px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-2xl">
-                <Rocket size={10} />
-                Built with Hustle
-              </span>
-            </div>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        {image ? (
+          <>
+            <img 
+              src={image} 
+              alt={title} 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+            />
+            {/* Multi-layered gradient for depth and legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-white/5 flex items-center justify-center">
+             <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">No Preview</span>
           </div>
+        )}
+      </div>
+
+      <Link to={link || "#"} className="relative z-10 p-8 md:p-10 flex flex-col w-full h-full justify-end cursor-pointer">
+        {/* Top Badge (Optional) */}
+        <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <span className="px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-black text-[8px] font-bold uppercase tracking-widest flex items-center gap-2">
+            <Rocket size={10} />
+            Built with Hustle
+          </span>
         </div>
 
-        {/* Info Section */}
-        <div className="p-8 md:p-12 pt-6 flex flex-col">
-          <div className="mb-8">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mb-4 block group-hover:text-primary transition-colors">{category}</span>
-            <h3 className="text-3xl md:text-5xl font-bold font-display text-white tracking-tight leading-[1.1] transition-transform duration-700">
-              {title}
-            </h3>
-          </div>
+        {/* Content */}
+        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-3 block opacity-0 group-hover:opacity-100 transition-all duration-500 delay-75">
+            {category}
+          </span>
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display text-white tracking-tight leading-tight mb-6">
+            {title}
+          </h3>
 
-          <div className="flex items-center justify-between border-t border-white/5 pt-8 opacity-40 group-hover:opacity-100 transition-all duration-700">
-            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">View Case Study</span>
-            <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
-              <ArrowRight size={20} />
+          <div className="flex items-center justify-between border-t border-white/10 pt-6 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-150">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">View Case Study</span>
+            <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-primary transition-colors">
+              <ArrowRight size={18} />
             </div>
           </div>
         </div>

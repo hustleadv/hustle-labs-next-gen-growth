@@ -17,6 +17,7 @@ import PortfolioCard from "@/components/PortfolioCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import TOPTRAVEL_HOME from "@/assets/TOPTRAVEL-HOME.png";
 import SIGMAEKS from "@/assets/SIGMAEKS.png";
+import NKACONSTR from "@/assets/NKACONSTR.png";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -73,6 +74,42 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "nka-constructions",
+    business: "NKA Constructions",
+    type: "Κατασκευαστική Εταιρεία",
+    category: "websites",
+    themeColor: "#c5da4e",
+    image: NKACONSTR,
+    projectUrl: "https://nkaconstructions.gr/",
+    whatWeBuilt: "Premium ιστοσελίδα παρουσίασης κατασκευαστικής εταιρείας με έμφαση στο minimal design και την ανάδειξη των έργων.",
+    outcome: "Ψηφιακή Παρουσία",
+    metric: "100% Custom",
+    challenge: "Η NKA Constructions χρειαζόταν μια ψηφιακή παρουσία που να αντανακλά την ποιότητα και την αξιοπιστία των κατασκευών της. Το ζητούμενο ήταν ένα site που να λειτουργεί ως portfolio υψηλής αισθητικής, επιτρέποντας στους υποψήφιους πελάτες να περιηγηθούν στα έργα της εταιρείας με ευκολία και ταχύτητα.",
+    solution: "Σχεδιάσαμε και υλοποιήσαμε μια custom ιστοσελίδα με minimal αισθητική, εστιάζοντας στη φωτογραφία και την καθαρή τυπογραφία. Χρησιμοποιήσαμε Next.js για μέγιστη ταχύτητα και SEO, διασφαλίζοντας ότι η πρώτη εντύπωση του χρήστη είναι αντάξια της ποιότητας των έργων της NKA.",
+    features: [
+      "Custom UI/UX Design",
+      "Project Gallery System",
+      "Mobile First Architecture",
+      "High Performance (Next.js)",
+      "SEO Optimization",
+      "Contact & Lead Generation Flow"
+    ],
+    results: [
+      { label: "Design Unique", value: "100%" },
+      { label: "Site Speed", value: "99/100" },
+      { label: "User Experience", value: "Elite" },
+    ],
+    techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
+    timeline: {
+      duration: "Παράδοση σε 2 εβδομάδες",
+      steps: [
+        { name: "Design Phase", description: "Minimal UI/UX σχεδιασμός." },
+        { name: "Build", description: "Custom ανάπτυξη με Next.js." },
+        { name: "Optimization", description: "Speed & SEO Audit." }
+      ]
+    }
+  },
   {
     slug: "harmony-apartments",
     business: "Harmony Apartments",

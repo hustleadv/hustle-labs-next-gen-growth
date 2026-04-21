@@ -848,7 +848,7 @@ const Work = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20 mb-8 md:mb-12"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80">{t('portfolio.hero.badge')}</span>
             </motion.div>
 
@@ -1003,7 +1003,7 @@ const Work = () => {
           {/* Header */}
           <motion.div {...fadeUp()} className="mb-20 md:mb-32">
              <div className="flex items-center gap-3 mb-10">
-                <Cpu size={14} className="text-primary animate-pulse" />
+                <Cpu size={14} className="text-primary" />
                 <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-primary/70">Autonomous Systems · Active Registry</span>
              </div>
 

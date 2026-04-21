@@ -992,7 +992,7 @@ const Work = () => {
               { name: "SIGMA-1", role: "Ops Orchestrator", tech: "GPT-4o / Vector DB", status: "Live", client: "SigmaLabs AI", icon: Cpu },
               { name: "LIVY", role: "Elite Concierge", tech: "Claude 3.5 / Whisper", status: "Live", client: "Liv Tours", icon: MessageSquare },
               { name: "LAB BUDDY", role: "Internal Assistant", tech: "GPT-4o / Context", status: "Live", client: "Hustle Labs", icon: Bot },
-              { name: "VIBE-CORE", role: "Commerce Agent", tech: "GPT-4 / Shopify API", status: "Active", client: "Vibe Commerce", icon: Zap },
+              { name: "ΝΕΣΤΩΡ", role: "Villa Concierge", tech: "GPT-4o / Hospitality", status: "Active", client: "Olive Nest", icon: MessageSquare },
               { name: "AEGIS", role: "Security & Audit", tech: "Automated Pentest", status: "Deployed", client: "Hustle Backed", icon: ShieldCheck }
             ].map((agent, i) => (
               <motion.div 

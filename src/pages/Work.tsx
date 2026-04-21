@@ -858,52 +858,75 @@ const Work = () => {
         />
       </section>
 
-      {/* ── SECTION 2: FEATURED ── */}
+      {/* ── SECTION 2: SIGMALABS FLAGSHIP ── */}
       <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div {...fadeUp()} className="max-w-4xl mb-24 md:mb-40">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.featured.badge')}</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.05] mb-8 uppercase">
-              {t('portfolio.featured.title1')} <span className="text-white/20">{t('portfolio.featured.title2')}</span>
+        {/* Background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(197,218,78,0.05),transparent_60%)] pointer-events-none" />
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          {/* Label */}
+          <motion.div {...fadeUp()} className="mb-16 md:mb-24">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px flex-1 max-w-[60px] bg-primary/40" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-primary">Flagship Project · Vibe Commerce</span>
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-black tracking-wide leading-[1.05] uppercase max-w-3xl">
+              Το μεγαλύτερο build <span className="text-white/25">της Hustle.</span>
             </h2>
-            <p className="text-primary font-semibold uppercase tracking-[0.2em] text-sm">{t('portfolio.featured.subtitle')}</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-32">
-            {featuredProjects.map((project, i) => (
-              <motion.div 
-                key={project.slug}
-                {...fadeUp(i * 0.1)}
-                className="group cursor-pointer"
-              >
-                <Link to={`/portfolio/${project.slug}`}>
-                  <div className="relative aspect-[16/11] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] border border-white/5 mb-8 md:mb-10 group-hover:border-primary/30 transition-all duration-1000 shadow-2xl">
-                    <img 
-                      src={project.image} 
-                      alt={project.business} 
-                      className="w-full h-full object-cover grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" 
-                    />
-                    <div className="absolute top-6 left-6 md:top-10 md:left-10">
-                      <span className="px-5 py-2 md:px-8 md:py-2.5 rounded-full bg-primary text-black text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] shadow-glow-strong">
-                        {project.metric} {project.outcome}
-                      </span>
-                    </div>
+          {/* Main card */}
+          <motion.div {...fadeUp(0.1)}>
+            <Link to="/portfolio/sigmalabs-ai" className="group block">
+              {/* Image full-width */}
+              <div className="relative w-full aspect-[16/8] md:aspect-[21/9] overflow-hidden rounded-3xl md:rounded-[3rem] border border-white/5 group-hover:border-primary/40 transition-all duration-700 shadow-2xl mb-10 md:mb-14">
+                <img
+                  src="/images/sigmalabs.jpg"
+                  alt="Sigmalabs AI"
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-90 group-hover:scale-[1.03] transition-all duration-1000"
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+                {/* Text overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14 lg:p-20">
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    <span className="px-4 py-1.5 rounded-full bg-primary text-black text-[10px] font-bold uppercase tracking-[0.2em]">10x Automation Performance</span>
+                    <span className="px-4 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-semibold uppercase tracking-[0.15em] backdrop-blur-sm">Agentic AI & Engineering</span>
+                    <span className="px-4 py-1.5 rounded-full bg-white/10 text-primary text-[10px] font-semibold uppercase tracking-[0.15em] backdrop-blur-sm">Vibe Commerce Pioneer</span>
                   </div>
-                  <div className="px-4 md:px-6">
-                    <div className="flex items-center gap-3 mb-3">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-primary/60">{project.type}</span>
-                    </div>
-                    <h4 className="font-display text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase mb-3 md:mb-4 tracking-wide leading-[1.1]">
-                      {project.business}
-                    </h4>
-                    <p className="text-white/40 text-sm md:text-base font-normal leading-relaxed tracking-normal">
-                      {project.whatWeBuilt}
-                    </p>
+                  <h3 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.0] uppercase text-white mb-4">
+                    Sigmalabs AI
+                  </h3>
+                  <p className="text-white/60 text-base md:text-lg font-normal max-w-2xl leading-relaxed tracking-normal">
+                    The first worldwide Agentic AI Command Center for WooCommerce & Shopify — autonomous product management, voice commands, AI Vision.
+                  </p>
+                </div>
+              </div>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10">
+                {[
+                  { value: "10x", label: "Ταχύτητα Εκτέλεσης" },
+                  { value: "90%", label: "Μείωση Χειρωνακτικής Εργασίας" },
+                  { value: "100%", label: "Data Accuracy" },
+                  { value: "12+", label: "Months R&D" },
+                ].map((stat) => (
+                  <div key={stat.label} className="border-t border-white/10 pt-6">
+                    <div className="font-display text-3xl md:text-5xl font-black text-primary tracking-wide uppercase mb-2">{stat.value}</div>
+                    <div className="text-xs text-white/40 font-semibold uppercase tracking-[0.15em] leading-snug">{stat.label}</div>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className="flex items-center gap-4">
+                <span className="text-sm font-semibold text-primary uppercase tracking-[0.2em] group-hover:gap-3 transition-all flex items-center gap-2">
+                  View Full Case Study <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </span>
+                <div className="h-px flex-1 bg-white/5 group-hover:bg-primary/20 transition-colors" />
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

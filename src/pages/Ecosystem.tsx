@@ -9,23 +9,16 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Ecosystem = () => {
+  const { t } = useLanguage();
+
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
-  };
-
-  const staggerContainer = {
-    initial: {},
-    whileInView: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    },
-    viewport: { once: true }
   };
 
   return (
@@ -48,7 +41,7 @@ const Ecosystem = () => {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">The Infinite Ecosystem</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">{t('ecosystem.hero.badge')}</span>
             </motion.div>
 
             <motion.h1 
@@ -57,8 +50,8 @@ const Ecosystem = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-12"
             >
-              Everything you need <br />
-              <span className="text-primary tracking-normal">to build & grow.</span>
+              {t('ecosystem.hero.title1')} <br />
+              <span className="text-primary tracking-normal">{t('ecosystem.hero.title2')}</span>
             </motion.h1>
 
             <motion.p 
@@ -67,8 +60,7 @@ const Ecosystem = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-tight"
             >
-              From professional services to strategic backing. <br className="hidden md:block" />
-              We built an ecosystem for the next generation of builders.
+              {t('ecosystem.hero.subtitle')}
             </motion.p>
 
             <motion.div 
@@ -79,12 +71,12 @@ const Ecosystem = () => {
             >
               <Button size="xl" className="rounded-full px-12 h-20 text-xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow" asChild>
                 <Link to="/contact">
-                  Ξεκίνα το Ταξίδι σου
+                  {t('ecosystem.hero.cta1')}
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="rounded-full px-12 h-20 text-xl font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
-                <Link to="/project-brief">Start a project</Link>
+                <Link to="/project-brief">{t('ecosystem.hero.cta2')}</Link>
               </Button>
             </motion.div>
           </div>
@@ -96,14 +88,14 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fadeInUp} className="text-center">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Structure</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('ecosystem.structure.badge')}</span>
               <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
-                We build. <br />
-                We back. <br />
-                <span className="text-white/20">We grow together.</span>
+                {t('ecosystem.structure.title1')} <br />
+                {t('ecosystem.structure.title2')} <br />
+                <span className="text-white/20">{t('ecosystem.structure.title3')}</span>
               </h2>
               <p className="text-xl text-white/60 font-medium italic mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto">
-                HustleLabs is a hybrid machine. We combine the execution power of a digital agency with the strategic vision of a startup studio.
+                {t('ecosystem.structure.text')}
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
@@ -112,8 +104,8 @@ const Ecosystem = () => {
                     <Monitor size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">The Agency (Build for you)</h4>
-                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">High-performance tech, marketing and growth systems for businesses.</p>
+                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
+                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
                   </div>
                 </div>
                 <div className="flex gap-6 border-l border-white/10 pl-8 transition-all hover:border-primary">
@@ -121,8 +113,8 @@ const Ecosystem = () => {
                     <Rocket size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">The Studio (Build with you)</h4>
-                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">Strategic backing, product development and equity-based partnerships.</p>
+                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
+                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -136,19 +128,19 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-32 max-w-4xl mx-auto">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic tracking-[0.6em]">COMPONENTS</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic tracking-[0.6em]">{t('ecosystem.universe.badge')}</span>
               <h2 className="font-display text-5xl md:text-8xl font-bold tracking-tighter leading-none px-4">
-                The Lab <br className="md:hidden" /> Universe.
+                {t('ecosystem.universe.title')}
               </h2>
             </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {[
-              { icon: GraduationCap, title: "Hustle Academy", desc: "Where students & founders find the real-world knowledge to build businesses without corporate fluff.", link: "/academy", label: "Academy" },
-              { icon: Building2, title: "Hustle Space", desc: "Our premium hybrid hub in Chania. Co-working, networking and experimentation for restless minds.", link: "/space", label: "Space" },
-              { icon: Mic, title: "Hustle Studio", desc: "Professional podcasts, vidcasts and content creation equipment for visionaries who want to be heard.", link: "/studio", label: "Studio", soon: true },
-              { icon: Heart, title: "Hustle Network", desc: "A curated ecosystem of founders, creators and experts supporting each other and building together.", link: "/contact", label: "Community" }
+              { icon: GraduationCap, title: t('ecosystem.universe.academy.title'), desc: t('ecosystem.universe.academy.desc'), link: "/academy", label: "Academy" },
+              { icon: Building2, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space" },
+              { icon: Mic, title: t('ecosystem.universe.studio.title'), desc: t('ecosystem.universe.studio.desc'), link: "/studio", label: "Studio", soon: true },
+              { icon: Heart, title: t('ecosystem.universe.network.title'), desc: t('ecosystem.universe.network.desc'), link: "/contact", label: "Community" }
             ].map((s, i) => (
               <motion.div 
                 key={i}
@@ -166,7 +158,7 @@ const Ecosystem = () => {
                   </div>
                   {s.soon && (
                     <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary italic tracking-widest">
-                       Coming Soon
+                       {t('ecosystem.universe.soon')}
                     </span>
                   )}
                 </div>
@@ -175,7 +167,7 @@ const Ecosystem = () => {
                 <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm">{s.desc}</p>
                 
                 <Link to={s.link} className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all">
-                   Explore {s.label} <ArrowRight size={16} />
+                   {t('ecosystem.universe.explore')} {s.label} <ArrowRight size={16} />
                 </Link>
               </motion.div>
             ))}
@@ -188,13 +180,13 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mb-24">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Network</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('ecosystem.network.badge')}</span>
               <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
-                The home of <br />
-                <span className="text-white/20">restless ideas.</span>
+                {t('ecosystem.network.title')} <br />
+                <span className="text-white/20">{t('ecosystem.network.title_span')}</span>
               </h2>
               <p className="text-xl text-white/40 font-medium italic max-w-2xl">
-                 We choose projects that are worth building. From high-growth startups to established businesses scaling their digital dominance.
+                 {t('ecosystem.network.text')}
               </p>
             </motion.div>
           </div>
@@ -233,7 +225,7 @@ const Ecosystem = () => {
 
           <div className="mt-24 text-center">
             <Button variant="outline" size="xl" className="rounded-full px-16 h-20 text-lg font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
-               <Link to="/clients">Explore Netwok</Link>
+               <Link to="/clients">{t('ecosystem.network.cta')}</Link>
             </Button>
           </div>
         </div>
@@ -250,12 +242,12 @@ const Ecosystem = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
           >
             <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-20 px-4">
-              The home of every <br />
-              <span className="text-primary">restless mind.</span>
+              {t('ecosystem.manifesto.title')} <br />
+              <span className="text-primary">{t('ecosystem.manifesto.title_span')}</span>
             </h2>
             <div className="w-20 h-px bg-primary mx-auto mb-20 shadow-glow" />
             <p className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight">
-               From the student taking the first step to the dreamer who just wants a space to experiment and build the future.
+               {t('ecosystem.manifesto.text')}
             </p>
           </motion.div>
         </div>
@@ -265,28 +257,35 @@ const Ecosystem = () => {
       <section className="py-32 md:py-48 relative bg-[#050505]">
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeInUp}>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">Evolution</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">{t('ecosystem.final.badge')}</span>
             <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-20 px-4">
-              Build the <br />
-              <span className="text-primary animate-glow">Future.</span>
+              {t('ecosystem.final.title1')} <br />
+              <span className="text-primary animate-glow">{t('ecosystem.final.title2')}</span>
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-20">
               <Button size="xl" className="rounded-full px-16 h-28 text-3xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
                 <Link to="/contact">
-                  Ξεκίνημα Τώρα
+                  {t('ecosystem.final.cta1')}
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="rounded-full px-16 h-28 text-3xl font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
-                <Link to="/book-call">Discovery Call</Link>
+                <Link to="/book-call">{t('ecosystem.final.cta2')}</Link>
               </Button>
             </div>
             
-            <p className="text-xl md:text-2xl font-display font-medium text-white/30 italic tracking-tight uppercase tracking-[0.4em] font-black">
-               "If you are ready to evolve, we are here."
+            <p className="text-xl md:text-2xl font-display font-medium text-white/30 italic tracking-tight tracking-[0.4em] font-black">
+               {t('ecosystem.final.quote')}
             </p>
           </motion.div>
         </div>
+      </section>
+
+    </div>
+  );
+};
+
+export default Ecosystem;</div>
       </section>
 
     </div>

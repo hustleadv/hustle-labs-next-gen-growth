@@ -955,37 +955,51 @@ const Work = () => {
       </section>
 
       {/* ── SECTION 3: ARCHIVE GRID ── */}
-      <section id="archive" className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#050505] scroll-mt-20">
+      <section id="archive" className="pt-24 md:pt-32 lg:pt-48 pb-16 relative border-t border-white/5 bg-[#050505] scroll-mt-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-20 md:mb-32">
-            <motion.div {...fadeUp()} className="max-w-xl">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-6 block">{t('portfolio.archive.badge')}</span>
-              <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black tracking-wide leading-[1.05] uppercase">
-                {t('portfolio.archive.title1')} <br/><span className="text-white/20">{t('portfolio.archive.title2')}</span>
-              </h2>
-            </motion.div>
 
-            {/* Filters */}
-            <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-4 md:gap-8 justify-start md:justify-end">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`group relative text-xs font-semibold uppercase tracking-[0.15em] transition-colors py-2 ${
-                    activeCategory === cat.id ? "text-primary" : "text-white/25 hover:text-white/60"
-                  }`}
-                >
-                  {cat.label}
-                  {activeCategory === cat.id && (
-                    <motion.div 
-                      layoutId="activeFilter"
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-primary"
-                    />
-                  )}
-                </button>
-              ))}
-            </motion.div>
-          </div>
+          {/* ── Header row ── */}
+          <motion.div {...fadeUp()} className="mb-16 md:mb-24">
+            {/* Top rule with badge */}
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-6 h-px bg-primary" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-primary/70">{t('portfolio.archive.badge')}</span>
+              <div className="h-px flex-1 bg-white/5" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/20">{caseStudies.length} Projects</span>
+            </div>
+
+            {/* Main headline */}
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-20">
+              <h2 className="font-display uppercase leading-[0.9] flex-1">
+                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white/15">
+                  {t('portfolio.archive.title1')}
+                </span>
+                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                  {t('portfolio.archive.title2')}
+                </span>
+              </h2>
+
+              {/* Filters — pill style */}
+              <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-3 lg:flex-col lg:items-end lg:gap-2 shrink-0">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`relative px-5 py-2 rounded-full text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 ${
+                      activeCategory === cat.id
+                        ? "bg-primary text-black shadow-[0_0_16px_hsl(72_62%_58%_/_0.35)]"
+                        : "text-white/30 hover:text-white/70 border border-white/8 hover:border-white/20"
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Bottom divider */}
+            <div className="mt-10 h-px bg-gradient-to-r from-primary/30 via-white/5 to-transparent" />
+          </motion.div>
 
           <div className="max-w-7xl mx-auto">
             <AnimatePresence mode="wait">

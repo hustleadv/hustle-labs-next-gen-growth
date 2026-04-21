@@ -71,10 +71,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl font-normal tracking-normal leading-[1.1] mb-8 md:mb-12 uppercase italic"
+              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight leading-[1.1] mb-8 md:mb-12"
             >
               <span className="block hover:text-primary transition-colors duration-500 cursor-default">{t('hero.title1')}</span>
-              <span className="text-primary tracking-normal block group-hover:scale-[1.02] transition-transform duration-700">{t('hero.title2')}</span>
+              <span className="text-primary block group-hover:scale-[1.02] transition-transform duration-700">{t('hero.title2')}</span>
             </motion.h1>
 
             <div className="space-y-8 md:space-y-12 mb-12 md:mb-16">
@@ -145,10 +145,10 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic tracking-[0.6em]">{t('intro.badge')}</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-normal tracking-normal leading-[1.1] mb-16 uppercase italic px-2">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight leading-[1.1] mb-16 px-2">
               {t('intro.title1')} <br />
               {t('intro.title2')} <br />
-              <span className="text-white/20 italic">{t('intro.title3')}</span>
+              <span className="text-white/20">{t('intro.title3')}</span>
             </h2>
             <div className="space-y-12 md:space-y-16 max-w-4xl mx-auto px-4">
               <p className="text-2xl md:text-4xl lg:text-5xl font-medium text-white/80 leading-[1.1] italic tracking-tight">
@@ -174,7 +174,7 @@ const Index = () => {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-primary mb-12 group-hover:scale-110 transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow/20">
                 <Monitor size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal tracking-normal leading-tight mb-6 italic uppercase group-hover:text-primary transition-colors h-[2em] whitespace-pre-wrap">{t('forBusinesses.title')}</h3>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 group-hover:text-primary transition-colors h-[2em] whitespace-pre-wrap">{t('forBusinesses.title')}</h3>
               <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forBusinesses.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-16 leading-relaxed max-w-md italic">
                 {t('forBusinesses.text')}
@@ -200,7 +200,7 @@ const Index = () => {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 flex items-center justify-center text-white/40 mb-12 group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-500 border border-white/10 group-hover:border-transparent group-hover:shadow-glow">
                 <Rocket size={32} strokeWidth={1} />
               </div>
-              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal tracking-normal leading-tight mb-6 italic uppercase group-hover:text-white transition-colors h-[2em] whitespace-pre-wrap">{t('forFounders.title')}</h3>
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-6 group-hover:text-white transition-colors h-[2em] whitespace-pre-wrap">{t('forFounders.title')}</h3>
               <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-primary mb-10 italic">{t('forFounders.subtitle')}</p>
               <p className="text-xl md:text-2xl text-white/60 mb-10 leading-relaxed max-w-md italic pr-2">
                 {t('forFounders.text1')}
@@ -228,7 +228,7 @@ const Index = () => {
           <div className="mb-16 md:mb-24">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('roster.badge')}</span>
-              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[0.9] mb-12 italic uppercase">
+              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
                 {t('roster.title1')} <span className="text-white/20 text-2xl md:text-4xl lg:text-5xl tracking-normal md:whitespace-nowrap">{t('roster.title2')}</span>
               </h2>
               
@@ -303,7 +303,7 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="text-center mb-16 md:mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('growth.badge')}</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-normal tracking-normal italic uppercase mb-12">{t('growth.title1')} <span className="text-white/20">{t('growth.title2')}</span></h2>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-12">{t('growth.title1')} <span className="text-white/20">{t('growth.title2')}</span></h2>
             <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto italic">{t('growth.subtitle')}</p>
           </motion.div>
 
@@ -342,7 +342,7 @@ const Index = () => {
               >
                 {pkg.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-black text-[10px] font-black uppercase tracking-widest italic">{t('growth.badge_most_efficient')}</span>}
                 <div className="mb-10">
-                  <h3 className="text-2xl font-black text-white italic uppercase tracking-wider mb-2">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.name`)}</h3>
+                  <h3 className="text-2xl font-bold text-white tracking-tight mb-2">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.name`)}</h3>
                   <div className="text-3xl font-black text-primary italic mb-6">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.price`)}</div>
                   <p className="text-sm text-white/50 leading-relaxed italic">{t(`growth.${pkg.name.split(' ').pop()?.toLowerCase()}.desc`)}</p>
                 </div>
@@ -370,7 +370,7 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('space.badge')}</span>
-              <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter italic uppercase mb-10 leading-[0.9] h-[2em] whitespace-pre-wrap">{t('space.title')}</h2>
+              <h2 className="font-display text-5xl md:text-8xl font-bold tracking-tighter mb-10 leading-[0.9] h-[2em] whitespace-pre-wrap">{t('space.title')}</h2>
               <p className="text-xl md:text-2xl text-white/60 mb-12 leading-relaxed italic max-w-xl">
                 {t('space.text')}
               </p>

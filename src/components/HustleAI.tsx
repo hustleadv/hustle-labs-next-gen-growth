@@ -112,24 +112,24 @@ const HustleAI = () => {
             initial={{ opacity: 0, y: 100, scale: 0.9, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="fixed bottom-24 right-6 z-[100] w-[90vw] md:w-[400px] h-[600px] max-h-[70vh] bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
+            className="fixed bottom-24 right-6 z-[100] w-[90vw] md:w-[380px] h-auto max-h-[75vh] bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
           >
             {/* Header */}
-            <div className="p-6 border-b border-white/5 bg-white/[0.02] flex items-center gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                <Bot size={22} />
+            <div className="p-5 border-b border-white/5 bg-white/[0.02] flex items-center gap-4">
+              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                <Bot size={20} />
               </div>
               <div>
-                <h3 className="font-display font-black text-white uppercase italic tracking-wider text-sm">Lab Buddy</h3>
-                <div className="flex items-center gap-1.5">
+                <h3 className="font-sans font-bold text-white tracking-widest text-xs">LAB BUDDY</h3>
+                <div className="flex items-center gap-1.5 leading-none mt-1">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] uppercase font-black tracking-widest text-white/30 italic">Online · Assistant</span>
+                  <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-white/30">Online · Assistant</span>
                 </div>
               </div>
             </div>
 
             {/* Messages Area */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-5 scrollbar-hide min-h-0">
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
@@ -137,7 +137,7 @@ const HustleAI = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-[85%] p-4 rounded-3xl text-sm italic font-medium leading-relaxed ${
+                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm font-medium leading-relaxed ${
                     msg.sender === "user" 
                     ? "bg-primary text-black rounded-tr-none" 
                     : "bg-white/5 text-white/80 border border-white/10 rounded-tl-none"
@@ -148,7 +148,7 @@ const HustleAI = () => {
               ))}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-white/5 p-4 rounded-3xl rounded-tl-none border border-white/10 flex gap-1">
+                  <div className="bg-white/5 p-3 rounded-2xl rounded-tl-none border border-white/10 flex gap-1">
                     <span className="w-1 h-1 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <span className="w-1 h-1 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
                     <span className="w-1 h-1 bg-primary/40 rounded-full animate-bounce" />
@@ -159,12 +159,12 @@ const HustleAI = () => {
 
             {/* Quick Suggestions */}
             {messages.length < 3 && (
-              <div className="px-6 pb-4 flex flex-wrap gap-2">
+              <div className="px-5 pb-3 flex flex-wrap gap-2">
                 {suggestions.map((s) => (
                   <button
                     key={s}
                     onClick={() => { setInput(s); }}
-                    className="px-4 py-2 rounded-full border border-white/5 bg-white/[0.02] text-[10px] font-black uppercase tracking-wider text-white/40 hover:text-primary hover:border-primary/30 transition-all italic"
+                    className="px-3 py-1.5 rounded-full border border-white/5 bg-white/[0.02] text-[9px] font-bold uppercase tracking-widest text-white/30 hover:text-primary hover:border-primary/20 transition-all"
                   >
                     {s}
                   </button>
@@ -173,7 +173,7 @@ const HustleAI = () => {
             )}
 
             {/* Input Area */}
-            <div className="p-6 border-t border-white/5 bg-white/[0.01]">
+            <div className="p-5 border-t border-white/5 bg-white/[0.01]">
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -181,17 +181,17 @@ const HustleAI = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
                   placeholder="Ρώτησε κάτι..."
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-6 pr-14 text-sm italic outline-none focus:border-primary/30 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-5 pr-12 text-sm outline-none focus:border-primary/20 transition-all"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim()}
-                  className="absolute right-2 p-3 rounded-xl bg-primary text-black disabled:opacity-50 disabled:grayscale transition-all shadow-glow hover:scale-105"
+                  className="absolute right-1.5 p-2 rounded-lg bg-primary text-black disabled:opacity-50 disabled:grayscale transition-all hover:scale-105"
                 >
-                  <Send size={18} />
+                  <Send size={16} />
                 </button>
               </div>
-              <p className="text-[8px] text-center mt-4 text-white/10 uppercase font-black tracking-widest italic">
+              <p className="text-[8px] text-center mt-3 text-white/5 uppercase font-bold tracking-[0.3em]">
                 Execution-driven AI for Builders
               </p>
             </div>

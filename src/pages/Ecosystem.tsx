@@ -104,8 +104,8 @@ const Ecosystem = () => {
                     <Monitor size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
-                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
+                    <h4 className="font-display text-xl font-bold mb-2 tracking-normal">{t('ecosystem.structure.agency.title')}</h4>
+                    <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
                   </div>
                 </div>
                 <div className="flex gap-6 border-l border-white/10 pl-8 transition-all hover:border-primary">
@@ -113,8 +113,8 @@ const Ecosystem = () => {
                     <Rocket size={24} />
                   </div>
                   <div>
-                    <h4 className="font-display text-xl font-black uppercase italic mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
-                    <p className="text-white/40 text-sm italic font-medium leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
+                    <h4 className="font-display text-xl font-bold mb-2 tracking-normal">{t('ecosystem.structure.studio.title')}</h4>
+                    <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
                   </div>
                 </div>
               </div>

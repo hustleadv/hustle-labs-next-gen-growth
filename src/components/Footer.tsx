@@ -18,31 +18,34 @@ const Footer = () => {
                 style={{ filter: "invert(1) brightness(2)" }}
               />
             </Link>
-            <div className="space-y-6">
-              <p className="font-display text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter max-w-sm mb-4 leading-[0.9]">
-                Building the next generation of businesses.
+            <div className="space-y-8">
+              <p className="font-display text-2xl md:text-4xl font-normal text-white/90 leading-tight tracking-tight max-w-sm">
+                Architecting digital dominance for the next generation of builders.
               </p>
-              <p className="text-[11px] font-black uppercase tracking-[0.5em] text-primary italic leading-none">
-                HustleLabs backs the next generation of builders.
-              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-px bg-primary/30" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 italic">
+                  Growth Intelligence · Strategic Implementation
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Links */}
           <div className="space-y-12">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/50">Navigation</h4>
-            <nav className="flex flex-col gap-8">
-              <Link to="/services" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Services</Link>
-              <Link to="/portfolio" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Projects</Link>
-              <Link to="/roster" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">The Roster</Link>
-              <Link to="/contact" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Contact</Link>
-              <Link to="/book-call" className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors italic">Book a call</Link>
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-8 block">Navigation</h4>
+            <nav className="flex flex-col gap-6">
+              <Link to="/services" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Services</Link>
+              <Link to="/portfolio" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Projects</Link>
+              <Link to="/roster" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">The Roster</Link>
+              <Link to="/contact" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Contact</Link>
+              <Link to="/book-call" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Book a call</Link>
             </nav>
           </div>
 
           {/* Social */}
           <div className="space-y-12">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/50">Connect</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-8 block">Connect</h4>
             <div className="flex gap-10">
               <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.instagram.com/hustlelabs.gr/" target="_blank" className="text-white/80 transition-colors">
                 <Instagram size={28} />

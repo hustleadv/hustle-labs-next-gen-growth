@@ -224,9 +224,9 @@ const Index = () => {
         </div>
         <div className="flex overflow-hidden group">
           <motion.div 
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 items-center whitespace-nowrap px-10"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="flex gap-24 items-center whitespace-nowrap px-12"
           >
             {[
               "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "OpenAI", "Anthropic", "LangChain", "Supabase", "PostgreSQL",

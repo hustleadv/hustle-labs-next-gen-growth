@@ -145,10 +145,10 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic tracking-[0.6em]">{t('intro.badge')}</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight leading-[1.1] mb-16 px-2">
-              {t('intro.title1')} <br />
-              {t('intro.title2')} <br />
-              <span className="text-white/20">{t('intro.title3')}</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-[0.9] mb-16 px-2 flex flex-col items-center gap-1 md:gap-4">
+              <span>{t('intro.title1')}</span>
+              <span>{t('intro.title2')}</span>
+              <span className="text-white/10">{t('intro.title3')}</span>
             </h2>
             <div className="space-y-12 md:space-y-16 max-w-4xl mx-auto px-4">
               <p className="text-2xl md:text-4xl lg:text-5xl font-medium text-white/80 leading-[1.1] italic tracking-tight">

@@ -53,7 +53,7 @@
     --sidebar-border: 220 12% 16%;
     --sidebar-ring: 72 62% 58%;
 
-    --font-display: 'Anton', 'Barlow Condensed', 'Space Grotesk', sans-serif;
+    --font-display: 'Space Grotesk', 'Barlow Condensed', 'Anton', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Glow effects — lime */

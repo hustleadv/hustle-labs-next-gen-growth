@@ -48,14 +48,14 @@ const Ecosystem = () => {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">The Infinite Ecosystem</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">The Infinite Ecosystem</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 uppercase italic"
+              className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-12"
             >
               Everything you need <br />
               <span className="text-primary tracking-normal">to build & grow.</span>
@@ -65,7 +65,7 @@ const Ecosystem = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 italic leading-tight"
+              className="font-display text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-tight"
             >
               From professional services to strategic backing. <br className="hidden md:block" />
               We built an ecosystem for the next generation of builders.
@@ -77,13 +77,13 @@ const Ecosystem = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
-              <Button size="xl" className="rounded-full px-12 h-20 text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow" asChild>
+              <Button size="xl" className="rounded-full px-12 h-20 text-xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow" asChild>
                 <Link to="/contact">
                   Ξεκίνα το Ταξίδι σου
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="rounded-full px-12 h-20 text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+              <Button variant="outline" size="xl" className="rounded-full px-12 h-20 text-xl font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
                 <Link to="/project-brief">Start a project</Link>
               </Button>
             </motion.div>
@@ -97,10 +97,10 @@ const Ecosystem = () => {
           <div className="max-w-4xl mx-auto">
             <motion.div {...fadeInUp} className="text-center">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Structure</span>
-              <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+              <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
                 We build. <br />
                 We back. <br />
-                <span className="text-white/20 italic">We grow together.</span>
+                <span className="text-white/20">We grow together.</span>
               </h2>
               <p className="text-xl text-white/60 font-medium italic mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto">
                 HustleLabs is a hybrid machine. We combine the execution power of a digital agency with the strategic vision of a startup studio.
@@ -137,7 +137,7 @@ const Ecosystem = () => {
           <div className="text-center mb-32 max-w-4xl mx-auto">
             <motion.div {...fadeInUp}>
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic tracking-[0.6em]">COMPONENTS</span>
-              <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter italic uppercase leading-none px-4">
+              <h2 className="font-display text-5xl md:text-8xl font-bold tracking-tighter leading-none px-4">
                 The Lab <br className="md:hidden" /> Universe.
               </h2>
             </motion.div>
@@ -171,8 +171,8 @@ const Ecosystem = () => {
                   )}
                 </div>
 
-                <h3 className="font-display text-3xl md:text-4xl font-black uppercase italic mb-6 italic tracking-tight">{s.title}</h3>
-                <p className="text-lg text-white/30 font-medium italic leading-relaxed mb-12 max-w-sm">{s.desc}</p>
+                <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 tracking-tight">{s.title}</h3>
+                <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm">{s.desc}</p>
                 
                 <Link to={s.link} className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all">
                    Explore {s.label} <ArrowRight size={16} />
@@ -189,9 +189,9 @@ const Ecosystem = () => {
           <div className="max-w-4xl mb-24">
             <motion.div {...fadeInUp}>
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Network</span>
-              <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+              <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-12">
                 The home of <br />
-                <span className="text-white/20 italic">restless ideas.</span>
+                <span className="text-white/20">restless ideas.</span>
               </h2>
               <p className="text-xl text-white/40 font-medium italic max-w-2xl">
                  We choose projects that are worth building. From high-growth startups to established businesses scaling their digital dominance.
@@ -249,12 +249,12 @@ const Ecosystem = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
           >
-            <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-20 italic uppercase px-4">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-20 px-4">
               The home of every <br />
-              <span className="text-primary italic">restless mind.</span>
+              <span className="text-primary">restless mind.</span>
             </h2>
             <div className="w-20 h-px bg-primary mx-auto mb-20 shadow-glow" />
-            <p className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white/40 italic uppercase px-4 max-w-6xl mx-auto leading-tight">
+            <p className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight">
                From the student taking the first step to the dreamer who just wants a space to experiment and build the future.
             </p>
           </motion.div>
@@ -266,18 +266,18 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeInUp}>
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">Evolution</span>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-20 px-4">
+            <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-20 px-4">
               Build the <br />
-              <span className="text-primary italic animate-glow">Future.</span>
+              <span className="text-primary animate-glow">Future.</span>
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-20">
-              <Button size="xl" className="rounded-full px-16 h-28 text-3xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
+              <Button size="xl" className="rounded-full px-16 h-28 text-3xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
                 <Link to="/contact">
                   Ξεκίνημα Τώρα
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="rounded-full px-16 h-28 text-3xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+              <Button variant="outline" size="xl" className="rounded-full px-16 h-28 text-3xl font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
                 <Link to="/book-call">Discovery Call</Link>
               </Button>
             </div>

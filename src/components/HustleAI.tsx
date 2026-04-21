@@ -99,7 +99,7 @@ const HustleAI = () => {
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <Sparkles size={20} className="fill-current" />
+              <Bot size={20} />
             </motion.div>
           )}
         </AnimatePresence>

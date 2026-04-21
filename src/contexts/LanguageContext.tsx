@@ -137,6 +137,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "ecosystem.final.cta1": "Start Now",
     "ecosystem.final.cta2": "Discovery Call",
     "ecosystem.final.quote": "\"If you are ready to evolve, we are here.\"",
+    "header.tooltip.project": "Let's build something that works",
+    "header.tooltip.space": "Work from our space for a day",
   },
   gr: {
     "nav.home": "Αρχική",
@@ -264,6 +266,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "ecosystem.final.cta1": "Ξεκίνημα Τώρα",
     "ecosystem.final.cta2": "Discovery Call",
     "ecosystem.final.quote": "\"Αν είσαι έτοιμος να εξελιχθείς, είμαστε εδώ.\"",
+    "header.tooltip.project": "Ελάτε να χτίσουμε κάτι που λειτουργεί",
+    "header.tooltip.space": "Δούλεψε από τον χώρο μας για μια μέρα",
   },
 };
 

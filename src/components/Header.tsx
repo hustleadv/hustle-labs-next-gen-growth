@@ -228,7 +228,7 @@ const Header = () => {
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 pointer-events-none"
                 >
                   <div className="bg-card/95 backdrop-blur-md border border-white/10 rounded-xl px-4 py-2.5 shadow-xl text-center">
-                    <p className="text-[11px] text-white/60 leading-snug">Let's build something that works</p>
+                    <p className="text-[11px] text-white/60 leading-snug">{t('header.tooltip.project')}</p>
                     <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-card/95 border-l border-t border-white/10 rotate-45" />
                   </div>
                 </motion.div>
@@ -254,11 +254,11 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.95 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 pointer-events-none"
+                  className="absolute top-full right-0 mt-3 w-52 pointer-events-none"
                 >
                   <div className="bg-card/95 backdrop-blur-md border border-primary/20 rounded-xl px-4 py-2.5 shadow-xl shadow-primary/10 text-center">
-                    <p className="text-[11px] text-primary/80 leading-snug">Work from our space for a day</p>
-                    <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-card/95 border-l border-t border-primary/20 rotate-45" />
+                    <p className="text-[11px] text-primary/80 leading-snug">{t('header.tooltip.space')}</p>
+                    <div className="absolute -top-1.5 right-10 w-3 h-3 bg-card/95 border-l border-t border-primary/20 rotate-45" />
                   </div>
                 </motion.div>
               )}

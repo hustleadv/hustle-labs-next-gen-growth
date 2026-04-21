@@ -77,7 +77,7 @@ const CaseStudyCard = ({
 
       <div className="p-6 md:p-8 relative bg-[#080808] border-t border-white/5 group-hover:bg-white/[0.02] transition-colors">
         <div className="flex items-start justify-between gap-4 mb-3">
-          <h3 className="font-display text-xl lg:text-2xl font-bold text-white tracking-wide leading-snug uppercase">
+          <h3 className="font-display text-xl lg:text-2xl font-medium text-white tracking-wide leading-snug uppercase">
             {title}
           </h3>
           <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:bg-primary group-hover:border-primary group-hover:text-black transition-all duration-500 shrink-0">

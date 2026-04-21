@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building2, Mic, Heart, MousePointer2 } from "lucide-react";
+import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building2, Mic, Heart, MousePointer2, Coffee, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LabBackground from "@/components/LabBackground";
@@ -375,31 +375,87 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── SECTION 6: THE HUB ── */}
-      <section className="py-0 relative min-h-[80vh] flex items-center bg-[#080808] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_rgba(208,255,0,0.05),transparent_70%)]" />
-        <div className="container mx-auto px-4 lg:px-8 py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('space.badge')}</span>
-              <h2 className="font-display text-5xl md:text-8xl font-bold tracking-tighter mb-10 leading-[0.9] h-[2em] whitespace-pre-wrap">{t('space.title')}</h2>
-              <p className="text-xl md:text-2xl text-white/60 mb-12 leading-relaxed italic max-w-xl">
+      {/* ── SECTION 6: THE HUB (HUSTLE SPACE) ── */}
+      <section className="py-32 md:py-48 relative min-h-screen flex items-center bg-[#050505] overflow-hidden">
+        {/* Background Accents */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[140px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/[0.02] blur-[100px] rounded-full translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+            
+            <motion.div 
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8 }}
+            >
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-10 block">{t('space.badge')}</span>
+              <h2 className="font-sans text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-12 leading-[0.9]">
+                Hustle <br />
+                <span className="text-white/20">Space.</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-white/40 mb-16 leading-relaxed max-w-xl font-medium">
                 {t('space.text')}
               </p>
-              <div className="flex flex-wrap gap-4">
-                 <Button size="xl" className="rounded-full h-20 px-12 bg-white text-black font-black uppercase tracking-widest italic hover:bg-primary transition-all shadow-2xl border-none" asChild>
-                   <Link to="/hustle-space">{t('space.cta')}</Link>
+
+              {/* Amenities Grid */}
+              <div className="grid grid-cols-2 gap-8 mb-20">
+                 {[
+                   { icon: Zap, label: "High-Speed Fiber", desc: "Stable & Fast" },
+                   { icon: Layers, label: "Networking Hub", desc: "Meet Builders" },
+                   { icon: Coffee, label: "Premium Coffee", desc: "Unlimited Fuel" },
+                   { icon: MapPin, label: "Premium Chania", desc: "Galatas Hub" }
+                 ].map((item, i) => (
+                   <div key={i} className="flex gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                         <item.icon size={18} className="text-primary/70" />
+                      </div>
+                      <div>
+                         <h4 className="text-sm font-bold text-white mb-1">{item.label}</h4>
+                         <p className="text-[10px] text-white/30 uppercase tracking-widest">{item.desc}</p>
+                      </div>
+                   </div>
+                 ))}
+              </div>
+
+              <div className="flex flex-wrap gap-6">
+                 <Button size="xl" className="rounded-full h-20 px-16 bg-primary text-black font-bold group hover:bg-white transition-all border-none shadow-glow-strong" asChild>
+                   <Link to="/hustle-space">
+                      {t('space.cta')} <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                   </Link>
                  </Button>
               </div>
             </motion.div>
+
             <motion.div 
-               initial={{ opacity: 0, scale: 0.9 }}
+               initial={{ opacity: 0, scale: 0.95 }}
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
-               className="relative h-[400px] md:h-[600px] rounded-[3rem] overflow-hidden border border-white/5 shadow-2xl"
+               className="relative"
             >
-              <img src="/images/hustlespacenew.jpg" alt="Hustle Space Chania" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+               {/* Decorative frame */}
+               <div className="absolute inset-0 border border-white/10 rounded-[3.5rem] translate-x-6 translate-y-6 -z-10" />
+               
+               <div className="relative h-[500px] md:h-[700px] rounded-[3rem] overflow-hidden group">
+                  <img 
+                    src="/images/hustlespacenew.jpg" 
+                    alt="Hustle Space Chania" 
+                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  
+                  {/* Floating info card */}
+                  <div className="absolute bottom-10 left-10 right-10 p-10 glass-card rounded-3xl border-white/10 flex items-center justify-between">
+                     <div>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Location</span>
+                        <h4 className="text-lg font-bold text-white">Chania, Greece</h4>
+                     </div>
+                     <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                        <MapPin size={20} />
+                     </div>
+                  </div>
+               </div>
             </motion.div>
           </div>
         </div>

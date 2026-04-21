@@ -84,7 +84,7 @@ const Studio = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       {/* ─── Coming Soon Overlay ─── */}
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 overflow-hidden">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 overflow-y-auto">
         <div className="absolute inset-0 bg-[#020403]/90 backdrop-blur-3xl" />
         
         {/* Animated Background Accents */}
@@ -98,22 +98,22 @@ const Studio = () => {
           className="relative z-10 text-center max-w-4xl"
         >
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8 shadow-2xl">
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 shadow-2xl">
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Studio Status: Project in Progress</span>
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-8 tracking-tighter leading-[0.9]">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tighter leading-[0.9]">
             Loading <br />
             <span className="text-gradient">Premium Experience.</span>
           </h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl text-white/50 mb-12 font-medium leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-white/50 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">
             Το φυσικό μας Studio στην καρδιά των Χανίων βρίσκεται σε φάση υλοποίησης: ετοιμάζουμε έναν κορυφαίο χώρο που θα επαναπροσδιορίσει το Content Creation στην Κρήτη.
           </p>
 
           {/* Simple Progress Indicator */}
-          <div className="max-w-xs mx-auto mb-16 px-4">
+          <div className="max-w-xs mx-auto mb-10 px-4">
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] font-black uppercase tracking-widest text-white/40">Construction Progress</span>
               <span className="text-[10px] font-black text-primary uppercase">85%</span>
@@ -128,13 +128,13 @@ const Studio = () => {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button variant="hero-outline" size="lg" className="rounded-full px-12 h-16 text-lg font-bold border-white/10 hover:bg-white/5 group" asChild>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button variant="hero-outline" size="lg" className="rounded-full px-10 h-14 text-base font-bold border-white/10 hover:bg-white/5 group" asChild>
               <Link to="/">
                 Επιστροφή στην Αρχική
               </Link>
             </Button>
-            <Button variant="hero" size="lg" className="rounded-full px-12 h-16 text-lg font-bold shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform" asChild>
+            <Button variant="hero" size="lg" className="rounded-full px-10 h-14 text-base font-bold shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform" asChild>
               <Link to="/contact" className="flex items-center gap-3">
                 Ενημερώσου Πρώτος <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>

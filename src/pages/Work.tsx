@@ -942,7 +942,7 @@ const Work = () => {
           <motion.div {...fadeUp(0.1)}>
             <Link to="/portfolio/sigmalabs-ai" className="group block">
               {/* Image full-width */}
-              <div className="relative w-full aspect-[16/8] md:aspect-[21/9] overflow-hidden rounded-3xl md:rounded-[3rem] border border-white/5 group-hover:border-primary/40 transition-all duration-700 shadow-2xl mb-10 md:mb-14">
+              <div className="relative w-full aspect-[4/5] sm:aspect-[16/8] md:aspect-[21/9] overflow-hidden rounded-3xl md:rounded-[3rem] border border-white/5 group-hover:border-primary/40 transition-all duration-700 shadow-2xl mb-10 md:mb-14">
                 <img
                   src={SIGMAEKS}
                   alt="Sigmalabs AI"
@@ -1038,32 +1038,31 @@ const Work = () => {
                 {...fadeUp(i * 0.1)}
                 className="group relative p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
-                   <agent.icon size={80} strokeWidth={0.5} />
+                <div className="absolute top-0 right-0 p-6 md:p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
+                   <agent.icon size={60} strokeWidth={0.5} className="md:w-20 md:h-20" />
                 </div>
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-10">
-                    <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[9px] font-black text-primary uppercase tracking-widest italic">
+                  <div className="flex items-center justify-between mb-8 md:mb-10">
+                    <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[8px] md:text-[9px] font-black text-primary uppercase tracking-widest italic">
                        {agent.status}
                     </div>
-                    <div className="text-[10px] font-medium text-white/20 font-mono">
+                    <div className="text-[9px] md:text-[10px] font-medium text-white/20 font-mono">
                        01001-0{i+1}
                     </div>
                   </div>
 
-                  <h3 className="font-display text-3xl font-black text-white italic uppercase tracking-tight mb-2">
+                  <h3 className="font-display text-2xl md:text-3xl font-black text-white italic uppercase tracking-tight mb-2">
                     {agent.name}
                   </h3>
-                  <div className="text-[10px] font-semibold text-primary/60 uppercase tracking-[0.2em] mb-8">
+                  <div className="text-[9px] md:text-[10px] font-semibold text-primary/60 uppercase tracking-[0.2em] mb-6 md:mb-8">
                     {agent.role}
                   </div>
 
                   <div className="mt-auto space-y-4 pt-6 border-t border-white/5">
-
                     <div className="flex items-center justify-between">
-                       <span className="text-[9px] font-medium text-white/20 uppercase tracking-widest">Integrated At</span>
-                       <span className="text-[10px] font-semibold text-white/70">{agent.client}</span>
+                       <span className="text-[8px] md:text-[9px] font-medium text-white/20 uppercase tracking-widest">Integrated At</span>
+                       <span className="text-[9px] md:text-[10px] font-semibold text-white/70">{agent.client}</span>
                     </div>
                   </div>
                 </div>
@@ -1176,9 +1175,9 @@ const Work = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
            >
-              <h2 className="font-display text-[12vw] lg:text-[10vw] leading-none font-black italic uppercase tracking-tighter text-white inline-block relative">
+              <h2 className="font-display text-[15vw] lg:text-[10vw] leading-none font-black italic uppercase tracking-tighter text-white inline-block relative">
                  MORE PROJECTS
-                 <span className="block text-primary text-right text-[6vw] lg:text-[5vw] -mt-[2vw] tracking-normal">COMING SOON.</span>
+                 <span className="block text-primary text-right text-[8vw] lg:text-[5vw] -mt-[3vw] lg:-mt-[2vw] tracking-normal">COMING SOON.</span>
               </h2>
               <div className="mt-12 flex justify-center gap-10 opacity-20">
                  {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-1 rounded-full bg-white" />)}

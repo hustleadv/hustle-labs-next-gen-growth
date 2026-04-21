@@ -8,6 +8,7 @@ import LabBackground from "@/components/LabBackground";
 import Magnetic from "@/components/Magnetic";
 import { useLanguage } from "@/contexts/LanguageContext";
 import PortfolioCard from "@/components/PortfolioCard";
+import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 
 const Index = () => {
   const fadeInUp = {
@@ -137,7 +138,7 @@ const Index = () => {
       <section className="py-32 md:py-48 relative border-t border-white/5 overflow-hidden bg-[#0a0a0a]">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic tracking-[0.6em]">{t('intro.badge')}</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-12 block">{t('intro.badge')}</span>
             <h2 className="font-sans text-4xl md:text-6xl lg:text-8xl xl:text-8xl font-bold tracking-tight leading-[1.0] mb-16 px-2 flex flex-col items-center gap-4">
               <span className="text-white">{t('intro.title1')}</span>
               <span className="text-white">{t('intro.title2')}</span>
@@ -153,6 +154,11 @@ const Index = () => {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* ── SECTION 2.5: COMMUNITY STRIP ── */}
+      <section className="bg-[#050505] border-y border-white/5">
+        <CommunityTrustStrip />
       </section>
 
       {/* ── SECTION 3: BUILD FOR YOU / BUILD WITH YOU ── */}
@@ -215,8 +221,89 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── SECTION 4: HUSTLE BACKED ── */}
-      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808]">
+      {/* ── SECTION 3.5: TECH STACK MARQUEE ── */}
+      <section className="py-24 bg-[#080808] border-b border-white/5">
+        <div className="container mx-auto px-4 mb-16 text-center">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">{t('tech.badge')}</span>
+        </div>
+        <div className="flex overflow-hidden group">
+          <motion.div 
+            animate={{ x: [0, -1000] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="flex gap-20 items-center whitespace-nowrap px-10"
+          >
+            {[
+              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Stripe", "Supabase", "OpenAI", "Node.js", "PostgreSQL",
+              "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Stripe", "Supabase", "OpenAI", "Node.js", "PostgreSQL"
+            ].map((tech, i) => (
+              <span key={i} className="text-3xl md:text-5xl font-bold font-display text-white/10 group-hover:text-primary/40 transition-colors duration-700">
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3.8: STANDARD OF EXECUTION ── */}
+      <section className="py-32 md:py-48 bg-[#050505] relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport}>
+               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-8 block">{t('execution.badge')}</span>
+               <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
+                 {t('execution.title1')} <br /><span className="text-white/20">{t('execution.title2')}</span>
+               </h2>
+               <div className="space-y-12 mt-16">
+                 {[
+                   { t: "01", label: t('execution.step1.label'), desc: t('execution.step1.desc') },
+                   { t: "02", label: t('execution.step2.label'), desc: t('execution.step2.desc') },
+                   { t: "03", label: t('execution.step3.label'), desc: t('execution.step3.desc') },
+                 ].map((step) => (
+                   <div key={step.t} className="flex gap-8 group/step">
+                     <span className="font-display text-2xl font-bold text-primary italic opacity-40 group-hover/step:opacity-100 transition-opacity">{step.t}</span>
+                     <div>
+                       <h4 className="text-xl font-bold text-white mb-2 tracking-tight">{step.label}</h4>
+                       <p className="text-white/50 text-base leading-relaxed font-medium">{step.desc}</p>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+             </motion.div>
+
+             <motion.div 
+               initial={{ opacity: 0, x: 20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="relative"
+             >
+                <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/5 bg-[#0a0a0a] flex items-center justify-center p-12">
+                   <div className="relative w-full h-full">
+                     {/* Abstract execution visual */}
+                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent blur-[100px] animate-pulse" />
+                     <div className="grid grid-cols-2 gap-4 h-full relative z-10">
+                        <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:bg-white/[0.05] transition-colors">
+                           <Code2 className="text-primary" size={32} />
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-white/20 italic">Hard Engineering</span>
+                        </div>
+                        <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-8 flex flex-col justify-between mt-12 hover:bg-white/[0.05] transition-colors">
+                           <BarChart3 className="text-primary" size={32} />
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-white/20 italic">Mathematical Growth</span>
+                        </div>
+                        <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-8 flex flex-col justify-between -mt-12 hover:bg-white/[0.05] transition-colors">
+                           <Bot className="text-primary" size={32} />
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-white/20 italic">Agentic AI</span>
+                        </div>
+                        <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:bg-white/[0.05] transition-colors">
+                           <Layers className="text-primary" size={32} />
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-white/20 italic">Deep Strategy</span>
+                        </div>
+                     </div>
+                   </div>
+                </div>
+             </motion.div>
+           </div>
+        </div>
+      </section>      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-16 md:mb-24">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0">

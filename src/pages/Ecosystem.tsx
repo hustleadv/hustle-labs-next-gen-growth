@@ -285,11 +285,4 @@ const Ecosystem = () => {
   );
 };
 
-export default Ecosystem;</div>
-      </section>
-
-    </div>
-  );
-};
-
 export default Ecosystem;

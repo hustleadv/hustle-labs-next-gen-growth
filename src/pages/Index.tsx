@@ -156,10 +156,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── SECTION 2.5: COMMUNITY STRIP ── */}
-      <section className="bg-[#050505] border-y border-white/5">
-        <CommunityTrustStrip />
-      </section>
 
       {/* ── SECTION 3: BUILD FOR YOU / BUILD WITH YOU ── */}
       <section className="py-0 relative border-t border-white/5 bg-[#050505]">

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
+import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 
 const Ecosystem = () => {
   const { t } = useLanguage();
@@ -172,6 +173,11 @@ const Ecosystem = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ── SECTION 3.5: COMMUNITY STRIP ── */}
+      <section className="bg-[#050505] border-y border-white/5">
+        <CommunityTrustStrip />
       </section>
 
       {/* ── SECTION 4: THE ROSTER ── */}

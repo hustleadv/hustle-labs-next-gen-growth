@@ -19,55 +19,55 @@ const CommunityTrustStrip = () => {
       className="py-12"
     >
       <div className="relative group max-w-5xl mx-auto px-4 md:px-8">
-        {/* Simplified The Card */}
-        <div className="relative bg-white border border-slate-100 p-8 md:p-12 rounded-[2.5rem] overflow-hidden flex flex-col lg:flex-row items-center gap-10 lg:gap-14 text-center lg:text-left shadow-xl shadow-slate-200/50 transition-all duration-700 hover:border-primary/20">
+        {/* The Card - Dark Mode / Quiet Luxury */}
+        <div className="relative bg-[#0a0a0a] border border-white/5 p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] overflow-hidden flex flex-col lg:flex-row items-center gap-10 lg:gap-14 text-center lg:text-left shadow-2xl transition-all duration-700 hover:border-primary/20">
 
           {/* Minimal ambient gradient */}
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4 blur-[80px]" style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.08) 0%, transparent 70%)" }} />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4 blur-[100px] opacity-30" style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.1) 0%, transparent 70%)" }} />
 
-          {/* Graphical Side - More modest */}
+          {/* Graphical Side */}
           <div className="relative shrink-0">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 group-hover:text-primary transition-all duration-700 shadow-sm backdrop-blur-sm">
-              <WordPressIcon className="w-10 h-10 md:w-12 md:h-12" />
+            <div className="w-20 h-20 md:w-28 md:h-28 rounded-[2rem] bg-white/[0.02] border border-white/5 flex items-center justify-center text-white/20 group-hover:text-primary transition-all duration-700 shadow-inner backdrop-blur-sm group-hover:border-primary/20">
+              <WordPressIcon className="w-12 h-12 md:w-16 md:h-16" />
             </div>
 
-            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-primary shadow-lg transform group-hover:-translate-y-1 transition-transform duration-500">
-              <Users size={18} />
+            <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-primary shadow-2xl transform group-hover:-translate-y-2 transition-all duration-500">
+              <Users size={20} />
             </div>
           </div>
 
           {/* Content Side */}
-          <div className="flex-1 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+          <div className="flex-1 space-y-6">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
               Η Δυναμη της Κοινοτητας
             </div>
 
-            <h3 className="font-display text-2xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-              Chania <span className="text-primary italic">WordPress Meetup</span>
+            <h3 className="font-sans text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              Chania <span className="text-white/20">WordPress Meetup</span>
             </h3>
 
-            <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
+            <p className="text-white/40 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
               Είμαστε περήφανοι διοργανωτές και ο επίσημος χώρος φιλοξενίας της κοινότητας WordPress στα Χανιά. Αναπτύσσουμε το τοπικό οικοσύστημα μαζί.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4 border-t border-slate-100">
-              <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                <MapPin size={14} className="text-primary/60" /> <span>Τοπικος Κομβος</span>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 pt-6 border-t border-white/5">
+              <div className="flex items-center gap-2.5 text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                <MapPin size={16} className="text-primary/40" /> <span>Τοπικος Κομβος</span>
               </div>
-              <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                <Heart size={14} className="text-primary/60" /> <span>Στηριζουμε εμπρακτα</span>
+              <div className="flex items-center gap-2.5 text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                <Heart size={16} className="text-primary/40" /> <span>Στηριζουμε εμπρακτα</span>
               </div>
             </div>
           </div>
 
           {/* CTA Side */}
-          <div className="shrink-0 w-full lg:w-auto flex flex-col items-center lg:items-end gap-3">
-            <Button variant="hero" size="lg" className="rounded-full px-8 h-14 text-base shadow-lg shadow-primary/10 group overflow-hidden" asChild>
-              <Link to="/hustle-meetups" className="flex items-center gap-2">
-                Δες τα Meetups <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          <div className="shrink-0 w-full lg:w-auto flex flex-col items-center lg:items-end gap-5">
+            <Button size="xl" className="rounded-full px-10 h-16 text-lg font-bold shadow-xl shadow-primary/5 group overflow-hidden bg-primary text-black hover:bg-white transition-all border-none" asChild>
+              <Link to="/hustle-meetups" className="flex items-center gap-3">
+                Δες τα Meetups <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
+            <span className="text-[10px] font-bold text-white/10 uppercase tracking-[0.4em]">
               ελα στο επομενο event
             </span>
           </div>

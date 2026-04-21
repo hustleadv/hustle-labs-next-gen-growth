@@ -14,12 +14,13 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Anton', 'Space Grotesk', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['Anton', 'Barlow Condensed', 'Space Grotesk', 'sans-serif'],
+        body: ['Inter', 'Space Grotesk', 'sans-serif'],
       },
       letterSpacing: {
-        tighter: "-0.01em",
-        tight: "-0.005em",
+        tighter: "0.01em",
+        tight: "0.02em",
+        normal_heading: "0.02em",
         widest: "0.4em",
       },
       colors: {

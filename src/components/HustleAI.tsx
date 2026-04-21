@@ -87,19 +87,19 @@ const HustleAI = () => {
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[100] w-12 h-12 rounded-full bg-black/80 backdrop-blur-xl text-primary flex items-center justify-center shadow-2xl border border-primary/20 hover:border-primary/50 transition-all focus:outline-none"
+        className="fixed bottom-6 right-6 z-[100] w-11 h-11 rounded-full bg-black/90 backdrop-blur-2xl text-primary flex items-center justify-center shadow-2xl border border-white/10 hover:border-primary/40 transition-all focus:outline-none"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
-              <X size={20} />
+              <X size={18} />
             </motion.div>
           ) : (
-            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <Bot size={20} />
+            <motion.div key="open" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}>
+              <MessageSquare size={18} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -109,21 +109,21 @@ const HustleAI = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.9, transformOrigin: "bottom right" }}
+            initial={{ opacity: 0, y: 30, scale: 0.95, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="fixed bottom-24 right-6 z-[100] w-[90vw] md:w-[380px] h-auto max-h-[75vh] bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
+            exit={{ opacity: 0, y: 30, scale: 0.95 }}
+            className="fixed bottom-20 right-6 z-[100] w-[90vw] md:w-[350px] h-auto max-h-[70vh] bg-[#080808] border border-white/10 rounded-[2rem] shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl"
           >
             {/* Header */}
-            <div className="p-5 border-b border-white/5 bg-white/[0.02] flex items-center gap-4">
-              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                <Bot size={20} />
+            <div className="p-6 border-b border-white/5 bg-white/[0.01] flex items-center gap-4">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                <Zap size={14} />
               </div>
               <div>
-                <h3 className="font-sans font-bold text-white tracking-widest text-xs">LAB BUDDY</h3>
+                <h3 className="font-sans font-bold text-white tracking-[0.2em] text-[10px] uppercase">Lab Buddy</h3>
                 <div className="flex items-center gap-1.5 leading-none mt-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-white/30">Online · Assistant</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span className="text-[8px] uppercase font-bold tracking-[0.2em] text-white/20">Active Engine</span>
                 </div>
               </div>
             </div>

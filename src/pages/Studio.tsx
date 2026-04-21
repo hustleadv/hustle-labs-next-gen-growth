@@ -100,15 +100,15 @@ const Studio = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8 shadow-2xl">
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-primary">Studio Status: Project in Progress</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Studio Status: Project in Progress</span>
           </div>
           
-          <h1 className="font-display text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.8] uppercase">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-8 tracking-tighter leading-[0.9]">
             Loading <br />
             <span className="text-gradient">Premium Experience.</span>
           </h1>
           
-          <p className="text-xl md:text-3xl text-white/50 mb-12 font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/50 mb-12 font-medium leading-relaxed max-w-3xl mx-auto">
             Το φυσικό μας Studio στην καρδιά των Χανίων βρίσκεται σε φάση υλοποίησης: ετοιμάζουμε έναν κορυφαίο χώρο που θα επαναπροσδιορίσει το Content Creation στην Κρήτη.
           </p>
 
@@ -181,14 +181,14 @@ const Studio = () => {
             dark={false}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-24 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mt-24 max-w-6xl mx-auto">
             {studioServices.map((service, i) => {
               const Icon = service.icon;
               return (
                 <motion.div
                   key={i}
                   {...fadeUp(i * 0.1)}
-                  className="group relative flex flex-col bg-white border border-slate-200 hover:border-primary/30 rounded-[3rem] overflow-hidden p-10 lg:p-12 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-700"
+                  className="group relative flex flex-col bg-white border border-slate-200 hover:border-primary/30 rounded-[3rem] overflow-hidden p-8 lg:p-12 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-700"
                 >
                   {/* Glow Accent */}
                   <div className={`absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-br ${service.gradient} blur-[60px] opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none`} />
@@ -198,16 +198,16 @@ const Studio = () => {
                       <Icon size={28} className="text-primary opacity-80 group-hover:opacity-100 transition-opacity" />
                     </div>
                     {service.badge && (
-                      <div className="px-4 py-1.5 rounded-full border border-slate-100 bg-slate-50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-primary group-hover:border-primary/20 group-hover:bg-primary/5 transition-all duration-500">
+                      <div className="px-4 py-1.5 rounded-full border border-slate-100 bg-slate-50 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 group-hover:text-primary group-hover:border-primary/20 group-hover:bg-primary/5 transition-all duration-500">
                         {service.badge}
                       </div>
                     )}
                   </div>
 
                   <div className="relative z-10 flex-1">
-                    <h3 className="font-display text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-primary transition-colors duration-500">{service.title}</h3>
+                    <h3 className="font-display text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-primary transition-colors duration-500">{service.title}</h3>
                     <div className="h-[2px] w-12 bg-primary/40 mb-6 group-hover:w-24 group-hover:bg-primary transition-all duration-500" />
-                    <p className="text-slate-500 leading-relaxed text-lg font-medium opacity-80">{service.desc}</p>
+                    <p className="text-slate-500 leading-relaxed text-base lg:text-lg font-medium opacity-80">{service.desc}</p>
                   </div>
                 </motion.div>
               );
@@ -224,7 +224,7 @@ const Studio = () => {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest mb-8">
                 The Highlight
               </div>
-              <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-10 leading-none tracking-tighter">
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-10 leading-[1.1] tracking-tighter">
                 The Interview <br />
                 <span className="text-gradient">Corner.</span>
               </h2>
@@ -280,22 +280,22 @@ const Studio = () => {
             dark={false}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mt-16 max-w-6xl mx-auto">
             {equipmentList.map((eq, i) => {
               const Icon = eq.icon;
               return (
                 <motion.div
                   key={i}
                   {...fadeUp(i * 0.1)}
-                  className="group flex flex-col bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-primary/20 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                  className="group flex flex-col bg-white p-8 lg:p-10 rounded-[3rem] border border-slate-200 hover:border-primary/20 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500 shadow-xl">
                     <Icon size={24} className="text-white" />
                   </div>
-                  <h3 className="font-display text-2xl font-black text-slate-900 mb-8 tracking-tight">
+                  <h3 className="font-display text-2xl font-bold text-slate-900 mb-8 tracking-tight">
                     {eq.category}
                   </h3>
-                  <ul className="space-y-5 flex-1">
+                  <ul className="space-y-4 flex-1">
                     {eq.items.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4 text-sm text-slate-500 font-medium group/item hover:text-slate-900 transition-colors">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary/30 mt-1.5 shrink-0 group-hover/item:scale-150 group-hover/item:bg-primary transition-all" />
@@ -337,7 +337,7 @@ const Studio = () => {
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">Ready to Broadcast</span>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.0]">
               Φέρε την ιδέα σου <br />
               <span className="text-gradient">στο Studio.</span>
             </h2>

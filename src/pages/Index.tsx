@@ -225,16 +225,16 @@ const Index = () => {
         <div className="flex overflow-hidden group">
           <motion.div 
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-24 items-center whitespace-nowrap px-12"
+            transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+            className="flex gap-28 items-center whitespace-nowrap px-14"
           >
             {[
               "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "OpenAI", "Anthropic", "LangChain", "Supabase", "PostgreSQL",
-              "Stripe", "Shopify", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone",
+              "Stripe", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone",
               "React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "OpenAI", "Anthropic", "LangChain", "Supabase", "PostgreSQL",
-              "Stripe", "Shopify", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone"
+              "Stripe", "WordPress", "Vercel", "Cloudflare", "Docker", "AWS", "Figma", "Shadcn UI", "Resend", "Sentry", "Pinecone"
             ].map((tech, i) => (
-              <span key={i} className="text-3xl md:text-5xl font-bold font-display text-white/10 group-hover:text-primary/40 transition-colors duration-700">
+              <span key={i} className="text-3xl md:text-5xl font-bold font-sans text-white/10 group-hover:text-primary transition-colors duration-500 py-4">
                 {tech}
               </span>
             ))}

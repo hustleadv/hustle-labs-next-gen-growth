@@ -865,15 +865,38 @@ const Work = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(197,218,78,0.05),transparent_60%)] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          {/* Label */}
+          {/* Label + Title — Editorial Layout */}
           <motion.div {...fadeUp()} className="mb-16 md:mb-24">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px flex-1 max-w-[60px] bg-primary/40" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-primary">Flagship Project · Vibe Commerce</span>
+            {/* Top eyebrow */}
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-8 h-px bg-primary" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-primary opacity-80">
+                Flagship Project · Vibe Commerce
+              </span>
             </div>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-black tracking-wide leading-[1.05] uppercase max-w-3xl">
-              Το μεγαλύτερο build <span className="text-white/25">της Hustle.</span>
-            </h2>
+
+            {/* Split headline */}
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
+              {/* Left: main headline */}
+              <div className="flex-1">
+                <h2 className="font-display uppercase leading-[0.95]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide text-white">
+                    Το μεγαλύτερο
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wide">
+                    <span className="text-primary">build</span>
+                    <span className="text-white/20 ml-4">της Hustle.</span>
+                  </span>
+                </h2>
+              </div>
+
+              {/* Right: descriptor */}
+              <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
+                <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
+                  Το πρώτο παγκοσμίως Agentic AI Command Center για WooCommerce & Shopify. Εισαγωγή του <span className="text-primary/70 font-medium">Vibe Commerce</span> στην πράξη.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Main card */}

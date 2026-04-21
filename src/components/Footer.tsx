@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Mail } from "lucide-react";
+import { Instagram, Facebook, Mail, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -39,8 +39,26 @@ const Footer = () => {
               <Link to="/portfolio" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Projects</Link>
               <Link to="/roster" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">The Roster</Link>
               <Link to="/contact" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Contact</Link>
-              <Link to="/book-call" className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 hover:text-primary transition-all duration-300">Book a call</Link>
             </nav>
+          </div>
+
+          {/* Location */}
+          <div className="space-y-12">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-8 block">Studio</h4>
+            <div className="space-y-6">
+              <p className="text-xs font-semibold text-white/80 uppercase tracking-widest leading-relaxed">
+                Chania, Crete<br />
+                Greece
+              </p>
+              <a 
+                href="https://www.google.com/maps/search/Hustle+Labs+Chania" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-white transition-colors"
+              >
+                View on Maps <ArrowRight size={12} />
+              </a>
+            </div>
           </div>
 
           {/* Social */}

@@ -44,16 +44,16 @@ const Footer = () => {
           <div className="space-y-12">
             <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Connect</h4>
             <div className="flex gap-10">
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.instagram.com/hustlelabs.gr/" target="_blank" className="text-white/60 transition-colors">
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.instagram.com/hustlelabs.gr/" target="_blank" className="text-white/80 transition-colors">
                 <Instagram size={28} />
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://web.facebook.com/profile.php?id=61586295570858" target="_blank" className="text-white/60 transition-colors">
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://web.facebook.com/profile.php?id=61586295570858" target="_blank" className="text-white/80 transition-colors">
                 <Facebook size={28} />
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.tiktok.com/@hustlelabs.gr" target="_blank" className="text-white/60 transition-colors">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="https://www.tiktok.com/@hustlelabs.gr" target="_blank" className="text-white/80 transition-colors">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
               </motion.a>
-              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="mailto:info@hustlelabs.gr" className="text-white/60 transition-colors">
+              <motion.a whileHover={{ y: -4, color: "#D0FF00" }} href="mailto:info@hustlelabs.gr" className="text-white/80 transition-colors">
                 <Mail size={28} />
               </motion.a>
             </div>

@@ -110,10 +110,17 @@ const HustlerJoin = () => {
                 {!isSubmitted ? (
                     <div>
                         {/* Header */}
-                        <div className="text-center mb-12">
-                            <span className="text-primary font-black tracking-[0.3em] text-[10px] uppercase mb-4 block">Hustlers Registration</span>
-                            <h1 className="font-display text-4xl md:text-5xl font-black mb-6 tracking-tighter">Γίνε και εσύ <br /><span className="text-gradient">Hustler.</span></h1>
-                            <p className="text-muted-foreground text-lg font-light max-w-xl mx-auto">
+                        <div className="text-center mb-20">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
+                            >
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Hustlers Registration</span>
+                            </motion.div>
+                            
+                            <h1 className="font-sans text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Γίνε και εσύ <br /><span className="text-white/20">Hustler.</span></h1>
+                            <p className="text-white/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
                                 Συμπλήρωσε την αίτηση σε 4 απλά βήματα και γίνε μέλος της πιο δυναμικής ομάδας δημιουργών.
                             </p>
                         </div>

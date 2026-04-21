@@ -205,45 +205,58 @@ const Roster = () => {
             ))}
           </div>
 
-          {/* No results */}
-          {filteredHustlers.length === 0 && (
-            <div className="text-center py-40">
-              <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8">
-                <Search size={32} className="text-white/10" />
-              </div>
-              <h3 className="font-display text-2xl font-black text-white/20 italic uppercase tracking-tighter">Δεν βρέθηκαν αποτελέσματα.</h3>
-            </div>
-          )}
         </div>
       </section>
 
       {/* ── JOIN CTA ── */}
-      <section className="py-32 md:py-48 lg:py-64 relative overflow-hidden bg-[#0a0a0a] border-y border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
-        <div className="container mx-auto px-4 text-center relative z-10">
+      <section className="py-32 md:py-48 relative overflow-hidden bg-[#050505] px-4">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
+            transition={{ duration: 0.8 }}
+            className="group relative overflow-hidden rounded-[3rem] md:rounded-[5rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 p-10 md:p-20 lg:p-24 shadow-2xl"
           >
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic">Join the Roster</span>
-            <h2 className="font-display text-3xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-8 px-2">
-              Είσαι ο επόμενος <br />
-              <span className="text-white/20">Hustler;</span>
-            </h2>
-            <div className="w-16 md:w-20 h-px bg-primary mx-auto mb-12 md:mb-20 shadow-glow" />
-            <p className="font-display text-xl md:text-2xl font-medium tracking-tight text-white/40 italic uppercase px-4 max-w-3xl mx-auto leading-tight mb-16">
-              Εξειδικεύεσαι σε design, development, content ή marketing; <br className="hidden md:block" />
-              <span className="text-white/70">Δούλεψε σε next-gen projects.</span>
-            </p>
+            {/* Ambient background effects */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-20 h-20 md:h-28 text-xl md:text-3xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
-                <Link to="/join-hustler">
-                  Γίνε μέλος <ArrowRight size={24} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                </Link>
-              </Button>
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="text-center lg:text-left">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-10 block tracking-[0.5em]">{t('ecosystem.final.badge')}</span>
+                <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-10">
+                  Είσαι ο επόμενος <br />
+                  <span className="text-white/20">Hustler;</span>
+                </h2>
+                <p className="text-xl text-white/40 font-medium leading-tight mb-12 max-w-md mx-auto lg:mx-0">
+                   Εξειδικεύεσαι σε design, development ή marketing; <br />
+                   <span className="text-white/80">Δούλεψε σε next-gen projects.</span>
+                </p>
+                
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
+                    <Link to="/join-hustler">
+                      Γίνε μέλος <ArrowRight size={24} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 {[
+                   { icon: Globe, label: "Remote First", desc: "Δούλεψε από οπουδήποτε." },
+                   { icon: Rocket, label: "Next-Gen Projects", desc: "Build the future." },
+                   { icon: BadgeCheck, label: "Expert Network", desc: "Μάθε από τους καλύτερους." },
+                   { icon: Zap, label: "Fast Paced", desc: "Execution over theory." }
+                 ].map((perk, i) => (
+                   <div key={i} className="p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all group/perk">
+                      <perk.icon size={28} className="text-primary/40 mb-6 group-hover/perk:text-primary transition-colors" />
+                      <h4 className="text-base font-bold text-white mb-2">{perk.label}</h4>
+                      <p className="text-xs text-white/30 leading-relaxed">{perk.desc}</p>
+                   </div>
+                 ))}
+              </div>
             </div>
           </motion.div>
         </div>

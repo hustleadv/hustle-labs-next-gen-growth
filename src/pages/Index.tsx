@@ -121,14 +121,7 @@ const Index = () => {
               </Magnetic>
             </motion.div>
 
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.3 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="text-[10px] uppercase font-black tracking-[0.5em] text-white/50"
-            >
-              {t('hero.locations')}
-            </motion.p>
+
           </div>
         </div>
 

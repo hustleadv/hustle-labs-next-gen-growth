@@ -1064,5 +1064,7 @@ const Work = () => {
       </section>
       
     </div>
+  );
+};
 
 export default Work;

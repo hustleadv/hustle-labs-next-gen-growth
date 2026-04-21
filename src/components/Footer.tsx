@@ -47,11 +47,11 @@ const Footer = () => {
             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-8 block">Studio</h4>
             <div className="space-y-6">
               <p className="text-xs font-semibold text-white/80 uppercase tracking-widest leading-relaxed">
-                Chania, Crete<br />
-                Greece
+                Ελευθ. Σκοπευτών 15<br />
+                Γαλατάς, Χανιά 731 00
               </p>
               <a 
-                href="https://www.google.com/maps/search/Hustle+Labs+Chania" 
+                href="https://www.google.com/maps/dir//HustleLabs,+%CE%95%CE%BB%CE%B5%CF%85%CE%B8.+%CE%A3%CE%BA%CE%BF%CF%80%CE%B5%CF%85%CF%84%CF%8E%CE%BD+15,+%CE%93%CE%B1%CE%BB%CE%B1%CF%84%CE%AC%CF%82+731+00" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-white transition-colors"

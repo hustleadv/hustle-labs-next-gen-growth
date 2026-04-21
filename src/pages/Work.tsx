@@ -18,6 +18,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import TOPTRAVEL_HOME from "@/assets/TOPTRAVEL-HOME.png";
 import SIGMAEKS from "@/assets/SIGMAEKS.png";
 import NKACONSTR from "@/assets/NKACONSTR.png";
+import AEGISNESPH from "@/assets/AEGISNESPH.png";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -300,7 +301,7 @@ export const caseStudies: CaseStudy[] = [
     business: "AEGIS Dynamic Security",
     type: "Υπηρεσίες Ασφαλείας",
     category: "growth",
-    image: "/images/aegis-main.jpg",
+    image: AEGISNESPH,
     projectUrl: "https://aegisdynamicsec.gr/",
     themeColor: "#c5da4e",
     whatWeBuilt: "Εταιρική Ιστοσελίδα + Custom Διαχειριστικό Αγγελιών",

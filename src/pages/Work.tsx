@@ -15,6 +15,7 @@ import LabBackground from "@/components/LabBackground";
 import PortfolioCard from "@/components/PortfolioCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import TOPTRAVEL_HOME from "@/assets/TOPTRAVEL-HOME.png";
+import SIGMAEKS from "@/assets/SIGMAEKS.png";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -881,7 +882,7 @@ const Work = () => {
               {/* Image full-width */}
               <div className="relative w-full aspect-[16/8] md:aspect-[21/9] overflow-hidden rounded-3xl md:rounded-[3rem] border border-white/5 group-hover:border-primary/40 transition-all duration-700 shadow-2xl mb-10 md:mb-14">
                 <img
-                  src="/images/sigmalabs-mrsigma.png"
+                  src={SIGMAEKS}
                   alt="Sigmalabs AI"
                   className="w-full h-full object-cover opacity-40 group-hover:opacity-90 group-hover:scale-[1.03] transition-all duration-1000"
                 />

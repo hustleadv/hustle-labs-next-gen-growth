@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -91,7 +91,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
             
             <div className="absolute top-6 left-6">
               <span className="px-4 py-1.5 rounded-full bg-primary text-black text-[9px] font-black uppercase tracking-widest italic flex items-center gap-2 shadow-2xl">
-                <Sparkles size={10} />
+                <Rocket size={10} />
                 Built with Hustle
               </span>
             </div>

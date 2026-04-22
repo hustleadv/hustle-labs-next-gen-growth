@@ -823,9 +823,15 @@ const Work = () => {
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return caseStudies;
+    
     if (activeCategory === "websites") {
       return caseStudies.filter((cs) => cs.category === "websites" || (cs.projectUrl && cs.projectUrl !== "#"));
     }
+    
+    if (activeCategory === "growth") {
+      return caseStudies.filter((cs) => cs.category === "growth" || cs.adminPanel);
+    }
+    
     return caseStudies.filter((cs) => cs.category === activeCategory);
   }, [activeCategory, caseStudies]);
 

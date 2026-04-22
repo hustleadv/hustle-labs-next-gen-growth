@@ -13,6 +13,8 @@ import LabBackground from "@/components/LabBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 import WP_MEETUP_1 from "@/assets/chaniawordpressmeetup.JPG";
+import ACADEMY_IMG from "@/assets/hustleacademynewph.jpg";
+import SPACE_IMG from "@/assets/hustlespacenew.jpg"; // Let's also import space for consistency
 
 const Ecosystem = () => {
   const { t } = useLanguage();
@@ -177,8 +179,8 @@ const Ecosystem = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {[
-              { icon: GraduationCap, title: t('ecosystem.universe.academy.title'), desc: t('ecosystem.universe.academy.desc'), link: "/academy", label: "Academy" },
-              { icon: Building2, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space" },
+              { icon: GraduationCap, title: t('ecosystem.universe.academy.title'), desc: t('ecosystem.universe.academy.desc'), link: "/academy", label: "Academy", image: ACADEMY_IMG },
+              { icon: Building2, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space", image: SPACE_IMG },
               { icon: Mic, title: t('ecosystem.universe.studio.title'), desc: t('ecosystem.universe.studio.desc'), link: "/studio", label: "Studio", soon: true },
               { icon: Heart, title: t('ecosystem.universe.network.title'), desc: t('ecosystem.universe.network.desc'), link: "/contact", label: "Community" }
             ].map((s, i) => (
@@ -188,27 +190,39 @@ const Ecosystem = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group p-10 md:p-16 rounded-[2.5rem] md:rounded-[4rem] glass-card relative overflow-hidden"
+                className="group p-10 md:p-16 rounded-[2.5rem] md:rounded-[4rem] glass-card relative overflow-hidden flex flex-col justify-between min-h-[450px]"
               >
-                <div className="absolute top-0 left-12 w-px h-12 bg-gradient-to-b from-primary/30 to-transparent group-hover:h-24 transition-all duration-1000" />
-                
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent lg:shadow-glow">
-                    <s.icon size={32} strokeWidth={1} />
-                  </div>
-                  {s.soon && (
-                    <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase text-primary tracking-widest self-start sm:self-center italic">
-                       {t('ecosystem.universe.soon')}
-                    </span>
-                  )}
-                </div>
+                {/* Background Image with Overlay */}
+                {s.image && (
+                   <div className="absolute inset-0 z-0">
+                      <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-20 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-40 group-hover:grayscale-0" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+                   </div>
+                )}
 
-                <h3 className="font-display text-3xl md:text-5xl font-black mb-6 tracking-tight italic uppercase leading-none">{s.title}</h3>
-                <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm italic">{s.desc}</p>
+                <div className="relative z-10">
+                  <div className="absolute top-0 left-0 w-px h-12 bg-gradient-to-b from-primary/30 to-transparent group-hover:h-24 transition-all duration-1000" />
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent lg:shadow-glow">
+                      <s.icon size={32} strokeWidth={1} />
+                    </div>
+                    {s.soon && (
+                      <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary tracking-widest self-start sm:self-center italic">
+                         {t('ecosystem.universe.soon')}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="font-display text-3xl md:text-5xl font-black mb-6 tracking-tight italic uppercase leading-none">{s.title}</h3>
+                  <p className="text-lg text-white/40 font-medium leading-relaxed mb-12 max-w-sm italic">{s.desc}</p>
+                </div>
                 
-                <Link to={s.link} className="inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all italic">
-                   {t('ecosystem.universe.explore')} {s.label} <ArrowRight size={16} />
-                </Link>
+                <div className="relative z-10">
+                  <Link to={s.link} className="inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all italic">
+                     {t('ecosystem.universe.explore')} {s.label} <ArrowRight size={16} />
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </div>

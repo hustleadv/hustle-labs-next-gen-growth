@@ -24,6 +24,15 @@ interface ServiceCategory {
   direction: string;
   ctaLabel?: string;
   badge?: string;
+  testimonial?: {
+    text: string;
+    author: string;
+    role: string;
+  };
+  localFAQ?: {
+    q: string;
+    a: string;
+  };
 }
 
 const categories: ServiceCategory[] = [
@@ -52,6 +61,15 @@ const categories: ServiceCategory[] = [
     direction: "Ιδανικό για Corporate & E-commerce",
     ctaLabel: "Εξερεύνηση",
     badge: "The Standard",
+    testimonial: {
+      text: "Η ταχύτητα και το design του νέου μας site άλλαξε τελείως το πώς μας βλέπουν οι πελάτες μας.",
+      author: "Γιώργος Μ.",
+      role: "Founder, Chania-based Startup"
+    },
+    localFAQ: {
+      q: "Πόσο χρόνο παίρνει η κατασκευή ενός custom site στα Χανιά;",
+      a: "Συνήθως 2-5 εβδομάδες, ανάλογα με τις ανάγκες. Εστιάζουμε στην ποιότητα και το performance."
+    }
   },
   {
     icon: TrendingUp,
@@ -78,6 +96,15 @@ const categories: ServiceCategory[] = [
     direction: "Ιδανικό για Aggressive Scaling",
     ctaLabel: "Εξερεύνηση",
     badge: "ROI Focused",
+    testimonial: {
+      text: "Είδαμε 3x αύξηση στα conversions μέσα στον πρώτο μήνα συνεργασίας.",
+      author: "Ελένη Π.",
+      role: "E-commerce Manager, Crete"
+    },
+    localFAQ: {
+      q: "Πώς εξασφαλίζετε το ROI στις καμπάνιες marketing;",
+      a: "Χρησιμοποιούμε advanced tracking και real-time data optimization για να ξέρουμε ακριβώς πού αποδίδει κάθε ευρώ."
+    }
   },
   {
     icon: Bot,
@@ -104,6 +131,15 @@ const categories: ServiceCategory[] = [
     direction: "Ιδανικό για Modern Operations",
     ctaLabel: "Εξερεύνηση",
     badge: "Future Proof",
+    testimonial: {
+      text: "Ο AI Agent μας έλυσε τα χέρια στο support, κερδίζοντας μας 20+ ώρες την εβδομάδα.",
+      author: "Νίκος Σ.",
+      role: "Ops Director"
+    },
+    localFAQ: {
+      q: "Είναι ασφαλής η χρήση AI για την επιχείρησή μου;",
+      a: "Απολύτως. Χρησιμοποιούμε enterprise-level LLMs και secure data handling για κάθε υλοποίηση."
+    }
   },
   {
     icon: Lightbulb,
@@ -129,6 +165,15 @@ const categories: ServiceCategory[] = [
     ctaLink: "/project-brief",
     direction: "Ιδανικό για Visionary Founders",
     ctaLabel: "Start Now",
+    testimonial: {
+      text: "Η στρατηγική που χαράξαμε μας έδωσε την ξεκάθαρη κατεύθυνση που μας έλειπε χρόνια.",
+      author: "Μαρία Κ.",
+      role: "CEO"
+    },
+    localFAQ: {
+      q: "Γιατί χρειάζομαι στρατηγική πριν το design;",
+      a: "Γιατί το design χωρίς σκοπό είναι απλά 'ζωγραφική'. Η στρατηγική χτίζει τα θεμέλια για το ROI."
+    }
   },
 ];
 
@@ -233,9 +278,33 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
                 </li>
               ))}
             </ul>
+             
+            {/* SEO Service-specific FAQ */}
+            {service.localFAQ && (
+              <div className="mt-12 pt-8 border-t border-white/5">
+                <h5 className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-4 italic">Quick Insight</h5>
+                <p className="text-sm font-black text-white italic mb-2 group-hover:text-primary transition-colors">{service.localFAQ.q}</p>
+                <p className="text-xs text-white/20 italic leading-relaxed">{service.localFAQ.a}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
+      
+      {/* Service Testimonial - Social Proof for SEO */}
+      {service.testimonial && (
+        <div className="px-8 md:px-16 pb-12">
+           <div className="p-8 rounded-[2rem] bg-primary/5 border border-primary/10 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                 <Star size={20} className="text-primary" />
+              </div>
+              <div className="flex-1">
+                 <p className="text-white/60 italic text-sm md:text-base leading-relaxed mb-4">"{service.testimonial.text}"</p>
+                 <p className="text-[10px] font-black text-primary uppercase tracking-widest italic">{service.testimonial.author} — <span className="text-white/30">{service.testimonial.role}</span></p>
+              </div>
+           </div>
+        </div>
+      )}
     </motion.div>
   );
 };

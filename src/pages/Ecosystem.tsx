@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
@@ -14,6 +15,44 @@ import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 
 const Ecosystem = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    // SEO: Page Title
+    document.title = "The Hustle Ecosystem | Digital Hub Χανιά - Hustle Labs";
+    
+    // SEO: Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Ανακαλύψτε το οικοσύστημα της Hustle Labs στα Χανιά. Ένα δίκτυο από Agency, Venture Studio και Academy που χτίζει το ψηφιακό μέλλον της Κρήτης.");
+
+    // SEO: Structured Data (JSON-LD)
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Hustle Labs Ecosystem",
+      "url": "https://hustlelabs.gr/ecosystem",
+      "description": "A collaborative ecosystem of digital agencies, venture studios, and learning hubs based in Chania, Crete.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Χανιά",
+        "addressRegion": "Κρήτη",
+        "addressCountry": "GR"
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -48,7 +87,7 @@ const Ecosystem = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-sans text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] mb-12"
+              className="font-sans text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-12 italic uppercase"
             >
               {t('ecosystem.hero.title1')} <br />
               <span className="text-primary tracking-normal">{t('ecosystem.hero.title2')}</span>
@@ -58,7 +97,7 @@ const Ecosystem = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-sans text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-snug"
+              className="font-sans text-xl md:text-2xl lg:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 leading-tight italic"
             >
               {t('ecosystem.hero.subtitle')}
             </motion.p>
@@ -135,7 +174,7 @@ const Ecosystem = () => {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {[
               { icon: GraduationCap, title: t('ecosystem.universe.academy.title'), desc: t('ecosystem.universe.academy.desc'), link: "/academy", label: "Academy" },
               { icon: Building2, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space" },
@@ -148,25 +187,25 @@ const Ecosystem = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group p-12 md:p-16 rounded-[3.5rem] glass-card relative overflow-hidden"
+                className="group p-10 md:p-16 rounded-[2.5rem] md:rounded-[4rem] glass-card relative overflow-hidden"
               >
                 <div className="absolute top-0 left-12 w-px h-12 bg-gradient-to-b from-primary/30 to-transparent group-hover:h-24 transition-all duration-1000" />
                 
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent lg:shadow-glow">
                     <s.icon size={32} strokeWidth={1} />
                   </div>
                   {s.soon && (
-                    <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase text-primary tracking-widest">
+                    <span className="px-5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase text-primary tracking-widest self-start sm:self-center italic">
                        {t('ecosystem.universe.soon')}
                     </span>
                   )}
                 </div>
 
-                <h3 className="font-sans text-3xl md:text-4xl font-bold mb-6 tracking-tight">{s.title}</h3>
-                <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm">{s.desc}</p>
+                <h3 className="font-display text-3xl md:text-5xl font-black mb-6 tracking-tight italic uppercase leading-none">{s.title}</h3>
+                <p className="text-lg text-white/30 font-medium leading-relaxed mb-12 max-w-sm italic">{s.desc}</p>
                 
-                <Link to={s.link} className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all">
+                <Link to={s.link} className="inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-primary group-hover:gap-6 transition-all italic">
                    {t('ecosystem.universe.explore')} {s.label} <ArrowRight size={16} />
                 </Link>
               </motion.div>
@@ -236,8 +275,8 @@ const Ecosystem = () => {
         </div>
       </section>
 
-      {/* ── SECTION 5: MANIFESTO STATMENT ── */}
-      <section className="py-64 relative overflow-hidden bg-[#0a0a0a] border-y border-white/5">
+      {/* ── SECTION 5: MANIFESTO STATEMENT ── */}
+      <section className="py-24 md:py-48 relative overflow-hidden bg-[#0a0a0a] border-y border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div 
@@ -246,12 +285,12 @@ const Ecosystem = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
           >
-            <h2 className="font-sans text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-20 px-4">
+            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tight leading-[0.9] mb-16 px-4 italic uppercase">
               {t('ecosystem.manifesto.title')} <br />
-              <span className="text-primary">{t('ecosystem.manifesto.title_span')}</span>
+              <span className="text-white/20 italic">{t('ecosystem.manifesto.title_span')}</span>
             </h2>
-            <div className="w-20 h-px bg-primary mx-auto mb-20 shadow-glow" />
-            <p className="font-sans text-3xl md:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight">
+            <div className="w-20 h-px bg-primary mx-auto mb-16 shadow-glow" />
+            <p className="font-display text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white/40 px-4 max-w-6xl mx-auto leading-tight italic">
                {t('ecosystem.manifesto.text')}
             </p>
           </motion.div>
@@ -259,27 +298,28 @@ const Ecosystem = () => {
       </section>
 
       {/* ── SECTION 6: FINAL CTA ── */}
-      <section className="py-32 md:py-48 relative bg-[#050505]">
+      <section className="py-24 md:py-64 relative bg-[#050505] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeInUp}>
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-12 block">{t('ecosystem.final.badge')}</span>
-            <h2 className="font-sans text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] mb-20 px-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block">{t('ecosystem.final.badge')}</span>
+            <h2 className="font-display text-5xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter leading-[0.85] mb-20 px-4 italic uppercase">
               {t('ecosystem.final.title1')} <br />
-              <span className="text-primary animate-glow">{t('ecosystem.final.title2')}</span>
+              <span className="text-white/10 italic">{t('ecosystem.final.title2')}</span>
             </h2>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-20">
-              <Button size="xl" className="rounded-full px-16 h-28 text-3xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-24">
+              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-24 h-24 md:h-32 text-2xl md:text-4xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
                 <Link to="/contact">
                   {t('ecosystem.final.cta1')}
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="rounded-full px-16 h-28 text-3xl font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
+              <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-24 h-24 md:h-32 text-2xl md:text-4xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
                 <Link to="/book-call">{t('ecosystem.final.cta2')}</Link>
               </Button>
             </div>
             
-            <p className="text-xl md:text-2xl font-sans font-bold text-white/30 tracking-[0.4em] uppercase">
+            <p className="text-xl md:text-2xl font-display font-black text-white/10 tracking-[0.4em] uppercase italic">
                {t('ecosystem.final.quote')}
             </p>
           </motion.div>

@@ -59,10 +59,10 @@ const Ecosystem = () => {
           "name": "Hustle Space Chania",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Χανιά, Κρήτη",
+            "streetAddress": "Γαλατάς, Χανιά",
             "addressLocality": "Χανιά",
             "addressRegion": "Κρήτη",
-            "postalCode": "73132",
+            "postalCode": "73100",
             "addressCountry": "GR"
           }
         },
@@ -429,7 +429,7 @@ const Ecosystem = () => {
               {[
                 {
                   q: "Πού βρίσκονται τα γραφεία της Hustle Labs στα Χανιά;",
-                  a: "Η Hustle Labs εδρεύει στο Hustle Space, έναν πρότυπο ψηφιακό κόμβο στην καρδιά των Χανίων, επίσημη έδρα της δημιουργικότητας και της τεχνολογίας στην πόλη."
+                  a: "Η Hustle Labs εδρεύει στο Hustle Space στον Γαλατά Χανίων, έναν πρότυπο ψηφιακό κόμβο που αποτελεί την έδρα της δημιουργικότητας και της τεχνολογίας στην περιοχή."
                 },
                 {
                   q: "Πώς μπορώ να γίνω μέλος της κοινότητας WordPress στα Χανιά;",

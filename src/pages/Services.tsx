@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Globe, Megaphone, Bot, Lightbulb, ArrowRight, CheckCircle2, Clock, Users, Layers, Settings, Zap, Target, Palette, Mic, Code2, Rocket, Sparkles, Star, TrendingUp } from "lucide-react";
+import { Globe, Megaphone, Bot, Lightbulb, ArrowRight, CheckCircle2, Clock, Users, Layers, Settings, Zap, Target, Palette, Mic, Code2, Rocket, Sparkles, Star, TrendingUp, Monitor, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion from "@/components/FAQAccordion";
-import PageHero from "@/components/PageHero";
 import LabBackground from "@/components/LabBackground";
 import { type LucideIcon } from "lucide-react";
 
@@ -30,18 +30,18 @@ const categories: ServiceCategory[] = [
   {
     icon: Globe,
     title: "Next-Gen Websites",
-    outcome: "Websites που φέρνουν conversions, όχι απλά επισκέψεις.",
-    intro: "Όχι templates, όχι page builders. Custom websites σχεδιασμένα από το μηδέν, γρήγορα, responsive και φτιαγμένα για να μετατρέπουν επισκέπτες σε πελάτες.",
+    outcome: "High-Performance Conversions",
+    intro: "Όχι templates, όχι builders. Κατασκευάζουμε ψηφιακές μηχανές σχεδιασμένες από το μηδέν, με focus στην ταχύτητα, το UX και την κερδοφορία.",
     includes: [
-      "Custom UI/UX design βασισμένο στους στόχους σου",
-      "Mobile-first responsive ανάπτυξη",
-      "SEO optimization & ταχύτητα (<2s load)",
-      "CMS integration για εύκολη διαχείριση περιεχομένου",
-      "Analytics setup & conversion tracking",
+      "Custom UI/UX Σχεδιασμός",
+      "Mobile-First Responsive Build",
+      "SEO & Performance Optimization",
+      "Headless CMS Integration",
+      "Conversion Tracking Setup",
     ],
     bestFor: [
-      "Επιχειρήσεις που θέλουν επαγγελματική online παρουσία",
-      "Brands που ξεπέρασαν το template τους",
+      "Επιχειρήσεις που θέλουν premium παρουσία",
+      "Brands που απαιτούν το απόλυτο performance",
     ],
     timeline: "2-5 εβδομάδες",
     color: "text-primary",
@@ -49,50 +49,51 @@ const categories: ServiceCategory[] = [
     bgIcon: "bg-primary/10",
     accentGradient: "from-primary/20 to-primary/5",
     ctaLink: "/websites",
-    direction: "Ιδανικό αν δεν έχεις website που φέρνει αποτέλεσμα",
-    ctaLabel: "Δες Περισσότερα",
-    badge: "Most Popular",
+    direction: "Ιδανικό για Corporate & E-commerce",
+    ctaLabel: "Εξερεύνηση",
+    badge: "The Standard",
   },
   {
-    icon: Megaphone,
+    icon: TrendingUp,
     title: "Ads & Growth Systems",
-    outcome: "Marketing που βασίζεται σε data, όχι σε guesswork.",
-    intro: "Καμπάνιες που φέρνουν αποτελέσματα, όχι απλά impressions. Στήνουμε ολοκληρωμένα συστήματα, από το πρώτο click μέχρι την πώληση.",
+    outcome: "Data-Driven Scaling",
+    intro: "Στρατηγικές καμπάνιες που φέρνουν αποτελέσματα, όχι απλά impressions. Στήνουμε ολοκληρωμένα συστήματα από το πρώτο click μέχρι την πώληση.",
     includes: [
-      "Google & Meta Ads setup και διαχείριση",
-      "Landing pages & sales funnels",
-      "Email marketing & αυτοματοποιημένα sequences",
-      "Lead magnets & opt-in στρατηγικές",
-      "Performance reporting & optimization",
+      "Google & Meta Ads Management",
+      "High-Converting Landing Pages",
+      "Automated Sales Funnels",
+      "Advanced Pixel & Event Tracking",
+      "Fractional Growth Strategy",
     ],
     bestFor: [
-      "Businesses που θέλουν σταθερή ροή leads & πελατών",
-      "E-shops που θέλουν scalable πωλήσεις",
+      "Businesses που θέλουν σταθερή ροή leads",
+      "E-shops που στοχεύουν σε scalability",
     ],
-    timeline: "2-4 εβδομάδες για setup",
+    timeline: "2-4 εβδομάδες setup",
     color: "text-primary",
     borderColor: "border-primary/20",
     bgIcon: "bg-primary/10",
     accentGradient: "from-primary/20 to-accent/20",
     ctaLink: "/growth",
-    direction: "Ιδανικό αν έχεις traffic αλλά όχι conversions",
-    ctaLabel: "Δες Περισσότερα",
+    direction: "Ιδανικό για Aggressive Scaling",
+    ctaLabel: "Εξερεύνηση",
     badge: "ROI Focused",
   },
   {
     icon: Bot,
     title: "AI & Αυτοματισμοί",
-    outcome: "AI που αφαιρεί δουλειά από τα χέρια σου.",
-    intro: "Χρησιμοποίησε την τεχνητή νοημοσύνη για να κερδίσεις χρόνο. Από AI Agents μέχρι αυτοματοποιημένα workflows, σε βοηθάμε να δουλεύεις πιο έξυπνα.",
+    outcome: "Operational Efficiency",
+    intro: "Χρησιμοποιούμε την τεχνητή νοημοσύνη για να κερδίσετε χρόνο. Από AI Agents μέχρι αυτόματα workflows, σας βοηθάμε να κάνετε scale έξυπνα.",
     includes: [
-      "Custom AI Agents (Customer Support / Sales)",
-      "Automated lead management workflows",
-      "Ενσωμάτωση AI σε καθημερινές διαδικασίες",
-      "CRM Automations & Email marketing flows",
+      "Custom AI Agents (Support & Sales)",
+      "Lead Management Automations",
+      "System Integration (APIs)",
+      "Internal Workflow Optimization",
+      "AI Strategy Consulting",
     ],
     bestFor: [
-      "Ομάδες που θέλουν να κάνουν scale χωρίς προσλήψεις",
-      "Επιχειρήσεις με επαναλαμβανόμενες χειροκίνητες διαδικασίες",
+      "Ομάδες που θέλουν να μειώσουν το manual work",
+      "Founders που θέλουν να αυτοματοποιήσουν το scale",
     ],
     timeline: "1-3 εβδομάδες",
     color: "text-primary",
@@ -100,25 +101,25 @@ const categories: ServiceCategory[] = [
     bgIcon: "bg-primary/10",
     accentGradient: "from-primary/30 to-accent/10",
     ctaLink: "/ai-lab",
-    direction: "Ιδανικό αν έχεις δουλειά που θέλεις να αυτοματοποιήσεις",
-    ctaLabel: "Δες Περισσότερα",
-    badge: "Cutting Edge",
+    direction: "Ιδανικό για Modern Operations",
+    ctaLabel: "Εξερεύνηση",
+    badge: "Future Proof",
   },
   {
     icon: Lightbulb,
     title: "Strategy & Content",
-    outcome: "Στρατηγική που δίνει κατεύθυνση, όχι απλά ιδέες.",
-    intro: "Πριν χτίσεις, χρειάζεσαι σχέδιο. Βοηθάμε επιχειρήσεις να βρουν τη φωνή τους, να στοχεύσουν σωστά και να δημιουργήσουν περιεχομένου που αποδίδει.",
+    outcome: "Brand Dominance",
+    intro: "Πριν χτίσεις, χρειάζεσαι σχέδιο. Βοηθάμε brands να βρουν τη φωνή τους, να στοχεύσουν σωστά και να δημιουργήσουν content που αποδίδει.",
     includes: [
-      "Brand positioning & messaging",
-      "Content strategy & editorial calendar",
-      "SEO keyword research & planning",
-      "Social media content direction",
-      "Competitor & market analysis",
+      "Brand Positioning & Messaging",
+      "Content Strategy Layout",
+      "SEO Keyword Intelligence",
+      "Video & Podcast Direction",
+      "Market Analysis Reports",
     ],
     bestFor: [
-      "Νέα brands που ξεκινούν και θέλουν σωστές βάσεις",
-      "Επιχειρήσεις που θέλουν refresh στην επικοινωνία τους",
+      "Νέα brands που θέλουν σωστές βάσεις",
+      "Επιχειρήσεις που θέλουν refresh στην αγορά",
     ],
     timeline: "1-2 εβδομάδες",
     color: "text-primary",
@@ -126,8 +127,8 @@ const categories: ServiceCategory[] = [
     bgIcon: "bg-primary/10",
     accentGradient: "from-primary/10 to-primary/30",
     ctaLink: "/project-brief",
-    direction: "Ιδανικό αν δεν έχεις ξεκάθαρη κατεύθυνση",
-    ctaLabel: "Δες Περισσότερα",
+    direction: "Ιδανικό για Visionary Founders",
+    ctaLabel: "Start Now",
   },
 ];
 
@@ -154,68 +155,66 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
   return (
     <motion.div
       {...fadeUp(index * 0.1)}
-      className="group relative rounded-[3rem] md:rounded-[4rem] border border-white/5 overflow-hidden bg-white/[0.01] hover:bg-white/[0.02] shadow-2xl hover:-translate-y-2 transition-all duration-700 flex flex-col"
+      className="group relative rounded-[2rem] md:rounded-[4rem] border border-white/5 overflow-hidden bg-white/[0.01] hover:bg-white/[0.02] shadow-2xl transition-all duration-700 flex flex-col"
     >
       {/* Decorative accent background */}
       <div className={`absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/5 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none`} />
 
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 p-8 md:p-12 relative z-10 flex-1">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 p-8 md:p-16 relative z-10 flex-1">
         <div className="flex-1 flex flex-col">
-          <div className="flex items-center justify-between mb-8">
-            <div className={`w-16 h-16 rounded-2xl ${service.bgIcon} flex items-center justify-center shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner`}>
+          <div className="flex items-center justify-between mb-12">
+            <div className={`w-16 h-16 rounded-2xl ${service.bgIcon} flex items-center justify-center shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner border border-white/5`}>
               <Icon size={28} className={service.color} />
             </div>
             <div className="flex flex-col items-end gap-2">
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/40 italic">PART OF THE SYSTEM</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/40 italic">Deployment Ready</span>
               {service.badge && (
-                <span className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] font-black uppercase tracking-widest text-primary">
+                <span className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-[10px] font-black uppercase tracking-widest text-primary italic">
                   {service.badge}
                 </span>
               )}
             </div>
           </div>
 
-          <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-4 italic block">{service.outcome}</span>
-          <h3 className="font-display text-4xl md:text-5xl font-black text-white mb-6 group-hover:text-primary transition-colors duration-500 tracking-tighter italic uppercase">{service.title}</h3>
+          <span className="text-primary font-black uppercase tracking-[0.5em] text-[10px] mb-6 italic block">{service.outcome}</span>
+          <h3 className="font-display text-4xl md:text-6xl font-black text-white mb-8 group-hover:text-primary transition-colors duration-500 tracking-tighter italic uppercase leading-none">{service.title}</h3>
 
-          <p className="text-white font-black uppercase text-[11px] tracking-widest bg-primary/10 px-4 py-2 border-l-2 border-primary mb-10 italic inline-block">{service.direction}</p>
-          <p className="text-white/40 text-lg leading-relaxed mb-10 max-w-xl font-medium italic pr-4">{service.intro}</p>
+          <div className="inline-flex items-center gap-3 bg-white/5 px-5 py-2 rounded-full border border-white/5 mb-10 self-start">
+             <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+             <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] italic">{service.direction}</p>
+          </div>
+          
+          <p className="text-white/40 text-lg md:text-xl leading-relaxed mb-12 max-w-xl font-medium italic pr-4">{service.intro}</p>
 
-          <div className="mt-auto">
-            <div className="flex flex-wrap gap-4 mb-10">
+          <div className="mt-auto pt-8 border-t border-white/5">
+            <div className="flex flex-wrap gap-4 mb-12">
               <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/5">
-                <Clock size={16} className="text-primary" />
-                <span className="text-xs font-bold text-white/30 font-display uppercase tracking-wider italic">{service.timeline}</span>
+                <Clock size={16} className="text-primary/60" />
+                <span className="text-[10px] font-black text-white/40 font-display uppercase tracking-widest italic">{service.timeline}</span>
               </div>
               <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/5">
-                <Star size={16} className="text-primary" />
-                <span className="text-xs font-bold text-white/30 font-display uppercase tracking-wider italic">Premium Service</span>
+                <Star size={16} className="text-primary/60" />
+                <span className="text-[10px] font-black text-white/40 font-display uppercase tracking-widest italic font-bold">Standard of Excellence</span>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 font-black uppercase tracking-widest bg-white text-black hover:bg-primary transition-all border-none italic shadow-xl hover:shadow-glow" asChild>
-                <Link to={service.ctaLink}>
-                  {service.ctaLabel || "Δες Περισσότερα"} <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                </Link>
-              </Button>
-              <div className="flex items-center gap-3 ml-4">
-                <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
-                <p className="text-[10px] font-black text-primary/60 uppercase tracking-[0.4em] italic">Ξεκίνα από εδώ</p>
-              </div>
-            </div>
+            <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 md:h-24 text-xl font-black uppercase tracking-widest bg-white text-black hover:bg-primary transition-all border-none italic shadow-xl hover:shadow-glow" asChild>
+              <Link to={service.ctaLink}>
+                {service.ctaLabel || "Εξερεύνηση"} <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={20} />
+              </Link>
+            </Button>
           </div>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10 lg:pt-0 border-t lg:border-t-0 lg:border-l border-white/5 lg:pl-12 self-stretch">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 lg:pt-0 lg:border-l border-white/5 lg:pl-16 self-stretch">
           <div className="flex flex-col">
-            <h4 className="font-display text-xs font-black text-primary uppercase tracking-[0.25em] mb-8 flex items-center gap-2 italic">
-              <Layers size={14} className="opacity-50" /> Τι περιλαμβάνει
+            <h4 className="font-display text-[11px] font-black text-primary uppercase tracking-[0.5em] mb-10 flex items-center gap-3 italic">
+              <Layers size={16} className="opacity-40" /> Τι περιλαμβάνει
             </h4>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {service.includes.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 text-sm text-white/30 leading-snug font-medium group/item hover:text-white transition-colors italic">
-                  <CheckCircle2 size={18} className="text-primary/40 mt-0.5 shrink-0 group-hover/item:text-primary transition-colors" />
+                <li key={i} className="flex items-start gap-4 text-sm md:text-base text-white/30 leading-snug font-medium group/item hover:text-white transition-colors italic">
+                  <CheckCircle2 size={18} className="text-primary/30 mt-0.5 shrink-0 group-hover/item:text-primary transition-colors" />
                   {item}
                 </li>
               ))}
@@ -223,13 +222,13 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
           </div>
 
           <div className="flex flex-col">
-            <h4 className="font-display text-xs font-black text-primary uppercase tracking-[0.25em] mb-8 flex items-center gap-2 italic">
-              <Users size={14} className="opacity-50" /> Ιδανικό για
+            <h4 className="font-display text-[11px] font-black text-primary uppercase tracking-[0.5em] mb-10 flex items-center gap-3 italic">
+              <Users size={16} className="opacity-40" /> Ιδανικό για
             </h4>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {service.bestFor.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-white/30 leading-snug font-medium group/item hover:text-white transition-colors italic">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/30 mt-1.5 shrink-0 group-hover/item:scale-150 group-hover/item:bg-primary transition-all" />
+                <li key={i} className="flex items-start gap-4 text-sm md:text-base text-white/30 leading-snug font-medium group/item hover:text-white transition-colors italic">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/20 mt-2 shrink-0 group-hover/item:scale-150 group-hover/item:bg-primary transition-all" />
                   {item}
                 </li>
               ))}
@@ -242,51 +241,116 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
 };
 
 const Services = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Υπηρεσίες . Hustle Labs | Digital Growth & AI Automation Chania";
+    
+    // SEO Meta Tags
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Ολοκληρωμένες ψηφιακές υπηρεσίες στα Χανιά. Κατασκευή ιστοσελίδων, Ads, AI Αυτοματισμοί και Digital Growth στρατηγική για επιχειρήσεις που θέλουν να ξεχωρίσουν.");
+    }
+
+    // SEO: Structured Data (JSON-LD)
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Digital Agency Services",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Hustle Labs",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Γαλατάς, Χανιά",
+          "addressLocality": "Χανιά",
+          "addressRegion": "Κρήτη",
+          "postalCode": "73100",
+          "addressCountry": "GR"
+        }
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Κρήτη"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design & Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI & Automation"
+            }
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
-      <section className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5">
+      {/* ── SECTION 1: HERO ── */}
+      <section className="relative min-h-[90vh] flex items-center justify-center py-24 md:py-32 overflow-hidden border-b border-white/5 bg-black">
         <LabBackground />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.03),transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black to-transparent z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,_rgba(208,255,0,0.05),transparent_70%)] pointer-events-none" />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
           <div className="max-w-6xl mx-auto text-center">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20 mb-12"
+              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-12 shadow-inner"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">Growth Intelligence</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">Growth Intelligence</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-12 uppercase italic"
+              className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 uppercase italic"
             >
-              Digital Systems that <br />
-              <span className="text-primary tracking-normal italic animate-glow">actually grow your business.</span>
+              Digital Systems <br />
+              <span className="text-primary italic animate-glow md:tracking-normal">that actually grow.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-xl md:text-3xl font-medium text-white/50 max-w-4xl mx-auto mb-16 italic"
+              className="text-lg md:text-2xl font-medium text-white/50 max-w-3xl mx-auto mb-16 italic leading-relaxed"
             >
               Συνδυάζουμε website, marketing και AI σε ένα ενιαίο σύστημα που αφαιρεί manual δουλειά και φέρνει μετρήσιμα αποτελέσματα.
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-8">
-              <Button size="xl" className="rounded-full px-16 h-28 text-3xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Button size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
                 <Link to="/project-brief">
                   Ξεκίνημα Τώρα
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="rounded-full px-16 h-28 text-3xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+              <Button variant="outline" size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
                 <Link to="/book-call">Discovery Call</Link>
               </Button>
             </div>
@@ -294,21 +358,21 @@ const Services = () => {
         </div>
       </section>
 
-      {/* 2. DECISION HELPER */}
-      <section className="py-24 relative border-t border-white/5 bg-[#080808]">
+      {/* ── SECTION 2: DECISION HELPER ── */}
+      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#080808]">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div {...fadeUp()} className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-black italic uppercase mb-12 tracking-tight text-white">Από πού ξεκινάς;</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <motion.div {...fadeUp()} className="max-w-5xl mx-auto text-center mb-16">
+            <h2 className="font-display text-4xl md:text-5xl font-black italic uppercase mb-16 tracking-tight text-white leading-none">Από πού ξεκινάς;</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {[
                 { text: "Ξεκινάς από το website", service: "Next-Gen Websites", icon: Globe },
                 { text: "Θες περισσότερους πελάτες", service: "Ads & Growth", icon: TrendingUp },
                 { text: "Θες automation & scale", service: "AI & Automation", icon: Bot }
               ].map((path, i) => (
-                <div key={i} className="group p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-primary/5 hover:border-primary/20 transition-all cursor-pointer">
-                  <path.icon size={20} className="mb-4 text-primary/40 group-hover:text-primary transition-colors mx-auto" />
-                  <p className="text-xs font-black uppercase tracking-widest text-white/40 mb-2 group-hover:text-white transition-colors">{path.text}</p>
-                  <p className="text-sm font-black italic uppercase text-primary tracking-tighter">→ {path.service}</p>
+                <div key={i} className="group p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.02] hover:bg-primary/5 hover:border-primary/20 transition-all cursor-pointer shadow-lg hover:shadow-glow/10">
+                  <path.icon size={24} className="mb-6 text-primary/30 group-hover:text-primary transition-colors mx-auto" />
+                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-hover:text-white transition-colors italic leading-relaxed">{path.text}</p>
+                  <p className="text-sm font-black italic uppercase text-primary tracking-widest leading-relaxed">→ {path.service}</p>
                 </div>
               ))}
             </div>
@@ -316,118 +380,117 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Πώς δουλεύει το Hustle */}
-      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#050505]">
+      {/* ── SECTION 3: THE OPERATING SYSTEM ── */}
+      <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div {...fadeUp()}>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">O S - Operating System</span>
-              <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase">
+          <div className="max-w-5xl mx-auto text-center relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" 
+            />
+            
+            <motion.div {...fadeUp()} className="relative z-10">
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic animate-pulse">The Hustle O S</span>
+              <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-12 italic uppercase">
                 Πώς δουλεύει <br />
-                <span className="text-gradient">το Hustle.</span>
+                <span className="text-white/10 italic">το Σύστημα.</span>
               </h2>
-              <p className="text-xl md:text-3xl text-white/40 font-medium italic leading-relaxed max-w-3xl mx-auto mb-20 px-4">
+              <p className="text-xl md:text-3xl text-white/40 font-medium italic leading-relaxed max-w-4xl mx-auto mb-20 px-4">
                 Δεν βλέπουμε το website, το marketing και το AI σαν ξεχωριστά κομμάτια. <br className="hidden md:block" />
-                Τα χτίζουμε σαν ένα ενιαίο σύστημα που δουλεύει μαζί.
+                Τα χτίζουμε σαν ένα ενιαίο σύστημα που δουλεύει μαζί για το απόλυτο αποτέλεσμα.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Service blocks */}
-      <section className="py-32 md:py-48 relative overflow-hidden bg-[#050505]">
-        {/* Subtle background flourishes */}
+      {/* ── SECTION 4: SERVICE BLOCKS ── */}
+      <section className="py-24 md:py-48 relative overflow-hidden bg-[#050505]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,_rgba(208,255,0,0.02),_transparent_50%)] pointer-events-none" />
 
-        <div className="container mx-auto px-4 lg:px-8 space-y-12 max-w-6xl relative z-10">
-          <div className="space-y-16">
+        <div className="container mx-auto px-4 lg:px-8 space-y-16 max-w-6xl relative z-10">
+          <div className="space-y-16 md:space-y-32">
             {categories.map((cat, i) => (
               <ServiceBlock key={i} service={cat} index={i} />
             ))}
           </div>
 
-          {/* Connection Section */}
           <motion.div
             {...fadeUp(0.3)}
-            className="mt-32 pt-32 border-t border-white/5 text-center max-w-3xl mx-auto"
+            className="mt-32 pt-32 border-t border-white/5 text-center max-w-4xl mx-auto"
           >
-            <h3 className="font-display text-4xl md:text-5xl font-black italic uppercase mb-12 tracking-tighter text-white">Ξεχωριστά είναι εργαλεία. <br /> <span className="text-primary italic animate-glow">Μαζί είναι σύστημα.</span></h3>
-            <p className="text-xl font-black italic uppercase text-white/20 tracking-widest mb-20 italic">Αν λείπει ένα κομμάτι, το σύστημα δεν δουλεύει σωστά.</p>
-            <div className="space-y-8">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-16">
-                <div className="text-center group">
-                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-2 italic group-hover:text-primary transition-colors">Phase 01</p>
-                  <p className="text-xl font-black italic text-white/50 uppercase tracking-tighter group-hover:text-white transition-colors">Website<br /><span className="text-[11px] lowercase opacity-40 group-hover:opacity-100 transition-opacity">brings traffic</span></p>
+            <h3 className="font-display text-4xl md:text-7xl font-black italic uppercase mb-12 tracking-tighter text-white leading-none">Ξεχωριστά είναι εργαλεία. <br /> <span className="text-primary italic animate-glow">Μαζί είναι Σύστημα.</span></h3>
+            <p className="text-lg md:text-xl font-black italic uppercase text-white/20 tracking-[0.5em] mb-20">Aggressive Scaling via Integration.</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              {[
+                { label: "Phase 01", title: "Web Architecture", desc: "Build the Core" },
+                { label: "Phase 02", title: "Growth Engine", desc: "Drive the Traffic" },
+                { label: "Phase 03", title: "AI Deployment", desc: "Scale the Value" }
+              ].map((phase, i) => (
+                <div key={i} className="flex flex-col items-center">
+                   <span className="text-[10px] font-black text-primary uppercase tracking-widest mb-4 italic">{phase.label}</span>
+                   <h4 className="text-2xl font-black italic uppercase text-white mb-2 tracking-tight">{phase.title}</h4>
+                   <p className="text-xs font-medium text-white/30 uppercase tracking-[0.3em] font-sans italic">{phase.desc}</p>
                 </div>
-                <div className="w-12 h-px bg-white/10 hidden md:block" />
-                <div className="text-center group">
-                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-2 italic group-hover:text-primary transition-colors">Phase 02</p>
-                  <p className="text-xl font-black italic text-white/50 uppercase tracking-tighter group-hover:text-white transition-colors">Marketing<br /><span className="text-[11px] lowercase opacity-40 group-hover:opacity-100 transition-opacity">converts it</span></p>
-                </div>
-                <div className="w-12 h-px bg-white/10 hidden md:block" />
-                <div className="text-center group">
-                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-2 italic group-hover:text-primary transition-colors">Phase 03</p>
-                  <p className="text-xl font-black italic text-white/50 uppercase tracking-tighter group-hover:text-white transition-colors">AI Systems<br /><span className="text-[11px] lowercase opacity-40 group-hover:opacity-100 transition-opacity">scales it</span></p>
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-48 bg-[#050505] relative overflow-hidden border-t border-white/5">
+      {/* ── SECTION 5: FAQ ── */}
+      <section className="py-24 md:py-48 bg-[#050505] relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(208,255,0,0.03),_transparent_40%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <SectionHeading
-            label="Common Questions"
-            title="Συχνές Ερωτήσεις"
-            description="Όλα όσα θέλετε να μάθετε για τη συνεργασία μας."
-            variant="primary"
-            dark={true}
-          />
-          <div className="max-w-3xl mx-auto mt-24">
+          <div className="max-w-4xl mx-auto mb-24 md:mb-32">
+            <motion.div {...fadeInUp}>
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">Common Questions</span>
+              <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] italic uppercase text-white">
+                Συχνές <br />
+                <span className="text-white/10 italic">Ερωτήσεις.</span>
+              </h2>
+            </motion.div>
+          </div>
+          <div className="max-w-4xl mx-auto">
             <FAQAccordion items={faqs} dark={true} />
           </div>
         </div>
       </section>
 
-      {/* Final CTA - Cinematic / High Tech */}
-      <section className="py-44 relative overflow-hidden bg-[#050506]">
-        {/* Deep Tech visuals */}
-        <div className="absolute inset-0 opacity-[0.1] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, #c5da4e 0.5px, transparent 0.5px)", backgroundSize: "40px 40px" }} />
+      {/* ── SECTION 6: FINAL CTA ── */}
+      <section className="py-32 md:py-64 relative overflow-hidden bg-black border-t border-white/5">
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, #d0ff00 0.5px, transparent 0.5px)", backgroundSize: "40px 40px" }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[140px] opacity-40 pointer-events-none animate-pulse" />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
           <motion.div
             {...fadeUp()}
             className="max-w-5xl mx-auto text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-10 shadow-inner">
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/5 bg-white/[0.02] mb-12 shadow-inner">
               <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">Ready to Scale</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50 italic">Ready for Integration</span>
             </div>
 
-            <h2 className="font-display text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.9] italic uppercase">
+            <h2 className="font-display text-5xl md:text-9xl font-black text-white mb-12 tracking-tighter leading-[0.85] italic uppercase">
               Αν θέλεις αποτέλεσμα, <br />
-              <span className="text-primary italic animate-glow">πρέπει να χτίσεις σωστά.</span>
+              <span className="text-primary italic animate-glow">χτίσε σωστά.</span>
             </h2>
 
-            <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-xl mb-16 italic">Και όχι, δεν γίνεται με random κινήσεις.</p>
+            <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl mb-16 italic">Και όχι, δεν γίνεται με τυχαίες κινήσεις.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-8">
-              <Button variant="hero" size="lg" className="rounded-full px-16 h-20 text-xl font-bold group shadow-2xl shadow-primary/40" asChild>
+              <Button size="xl" className="rounded-full px-16 h-24 md:h-28 text-2xl md:text-3xl font-black group bg-white text-black hover:bg-primary transition-all border-none italic shadow-2xl hover:shadow-glow-strong" asChild>
                 <Link to="/project-brief" className="flex items-center gap-4">
-                  Start Your Brief <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+                  Start Your Brief <ArrowRight className="group-hover:translate-x-3 transition-transform" size={28} />
                 </Link>
               </Button>
             </div>
           </motion.div>
         </div>
-
-        {/* Decorative bottom line */}
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </section>
     </div>
   );

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { 
   ArrowRight, Bot, Zap, Workflow, Search, 
   Settings, CheckCircle2, Play, GraduationCap, Users,
-  Brain, Terminal, Cpu, Sparkles, BarChart3
+  Brain, Terminal, Cpu, Sparkles, BarChart3, MapPin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
@@ -320,6 +320,50 @@ const AILab = () => {
                   </div>
                 </div>
              </motion.div>
+           </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: AI & LOCAL INNOVATION ── */}
+      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#0a0a0b]">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div {...fadeInUp}>
+                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Innovation · Chania Hub</span>
+                 <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-10 leading-tight italic uppercase">
+                    Το Μέλλον των Χανίων <br /> είναι <span className="text-primary italic animate-pulse">Intelligent.</span>
+                 </h2>
+                 <p className="text-lg text-white/40 leading-relaxed max-w-xl italic mb-8">
+                    Στο AI Lab μας στα Χανιά, αναπτύσσουμε λύσεις που πριν λίγα χρόνια φάνταζαν επιστημονική φαντασία. Βοηθάμε τις τοπικές επιχειρήσεις να υιοθετήσουν το AI όχι ως trend, αλλά ως ένα πανίσχυρο εργαλείο κερδοφορίας.
+                 </p>
+                 <div className="space-y-6">
+                    {[
+                      { t: "Tourism AI", d: "Αυτόματη οργάνωση κρατήσεων και εξυπηρέτηση πελατών 24/7." },
+                      { t: "Business Logic", d: "Αυτοματοποίηση εσωτερικών διαδικασιών για μείωση κόστους." }
+                    ].map((item, idx) => (
+                      <div key={idx} className="group p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-primary/20 transition-all">
+                        <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-widest group-hover:text-primary transition-colors">{item.t}</h4>
+                        <p className="text-xs text-white/30 italic">{item.d}</p>
+                      </div>
+                    ))}
+                 </div>
+              </motion.div>
+
+              <motion.div {...fadeInUp} className="relative p-12 rounded-[3.5rem] glass-card overflow-hidden group border-primary/10">
+                 <div className="absolute -bottom-10 -right-10 opacity-10">
+                    <Brain className="text-primary w-48 h-48 group-hover:scale-110 transition-transform duration-1000" />
+                 </div>
+                 <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary mb-8 shadow-glow">
+                       <MapPin size={24} />
+                    </div>
+                    <h3 className="text-2xl font-black text-white italic uppercase mb-6">Στρατηγική Συνεργασία</h3>
+                    <p className="text-white/40 leading-relaxed mb-8 italic">
+                       Δεν είμαστε απλώς ένας προμηθευτής λογισμικού. Είμαστε ο συνεργάτης σας στα Χανιά που θα σας καθοδηγήσει στον περίπλοκο κόσμο του AI, διασφαλίζοντας ότι η επένδυσή σας θα φέρει πραγματικά αποτελέσματα.
+                    </p>
+                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">Based in Chania · Serving the World</div>
+                 </div>
+              </motion.div>
            </div>
         </div>
       </section>

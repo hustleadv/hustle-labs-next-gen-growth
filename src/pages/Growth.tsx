@@ -6,7 +6,7 @@ import {
     BarChart3, MousePointer2, Mail, Users,
     ArrowRight, CheckCircle2, Globe, Rocket,
     Settings, MessageSquare, PieChart, ShieldCheck, Sparkles,
-    ShoppingBag, Building2, Briefcase, Hotel, Play
+    ShoppingBag, Building2, Briefcase, Hotel, Play, MapPin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
@@ -384,6 +384,55 @@ const Growth = () => {
                     <SectionHeading label="FAQ" title="Συχνές ερωτήσεις" highlight="ερωτήσεις" />
                     <div className="max-w-3xl mx-auto mt-16">
                         <FAQAccordion items={faqs} />
+                    </div>
+                </div>
+            </section>
+
+            {/* ── SECTION: LOCAL STRATEGY & MARKET DOMINATION ── */}
+            <section className="py-24 md:py-32 relative border-t border-slate-100 bg-slate-50">
+                <div className="container mx-auto px-4 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <motion.div {...fadeUp()}>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Performance · Chania & Crete</span>
+                            <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 mb-10 leading-tight">
+                                Κυριαρχήστε στην αγορά <br /> της <span className="text-primary italic">Κρήτης.</span>
+                            </h2>
+                            <p className="text-lg text-slate-500 leading-relaxed max-w-xl italic mb-8">
+                                Η στρατηγική μας συνδυάζει τα δεδομένα με την τοπική γνώση. Ξέρουμε πώς να στοχεύσουμε τους σωστούς τουρίστες, τους σωστούς αγοραστές ακινήτων και τους σωστούς τοπικούς πελάτες για να μεγιστοποιήσουμε το ROI σας.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {[
+                                    { title: "Targeted Tourism", text: "Καμπάνιες για αύξηση κρατήσεων σε Villas & Hotels στα Χανιά." },
+                                    { title: "Local Visibility", text: "Στόχευση του τοπικού κοινού της Κρήτης για φυσικά καταστήματα." }
+                                ].map((item, idx) => (
+                                    <div key={idx} className="p-6 rounded-[2rem] bg-white border border-slate-100 shadow-sm">
+                                        <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">{item.title}</h4>
+                                        <p className="text-xs text-slate-400 font-medium leading-relaxed">{item.text}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        <motion.div {...fadeUp(0.2)} className="relative p-12 rounded-[3.5rem] bg-slate-900 overflow-hidden group">
+                            <div className="absolute top-0 right-0 p-8 opacity-20">
+                                <Globe className="text-primary w-40 h-40 animate-spin-slow" />
+                            </div>
+                            <div className="relative z-10">
+                                <h3 className="text-2xl font-black text-white italic uppercase mb-6">Global Scale, Local Heart</h3>
+                                <p className="text-white/50 leading-relaxed mb-8 italic">
+                                    Βοηθάμε τις επιχειρήσεις των Χανίων να "σπάσουν" τα σύνορα. Χρησιμοποιούμε advanced performance marketing για να φέρουμε πελάτες από όλο τον κόσμο στην πόρτα σας.
+                                </p>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/20 flex items-center justify-center text-primary">
+                                        <MapPin size={24} />
+                                    </div>
+                                    <div className="text-white">
+                                        <p className="text-xs font-black uppercase tracking-widest">Hustle Growth Hub</p>
+                                        <p className="text-[10px] text-white/30">Chania Headquarters</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

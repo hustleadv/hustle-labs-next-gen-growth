@@ -6,7 +6,7 @@ import {
   Paintbrush, Smartphone, Search, BarChart3, PenTool, CheckSquare,
   Layers, Target, Wrench, HelpCircle, CheckCircle2, ShieldCheck,
   Cpu, Layout, Sparkles, MousePointer2, ExternalLink, Server, Database,
-  Terminal, Component, Box, Cpu as CpuIcon, Container
+  Terminal, Component, Box, Cpu as CpuIcon, Container, MapPin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
@@ -595,6 +595,50 @@ const Websites = () => {
           <div className="max-w-4xl mx-auto text-left">
             <FAQAccordion items={faqs} dark />
           </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: CHANIA HUB & LOCAL IMPACT ── */}
+      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#050505]">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div {...fadeUp()}>
+                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Chania Expertise · Crete</span>
+                 <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-10 leading-tight">
+                    Χτίζουμε το Ψηφιακό Μέλλον <br /> των <span className="text-primary italic">Χανίων.</span>
+                 </h2>
+                 <p className="text-lg text-white/40 leading-relaxed max-w-xl italic mb-8">
+                    Η Hustle Labs εδρεύει στα Χανιά και κατανοεί τις ιδιαιτερότητες της τοπικής αγοράς. Δεν φτιάχνουμε απλώς ιστοσελίδες. Δημιουργούμε ψηφιακά εργαλεία που βοηθούν τις επιχειρήσεις της Κρήτης να ανταγωνιστούν σε παγκόσμιο επίπεδο.
+                 </p>
+                 <div className="space-y-4">
+                    {[
+                      "Tourism & Hospitality: Εξειδικευμένα Booking Engines για Villa Rentals στα Χανιά.",
+                      "Real Estate: Πλατφόρμες προβολής ακινήτων με έμφαση στο luxury market της Κρήτης.",
+                      "Local Commerce: E-shops που συνδέουν τα τοπικά προϊόντα με την παγκόσμια αγορά."
+                    ].map((bullet, idx) => (
+                      <div key={idx} className="flex items-start gap-4">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                        <p className="text-sm text-white/60 font-medium italic">{bullet}</p>
+                      </div>
+                    ))}
+                 </div>
+              </motion.div>
+
+              <motion.div {...fadeUp(0.2)} className="relative p-12 rounded-[3.5rem] bg-white/[0.02] border border-white/5 overflow-hidden group">
+                 <div className="absolute top-0 right-0 p-8">
+                    <MapPin className="text-primary/20 w-32 h-32 -rotate-12 group-hover:rotate-0 transition-transform duration-1000" />
+                 </div>
+                 <div className="relative z-10">
+                    <h3 className="text-2xl font-black text-white italic uppercase mb-6">Τοπική Υποστήριξη</h3>
+                    <p className="text-white/40 leading-relaxed mb-8 italic">
+                       Είμαστε δίπλα σας, από την πρώτη συνάντηση στο γραφείο μας στα Χανιά μέχρι το Go-Live και την καθημερινή υποστήριξη. Η επιτυχία της επιχείρησής σας στην Κρήτη είναι και δική μας επιτυχία.
+                    </p>
+                    <div className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs">
+                       <span>Based in Elefth. Skopefton 15, Chania</span>
+                    </div>
+                 </div>
+              </motion.div>
+           </div>
         </div>
       </section>
 

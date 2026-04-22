@@ -271,7 +271,7 @@ const Ecosystem = () => {
                  whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
                  whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 cursor-pointer"
+                 className="group aspect-[3/2] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 cursor-pointer"
                >
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 
@@ -286,7 +286,7 @@ const Ecosystem = () => {
                  whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
                  whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20 cursor-pointer"
+                 className="group aspect-[3/2] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20 cursor-pointer"
                >
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 

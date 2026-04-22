@@ -832,6 +832,15 @@ const Work = () => {
       return caseStudies.filter((cs) => cs.category === "growth" || cs.adminPanel);
     }
     
+    if (activeCategory === "ai") {
+      return caseStudies.filter((cs) => 
+        cs.category === "ai" || 
+        cs.aiAgent || 
+        cs.features.some(f => f.toLowerCase().includes("ai")) ||
+        (cs.techStack && cs.techStack.some(t => t.toLowerCase().includes("openai")))
+      );
+    }
+    
     return caseStudies.filter((cs) => cs.category === activeCategory);
   }, [activeCategory, caseStudies]);
 

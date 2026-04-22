@@ -269,18 +269,31 @@ const Ecosystem = () => {
                <motion.div 
                  initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
                  whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
-                 transition={{ duration: 1 }}
-                 className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10"
+                 whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
+                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 cursor-pointer"
                >
-                 <img src={WP_MEETUP_1} alt="Meetup Session" className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+                 <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                 <motion.img 
+                   src={WP_MEETUP_1} 
+                   alt="Meetup Session" 
+                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                 />
                </motion.div>
+
                <motion.div 
                  initial={{ opacity: 0, scale: 0.9, rotate: 3 }}
                  whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
-                 transition={{ duration: 1, delay: 0.2 }}
-                 className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20"
+                 whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
+                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
+                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20 cursor-pointer"
                >
-                 <img src={WP_MEETUP_2} alt="Community" className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+                 <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                 <motion.img 
+                   src={WP_MEETUP_2} 
+                   alt="Community" 
+                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                 />
                </motion.div>
             </div>
           </div>

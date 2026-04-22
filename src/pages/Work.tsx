@@ -971,7 +971,7 @@ const Work = () => {
       </section>
 
       {/* ── SECTION 2: SIGMALABS FLAGSHIP ── */}
-      <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden">
+      <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden">
         {/* Background glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(197,218,78,0.05),transparent_60%)] pointer-events-none" />
 
@@ -1066,7 +1066,7 @@ const Work = () => {
       </section>
 
       {/* ── SECTION 2.5: AI AGENTS REGISTRY ── */}
-      <section className="py-24 md:py-32 lg:py-48 relative border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
+      <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
         {/* Technical Grid Background */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
@@ -1156,7 +1156,7 @@ const Work = () => {
       </section>
 
       {/* ── SECTION 3: ARCHIVE GRID ── */}
-      <section id="archive" className="pt-24 md:pt-32 lg:pt-48 pb-16 relative border-t border-white/5 bg-[#050505] scroll-mt-20">
+      <section id="archive" className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] scroll-mt-20">
         <div className="container mx-auto px-4 lg:px-8">
 
           {/* ── Header row ── */}
@@ -1239,32 +1239,41 @@ const Work = () => {
         </div>
       </section>
 
+      {/* ── SECTION 4: REGIONAL HUB & SEO EXPERTISE ── */}
+      <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505]">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
+              <motion.div {...fadeUp()}>
+                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Region & Expertise · Crete</span>
+                 <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-10 leading-tight">
+                    Το Ψηφιακό Σημείο <br /> Αναφοράς στα <span className="text-primary italic">Χανιά.</span>
+                 </h2>
+                 <p className="text-white/40 text-lg md:text-xl leading-relaxed max-w-xl italic">
+                    Η Hustle Labs λειτουργεί ως ένας κόμβος καινοτομίας στην Κρήτη, συνδυάζοντας την παγκόσμια τεχνολογική υπεροχή με την τοπική αγορά των Χανίων. Από την κατασκευή ιστοσελίδων υψηλών προδιαγραφών μέχρι την υλοποίηση AI Agents, είμαστε ο στρατηγικός συνεργάτης για επιχειρήσεις που θέλουν να ξεχωρίσουν.
+                 </p>
+              </motion.div>
 
-      {/* ── TYPOGRAPHIC COMING SOON ── */}
-      <section className="pb-32 lg:pb-48 bg-[#050505] overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8 text-center grayscale opacity-10 hover:opacity-100 opacity-20 transition-all duration-1000">
-           <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-           >
-              <h2 className="font-display text-[12vw] lg:text-[8vw] leading-[0.8] font-bold tracking-tighter text-white inline-block relative">
-                 More projects
-                 <span className="block text-primary text-right text-[6vw] lg:text-[4vw] tracking-normal mt-2">COMING SOON.</span>
-              </h2>
-              <div className="mt-12 flex justify-center gap-10 opacity-20">
-                 {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-1 rounded-full bg-white" />)}
-              </div>
-           </motion.div>
+              <motion.div {...fadeUp(0.2)} className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-16">
+                 {[
+                   { title: "Web Design Chania", desc: "Κατασκευή ιστοσελίδων με έμφαση στο performance και το premium design (Next.js & React)." },
+                   { title: "AI Solutions Crete", desc: "Υλοποίηση AI Agents & Automations για τουριστικές επιχειρήσεις και startups." },
+                   { title: "Growth Systems", desc: "Custom CRM & διαχειριστικά συστήματα για πλήρη έλεγχο των κρατήσεων και της επιχείρησης." },
+                   { title: "SEO Strategy", desc: "Στρατηγική προώθηση και βελτιστοποίηση για την κατάκτηση της κορυφής στις τοπικές και διεθνείς αναζητήσεις." }
+                 ].map((item, i) => (
+                   <div key={i} className="group cursor-default">
+                      <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-[11px] md:text-xs text-white/30 leading-relaxed font-medium">{item.desc}</p>
+                   </div>
+                 ))}
+              </motion.div>
+           </div>
         </div>
       </section>
 
-      {/* ── SECTION 4: HUSTLE BACKED / VENTURES ── */}
-      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
+      {/* ── SECTION 5: HUSTLE BACKED / VENTURES ── */}
+      <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#080808] overflow-hidden" id="investments">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          {/* Label + Title — Editorial Layout */}
-          <motion.div {...fadeUp()} className="mb-16 md:mb-24">
-            {/* Top eyebrow */}
+          <motion.div {...fadeUp()} className="mb-20 md:mb-32">
             <div className="flex items-center gap-3 mb-10">
               <div className="w-8 h-px bg-primary" />
               <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-primary opacity-80">
@@ -1274,9 +1283,7 @@ const Work = () => {
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/20">Venture Studio</span>
             </div>
 
-            {/* Split headline */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16">
-              {/* Left: main headline */}
               <div className="flex-1">
                 <h2 className="font-display leading-[1]">
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white/15">
@@ -1288,19 +1295,17 @@ const Work = () => {
                 </h2>
               </div>
 
-              {/* Right: descriptor */}
               <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
-                <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
+                <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6 italic">
                   {t('portfolio.investments.subtitle')}
                 </p>
               </div>
             </div>
             
-            {/* Bottom divider */}
             <div className="mt-10 h-px bg-gradient-to-r from-primary/30 via-white/5 to-transparent" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16">
             <div className="md:col-span-12 lg:col-span-7">
               <PortfolioCard 
                 index={0}
@@ -1308,16 +1313,16 @@ const Work = () => {
                 category="Tourism Engine"
                 image="/images/skiathostravellers.png"
                 link="/portfolio/skiathos-travellers"
-                className="aspect-[4/5] md:aspect-video lg:aspect-[16/10]"
+                className="aspect-[4/5] md:aspect-video lg:aspect-[16/10] rounded-[2.5rem] md:rounded-[4rem]"
               />
             </div>
-            <div className="md:col-span-12 lg:col-span-5 md:mt-24">
+            <div className="md:col-span-12 lg:col-span-5 md:mt-32">
               <PortfolioCard 
                 index={1}
                 title="Next Venture"
                 category="In Development"
                 isSoon
-                className="aspect-[4/5] md:aspect-video lg:aspect-auto"
+                className="aspect-[4/5] md:aspect-[4/6] lg:aspect-auto rounded-[2.5rem] md:rounded-[4rem]"
               />
             </div>
           </div>
@@ -1325,21 +1330,37 @@ const Work = () => {
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2" />
       </section>
 
-      {/* ── SECTION 5: FINAL CTA ── */}
-      <section className="py-32 md:py-48 lg:py-64 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
+      {/* ── TYPOGRAPHIC COMING SOON ── */}
+      <section className="py-32 md:py-48 bg-[#050505] overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 text-center grayscale opacity-10 hover:opacity-100 transition-all duration-1000">
+           <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+           >
+              <h2 className="font-display text-[14vw] md:text-[10vw] lg:text-[8vw] leading-[0.8] font-bold tracking-tighter text-white inline-block relative">
+                 More projects
+                 <span className="block text-primary text-right text-[6vw] md:text-[4vw] tracking-normal mt-2">COMING SOON.</span>
+              </h2>
+           </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: FINAL CTA ── */}
+      <section className="py-32 md:py-64 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(208,255,0,0.06),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div {...fadeUp()}>
             <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-12 block">{t('portfolio.cta.badge')}</span>
-            <h2 className="font-display text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight leading-[1.05] mb-10">
-              {t('portfolio.cta.title1')} <br /><span className="text-white/20">{t('portfolio.cta.title2')}</span>
+            <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.95] mb-12 italic uppercase">
+              {t('portfolio.cta.title1')} <br /><span className="text-white/10">{t('portfolio.cta.title2')}</span>
             </h2>
-            <p className="text-primary font-semibold uppercase tracking-[0.2em] text-lg md:text-xl mb-16 md:mb-24">
+            <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl mb-16 md:mb-24 italic">
               {t('portfolio.cta.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-20 h-20 md:h-28 text-xl md:text-3xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+              <Button size="xl" className="w-full sm:w-auto rounded-full px-12 md:px-24 h-24 md:h-32 text-2xl md:text-4xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
                 <Link to="/project-brief">
                   {t('portfolio.cta.button')}
                 </Link>
@@ -1349,45 +1370,14 @@ const Work = () => {
         </div>
       </section>
 
-      {/* ── SECTION 5: REGIONAL HUB & SEO EXPERTISE ── */}
-      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#050505]">
-        <div className="container mx-auto px-4 lg:px-8">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-              <motion.div {...fadeUp()}>
-                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Region & Expertise · Crete</span>
-                 <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-10 leading-tight">
-                    Το Ψηφιακό Σημείο <br /> Αναφοράς στα <span className="text-primary italic">Χανιά.</span>
-                 </h2>
-                 <p className="text-white/40 text-lg leading-relaxed max-w-xl italic">
-                    Η Hustle Labs λειτουργεί ως ένας κόμβος καινοτομίας στην Κρήτη, συνδυάζοντας την παγκόσμια τεχνολογική υπεροχή με την τοπική αγορά των Χανίων. Από την κατασκευή ιστοσελίδων υψηλών προδιαγραφών μέχρι την υλοποίηση AI Agents, είμαστε ο στρατηγικός συνεργάτης για επιχειρήσεις που θέλουν να ξεχωρίσουν.
-                 </p>
-              </motion.div>
-
-              <motion.div {...fadeUp(0.2)} className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                 {[
-                   { title: "Web Design Chania", desc: "Κατασκευή ιστοσελίδων με έμφαση στο performance και το premium design (Next.js & React)." },
-                   { title: "AI Solutions Crete", desc: "Υλοποίηση AI Agents & Automations για τουριστικές επιχειρήσεις και startups." },
-                   { title: "Growth Systems", desc: "Custom CRM & διαχειριστικά συστήματα για πλήρη έλεγχο των κρατήσεων και της επιχείρησης." },
-                   { title: "SEO Strategy", desc: "Στρατηγική προώθηση και βελτιστοποίηση για την κατάκτηση της κορυφής στις τοπικές και διεθνείς αναζητήσεις." }
-                 ].map((item, i) => (
-                   <div key={i} className="group cursor-default">
-                      <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-3 group-hover:text-primary transition-colors">{item.title}</h4>
-                      <p className="text-[11px] text-white/30 leading-relaxed font-medium">{item.desc}</p>
-                   </div>
-                 ))}
-              </motion.div>
-           </div>
-
-           {/* Hidden but crawlable keywords tags */}
-           <div className="mt-32 pt-20 border-t border-white/[0.03] opacity-0 h-0 overflow-hidden select-none">
-              <p>
-                Keywords: Κατασκευή ιστοσελίδων Χανιά, Digital Agency Χανιά, Web Design Crete, 
-                AI Agency Greece, Luxury Web Design, Real Estate Websites Chania, 
-                Tourism Marketing Crete, SEO Agency Chania, Custom Software Development Chania.
-              </p>
-           </div>
-        </div>
-      </section>
+      {/* Hidden but crawlable keywords tags */}
+      <div className="mt-32 pt-20 opacity-0 h-0 overflow-hidden select-none">
+          <p>
+            Keywords: Κατασκευή ιστοσελίδων Χανιά, Digital Agency Χανιά, Web Design Crete, 
+            AI Agency Greece, Luxury Web Design, Real Estate Websites Chania, 
+            Tourism Marketing Crete, SEO Agency Chania, Custom Software Development Chania.
+          </p>
+      </div>
       
     </div>
   );

@@ -14,6 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import WP_MEETUP_1 from "@/assets/chaniawordpressmeetup.JPG";
+import WP_MEETUP_2 from "@/assets/meetup.jpg";
 
 /* ─── Data ─── */
 
@@ -97,47 +99,62 @@ const Meetups = () => {
 
       {/* ──── Intro strip ──── */}
       <section className="border-t border-border bg-card/20">
-        <div className="container mx-auto px-4 lg:px-8 py-12">
-          <motion.div
-            {...fade}
-            className="flex flex-col md:flex-row items-center gap-6 max-w-4xl mx-auto"
-          >
-            {/* WP icon */}
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-7 h-7 text-primary-soft"
-                aria-hidden="true"
-              >
-                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zM3.443 12c0-1.36.325-2.645.9-3.782l4.955 13.58A8.563 8.563 0 013.443 12zm8.557 8.557a8.519 8.519 0 01-3.024-.55l3.212-9.332 3.293 9.02a.807.807 0 00.061.12 8.52 8.52 0 01-3.542.742zm1.476-12.564c.645-.034 1.226-.1 1.226-.1.577-.068.51-.916-.068-.884 0 0-1.735.136-2.855.136-1.052 0-2.82-.136-2.82-.136-.578-.032-.645.85-.068.884 0 0 .546.066 1.122.1l1.667 4.566-2.342 7.023L6.382 12.1c.645-.034 1.226-.1 1.226-.1.577-.068.51-.916-.068-.884 0 0-1.735.136-2.855.136-.2 0-.437-.006-.687-.015A8.535 8.535 0 0112 3.443c2.242 0 4.286.862 5.813 2.27-.037-.002-.072-.008-.11-.008-1.052 0-1.798.916-1.798 1.9 0 .884.51 1.632 1.052 2.516.408.714.884 1.632.884 2.956 0 .918-.352 1.983-.816 3.468l-1.071 3.576-3.878-11.528zM17.07 19.32l3.26-9.424a8.088 8.088 0 00.645-3.18c0-.327-.02-.647-.06-.96A8.545 8.545 0 0120.557 12a8.556 8.556 0 01-3.487 7.32z" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-foreground/90 leading-relaxed">
-                Τα{" "}
-                <span className="font-semibold text-foreground">
-                  Chania WordPress Meetups
-                </span>{" "}
-                διοργανώνονται από την ομάδα του{" "}
-                <span className="font-semibold text-foreground">
-                  Hustle Labs
-                </span>{" "}
-                και φιλοξενούνται στο{" "}
-                <Link
-                  to="/hustle-space"
-                  className="text-primary-soft hover:underline underline-offset-2"
+        <div className="container mx-auto px-4 lg:px-8 py-12 md:py-20">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              {...fade}
+              className="flex flex-col md:flex-row items-center gap-12 mb-16"
+            >
+              <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 shadow-glow">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-10 h-10 text-primary-soft"
+                  aria-hidden="true"
                 >
-                  Hustle Space
-                </Link>
-                . Κάθε meetup είναι{" "}
-                <span className="font-medium text-foreground">
-                  δωρεάν & ανοιχτό
-                </span>{" "}
-                σε όλους, developers, designers, επιχειρηματίες, και περίεργους.
-              </p>
+                  <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zM3.443 12c0-1.36.325-2.645.9-3.782l4.955 13.58A8.563 8.563 0 013.443 12zm8.557 8.557a8.519 8.519 0 01-3.024-.55l3.212-9.332 3.293 9.02a.807.807 0 00.061.12 8.52 8.52 0 01-3.542.742zm1.476-12.564c.645-.034 1.226-.1 1.226-.1.577-.068.51-.916-.068-.884 0 0-1.735.136-2.855.136-1.052 0-2.82-.136-2.82-.136-.578-.032-.645.85-.068.884 0 0 .546.066 1.122.1l1.667 4.566-2.342 7.023L6.382 12.1c.645-.034 1.226-.1 1.226-.1.577-.068.51-.916-.068-.884 0 0-1.735.136-2.855.136-.2 0-.437-.006-.687-.015A8.535 8.535 0 0112 3.443c2.242 0 4.286.862 5.813 2.27-.037-.002-.072-.008-.11-.008-1.052 0-1.798.916-1.798 1.9 0 .884.51 1.632 1.052 2.516.408.714.884 1.632.884 2.956 0 .918-.352 1.983-.816 3.468l-1.071 3.576-3.878-11.528zM17.07 19.32l3.26-9.424a8.088 8.088 0 00.645-3.18c0-.327-.02-.647-.06-.96A8.545 8.545 0 0120.557 12a8.556 8.556 0 01-3.487 7.32z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="text-xl md:text-2xl text-foreground font-medium leading-relaxed italic">
+                  Τα{" "}
+                  <span className="font-black text-primary italic uppercase">
+                    Chania WordPress Meetups
+                  </span>{" "}
+                  διοργανώνονται από την ομάδα του{" "}
+                  <span className="font-black text-foreground italic uppercase">
+                    Hustle Labs
+                  </span>{" "}
+                  και φιλοξενούνται στο{" "}
+                  <Link
+                    to="/hustle-space"
+                    className="text-primary hover:underline underline-offset-4 decoration-primary/30"
+                  >
+                    Hustle Space
+                  </Link>
+                  . Κάθε meetup είναι μια ευκαιρία για γνώση, networking και ανταλλαγή ιδεών σε ένα περιβάλλον υψηλής αισθητικής.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Snapshots Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+               <motion.div 
+                 {...fade} 
+                 transition={{ delay: 0.1 }}
+                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/30 transition-all duration-700 shadow-2xl"
+               >
+                 <img src={WP_MEETUP_1} alt="Chania WordPress Meetup Session" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
+               </motion.div>
+               <motion.div 
+                 {...fade} 
+                 transition={{ delay: 0.2 }}
+                 className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/30 transition-all duration-700 shadow-2xl md:mt-12"
+               >
+                 <img src={WP_MEETUP_2} alt="Community Meetup at Hustle Space" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
+               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

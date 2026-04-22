@@ -31,7 +31,7 @@ export interface CaseStudy {
   slug: string;
   business: string;
   type: string;
-  category: "websites" | "growth" | "ai" | "strategy";
+  category: "websites" | "growth" | "ai" | "strategy" | "mobile";
   whatWeBuilt: string;
   outcome: string;
   metric: string;
@@ -365,7 +365,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "skinnera-ike",
     business: "Skinnera IKE",
     type: "Platform & Mobile App",
-    category: "websites",
+    category: "mobile",
     themeColor: "#c5da4e",
     image: "/images/skinera.png",
     projectUrl: "#",
@@ -812,6 +812,7 @@ export const caseStudies: CaseStudy[] = [
 const categories = [
   { id: "all", label: "Όλα τα Έργα", icon: Layers },
   { id: "websites", label: "Websites", icon: Monitor },
+  { id: "mobile", label: "Mobile Apps", icon: Smartphone },
   { id: "growth", label: "Custom Διαχειριστικά", icon: TrendingUp },
   { id: "ai", label: "AI & Automations", icon: Bot },
 ];
@@ -822,8 +823,11 @@ const Work = () => {
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return caseStudies;
+    if (activeCategory === "websites") {
+      return caseStudies.filter((cs) => cs.category === "websites" || (cs.projectUrl && cs.projectUrl !== "#"));
+    }
     return caseStudies.filter((cs) => cs.category === activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, caseStudies]);
 
   const featuredProjects = caseStudies.slice(0, 3); // Take top 3 for featured
 

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CommunityTrustStrip from "@/components/CommunityTrustStrip";
+import WP_MEETUP_1 from "@/assets/chaniawordpressmeetup.JPG";
 
 const Ecosystem = () => {
   const { t } = useLanguage();
@@ -214,9 +215,51 @@ const Ecosystem = () => {
         </div>
       </section>
 
-      {/* ── SECTION 3.5: COMMUNITY STRIP ── */}
-      <section className="bg-[#050505] border-y border-white/5">
-        <CommunityTrustStrip />
+      {/* ── SECTION 3.5: COMMUNITY HUB BANNER ── */}
+      <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden border-y border-white/5 bg-black">
+        {/* Background Image with sophisticated overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={WP_MEETUP_1} 
+            alt="Chania WordPress Meetup" 
+            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-70 transition-all duration-1000 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
+          <div className="max-w-4xl">
+            <motion.div {...fadeInUp}>
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <span className="px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary tracking-[0.3em] italic">
+                   Τοπικός Κόμβος
+                </span>
+                <span className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase text-white/50 tracking-[0.3em] italic">
+                   Στηρίζουμε έμπρακτα
+                </span>
+              </div>
+              
+              <h2 className="font-display text-4xl md:text-7xl font-black text-white italic uppercase mb-6 tracking-tighter leading-none">
+                Η Δύναμη της <br /> <span className="text-primary italic">Κοινοτητας.</span>
+              </h2>
+              
+              <p className="text-xl md:text-3xl font-black text-white/80 uppercase tracking-widest italic mb-10 decoration-primary/30 decoration-2 underline-offset-8 underline">
+                Chania WordPress Meetup
+              </p>
+              
+              <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed max-w-2xl italic">
+                Είμαστε περήφανοι διοργανωτές και ο επίσημος χώρος φιλοξενίας της κοινότητας WordPress στα Χανιά. Αναπτύσσουμε το τοπικό οικοσύστημα μαζί.
+              </p>
+
+              <div className="mt-12">
+                <Button variant="outline" className="rounded-full px-10 h-16 border-white/10 hover:bg-white hover:text-black transition-all italic uppercase font-black tracking-widest text-xs" asChild>
+                   <Link to="/meetups">Μάθε περισσότερα</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* ── SECTION 4: THE ROSTER ── */}

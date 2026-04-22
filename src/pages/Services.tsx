@@ -446,7 +446,7 @@ const Services = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(208,255,0,0.03),_transparent_40%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto mb-24 md:mb-32">
-            <motion.div {...fadeInUp}>
+            <motion.div {...fadeUp()}>
               <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">Common Questions</span>
               <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] italic uppercase text-white">
                 Συχνές <br />

@@ -127,37 +127,37 @@ const Ecosystem = () => {
       </section>
 
       {/* ── SECTION 2: THE CORE STRUCTURE ── */}
-      <section className="py-32 md:py-48 relative border-b border-white/5 bg-[#080808]">
+      <section className="py-24 md:py-48 relative border-b border-white/5 bg-[#080808]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fadeInUp} className="text-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-8 block">{t('ecosystem.structure.badge')}</span>
-              <h2 className="font-sans text-4xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-12">
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">{t('ecosystem.structure.badge')}</span>
+              <h2 className="font-display text-4xl md:text-7xl font-black tracking-tight leading-[0.9] mb-12 italic uppercase">
                 {t('ecosystem.structure.title1')} <br />
                 {t('ecosystem.structure.title2')} <br />
-                <span className="text-white/20">{t('ecosystem.structure.title3')}</span>
+                <span className="text-white/10 italic">{t('ecosystem.structure.title3')}</span>
               </h2>
-              <p className="text-xl text-white/60 font-medium mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl text-white/40 font-medium mb-16 md:mb-24 leading-relaxed max-w-3xl mx-auto italic">
                 {t('ecosystem.structure.text')}
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                <div className="flex gap-6 border-l border-primary/30 pl-8 transition-all hover:border-primary">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
-                    <Monitor size={24} />
+                <div className="flex gap-8 border-l border-white/10 pl-8 transition-all hover:border-primary group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent lg:shadow-glow">
+                    <Monitor size={28} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-lg font-bold mb-2 tracking-tight">{t('ecosystem.structure.agency.title')}</h4>
-                    <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.agency.desc')}</p>
+                    <h4 className="font-display text-xl font-black mb-3 tracking-tight italic uppercase">{t('ecosystem.structure.agency.title')}</h4>
+                    <p className="text-white/40 text-base leading-relaxed italic">{t('ecosystem.structure.agency.desc')}</p>
                   </div>
                 </div>
-                <div className="flex gap-6 border-l border-white/10 pl-8 transition-all hover:border-primary">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center shrink-0 text-white/40">
-                    <Rocket size={24} />
+                <div className="flex gap-8 border-l border-white/10 pl-8 transition-all hover:border-primary group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 text-white/20 group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent lg:shadow-glow">
+                    <Rocket size={28} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-lg font-bold mb-2 tracking-tight">{t('ecosystem.structure.studio.title')}</h4>
-                    <p className="text-white/40 text-sm leading-relaxed">{t('ecosystem.structure.studio.desc')}</p>
+                    <h4 className="font-display text-xl font-black mb-3 tracking-tight italic uppercase">{t('ecosystem.structure.studio.title')}</h4>
+                    <p className="text-white/40 text-base leading-relaxed italic">{t('ecosystem.structure.studio.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -167,12 +167,12 @@ const Ecosystem = () => {
       </section>
 
       {/* ── SECTION 3: THE ECOSYSTEM CARD GRID ── */}
-      <section className="py-32 md:py-48 relative bg-[#050505]">
+      <section className="py-24 md:py-48 relative bg-[#050505]">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-32 max-w-4xl mx-auto">
+          <div className="text-center mb-24 md:mb-32 max-w-4xl mx-auto">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-10 block tracking-[0.6em]">{t('ecosystem.universe.badge')}</span>
-              <h2 className="font-sans text-5xl md:text-8xl font-bold tracking-tight leading-none px-4">
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">{t('ecosystem.universe.badge')}</span>
+              <h2 className="font-display text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] px-4 italic uppercase">
                 {t('ecosystem.universe.title')}
               </h2>
             </motion.div>
@@ -256,22 +256,22 @@ const Ecosystem = () => {
                 Είμαστε περήφανοι διοργανωτές και ο επίσημος χώρος φιλοξενίας της κοινότητας WordPress στα Χανιά. Αναπτύσσουμε το τοπικό οικοσύστημα μαζί.
               </p>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-primary/30" />
-                <p className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-px bg-primary/40 shadow-glow" />
+                <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.5em] text-primary italic">
                   Μείνετε συντονισμένοι για τα επόμενα
                 </p>
               </div>
             </motion.div>
 
             {/* Visual Snapshots */}
-            <div className="relative">
+            <div className="relative mt-12 lg:mt-0 pb-16 md:pb-24">
                <motion.div 
                  initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
                  whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
                  whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-                 className="group aspect-[3/2] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 cursor-pointer"
+                 className="group aspect-[3/2] rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 cursor-pointer"
                >
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 
@@ -286,7 +286,7 @@ const Ecosystem = () => {
                  whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
                  whileHover={{ scale: 1.05, rotate: 0, zIndex: 30 }}
                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-                 className="group aspect-[3/2] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20 cursor-pointer"
+                 className="group aspect-[3/2] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-3xl absolute -bottom-8 md:-bottom-12 -right-4 md:-right-12 w-3/4 z-20 cursor-pointer"
                >
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 

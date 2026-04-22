@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -131,6 +131,51 @@ const processSteps = [
 
 const Websites = () => {
   const [hasSite, setHasSite] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    // SEO: Page Title
+    document.title = "Κατασκευή Ιστοσελίδων Χανιά | Web Design Chania - Hustle Labs";
+    
+    // SEO: Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Premium κατασκευή ιστοσελίδων στα Χανιά από την Hustle Labs. Χρησιμοποιούμε Next.js & React για αστραπιαία ταχύτητα, SEO και κορυφαία αισθητική. Δείτε τις υπηρεσίες μας.");
+
+    // SEO: Structured Data
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Web Design & Development",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Hustle Labs",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Χανιά",
+          "addressRegion": "Κρήτη",
+          "addressCountry": "GR"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Chania"
+      },
+      "description": "Custom high-performance web design and development services using modern tech stacks like Next.js and React."
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">

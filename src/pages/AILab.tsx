@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
@@ -12,6 +13,46 @@ import SectionHeading from "@/components/SectionHeading";
 import sigma22 from "@/assets/sigma22.jpg";
 
 const AILab = () => {
+  useEffect(() => {
+    // SEO: Page Title
+    document.title = "AI Agency & Automations Χανιά | Hustle Labs";
+    
+    // SEO: Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Κορυφαίο AI Agency στα Χανιά. Αναπτύσσουμε AI Agents, αυτοματισμούς workflows και custom AI λύσεις για να εκτοξεύσουμε την παραγωγικότητα της επιχείρησής σας.");
+
+    // SEO: Structured Data (JSON-LD)
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "AI & Automations Agency",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Hustle Labs",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Χανιά",
+          "addressRegion": "Κρήτη"
+        }
+      },
+      "description": "Specialized AI implementation and automation services based in Chania."
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },

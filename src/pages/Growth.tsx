@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -88,6 +89,45 @@ const faqs = [
 ];
 
 const Growth = () => {
+    useEffect(() => {
+        // SEO: Page Title
+        document.title = "Digital Marketing & Growth Strategy Χανιά | Hustle Labs";
+        
+        // SEO: Meta Description
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (!metaDesc) {
+            metaDesc = document.createElement('meta');
+            metaDesc.setAttribute('name', 'description');
+            document.head.appendChild(metaDesc);
+        }
+        metaDesc.setAttribute('content', "Στρατηγική ανάπτυξη και Digital Marketing στα Χανιά από την Hustle Labs. Data-driven καμπάνιες, performance marketing και scaling συστήματα για επιχειρήσεις.");
+
+        // SEO: Structured Data (JSON-LD)
+        const schemaData = {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Digital Marketing & Growth Strategy",
+            "provider": {
+                "@type": "LocalBusiness",
+                "name": "Hustle Labs",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Χανιά",
+                    "addressRegion": "Κρήτη"
+                }
+            },
+            "description": "High-performance digital marketing and business growth strategies in Chania."
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.innerHTML = JSON.stringify(schemaData);
+        document.head.appendChild(script);
+
+        return () => {
+            document.head.removeChild(script);
+        };
+    }, []);
     return (
         <div className="min-h-screen bg-background text-foreground">
             <PageHero

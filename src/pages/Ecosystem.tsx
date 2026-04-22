@@ -34,19 +34,45 @@ const Ecosystem = () => {
     metaDesc.setAttribute('content', "Ανακαλύψτε το οικοσύστημα της Hustle Labs στα Χανιά. Ένα δίκτυο από Agency, Venture Studio και Academy που χτίζει το ψηφιακό μέλλον της Κρήτης.");
 
     // SEO: Structured Data (JSON-LD)
-    const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Hustle Labs Ecosystem",
-      "url": "https://hustlelabs.gr/ecosystem",
-      "description": "A collaborative ecosystem of digital agencies, venture studios, and learning hubs based in Chania, Crete.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Χανιά",
-        "addressRegion": "Κρήτη",
-        "addressCountry": "GR"
+    const schemaData = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Hustle Labs Ecosystem",
+        "url": "https://hustlelabs.gr/ecosystem",
+        "description": "A collaborative ecosystem of digital agencies, venture studios, and learning hubs based in Chania, Crete.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Χανιά",
+          "addressRegion": "Κρήτη",
+          "addressCountry": "GR"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Chania WordPress Meetup",
+        "description": "Η μηνιαία συνάντηση της κοινότητας WordPress στα Χανιά, στον χώρο της Hustle Labs.",
+        "startDate": "2026-05-15T19:00",
+        "location": {
+          "@type": "Place",
+          "name": "Hustle Space Chania",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Χανιά, Κρήτη",
+            "addressLocality": "Χανιά",
+            "addressRegion": "Κρήτη",
+            "postalCode": "73132",
+            "addressCountry": "GR"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Hustle Labs",
+          "url": "https://hustlelabs.gr"
+        }
       }
-    };
+    ];
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -276,7 +302,7 @@ const Ecosystem = () => {
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 
                    src={WP_MEETUP_1} 
-                   alt="Meetup Session" 
+                   alt="Hustle Labs WordPress Meetup Chania Crete - Local Tech Community Event at Hustle Space" 
                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
                  />
                </motion.div>
@@ -291,7 +317,7 @@ const Ecosystem = () => {
                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                  <motion.img 
                    src={WP_MEETUP_2} 
-                   alt="Community" 
+                   alt="Hustle Labs Chania Digital Hub - Community Snapshot at Hustle Space Chania" 
                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
                  />
                </motion.div>
@@ -375,6 +401,58 @@ const Ecosystem = () => {
                {t('ecosystem.manifesto.text')}
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5.5: LOCAL FAQ & CONTEXT ── */}
+      <section className="py-24 md:py-48 bg-[#050505] relative border-t border-white/5">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <motion.div {...fadeInUp}>
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-8 block italic">Τοπικός Κόμβος</span>
+              <h2 className="font-display text-4xl md:text-6xl font-black tracking-tight leading-[0.9] mb-12 italic uppercase">
+                Συχνές Ερωτήσεις <br />
+                <span className="text-white/10 italic">για το Οικοσύστημα.</span>
+              </h2>
+              <p className="text-lg text-white/40 font-medium max-w-xl leading-relaxed italic mb-12">
+                 Λύνουμε τις απορίες σας για την παρουσία μας στα Χανιά και πώς μπορείτε να συμμετέχετε στην ψηφιακή εξέλιξη της Κρήτης.
+              </p>
+              
+              <div className="mt-12 space-y-6">
+                <Button variant="outline" className="rounded-full px-10 h-16 border-white/10 hover:bg-white hover:text-black transition-all italic uppercase font-black tracking-widest text-xs" asChild>
+                   <a href="https://goo.gl/maps/YOUR_MAPS_ID" target="_blank" rel="noopener noreferrer">Δες μας στο Χάρτη</a>
+                </Button>
+              </div>
+            </motion.div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  q: "Πού βρίσκονται τα γραφεία της Hustle Labs στα Χανιά;",
+                  a: "Η Hustle Labs εδρεύει στο Hustle Space, έναν πρότυπο ψηφιακό κόμβο στην καρδιά των Χανίων, επίσημη έδρα της δημιουργικότητας και της τεχνολογίας στην πόλη."
+                },
+                {
+                  q: "Πώς μπορώ να γίνω μέλος της κοινότητας WordPress στα Χανιά;",
+                  a: "Απλά εγγραφείτε στο Meetup.com ή επισκεφθείτε τη σελίδα Meetups του site μας. Οι συναντήσεις γίνονται μηνιαία στο Hustle Space και είναι ανοιχτές σε όλους."
+                },
+                {
+                  q: "Τι υπηρεσίες προσφέρει η Hustle Labs τοπικά στην Κρήτη;",
+                  a: "Ως το κορυφαίο Digital Agency στα Χανιά, προσφέρουμε κατασκευή ιστοσελίδων, AI εφαρμογές και στρατηγική Growth για τοπικές επιχειρήσεις που θέλουν να επεκταθούν παγκόσμια."
+                }
+              ].map((faq, i) => (
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                  className="border-b border-white/5 pb-10 group"
+                >
+                  <h3 className="font-display text-xl font-black mb-4 tracking-tight italic uppercase group-hover:text-primary transition-colors">{faq.q}</h3>
+                  <p className="text-white/40 text-base leading-relaxed italic">{faq.a}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

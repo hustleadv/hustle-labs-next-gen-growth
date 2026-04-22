@@ -536,13 +536,13 @@ const Websites = () => {
                 {...fadeUp(i * 0.15)}
                 className={i === 1 ? "md:pt-24" : i === 2 ? "md:pt-48" : ""}
               >
-                 <div className="group cursor-pointer">
+                 <Link to={`/portfolio/${cs.slug}`} className="group cursor-pointer block">
                     <div className="relative aspect-[16/11] overflow-hidden rounded-[4rem] border border-white/5 mb-10 group-hover:border-primary/20 transition-all duration-1000 shadow-3xl">
                        <img src={cs.image} alt={cs.title} className="w-full h-full object-cover grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" />
                     </div>
                     <h4 className="font-display text-2xl md:text-4xl font-black text-white italic uppercase mb-2 tracking-tighter">{cs.title}</h4>
                     <p className="text-primary text-[10px] font-black uppercase tracking-[0.4em] italic leading-tight">{cs.category}</p>
-                 </div>
+                 </Link>
               </motion.div>
             ))}
           </div>

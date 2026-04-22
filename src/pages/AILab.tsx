@@ -295,30 +295,32 @@ const AILab = () => {
              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic text-center">Featured Intelligence</span>
              <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-[0.85] text-center mb-16 md:mb-24">Real <br /> <span className="text-white/20">Results.</span></h2>
              
-             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="group cursor-pointer">
-                <div className="relative aspect-[16/8] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] border border-white/5 mb-8 md:mb-10 group-hover:border-primary/30 transition-all duration-1000 shadow-2xl">
-                  <img src={sigma22} alt="Sigmalabs AI" className="w-full h-full object-cover object-top opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
-                  <div className="absolute top-6 left-6 md:top-10 md:left-10">
-                    <span className="px-5 py-2 md:px-8 md:py-2.5 rounded-full bg-primary text-black text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] italic shadow-glow-strong animate-float">Hustle AI Built</span>
-                  </div>
-                </div>
-                <div className="px-4 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-                  <div>
-                    <h3 className="font-display text-3xl md:text-5xl font-black text-white italic uppercase mb-2 md:mb-3 tracking-tighter leading-none">Sigmalabs AI</h3>
-                    <p className="text-primary text-[10px] font-black uppercase tracking-[0.4em] italic">The first Vibe Commerce tool. Efficiency Overload.</p>
-                  </div>
-                  <div className="flex gap-8 border-l border-white/10 pl-8">
-                    <div>
-                      <p className="text-2xl font-black text-white">+120%</p>
-                      <p className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">efficiency</p>
-                    </div>
-                    <div>
-                      <p className="text-2xl font-black text-white">-60%</p>
-                      <p className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">manual work</p>
+             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
+                <Link to="/portfolio/sigmalabs-ai" className="group cursor-pointer block">
+                  <div className="relative aspect-[16/8] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] border border-white/5 mb-8 md:mb-10 group-hover:border-primary/30 transition-all duration-1000 shadow-2xl">
+                    <img src={sigma22} alt="Sigmalabs AI" className="w-full h-full object-cover object-top opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
+                    <div className="absolute top-6 left-6 md:top-10 md:left-10">
+                      <span className="px-5 py-2 md:px-8 md:py-2.5 rounded-full bg-primary text-black text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] italic shadow-glow-strong animate-float">Hustle AI Built</span>
                     </div>
                   </div>
-                </div>
+                  <div className="px-4 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                    <div>
+                      <h3 className="font-display text-3xl md:text-5xl font-black text-white italic uppercase mb-2 md:mb-3 tracking-tighter leading-none">Sigmalabs AI</h3>
+                      <p className="text-primary text-[10px] font-black uppercase tracking-[0.4em] italic">The first Vibe Commerce tool. Efficiency Overload.</p>
+                    </div>
+                    <div className="flex gap-8 border-l border-white/10 pl-8">
+                      <div>
+                        <p className="text-2xl font-black text-white">+120%</p>
+                        <p className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">efficiency</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-black text-white">-60%</p>
+                        <p className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">manual work</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
              </motion.div>
            </div>
         </div>

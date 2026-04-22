@@ -11,6 +11,68 @@ import PortfolioCard from "@/components/PortfolioCard";
 import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 
 const Index = () => {
+  useEffect(() => {
+    // SEO: Page Title
+    document.title = "Hustle Labs | Η Κορυφαία Digital Agency στα Χανιά";
+    
+    // SEO: Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Η Hustle Labs είναι η κορυφαία digital agency στα Χανιά. Εξειδικευόμαστε σε Web Design, AI Automations και Growth Strategy για επιχειρήσεις που θέλουν να ξεχωρίσουν.");
+
+    // SEO: Structured Data (JSON-LD) - LocalBusiness
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Hustle Labs",
+      "image": "https://hustlelabs.gr/logo.png", // Assume logo path
+      "url": "https://hustlelabs.gr",
+      "telephone": "+302821000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ελευθερίου Σκοπευτού 15",
+        "addressLocality": "Χανιά",
+        "addressRegion": "Κρήτη",
+        "postalCode": "73132",
+        "addressCountry": "GR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.5138,
+        "longitude": 24.0175
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/hustlelabs.gr",
+        "https://www.linkedin.com/company/hustle-labs"
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },

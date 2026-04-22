@@ -9,9 +9,9 @@ interface CaseStudyCardProps {
   description: string;
   image?: string;
   index?: number;
-  slug?: string;
   metric?: string;
   outcome?: string;
+  alt?: string;
 }
 
 const CaseStudyCard = ({ 
@@ -22,7 +22,8 @@ const CaseStudyCard = ({
   index = 0, 
   slug,
   metric,
-  outcome 
+  outcome,
+  alt
 }: CaseStudyCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -46,7 +47,7 @@ const CaseStudyCard = ({
         {!imgError && image ? (
           <img
             src={image}
-            alt={title}
+            alt={alt || title}
             onError={() => setImgError(true)}
             className="w-full h-full object-cover object-top grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
           />

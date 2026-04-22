@@ -59,6 +59,7 @@ export interface CaseStudy {
     name: string;
     role: string;
   };
+  alt?: string;
   techStack?: string[];
   timeline?: {
     duration: string;
@@ -82,6 +83,7 @@ export const caseStudies: CaseStudy[] = [
     category: "websites",
     themeColor: "#c5da4e",
     image: NKACONSTR,
+    alt: "Κατασκευή ιστοσελίδων Χανιά - NKA Constructions",
     projectUrl: "https://nkaconstructions.gr/",
     whatWeBuilt: "Premium ιστοσελίδα παρουσίασης κατασκευαστικής εταιρείας με έμφαση στο minimal design και την ανάδειξη των έργων.",
     outcome: "Ψηφιακή Παρουσία",
@@ -118,6 +120,7 @@ export const caseStudies: CaseStudy[] = [
     category: "growth",
     themeColor: "#c5da4e",
     image: "/images/harmony-apartments.jpg",
+    alt: "Custom Διαχειριστικό & Booking System - Harmony Apartments",
     projectUrl: "https://harmonyapartments-truehospitality.gr/",
     whatWeBuilt: "Ιστοσελίδα και custom διαχειριστικό κρατήσεων με αυτόματο συγχρονισμό κρατήσεων μεταξύ πλατφορμών (V1).",
     outcome: "Εξοικονόμηση Χρόνου Admin",
@@ -427,6 +430,7 @@ export const caseStudies: CaseStudy[] = [
     category: "ai",
     themeColor: "#c5da4e",
     image: "/images/rekrua-main.jpg",
+    alt: "AI HR Platform Development - Rekrua",
     projectUrl: "https://rekrua.com/",
     whatWeBuilt: "AI HR Platform with Candidate Rating System for smart Hiring",
     outcome: "Screening Time",
@@ -486,6 +490,7 @@ export const caseStudies: CaseStudy[] = [
     category: "ai",
     themeColor: "#1a6b5a",
     image: TOPTRAVEL_HOME,
+    alt: "Premium Web Design Χανιά & AI Agent - Top Travel Greece",
     projectUrl: "https://toptravelgreece.com/",
     whatWeBuilt: "Ανακατασκευή ιστοσελίδας, Custom Διαχειριστικό 10 ενοτήτων & Hermes AI Agent 24/7.",
     outcome: "Αυτόματη Εξυπηρέτηση Πελατών",
@@ -820,6 +825,54 @@ const categories = [
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const { t } = useLanguage();
+
+  useEffect(() => {
+    // SEO: Dynamic Page Title
+    document.title = "Portfolio | Hustle Labs - Web Design & AI Agency Chania";
+    
+    // SEO: Meta Description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', "Εξερευνήστε το Portfolio της Hustle Labs στα Χανιά. Εξειδικευμένη κατασκευή ιστοσελίδων, AI agents και custom συστήματα ανάπτυξης για επιχειρήσεις στην Κρήτη και το εξωτερικό.");
+
+    // SEO: Structured Data (JSON-LD)
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Hustle Labs",
+      "image": "https://hustlelabs.gr/images/logohustle.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ελευθ. Σκοπευτών 15",
+        "addressLocality": "Χανιά",
+        "addressRegion": "Κρήτη",
+        "postalCode": "73100",
+        "addressCountry": "GR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.498425,
+        "longitude": 23.987747
+      },
+      "url": "https://hustlelabs.gr",
+      "telephone": "+302821000000",
+      "priceRange": "$$",
+      "description": "Premium Digital Agency & AI Lab based in Chania. Specialist in Web Design, Growth Systems and Agentic AI."
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return caseStudies;
@@ -1166,6 +1219,7 @@ const Work = () => {
                     category={cs.type}
                     description={cs.whatWeBuilt}
                     image={cs.image}
+                    alt={cs.alt}
                     slug={cs.slug}
                     index={i}
                     metric={cs.metric}
@@ -1292,6 +1346,46 @@ const Work = () => {
               </Button>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: REGIONAL HUB & SEO EXPERTISE ── */}
+      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#050505]">
+        <div className="container mx-auto px-4 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+              <motion.div {...fadeUp()}>
+                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Region & Expertise · Crete</span>
+                 <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-10 leading-tight">
+                    Το Ψηφιακό Σημείο <br /> Αναφοράς στα <span className="text-primary italic">Χανιά.</span>
+                 </h2>
+                 <p className="text-white/40 text-lg leading-relaxed max-w-xl italic">
+                    Η Hustle Labs λειτουργεί ως ένας κόμβος καινοτομίας στην Κρήτη, συνδυάζοντας την παγκόσμια τεχνολογική υπεροχή με την τοπική αγορά των Χανίων. Από την κατασκευή ιστοσελίδων υψηλών προδιαγραφών μέχρι την υλοποίηση AI Agents, είμαστε ο στρατηγικός συνεργάτης για επιχειρήσεις που θέλουν να ξεχωρίσουν.
+                 </p>
+              </motion.div>
+
+              <motion.div {...fadeUp(0.2)} className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                 {[
+                   { title: "Web Design Chania", desc: "Κατασκευή ιστοσελίδων με έμφαση στο performance και το premium design (Next.js & React)." },
+                   { title: "AI Solutions Crete", desc: "Υλοποίηση AI Agents & Automations για τουριστικές επιχειρήσεις και startups." },
+                   { title: "Growth Systems", desc: "Custom CRM & διαχειριστικά συστήματα για πλήρη έλεγχο των κρατήσεων και της επιχείρησης." },
+                   { title: "SEO Strategy", desc: "Στρατηγική προώθηση και βελτιστοποίηση για την κατάκτηση της κορυφής στις τοπικές και διεθνείς αναζητήσεις." }
+                 ].map((item, i) => (
+                   <div key={i} className="group cursor-default">
+                      <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-3 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-[11px] text-white/30 leading-relaxed font-medium">{item.desc}</p>
+                   </div>
+                 ))}
+              </motion.div>
+           </div>
+
+           {/* Hidden but crawlable keywords tags */}
+           <div className="mt-32 pt-20 border-t border-white/[0.03] opacity-0 h-0 overflow-hidden select-none">
+              <p>
+                Keywords: Κατασκευή ιστοσελίδων Χανιά, Digital Agency Χανιά, Web Design Crete, 
+                AI Agency Greece, Luxury Web Design, Real Estate Websites Chania, 
+                Tourism Marketing Crete, SEO Agency Chania, Custom Software Development Chania.
+              </p>
+           </div>
         </div>
       </section>
       

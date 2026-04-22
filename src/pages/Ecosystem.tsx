@@ -13,6 +13,7 @@ import LabBackground from "@/components/LabBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 import WP_MEETUP_1 from "@/assets/chaniawordpressmeetup.JPG";
+import WP_MEETUP_2 from "@/assets/meetup.jpg";
 import ACADEMY_IMG from "@/assets/hustleacademynewph.jpg";
 import SPACE_IMG from "@/assets/hustlespacenew.jpg"; // Let's also import space for consistency
 
@@ -230,20 +231,9 @@ const Ecosystem = () => {
       </section>
 
       {/* ── SECTION 3.5: COMMUNITY HUB BANNER ── */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden border-y border-white/5 bg-black">
-        {/* Background Image with sophisticated overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={WP_MEETUP_1} 
-            alt="Chania WordPress Meetup" 
-            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-70 transition-all duration-1000 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
-        </div>
-
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden border-y border-white/5 bg-black py-24">
         <div className="container mx-auto px-4 lg:px-8 relative z-20">
-          <div className="max-w-4xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeInUp}>
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <span className="px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary tracking-[0.3em] italic">
@@ -262,16 +252,37 @@ const Ecosystem = () => {
                 Chania WordPress Meetup
               </p>
               
-              <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed max-w-2xl italic">
+              <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed max-w-2xl italic mb-12">
                 Είμαστε περήφανοι διοργανωτές και ο επίσημος χώρος φιλοξενίας της κοινότητας WordPress στα Χανιά. Αναπτύσσουμε το τοπικό οικοσύστημα μαζί.
               </p>
 
-              <div className="mt-12">
-                <Button variant="outline" className="rounded-full px-10 h-16 border-white/10 hover:bg-white hover:text-black transition-all italic uppercase font-black tracking-widest text-xs" asChild>
-                   <Link to="/meetups">Μάθε περισσότερα</Link>
-                </Button>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-px bg-primary/30" />
+                <p className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">
+                  Μείνετε συντονισμένοι για τα επόμενα
+                </p>
               </div>
             </motion.div>
+
+            {/* Visual Snapshots */}
+            <div className="relative">
+               <motion.div 
+                 initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                 whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
+                 transition={{ duration: 1 }}
+                 className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative z-10"
+               >
+                 <img src={WP_MEETUP_1} alt="Meetup Session" className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+               </motion.div>
+               <motion.div 
+                 initial={{ opacity: 0, scale: 0.9, rotate: 3 }}
+                 whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
+                 transition={{ duration: 1, delay: 0.2 }}
+                 className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl absolute -bottom-16 -right-8 md:-right-16 w-3/4 z-20"
+               >
+                 <img src={WP_MEETUP_2} alt="Community" className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+               </motion.div>
+            </div>
           </div>
         </div>
       </section>

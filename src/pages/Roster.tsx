@@ -34,7 +34,7 @@ const Roster = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">The Hustle Roster · {hustlers.length} Collaborators</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('roster.hero.badge')} · {hustlers.length} {t('roster.hero.collaborators')}</span>
             </motion.div>
 
             <motion.h1
@@ -43,8 +43,8 @@ const Roster = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-10 uppercase italic"
             >
-              Οι άνθρωποι <br />
-              <span className="text-primary">πίσω από τη δουλειά.</span>
+              {t('roster.hero.title1')} <br />
+              <span className="text-primary">{t('roster.hero.title2')}</span>
             </motion.h1>
 
             <motion.div
@@ -53,10 +53,10 @@ const Roster = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
             >
               <p className="text-xl md:text-2xl text-white/70 tracking-tight mb-4 max-w-3xl mx-auto leading-relaxed">
-                Επιλεγμένοι συνεργάτες που χτίζουν τα projects της Hustle.
+                {t('roster.hero.desc')}
               </p>
               <p className="text-xs md:text-sm uppercase tracking-[0.2em] font-bold text-white/30 max-w-2xl mx-auto">
-                Κάθε άτομο εδώ έχει δουλέψει, δουλεύει ή συνεργάζεται ενεργά στα project μας.
+                {t('roster.hero.subtitle')}
               </p>
             </motion.div>
 
@@ -106,7 +106,7 @@ const Roster = () => {
                       {h.verified && (
                         <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 shrink-0">
                           <BadgeCheck size={10} className="text-primary" />
-                          <span className="text-[9px] font-black text-primary uppercase tracking-widest">Verified</span>
+                          <span className="text-[9px] font-black text-primary uppercase tracking-widest">{t('roster.card.verified')}</span>
                         </div>
                       )}
                     </div>
@@ -134,15 +134,15 @@ const Roster = () => {
                 <div className="grid grid-cols-3 gap-3 mb-8 p-5 rounded-2xl bg-white/[0.02] border border-white/5 relative z-10">
                   <div className="text-center">
                     <p className="text-primary font-black text-sm italic mb-0.5">{h.experience.years}</p>
-                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">Εμπειρία</p>
+                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">{t('roster.card.exp')}</p>
                   </div>
                   <div className="text-center border-x border-white/5">
                     <p className="text-primary font-black text-sm italic mb-0.5">{h.experience.projects}</p>
-                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">Projects</p>
+                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">{t('roster.card.projects')}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-white/60 font-black text-[10px] italic mb-0.5 leading-tight">{h.experience.specialty}</p>
-                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">Focus</p>
+                    <p className="text-[9px] text-white/20 uppercase tracking-widest font-black italic">{t('roster.card.focus')}</p>
                   </div>
                 </div>
 
@@ -152,7 +152,7 @@ const Roster = () => {
                     to={`/roster/${h.slug}`}
                     className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-primary group-hover:gap-5 transition-all italic"
                   >
-                    Δες προφίλ <ArrowRight size={16} />
+                    {t('roster.card.view')} <ArrowRight size={16} />
                   </Link>
                 </div>
               </motion.div>
@@ -170,29 +170,29 @@ const Roster = () => {
               
               <div>
                 <motion.div {...fadeInUp} className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-8">
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">The Next Step</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('roster.join.badge')}</span>
                 </motion.div>
                 
                 <motion.h2 {...fadeInUp} transition={{ delay: 0.1 }} className="font-display text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8 uppercase italic">
-                  Είσαι ο <br />
-                  <span className="text-primary">επόμενος Hustler;</span>
+                  {t('roster.join.title1')} <br />
+                  <span className="text-primary">{t('roster.join.title2')}</span>
                 </motion.h2>
                 
                 <motion.p {...fadeInUp} transition={{ delay: 0.2 }} className="text-xl text-white/50 mb-12 max-w-md leading-relaxed">
-                  Εξειδικεύεσαι σε design, development ή marketing; Δούλεψε σε projects που καθορίζουν το μέλλον.
+                  {t('roster.join.desc')}
                 </motion.p>
                 
                   <Button variant="hero" size="lg" className="rounded-full px-12 h-16 text-lg group" asChild>
-                    <Link to="/join-hustler">Γίνε μέλος <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" /></Link>
+                    <Link to="/join-hustler">{t('roster.join.cta')} <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" /></Link>
                   </Button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { icon: Globe, label: "Remote First", desc: "Ελευθερία κινήσεων." },
-                  { icon: Rocket, label: "Future Built", desc: "Next-gen projects." },
-                  { icon: BadgeCheck, label: "Elite Network", desc: "Expert mentors." },
-                  { icon: Zap, label: "Velocity", desc: "Rapid execution." }
+                  { icon: Globe, label: t('roster.join.item1'), desc: t('roster.join.item1.desc') },
+                  { icon: Rocket, label: t('roster.join.item2'), desc: t('roster.join.item2.desc') },
+                  { icon: BadgeCheck, label: t('roster.join.item3'), desc: t('roster.join.item3.desc') },
+                  { icon: Zap, label: t('roster.join.item4'), desc: t('roster.join.item4.desc') }
                 ].map((item, i) => (
                   <motion.div
                     key={i}

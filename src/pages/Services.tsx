@@ -7,6 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion from "@/components/FAQAccordion";
 import LabBackground from "@/components/LabBackground";
 import { type LucideIcon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ServiceCategory {
   icon: LucideIcon;
@@ -36,161 +37,164 @@ interface ServiceCategory {
   };
 }
 
-const categories: ServiceCategory[] = [
-  {
-    icon: Globe,
-    title: "Next-Gen Websites",
-    outcome: "High-Performance Conversions",
-    intro: "Όχι templates, όχι builders. Κατασκευάζουμε ψηφιακές μηχανές σχεδιασμένες από το μηδέν, με focus στην ταχύτητα, το UX και την κερδοφορία.",
-    includes: [
-      "Custom UI/UX Σχεδιασμός",
-      "Mobile-First Responsive Build",
-      "SEO & Performance Optimization",
-      "Headless CMS Integration",
-      "Conversion Tracking Setup",
-    ],
-    bestFor: [
-      "Επιχειρήσεις που θέλουν premium παρουσία",
-      "Brands που απαιτούν το απόλυτο performance",
-    ],
-    timeline: "2-5 εβδομάδες",
-    color: "text-primary",
-    borderColor: "border-primary/20",
-    bgIcon: "bg-primary/10",
-    accentGradient: "from-primary/20 to-primary/5",
-    ctaLink: "/websites",
-    direction: "Ιδανικό για Corporate & E-commerce",
-    ctaLabel: "Εξερεύνηση",
-    badge: "The Standard",
-    testimonial: {
-      text: "Η ταχύτητα και το design του νέου μας site άλλαξε τελείως το πώς μας βλέπουν οι πελάτες μας.",
-      author: "Γιώργος Μ.",
-      role: "Founder, Chania-based Startup"
-    },
-    image: "/images/services/websites.png",
-    localFAQ: {
-      q: "Πόσο χρόνο παίρνει η κατασκευή ενός custom site στα Χανιά;",
-      a: "Συνήθως 2-5 εβδομάδες, ανάλογα με τις ανάγκες. Εστιάζουμε στην ποιότητα και το performance."
-    }
-  },
-  {
-    icon: TrendingUp,
-    title: "Ads & Growth Systems",
-    outcome: "Data-Driven Scaling",
-    intro: "Στρατηγικές καμπάνιες που φέρνουν αποτελέσματα, όχι απλά impressions. Στήνουμε ολοκληρωμένα συστήματα από το πρώτο click μέχρι την πώληση.",
-    includes: [
-      "Google & Meta Ads Management",
-      "High-Converting Landing Pages",
-      "Automated Sales Funnels",
-      "Advanced Pixel & Event Tracking",
-      "Fractional Growth Strategy",
-    ],
-    bestFor: [
-      "Businesses που θέλουν σταθερή ροή leads",
-      "E-shops που στοχεύουν σε scalability",
-    ],
-    timeline: "2-4 εβδομάδες setup",
-    color: "text-primary",
-    borderColor: "border-primary/20",
-    bgIcon: "bg-primary/10",
-    accentGradient: "from-primary/20 to-accent/20",
-    ctaLink: "/growth",
-    direction: "Ιδανικό για Aggressive Scaling",
-    ctaLabel: "Εξερεύνηση",
-    badge: "ROI Focused",
-    testimonial: {
-      text: "Είδαμε 3x αύξηση στα conversions μέσα στον πρώτο μήνα συνεργασίας.",
-      author: "Ελένη Π.",
-      role: "E-commerce Manager, Crete"
-    },
-    image: "/images/services/growth.png",
-    localFAQ: {
-      q: "Πώς εξασφαλίζετε το ROI στις καμπάνιες marketing;",
-      a: "Χρησιμοποιούμε advanced tracking και real-time data optimization για να ξέρουμε ακριβώς πού αποδίδει κάθε ευρώ."
-    }
-  },
-  {
-    icon: Bot,
-    title: "AI & Αυτοματισμοί",
-    outcome: "Operational Efficiency",
-    intro: "Χρησιμοποιούμε την τεχνητή νοημοσύνη για να κερδίσετε χρόνο. Από AI Agents μέχρι αυτόματα workflows, σας βοηθάμε να κάνετε scale έξυπνα.",
-    includes: [
-      "Custom AI Agents (Support & Sales)",
-      "Lead Management Automations",
-      "System Integration (APIs)",
-      "Internal Workflow Optimization",
-      "AI Strategy Consulting",
-    ],
-    bestFor: [
-      "Ομάδες που θέλουν να μειώσουν το manual work",
-      "Founders που θέλουν να αυτοματοποιήσουν το scale",
-    ],
-    timeline: "1-3 εβδομάδες",
-    color: "text-primary",
-    borderColor: "border-primary/20",
-    bgIcon: "bg-primary/10",
-    accentGradient: "from-primary/30 to-accent/10",
-    ctaLink: "/ai-lab",
-    direction: "Ιδανικό για Modern Operations",
-    ctaLabel: "Εξερεύνηση",
-    badge: "Future Proof",
-    testimonial: {
-      text: "Ο AI Agent μας έλυσε τα χέρια στο support, κερδίζοντας μας 20+ ώρες την εβδομάδα.",
-      author: "Νίκος Σ.",
-      role: "Ops Director"
-    },
-    image: "/images/services/ai.png",
-    localFAQ: {
-      q: "Είναι ασφαλής η χρήση AI για την επιχείρησή μου;",
-      a: "Απολύτως. Χρησιμοποιούμε enterprise-level LLMs και secure data handling για κάθε υλοποίηση."
-    }
-  },
-  {
-    icon: Lightbulb,
-    title: "Strategy & Content",
-    outcome: "Brand Dominance",
-    intro: "Πριν χτίσεις, χρειάζεσαι σχέδιο. Βοηθάμε brands να βρουν τη φωνή τους, να στοχεύσουν σωστά και να δημιουργήσουν content που αποδίδει.",
-    includes: [
-      "Brand Positioning & Messaging",
-      "Content Strategy Layout",
-      "SEO Keyword Intelligence",
-      "Video & Podcast Direction",
-      "Market Analysis Reports",
-    ],
-    bestFor: [
-      "Νέα brands που θέλουν σωστές βάσεις",
-      "Επιχειρήσεις που θέλουν refresh στην αγορά",
-    ],
-    timeline: "1-2 εβδομάδες",
-    color: "text-primary",
-    borderColor: "border-primary/20",
-    bgIcon: "bg-primary/10",
-    accentGradient: "from-primary/10 to-primary/30",
-    ctaLink: "/project-brief",
-    direction: "Ιδανικό για Visionary Founders",
-    ctaLabel: "Start Now",
-    testimonial: {
-      text: "Η στρατηγική που χαράξαμε μας έδωσε την ξεκάθαρη κατεύθυνση που μας έλειπε χρόνια.",
-      author: "Μαρία Κ.",
-      role: "CEO"
-    },
-    image: "/images/services/strategy.png",
-    localFAQ: {
-      q: "Γιατί χρειάζομαι στρατηγική πριν το design;",
-      a: "Γιατί το design χωρίς σκοπό είναι απλά 'ζωγραφική'. Η στρατηγική χτίζει τα θεμέλια για το ROI."
-    }
-  },
-];
 
-const faqs = [
-  { question: "Τι χρειάζομαι για να ξεκινήσω;", answer: "Το μόνο που χρειάζεσαι είναι να έχεις ξεκάθαρους επιχειρηματικούς στόχους. Εμείς αναλαμβάνουμε να σχεδιάσουμε τη στρατηγική και να υλοποιήσουμε όλο το τεχνικό κομμάτι." },
-  { question: "Με ποια υπηρεσία πρέπει να ξεκινήσω;", answer: "Εξαρτάται από το στάδιο της επιχείρησής σου. Αν δεν έχεις σωστό website, ξεκινάμε από εκεί. Αν έχεις αλλά δεν φέρνει πωλήσεις, ξεκινάμε από Ads & Marketing." },
-  { question: "Πόσο χρόνο παίρνει η υλοποίηση;", answer: "Ένα τυπικό σύστημα (Website + Marketing setup) χρειάζεται 4-6 εβδομάδες για να πάει live. Ωστόσο, μπορούμε να ξεκινήσουμε με επιμέρους phases για ταχύτερα αποτελέσματα." },
-  { question: "Μπορώ να ξεκινήσω μόνο με ένα κομμάτι;", answer: "Φυσικά. Μπορείς να ξεκινήσεις από εκεί που έχεις τη μεγαλύτερη ανάγκη (π.χ. ένα νέο website ή AI αυτοματισμούς) και να χτίσουμε το υπόλοιπο σύστημα σταδιακά." },
-  { question: "Πότε θα δω αποτέλεσμα;", answer: "Τα websites και οι αυτοματισμοί φέρνουν άμεση βελτίωση στην εμπειρία και το χρόνο σου. Το marketing (Ads) συνήθως χρειάζεται 2-4 εβδομάδες optimization για να πιάσει το μέγιστο ROI." },
-  { question: "Υπάρχει support μετά την παράδοση;", answer: "Ναι. Παρέχουμε maintenance, updates και ongoing optimization. Η συνεργασία μας δεν τελειώνει στην παράδοση, αλλά εκεί ξεκινάει η ανάπτυξη." },
-  { question: "Πώς ξεκινάω;", answer: "Πάτα 'Ξεκινήστε το Brief', συμπλήρωσε τη φόρμα ή κλείσε ένα Discovery Call για να αναλύσουμε τις ανάγκες σου." },
-];
+const getCategories = (t: any): ServiceCategory[] => [
+    {
+      icon: Globe,
+      title: t('nav.websites'),
+      outcome: t('services.websites.outcome'),
+      intro: t('services.websites.intro'),
+      includes: [
+        t('services.websites.includes.1'),
+        t('services.websites.includes.2'),
+        t('services.websites.includes.3'),
+        t('services.websites.includes.4'),
+        t('services.websites.includes.5'),
+      ],
+      bestFor: [
+        t('services.websites.bestFor.1'),
+        t('services.websites.bestFor.2'),
+      ],
+      timeline: t('services.websites.timeline'),
+      color: "text-primary",
+      borderColor: "border-primary/20",
+      bgIcon: "bg-primary/10",
+      accentGradient: "from-primary/20 to-primary/5",
+      ctaLink: "/websites",
+      direction: t('services.websites.direction'),
+      ctaLabel: t('portfolio.categories.all'),
+      badge: "The Standard",
+      testimonial: {
+        text: t('services.websites.testimonial'),
+        author: t('services.websites.author'),
+        role: t('services.websites.role')
+      },
+      image: "/images/services/websites.png",
+      localFAQ: {
+        q: t('services.websites.faq.q'),
+        a: t('services.websites.faq.a')
+      }
+    },
+    {
+      icon: TrendingUp,
+      title: t('nav.growth'),
+      outcome: t('services.growth.outcome'),
+      intro: t('services.growth.intro'),
+      includes: [
+        t('services.growth.includes.1'),
+        t('services.growth.includes.2'),
+        t('services.growth.includes.3'),
+        t('services.growth.includes.4'),
+        t('services.growth.includes.5'),
+      ],
+      bestFor: [
+        t('services.growth.bestFor.1'),
+        t('services.growth.bestFor.2'),
+      ],
+      timeline: t('services.growth.timeline'),
+      color: "text-primary",
+      borderColor: "border-primary/20",
+      bgIcon: "bg-primary/10",
+      accentGradient: "from-primary/20 to-accent/20",
+      ctaLink: "/growth",
+      direction: t('services.growth.direction'),
+      ctaLabel: t('portfolio.categories.all'),
+      badge: "ROI Focused",
+      testimonial: {
+        text: t('services.growth.testimonial'),
+        author: t('services.growth.author'),
+        role: t('services.growth.role')
+      },
+      image: "/images/services/growth.png",
+      localFAQ: {
+        q: t('services.growth.faq.q'),
+        a: t('services.growth.faq.a')
+      }
+    },
+    {
+      icon: Bot,
+      title: t('nav.ai_lab'),
+      outcome: t('services.ai.outcome'),
+      intro: t('services.ai.intro'),
+      includes: [
+        t('services.ai.includes.1'),
+        t('services.ai.includes.2'),
+        t('services.ai.includes.3'),
+        t('services.ai.includes.4'),
+        t('services.ai.includes.5'),
+      ],
+      bestFor: [
+        t('services.ai.bestFor.1'),
+        t('services.ai.bestFor.2'),
+      ],
+      timeline: t('services.ai.timeline'),
+      color: "text-primary",
+      borderColor: "border-primary/20",
+      bgIcon: "bg-primary/10",
+      accentGradient: "from-primary/30 to-accent/10",
+      ctaLink: "/ai-lab",
+      direction: t('services.ai.direction'),
+      ctaLabel: t('portfolio.categories.all'),
+      badge: "Future Proof",
+      testimonial: {
+        text: t('services.ai.testimonial'),
+        author: t('services.ai.author'),
+        role: t('services.ai.role')
+      },
+      image: "/images/services/ai.png",
+      localFAQ: {
+        q: t('services.ai.faq.q'),
+        a: t('services.ai.faq.a')
+      }
+    },
+    {
+      icon: Lightbulb,
+      title: t('nav.strategy'),
+      outcome: t('services.strategy.outcome'),
+      intro: t('services.strategy.intro'),
+      includes: [
+        t('services.strategy.includes.1'),
+        t('services.strategy.includes.2'),
+        t('services.strategy.includes.3'),
+        t('services.strategy.includes.4'),
+        t('services.strategy.includes.5'),
+      ],
+      bestFor: [
+        t('services.strategy.bestFor.1'),
+        t('services.strategy.bestFor.2'),
+      ],
+      timeline: t('services.strategy.timeline'),
+      color: "text-primary",
+      borderColor: "border-primary/20",
+      bgIcon: "bg-primary/10",
+      accentGradient: "from-primary/10 to-primary/30",
+      ctaLink: "/project-brief",
+      direction: t('services.strategy.direction'),
+      ctaLabel: t('portfolio.categories.all'),
+      badge: "Strategic Core",
+      testimonial: {
+        text: t('services.strategy.testimonial'),
+        author: t('services.strategy.author'),
+        role: t('services.strategy.role')
+      },
+      image: "/images/services/strategy.png",
+      localFAQ: {
+        q: t('services.strategy.faq.q'),
+        a: t('services.strategy.faq.a')
+      }
+    }
+  ];
+
+const getFaqs = (t: any) => [
+    { question: t('services.faq.q1'), answer: t('services.faq.a1') },
+    { question: t('services.faq.q2'), answer: t('services.faq.a2') },
+    { question: t('services.faq.q3'), answer: t('services.faq.a3') },
+    { question: t('services.faq.q4'), answer: t('services.faq.a4') },
+    { question: t('services.faq.q5'), answer: t('services.faq.a5') },
+    { question: t('services.faq.q6'), answer: t('services.faq.a6') },
+    { question: t('services.faq.q7'), answer: t('services.faq.a7') },
+  ];
+
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -200,6 +204,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: number }) => {
+  const { t } = useLanguage();
   const Icon = service.icon;
 
   return (
@@ -250,7 +255,7 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
 
             <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 md:h-24 text-xl font-black uppercase tracking-widest bg-white text-black hover:bg-primary transition-all border-none italic shadow-xl hover:shadow-glow" asChild>
               <Link to={service.ctaLink}>
-                {service.ctaLabel || "Εξερεύνηση"} <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={20} />
+                {service.ctaLabel || t('services.cta.explore')} <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={20} />
               </Link>
             </Button>
           </div>
@@ -270,7 +275,7 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
 
           <div className="flex flex-col">
             <h4 className="font-display text-[11px] font-black text-primary uppercase tracking-[0.5em] mb-10 flex items-center gap-3 italic">
-              <Layers size={16} className="opacity-40" /> Τι περιλαμβάνει
+              <Layers size={16} className="opacity-40" /> {t('services.includes.title')}
             </h4>
             <ul className="space-y-6">
               {service.includes.map((item, i) => (
@@ -284,7 +289,7 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
 
           <div className="flex flex-col">
             <h4 className="font-display text-[11px] font-black text-primary uppercase tracking-[0.5em] mb-10 flex items-center gap-3 italic">
-              <Users size={16} className="opacity-40" /> Ιδανικό για
+              <Users size={16} className="opacity-40" /> {t('services.bestFor.title')}
             </h4>
             <ul className="space-y-6">
               {service.bestFor.map((item, i) => (
@@ -298,7 +303,7 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
             {/* SEO Service-specific FAQ */}
             {service.localFAQ && (
               <div className="mt-12 pt-8 border-t border-white/5">
-                <h5 className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-4 italic">Quick Insight</h5>
+                <h5 className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-4 italic">{t('services.faq.quick_insight')}</h5>
                 <p className="text-sm font-black text-white italic mb-2 group-hover:text-primary transition-colors">{service.localFAQ.q}</p>
                 <p className="text-xs text-white/20 italic leading-relaxed">{service.localFAQ.a}</p>
               </div>
@@ -326,14 +331,18 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
 };
 
 const Services = () => {
+  const { t } = useLanguage();
+  const categories = getCategories(t);
+  const faqs = getFaqs(t);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Υπηρεσίες . Hustle Labs | Digital Growth & AI Automation Chania";
+    document.title = t('services.seo.title');
     
     // SEO Meta Tags
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', "Ολοκληρωμένες ψηφιακές υπηρεσίες στα Χανιά. Κατασκευή ιστοσελίδων, Ads, AI Αυτοματισμοί και Digital Growth στρατηγική για επιχειρήσεις που θέλουν να ξεχωρίσουν.");
+      metaDesc.setAttribute('content', t('services.seo.desc'));
     }
 
     // SEO: Structured Data (JSON-LD)
@@ -407,7 +416,7 @@ const Services = () => {
               className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-12 shadow-inner"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">Growth Intelligence</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">{t('services.hero.badge')}</span>
             </motion.div>
 
             <motion.h1
@@ -416,8 +425,8 @@ const Services = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 uppercase italic"
             >
-              Digital Systems <br />
-              <span className="text-primary italic animate-glow md:tracking-normal">that actually grow.</span>
+              {t('services.hero.title_part1')} <br />
+              <span className="text-primary italic animate-glow md:tracking-normal">{t('services.hero.title_part2')}</span>
             </motion.h1>
 
             <motion.p
@@ -426,17 +435,17 @@ const Services = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
               className="text-lg md:text-2xl font-medium text-white/50 max-w-3xl mx-auto mb-16 italic leading-relaxed"
             >
-              Συνδυάζουμε website, marketing και AI σε ένα ενιαίο σύστημα που αφαιρεί manual δουλειά και φέρνει μετρήσιμα αποτελέσματα.
+              {t('services.hero.subtitle')}
             </motion.p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
                 <Link to="/project-brief">
-                  Ξεκίνημα Τώρα
+                  {t('services.hero.cta1')}
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
-                <Link to="/book-call">Discovery Call</Link>
+                <Link to="/book-call">{t('services.hero.cta2')}</Link>
               </Button>
             </div>
           </div>

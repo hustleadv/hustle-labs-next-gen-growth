@@ -22,7 +22,7 @@ const Ecosystem = () => {
 
   useEffect(() => {
     // SEO: Page Title
-    document.title = "The Hustle Ecosystem | Digital Hub Χανιά - Hustle Labs";
+    document.title = t('ecosystem.seo.title') || "The Hustle Ecosystem | Digital Hub Χανιά - Hustle Labs";
     
     // SEO: Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -31,7 +31,7 @@ const Ecosystem = () => {
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', "Ανακαλύψτε το οικοσύστημα της Hustle Labs στα Χανιά. Ένα δίκτυο από Agency, Venture Studio και Academy που χτίζει το ψηφιακό μέλλον της Κρήτης.");
+    metaDesc.setAttribute('content', t('ecosystem.seo.desc') || "Ανακαλύψτε το οικοσύστημα της Hustle Labs στα Χανιά. Ένα δίκτυο από Agency, Venture Studio και Academy που χτίζει το ψηφιακό μέλλον της Κρήτης.");
 
     // SEO: Structured Data (JSON-LD)
     const schemaData = [
@@ -52,7 +52,7 @@ const Ecosystem = () => {
         "@context": "https://schema.org",
         "@type": "Event",
         "name": "Chania WordPress Meetup",
-        "description": "Η μηνιαία συνάντηση της κοινότητας WordPress στα Χανιά, στον χώρο της Hustle Labs.",
+        "description": t('ecosystem.community.desc'),
         "startDate": "2026-05-15T19:00",
         "location": {
           "@type": "Place",
@@ -263,29 +263,29 @@ const Ecosystem = () => {
             <motion.div {...fadeInUp}>
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <span className="px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase text-primary tracking-[0.3em] italic">
-                   Τοπικός Κόμβος
+                   {t('ecosystem.community.badge1')}
                 </span>
                 <span className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase text-white/50 tracking-[0.3em] italic">
-                   Στηρίζουμε έμπρακτα
+                   {t('ecosystem.community.badge2')}
                 </span>
               </div>
               
               <h2 className="font-display text-4xl md:text-7xl font-black text-white italic uppercase mb-6 tracking-tighter leading-none">
-                Η Δύναμη της <br /> <span className="text-primary italic">Κοινοτητας.</span>
+                {t('ecosystem.community.title1')} <br /> <span className="text-primary italic">{t('ecosystem.community.title2')}</span>
               </h2>
               
               <p className="text-xl md:text-3xl font-black text-white/80 uppercase tracking-widest italic mb-10 decoration-primary/30 decoration-2 underline-offset-8 underline">
-                Chania WordPress Meetup
+                {t('ecosystem.community.subtitle')}
               </p>
               
               <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed max-w-2xl italic mb-12">
-                Είμαστε περήφανοι διοργανωτές και ο επίσημος χώρος φιλοξενίας της κοινότητας WordPress στα Χανιά. Αναπτύσσουμε το τοπικό οικοσύστημα μαζί.
+                {t('ecosystem.community.desc')}
               </p>
 
               <div className="flex items-center gap-6">
                 <div className="w-16 h-px bg-primary/40 shadow-glow" />
                 <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.5em] text-primary italic">
-                  Μείνετε συντονισμένοι για τα επόμενα
+                  {t('ecosystem.community.footer')}
                 </p>
               </div>
             </motion.div>
@@ -377,7 +377,7 @@ const Ecosystem = () => {
           <div className="mt-24 text-center flex flex-col items-center justify-center gap-4">
              <div className="w-16 h-px bg-white/10" />
              <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 italic">
-               +47 ΑΚΟΜΑ BRANDS / ΠΕΛΑΤΕΣ
+               {t('ecosystem.network.more_brands')}
              </p>
           </div>
         </div>
@@ -410,18 +410,18 @@ const Ecosystem = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
             <motion.div {...fadeInUp}>
-              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-8 block italic">Τοπικός Κόμβος</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-8 block italic">{t('ecosystem.faq.badge')}</span>
               <h2 className="font-display text-4xl md:text-6xl font-black tracking-tight leading-[0.9] mb-12 italic uppercase">
-                Συχνές Ερωτήσεις <br />
-                <span className="text-white/10 italic">για το Οικοσύστημα.</span>
+                {t('ecosystem.faq.title')} <br />
+                <span className="text-white/10 italic">{t('ecosystem.faq.title_span')}</span>
               </h2>
               <p className="text-lg text-white/40 font-medium max-w-xl leading-relaxed italic mb-12">
-                 Λύνουμε τις απορίες σας για την παρουσία μας στα Χανιά και πώς μπορείτε να συμμετέχετε στην ψηφιακή εξέλιξη της Κρήτης.
+                 {t('ecosystem.faq.desc')}
               </p>
               
               <div className="mt-12 space-y-6">
                 <Button variant="outline" className="rounded-full px-10 h-16 border-white/10 hover:bg-white hover:text-black transition-all italic uppercase font-black tracking-widest text-xs" asChild>
-                   <a href="https://goo.gl/maps/YOUR_MAPS_ID" target="_blank" rel="noopener noreferrer">Δες μας στο Χάρτη</a>
+                   <a href="https://goo.gl/maps/YOUR_MAPS_ID" target="_blank" rel="noopener noreferrer">{t('ecosystem.faq.map_button')}</a>
                 </Button>
               </div>
             </motion.div>
@@ -429,16 +429,16 @@ const Ecosystem = () => {
             <div className="space-y-12">
               {[
                 {
-                  q: "Πού βρίσκονται τα γραφεία της Hustle Labs στα Χανιά;",
-                  a: "Η Hustle Labs εδρεύει στον Γαλατά Χανίων, σε έναν πρότυπο ψηφιακό κόμβο που αποτελεί την έδρα της δημιουργικότητας και της τεχνολογίας στην περιοχή."
+                  q: t('ecosystem.faq.q1'),
+                  a: t('ecosystem.faq.a1')
                 },
                 {
-                  q: "Πώς μπορώ να γίνω μέλος της κοινότητας WordPress στα Χανιά;",
-                  a: "Μπορείτε να επικοινωνήσετε μαζί μας απευθείας μέσω email για να δηλώσετε το ενδιαφέρον σας. Επίσης, μπορείτε να παρακολουθείτε τα social media της Hustle Labs για τις ανακοινώσεις των επόμενων συναντήσεων."
+                  q: t('ecosystem.faq.q2'),
+                  a: t('ecosystem.faq.a2')
                 },
                 {
-                  q: "Τι υπηρεσίες προσφέρει η Hustle Labs τοπικά στην Κρήτη;",
-                  a: "Ως το κορυφαίο Digital Agency στα Χανιά σε αυτοματισμούς και custom υλοποιήσεις, προσφέρουμε κατασκευή ιστοσελίδων, AI εφαρμογές και στρατηγική Growth για τοπικές επιχειρήσεις που θέλουν να επεκταθούν παγκόσμια."
+                  q: t('ecosystem.faq.q3'),
+                  a: t('ecosystem.faq.a3')
                 }
               ].map((faq, i) => (
                 <motion.div 

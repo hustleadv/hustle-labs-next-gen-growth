@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
@@ -10,92 +10,90 @@ import { Button } from "@/components/ui/button";
 import FAQAccordion from "@/components/FAQAccordion";
 import LabBackground from "@/components/LabBackground";
 import Magnetic from "@/components/Magnetic";
+import { useLanguage } from "@/contexts/LanguageContext";
 import hustleSpaceImg from "@/assets/hustlespacenew.jpg";
 import spaceWorkshop from "@/assets/space-workshop.jpg";
 import spaceEvents from "@/assets/space-events.jpg";
 
-/* ── Data ── */
-
-const passes = [
-  {
-    title: "Day Access",
-    price: "25€",
-    period: "day",
-    desc: "Μονοήμερη πρόσβαση σε όλες τις υποδομές. Ιδανικό για founders και creators που χρειάζονται τον απόλυτο χώρο για focus.",
-    bullets: [
-      "Πρόσβαση 09:00 – 19:00",
-      "Fiber Internet & Stationery",
-      "Premium Coffee & Lab Snacks",
-      "Εργονομικό Workspace",
-    ],
-  },
-  {
-    title: "Weekly Sprint",
-    price: "85€",
-    period: "week",
-    desc: "Μια ολόκληρη εβδομάδα focus. Η τέλεια επιλογή για να κλείσεις απαιτητικά projects ή στρατηγικά sprints.",
-    bullets: [
-      "Πρόσβαση για 5 συνεχόμενες ημέρες",
-      "Dedicated High-Speed Setup",
-      "Προτεραιότητα στο Meeting Room",
-      "Premium Παροχές",
-    ],
-  },
-  {
-    title: "Monthly Resident",
-    price: "150€",
-    period: "month",
-    desc: "Η δική σου βάση στα Χανιά. Μια σταθερή θέση στο Lab ανάμεσα σε όσους χτίζουν το αύριο.",
-    bullets: [
-      "Απεριόριστη Πρόσβαση (Δευ-Παρ)",
-      "Προσωπικό, Μόνιμο Γραφείο",
-      "Δωρεάν Ώρες Meeting Room",
-      "Πρόσβαση σε Private Events",
-    ],
-  },
-  {
-    title: "Elite Member",
-    price: "180€",
-    period: "month",
-    desc: "Πλήρης ένταξη στο οικοσύστημα της Hustle Labs. Ο χώρος, η κοινότητα, και η τεχνογνωσία μας.",
-    bullets: [
-      "Όλα τα προνόμια Resident",
-      "Ελεύθερη Συμμετοχή στα Workshops",
-      "Στρατηγικά 1-on-1 Sessions",
-      "Priority Beta Access σε Εργαλεία",
-    ],
-  },
-];
-
-const amenities = [
-  { icon: Wifi, label: "Ultra-Fiber internet" },
-  { icon: Tv, label: "55\" AI Smart TV" },
-  { icon: Utensils, label: "Πλήρως Εξοπλισμένη Κουζίνα (Ψυγείο, Τοστιέρα, Βραστήρας)" },
-  { icon: Coffee, label: "Specialty Coffee & Premium Τσάι" },
-  { icon: Droplets, label: "Δωρεάν Νερό, Φρούτα & Snacks" },
-  { icon: Pencil, label: "Stationery & Supplies" },
-  { icon: Mic, label: "Audio infrastructure" },
-  { icon: Camera, label: "Visual content gear" },
-  { icon: Armchair, label: "Performance seating" },
-  { icon: Lightbulb, label: "Cinema lighting" },
-  { icon: PenLine, label: "Ideation surfaces" },
-  { icon: Printer, label: "Analog outputs" },
-  { icon: Paperclip, label: "Building tools" },
-  { icon: BookOpen, label: "Knowledge library" },
-  { icon: Baby, label: "Junior Hustlers corner" },
-];
-
-const faqs = [
-  { question: "Ποια είναι η χωρητικότητα του Lab;", answer: "Διατηρούμε αυστηρό όριο 6 ατόμων ανά ημέρα. Με αυτόν τον τρόπο διασφαλίζουμε την ιδιωτικότητα, την ησυχία και την απόλυτη συγκέντρωση (focus) για όλους." },
-  { question: "Πώς λειτουργεί ο χώρος;", answer: "Το Hustle Space είναι ένας ανοιχτός, ενιαίος χώρος. Φτιάχτηκε με τη λογική να είναι ένα περιβάλλον από το οποίο δουλεύεις και νιώθεις κυριολεκτικά σαν στο σπίτι σου. Μπορείς να κάτσεις όπου σε βολεύει και να ξεκινήσεις να δουλεύεις ή να μελετάς." },
-  { question: "Μπορώ να διοργανώσω δικό μου event;", answer: "Ναι. Εμείς παρέχουμε την υποδομή και το premium vibe. Εσύ φέρνεις την αξία. Επικοινώνησε μαζί μας για custom setups." },
-  { question: "Υπάρχει δοκιμαστική περίοδος;", answer: "Προτείνουμε να ξεκινήσεις με ένα Day Access. Αν σου ταιριάζει ο χώρος και η κοινότητα, μπορούμε να σε αναβαθμίσουμε σε Monthly αφαιρώντας το κόστος της πρώτης μέρας." },
-  { question: "Πώς πληρώνω για τη θέση μου;", answer: "Κάνεις την κράτησή σου online για να δεσμεύσεις τη θέση σου. Η πληρωμή γίνεται με την άφιξή σου στο Hustle Space, όπου και θα παραλάβεις το Access Pass σου." },
-];
-
-/* ── Component ── */
-
 const HustleSpace = () => {
+  const { t } = useLanguage();
+
+  const passes = [
+    {
+      title: t('space.passes.day.title'),
+      price: "25€",
+      period: "day",
+      desc: t('space.passes.day.desc'),
+      bullets: [
+        t('space.passes.day.bullet1'),
+        t('space.passes.day.bullet2'),
+        t('space.passes.day.bullet3'),
+        t('space.passes.day.bullet4'),
+      ],
+    },
+    {
+      title: t('space.passes.week.title'),
+      price: "85€",
+      period: "week",
+      desc: t('space.passes.week.desc'),
+      bullets: [
+        t('space.passes.week.bullet1'),
+        t('space.passes.week.bullet2'),
+        t('space.passes.week.bullet3'),
+        t('space.passes.week.bullet4'),
+      ],
+    },
+    {
+      title: t('space.passes.month.title'),
+      price: "150€",
+      period: "month",
+      desc: t('space.passes.month.desc'),
+      bullets: [
+        t('space.passes.month.bullet1'),
+        t('space.passes.month.bullet2'),
+        t('space.passes.month.bullet3'),
+        t('space.passes.month.bullet4'),
+      ],
+    },
+    {
+      title: t('space.passes.elite.title'),
+      price: "180€",
+      period: "month",
+      desc: t('space.passes.elite.desc'),
+      bullets: [
+        t('space.passes.elite.bullet1'),
+        t('space.passes.elite.bullet2'),
+        t('space.passes.elite.bullet3'),
+        t('space.passes.elite.bullet4'),
+      ],
+    },
+  ];
+
+  const amenities = [
+    { icon: Wifi, label: "Ultra-Fiber internet" },
+    { icon: Tv, label: "55\" AI Smart TV" },
+    { icon: Utensils, label: t('space.amenities.kitchen') },
+    { icon: Coffee, label: t('space.amenities.coffee') },
+    { icon: Droplets, label: t('space.amenities.water') },
+    { icon: Pencil, label: "Stationery & Supplies" },
+    { icon: Mic, label: "Audio infrastructure" },
+    { icon: Camera, label: "Visual content gear" },
+    { icon: Armchair, label: "Performance seating" },
+    { icon: Lightbulb, label: "Cinema lighting" },
+    { icon: PenLine, label: "Ideation surfaces" },
+    { icon: Printer, label: "Analog outputs" },
+    { icon: Paperclip, label: "Building tools" },
+    { icon: BookOpen, label: "Knowledge library" },
+    { icon: Baby, label: "Junior Hustlers corner" },
+  ];
+
+  const faqs = [
+    { question: t('space.faq.1.q'), answer: t('space.faq.1.a') },
+    { question: t('space.faq.2.q'), answer: t('space.faq.2.a') },
+    { question: t('space.faq.3.q'), answer: t('space.faq.3.a') },
+    { question: t('space.faq.4.q'), answer: t('space.faq.4.a') },
+    { question: t('space.faq.5.q'), answer: t('space.faq.5.a') },
+  ];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPass, setSelectedPass] = useState<any>(null);
@@ -185,7 +183,7 @@ const HustleSpace = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">The Infrastructure</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">{t('space.hero.label')}</span>
             </motion.div>
 
             <motion.h1 
@@ -194,8 +192,8 @@ const HustleSpace = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12"
             >
-              <span className="block cursor-default">Hustle</span>
-              <span className="text-primary block italic group-hover:scale-[1.02] transition-transform duration-700">Space.</span>
+              <span className="block cursor-default">{t('space.hero.title')}</span>
+              <span className="text-primary block italic group-hover:scale-[1.02] transition-transform duration-700">{t('space.hero.highlight')}</span>
             </motion.h1>
 
             <div className="space-y-12 mb-16">
@@ -205,8 +203,7 @@ const HustleSpace = () => {
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
                 className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic max-w-3xl mx-auto"
               >
-                Ένας premium χώρος στα Χανιά, σχεδιασμένος για μελέτη, <br className="hidden md:block" />
-                <span className="text-white/20">εργασία, συνεργασίες και δημιουργία περιεχομένου.</span>
+                {t('space.hero.desc')}
               </motion.p>
               
               <motion.div 
@@ -229,7 +226,7 @@ const HustleSpace = () => {
             >
               <Magnetic strength={0.2}>
                 <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" onClick={scrollToPasses}>
-                  Book a Spot
+                  {t('space.hero.cta')}
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Magnetic>
@@ -255,13 +252,13 @@ const HustleSpace = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fade} className="max-w-4xl mx-auto text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 italic">The Environment</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 italic">{t('space.bento.label')}</span>
             </div>
-            <h2 className="font-sans text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight">
-              Designed for <span className="font-medium text-primary italic">High Output.</span>
+            <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-6 uppercase italic">
+              {t('space.bento.title')} <span className="text-primary">{t('space.bento.highlight')}</span>
             </h2>
             <p className="text-white/40 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-              Κάθε γωνιά του Lab είναι σχεδιασμένη με σκοπό. Από το δίκτυο οπτικών ινών μέχρι τα εργονομικά καθίσματα και τα ειδικά zones για content creation.
+              {t('space.bento.desc')}
             </p>
           </motion.div>
 
@@ -277,10 +274,10 @@ const HustleSpace = () => {
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 text-primary">
                   <Coffee size={24} />
                 </div>
-                <h3 className="font-sans text-3xl font-semibold text-white mb-3 tracking-tight">Coworking Access</h3>
-                <p className="text-white/50 text-base mb-6 leading-relaxed max-w-md font-medium">Η υποδομή που χρειάζεσαι για να αποδώσεις τα μέγιστα. Γρήγορο internet, premium setup και η απόλυτη ησυχία για μελέτη ή εργασία.</p>
+                <h3 className="font-sans text-3xl font-semibold text-white mb-3 tracking-tight">{t('space.coworking.title')}</h3>
+                <p className="text-white/50 text-base mb-6 leading-relaxed max-w-md font-medium">{t('space.coworking.desc')}</p>
                 <button onClick={scrollToPasses} className="inline-flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-[0.2em] hover:text-white transition-colors">
-                  Explore Passes <ArrowRight size={16} />
+                  {t('space.coworking.cta')} <ArrowRight size={16} />
                 </button>
               </div>
             </motion.div>
@@ -294,8 +291,8 @@ const HustleSpace = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
               <div className="relative z-10">
                 <span className="px-3 py-1 rounded-full bg-white/10 text-[9px] font-black uppercase tracking-[0.3em] text-white/80 mb-3 inline-block">STRATEGY HUB</span>
-                <h3 className="font-sans text-2xl font-semibold text-white mb-2 tracking-tight">Meeting Zone</h3>
-                <p className="text-white/40 text-sm font-medium">Βελτιστοποιημένο για board meetings και στρατηγικά sessions.</p>
+                <h3 className="font-sans text-2xl font-semibold text-white mb-2 tracking-tight">{t('space.zones.meeting.title')}</h3>
+                <p className="text-white/40 text-sm font-medium">{t('space.zones.meeting.desc')}</p>
               </div>
             </motion.div>
 
@@ -307,8 +304,8 @@ const HustleSpace = () => {
               <img src={spaceWorkshop} alt="Training" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-50 transition-all duration-1000 grayscale group-hover:grayscale-0" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/60 to-transparent" />
               <div className="relative z-10">
-                <h3 className="font-sans text-2xl font-semibold text-white mb-1 tracking-tight">Workshops</h3>
-                <p className="text-primary text-xs uppercase tracking-widest font-bold">Διαθεσιμες 6 Θεσεις</p>
+                <h3 className="font-sans text-2xl font-semibold text-white mb-1 tracking-tight">{t('space.workshops.title')}</h3>
+                <p className="text-primary text-xs uppercase tracking-widest font-bold">{t('space.workshops.available')}</p>
               </div>
             </motion.div>
           </div>
@@ -321,9 +318,9 @@ const HustleSpace = () => {
           <div className="text-center mb-20">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-6 block italic">CHOOSE YOUR ACCESS</span>
             <h2 className="font-sans text-4xl md:text-5xl font-light tracking-tight mb-6">
-              Access the <span className="font-medium text-primary italic">Ecosystem.</span>
+              {t('space.booking.title')} <span className="font-medium text-primary italic">{t('space.booking.highlight')}</span>
             </h2>
-            <p className="text-white/40 font-medium text-lg">Περιορισμένος αριθμός θέσεων για τη διασφάλιση focus.</p>
+            <p className="text-white/40 font-medium text-lg">{t('space.booking.desc')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
@@ -355,7 +352,7 @@ const HustleSpace = () => {
                   onClick={() => openModal(pass)}
                   className="w-full rounded-full h-14 font-bold uppercase tracking-widest text-xs bg-white/5 border border-white/10 hover:bg-primary hover:text-black hover:border-primary transition-all"
                 >
-                  Book Spot
+                  {t('space.booking.cta')}
                 </Button>
               </motion.div>
             ))}
@@ -451,14 +448,14 @@ const HustleSpace = () => {
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-widest text-primary mb-6">
                           <UserCheck size={12} /> PROTOCOL ACTIVATION
                         </div>
-                        <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white mb-2">Κράτηση Θέσης</h2>
-                        <p className="text-white/40 text-sm font-medium">Συμπλήρωσε τα στοιχεία σου για το {selectedPass?.title}.</p>
+                        <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white mb-2">{t('space.modal.title')}</h2>
+                        <p className="text-white/40 text-sm font-medium">{t('space.modal.subtitle')} {selectedPass?.title}.</p>
                       </div>
 
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-4">
                           <div className="space-y-1.5">
-                            <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Ονοματεπώνυμο *</label>
+                            <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">{t('space.modal.name')} *</label>
                             <input
                               type="text"
                               value={formData.name}
@@ -482,7 +479,7 @@ const HustleSpace = () => {
                               />
                             </div>
                             <div className="space-y-1.5">
-                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Τηλέφωνο *</label>
+                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">{t('space.modal.phone')} *</label>
                               <input
                                 type="tel"
                                 value={formData.phone}
@@ -496,7 +493,7 @@ const HustleSpace = () => {
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="space-y-1.5">
-                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Απο (Εναρξη) *</label>
+                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">{t('space.modal.from')} *</label>
                               <input
                                 type="date"
                                 value={formData.startDate}
@@ -506,7 +503,7 @@ const HustleSpace = () => {
                               />
                             </div>
                             <div className="space-y-1.5">
-                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Εως (Ληξη) *</label>
+                              <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">{t('space.modal.to')} *</label>
                               <input
                                 type="date"
                                 value={formData.endDate}
@@ -521,22 +518,22 @@ const HustleSpace = () => {
                         {/* Order Summary */}
                         <div className="rounded-2xl border border-white/10 bg-white/5 p-5 flex items-center justify-between mt-8">
                           <div>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Pass Επιλογης</p>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">{t('space.modal.summary')}</p>
                             <p className="text-lg font-semibold text-white">{selectedPass?.title}</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Συνολο</p>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">{t('space.modal.total')}</p>
                             <p className="text-2xl font-bold text-primary">{getDynamicPrice()}</p>
                           </div>
                         </div>
 
                         <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 flex gap-3 text-sm text-primary/80 font-medium">
                           <CheckCircle2 size={18} className="shrink-0 mt-0.5" />
-                          <p>Η πληρωμή του ποσού δεν γίνεται online. Θα εξοφλήσεις το Pass σου κατά την άφιξή σου στο Hustle Space.</p>
+                          <p>{t('space.modal.note')}</p>
                         </div>
 
                         <Button type="submit" variant="hero" size="lg" className="w-full rounded-2xl h-16 text-base font-black uppercase tracking-widest shadow-glow mt-8">
-                          Επιβεβαιωση Κρατησης
+                          {t('space.modal.confirm')}
                         </Button>
                       </form>
                     </motion.div>
@@ -552,17 +549,17 @@ const HustleSpace = () => {
                       <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8 border border-primary/20">
                         <CheckCircle2 size={40} className="text-primary" />
                       </div>
-                      <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white mb-4">Spot <span className="font-light italic text-primary">Secured.</span></h2>
+                      <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white mb-4">{t('space.modal.success.title')}</h2>
                       <div className="space-y-4 text-white/60 text-base mb-10 max-w-sm mx-auto font-medium">
                         <p>
-                          Η κράτησή σου για το <strong className="text-white">{selectedPass?.title}</strong> ολοκληρώθηκε επιτυχώς!
+                          {t('space.modal.success.text1')} <strong className="text-white">{selectedPass?.title}</strong> {t('space.modal.success.text2')}
                         </p>
                         <p>
-                          Μόλις σου στείλαμε ένα email με όλες τις λεπτομέρειες άφιξης. Η πληρωμή (<strong className="text-white">{getDynamicPrice()}</strong>) θα γίνει στον χώρο μας, όπου και θα παραλάβεις το Access Pass.
+                          {t('space.modal.success.text3')}
                         </p>
                       </div>
                       <Button onClick={() => setIsModalOpen(false)} variant="hero-outline" size="lg" className="rounded-full px-10 h-14 text-sm font-bold uppercase tracking-widest border-white/20 hover:bg-white hover:text-black">
-                        Επιστροφη
+                        {t('space.modal.back')}
                       </Button>
                     </motion.div>
                   )}

@@ -87,7 +87,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
               src={image} 
               alt={title} 
               loading="lazy"
-              className="w-full h-full object-cover object-top transition-transform duration-[1.5s] group-hover:scale-105" 
+              className="w-full h-full object-cover object-top transition-transform duration-1500 group-hover:scale-105" 
             />
             {/* Subtle overlay that lightens up compared to previous version */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />

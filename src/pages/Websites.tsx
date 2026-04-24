@@ -14,7 +14,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import LabBackground from "@/components/LabBackground";
 import Magnetic from "@/components/Magnetic";
 
-/* ─── Animation helpers ─── */
+/* β”€β”€β”€ Animation helpers β”€β”€β”€ */
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -22,64 +22,64 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as any },
 });
 
-/* ─── Next-Gen Architecture (Common Features) ─── */
+/* β”€β”€β”€ Next-Gen Architecture (Common Features) β”€β”€β”€ */
 const nextGen = [
   {
     icon: Layout,
     title: "100% Custom Design",
-    desc: "Κανένα template, κανένα page builder. Σχεδιασμένο από το μηδέν πάνω στο brand, το κοινό και τους στόχους σου.",
+    desc: "ΞΞ±Ξ½Ξ­Ξ½Ξ± template, ΞΊΞ±Ξ½Ξ­Ξ½Ξ± page builder. Ξ£Ο‡ΞµΞ΄ΞΉΞ±ΟƒΞΌΞ­Ξ½ΞΏ Ξ±Ο€Ο Ο„ΞΏ ΞΌΞ·Ξ΄Ξ­Ξ½ Ο€Ξ¬Ξ½Ο‰ ΟƒΟ„ΞΏ brand, Ο„ΞΏ ΞΊΞΏΞΉΞ½Ο ΞΊΞ±ΞΉ Ο„ΞΏΟ…Ο‚ ΟƒΟ„ΟΟ‡ΞΏΟ…Ο‚ ΟƒΞΏΟ….",
     badge: "Unique UI",
     color: "hsl(72 62% 58%)"
   },
   {
     icon: Zap,
-    title: "Αστραπιαία Ταχύτητα",
-    desc: "Optimized performance, κάτω από 2'' load time. Γιατί κάθε δευτερόλεπτο κοστίζει πελάτες.",
+    title: "Ξ‘ΟƒΟ„ΟΞ±Ο€ΞΉΞ±Ξ―Ξ± Ξ¤Ξ±Ο‡ΟΟ„Ξ·Ο„Ξ±",
+    desc: "Optimized performance, ΞΊΞ¬Ο„Ο‰ Ξ±Ο€Ο 2'' load time. Ξ“ΞΉΞ±Ο„Ξ― ΞΊΞ¬ΞΈΞµ Ξ΄ΞµΟ…Ο„ΞµΟΟΞ»ΞµΟ€Ο„ΞΏ ΞΊΞΏΟƒΟ„Ξ―Ξ¶ΞµΞΉ Ο€ΞµΞ»Ξ¬Ο„ΞµΟ‚.",
     badge: "99+ PageSpeed",
     color: "hsl(200 80% 60%)"
   },
   {
     icon: MousePointer2,
     title: "Conversion-First UX",
-    desc: "Κάθε section, κάθε CTA, κάθε pixel σχεδιασμένο για να μετατρέπει επισκέπτες σε πελάτες.",
+    desc: "ΞΞ¬ΞΈΞµ section, ΞΊΞ¬ΞΈΞµ CTA, ΞΊΞ¬ΞΈΞµ pixel ΟƒΟ‡ΞµΞ΄ΞΉΞ±ΟƒΞΌΞ­Ξ½ΞΏ Ξ³ΞΉΞ± Ξ½Ξ± ΞΌΞµΟ„Ξ±Ο„ΟΞ­Ο€ΞµΞΉ ΞµΟ€ΞΉΟƒΞΊΞ­Ο€Ο„ΞµΟ‚ ΟƒΞµ Ο€ΞµΞ»Ξ¬Ο„ΞµΟ‚.",
     badge: "ROI Focused",
     color: "hsl(280 70% 65%)"
   },
   {
     icon: ShieldCheck,
     title: "Technical Excellence",
-    desc: "Clean code, SEO-ready αρχιτεκτονική και ασφάλεια τραπεζικού επιπέδου σε κάθε γραμμή κώδικα.",
+    desc: "Clean code, SEO-ready Ξ±ΟΟ‡ΞΉΟ„ΞµΞΊΟ„ΞΏΞ½ΞΉΞΊΞ® ΞΊΞ±ΞΉ Ξ±ΟƒΟ†Ξ¬Ξ»ΞµΞΉΞ± Ο„ΟΞ±Ο€ΞµΞ¶ΞΉΞΊΞΏΟ ΞµΟ€ΞΉΟ€Ξ­Ξ΄ΞΏΟ… ΟƒΞµ ΞΊΞ¬ΞΈΞµ Ξ³ΟΞ±ΞΌΞΌΞ® ΞΊΟΞ΄ΞΉΞΊΞ±.",
     badge: "Safe & Secure",
     color: "hsl(150 60% 50%)"
   },
 ];
 
-/* ─── Deliverables ─── */
+/* β”€β”€β”€ Deliverables β”€β”€β”€ */
 const deliverables = [
-  { icon: Paintbrush, title: "Custom Design", desc: "UI/UX σχεδιασμένο αποκλειστικά για εσένα. Mood, colors, typography, layout, όλα from scratch." },
-  { icon: Smartphone, title: "Responsive Flow", desc: "Κάθε σελίδα τέλεια σε mobile, tablet και desktop. Απρόσκοπτη εμπειρία σε κάθε οθόνη." },
-  { icon: Search, title: "SEO Foundation", desc: "Σωστή δομή, meta tags, schema markup και sitemap, έτοιμο για Google από την πρώτη μέρα." },
-  { icon: BarChart3, title: "Data & Tracking", desc: "Google Analytics 4, conversion tracking και event setup. Ξέρεις τι δουλεύει και τι όχι." },
-  { icon: PenTool, title: "Copy Guidance", desc: "Στρατηγική κατεύθυνση για τα κείμενα: τι να γράψεις, πού και γιατί για μέγιστο impact." },
-  { icon: Cpu, title: "Next-Gen Stack", desc: "Χρησιμοποιούμε React & Next.js για την ταχύτερη και πιο σταθερή ψηφιακή εμπειρία στον κόσμο." },
+  { icon: Paintbrush, title: "Custom Design", desc: "UI/UX ΟƒΟ‡ΞµΞ΄ΞΉΞ±ΟƒΞΌΞ­Ξ½ΞΏ Ξ±Ο€ΞΏΞΊΞ»ΞµΞΉΟƒΟ„ΞΉΞΊΞ¬ Ξ³ΞΉΞ± ΞµΟƒΞ­Ξ½Ξ±. Mood, colors, typography, layout, ΟΞ»Ξ± from scratch." },
+  { icon: Smartphone, title: "Responsive Flow", desc: "ΞΞ¬ΞΈΞµ ΟƒΞµΞ»Ξ―Ξ΄Ξ± Ο„Ξ­Ξ»ΞµΞΉΞ± ΟƒΞµ mobile, tablet ΞΊΞ±ΞΉ desktop. Ξ‘Ο€ΟΟΟƒΞΊΞΏΟ€Ο„Ξ· ΞµΞΌΟ€ΞµΞΉΟΞ―Ξ± ΟƒΞµ ΞΊΞ¬ΞΈΞµ ΞΏΞΈΟΞ½Ξ·." },
+  { icon: Search, title: "SEO Foundation", desc: "Ξ£Ο‰ΟƒΟ„Ξ® Ξ΄ΞΏΞΌΞ®, meta tags, schema markup ΞΊΞ±ΞΉ sitemap, Ξ­Ο„ΞΏΞΉΞΌΞΏ Ξ³ΞΉΞ± Google Ξ±Ο€Ο Ο„Ξ·Ξ½ Ο€ΟΟΟ„Ξ· ΞΌΞ­ΟΞ±." },
+  { icon: BarChart3, title: "Data & Tracking", desc: "Google Analytics 4, conversion tracking ΞΊΞ±ΞΉ event setup. ΞΞ­ΟΞµΞΉΟ‚ Ο„ΞΉ Ξ΄ΞΏΟ…Ξ»ΞµΟΞµΞΉ ΞΊΞ±ΞΉ Ο„ΞΉ ΟΟ‡ΞΉ." },
+  { icon: PenTool, title: "Copy Guidance", desc: "Ξ£Ο„ΟΞ±Ο„Ξ·Ξ³ΞΉΞΊΞ® ΞΊΞ±Ο„ΞµΟΞΈΟ…Ξ½ΟƒΞ· Ξ³ΞΉΞ± Ο„Ξ± ΞΊΞµΞ―ΞΌΞµΞ½Ξ±: Ο„ΞΉ Ξ½Ξ± Ξ³ΟΞ¬ΟΞµΞΉΟ‚, Ο€ΞΏΟ ΞΊΞ±ΞΉ Ξ³ΞΉΞ±Ο„Ξ― Ξ³ΞΉΞ± ΞΌΞ­Ξ³ΞΉΟƒΟ„ΞΏ impact." },
+  { icon: Cpu, title: "Next-Gen Stack", desc: "Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞΉΞΏΟΞΌΞµ React & Next.js Ξ³ΞΉΞ± Ο„Ξ·Ξ½ Ο„Ξ±Ο‡ΟΟ„ΞµΟΞ· ΞΊΞ±ΞΉ Ο€ΞΉΞΏ ΟƒΟ„Ξ±ΞΈΞµΟΞ® ΟΞ·Ο†ΞΉΞ±ΞΊΞ® ΞµΞΌΟ€ΞµΞΉΟΞ―Ξ± ΟƒΟ„ΞΏΞ½ ΞΊΟΟƒΞΌΞΏ." },
 ];
 
-/* ─── Packages ─── */
+/* β”€β”€β”€ Packages β”€β”€β”€ */
 const packages = [
   {
     name: "Starter Site",
-    price: "From €1.200",
+    price: "From β‚¬1.200",
     label: "For small businesses",
-    tagline: "Για επιχειρήσεις που θέλουν ένα σωστό ξεκίνημα.",
-    bullets: ["1-5 σελίδες Custom Design", "Mobile-first & SEO-ready", "Contact Form & Map Setup", "Google Analytics Integration", "Παράδοση σε 15 ημέρες"],
+    tagline: "Ξ“ΞΉΞ± ΞµΟ€ΞΉΟ‡ΞµΞΉΟΞ®ΟƒΞµΞΉΟ‚ Ο€ΞΏΟ… ΞΈΞ­Ξ»ΞΏΟ…Ξ½ Ξ­Ξ½Ξ± ΟƒΟ‰ΟƒΟ„Ο ΞΎΞµΞΊΞ―Ξ½Ξ·ΞΌΞ±.",
+    bullets: ["1-5 ΟƒΞµΞ»Ξ―Ξ΄ΞµΟ‚ Custom Design", "Mobile-first & SEO-ready", "Contact Form & Map Setup", "Google Analytics Integration", "Ξ Ξ±ΟΞ¬Ξ΄ΞΏΟƒΞ· ΟƒΞµ 15 Ξ·ΞΌΞ­ΟΞµΟ‚"],
     icon: Monitor
   },
   {
     name: "Growth Engine",
-    price: "From €2.500",
+    price: "From β‚¬2.500",
     label: "Most popular. Built for growth",
-    tagline: "Για επιχειρήσεις που θέλουν πωλήσεις, όχι μόνο παρουσία.",
-    bullets: ["5-12 σελίδες + Landing Pages", "Conversion-Optimized UX", "Blog / CMS Integration", "Advanced Funnel Tracking", "Copy Strategy Guidance"],
+    tagline: "Ξ“ΞΉΞ± ΞµΟ€ΞΉΟ‡ΞµΞΉΟΞ®ΟƒΞµΞΉΟ‚ Ο€ΞΏΟ… ΞΈΞ­Ξ»ΞΏΟ…Ξ½ Ο€Ο‰Ξ»Ξ®ΟƒΞµΞΉΟ‚, ΟΟ‡ΞΉ ΞΌΟΞ½ΞΏ Ο€Ξ±ΟΞΏΟ…ΟƒΞ―Ξ±.",
+    bullets: ["5-12 ΟƒΞµΞ»Ξ―Ξ΄ΞµΟ‚ + Landing Pages", "Conversion-Optimized UX", "Blog / CMS Integration", "Advanced Funnel Tracking", "Copy Strategy Guidance"],
     featured: true,
     icon: TrendingUp
   },
@@ -87,44 +87,44 @@ const packages = [
     name: "Scale System",
     price: "Custom Quote",
     label: "For serious scale",
-    tagline: "Για brands που θέλουν ολοκληρωμένο οικοσύστημα.",
-    bullets: ["Custom Web Application", "E-commerce ή Client Portal", "API Integrations & Automations", "High-Performance Scaling", "Ολοκληρωμένο UX Research"],
+    tagline: "Ξ“ΞΉΞ± brands Ο€ΞΏΟ… ΞΈΞ­Ξ»ΞΏΟ…Ξ½ ΞΏΞ»ΞΏΞΊΞ»Ξ·ΟΟ‰ΞΌΞ­Ξ½ΞΏ ΞΏΞΉΞΊΞΏΟƒΟΟƒΟ„Ξ·ΞΌΞ±.",
+    bullets: ["Custom Web Application", "E-commerce Ξ® Client Portal", "API Integrations & Automations", "High-Performance Scaling", "ΞΞ»ΞΏΞΊΞ»Ξ·ΟΟ‰ΞΌΞ­Ξ½ΞΏ UX Research"],
     icon: Rocket
   },
 ];
 
-/* ─── FAQ ─── */
+/* β”€β”€β”€ FAQ β”€β”€β”€ */
 const faqs = [
-  { question: "Πόσο κοστίζει ένα custom website;", answer: "Το κόστος εξαρτάται από τις ανάγκες και το scope του project. Τα Starter sites ξεκινούν από €1.200, ενώ πιο σύνθετα συστήματα ग्रोथ τιμολογούνται ανάλογα με τα integrations και το μέγεθος. Μετά το brief σου στέλνουμε μια πλήρη και ξεκάθαρη προσφορά." },
-  { question: "Χρησιμοποιείτε WordPress ή Templates;", answer: "Όχι. Στη Hustle Labs χτίζουμε το μέλλον. Χρησιμοποιούμε custom code (React, Next.js, Tailwind) για να διασφαλίσουμε ότι το site σου είναι πιο γρήγορο, πιο ασφαλές και πιο όμορφο από τον ανταγωνισμό." },
-  { question: "Πόσο χρόνο παίρνει η υλοποίηση;", answer: "Ένα Starter site απαιτεί περίπου 2 εβδομάδες, ενώ ένα σύνθετο Growth Engine ή Scale System μπορεί να χρειαστεί από 4 έως 8 εβδομάδες." },
-  { question: "Τι γίνεται μετά το Launch;", answer: "Δεν σε αφήνουμε μόνο. Παρέχουμε συνεχή υποστήριξη, speed optimization και τεχνική παρακολούθηση για να διασφαλίσουμε ότι η επένδυσή σου αποδίδει συνεχώς." },
+  { question: "Ξ ΟΟƒΞΏ ΞΊΞΏΟƒΟ„Ξ―Ξ¶ΞµΞΉ Ξ­Ξ½Ξ± custom website;", answer: "Ξ¤ΞΏ ΞΊΟΟƒΟ„ΞΏΟ‚ ΞµΞΎΞ±ΟΟ„Ξ¬Ο„Ξ±ΞΉ Ξ±Ο€Ο Ο„ΞΉΟ‚ Ξ±Ξ½Ξ¬Ξ³ΞΊΞµΟ‚ ΞΊΞ±ΞΉ Ο„ΞΏ scope Ο„ΞΏΟ… project. Ξ¤Ξ± Starter sites ΞΎΞµΞΊΞΉΞ½ΞΏΟΞ½ Ξ±Ο€Ο β‚¬1.200, ΞµΞ½Ο Ο€ΞΉΞΏ ΟƒΟΞ½ΞΈΞµΟ„Ξ± ΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„Ξ± ΰ¤—ΰ¥ΰ¤°ΰ¥‹ΰ¤¥ Ο„ΞΉΞΌΞΏΞ»ΞΏΞ³ΞΏΟΞ½Ο„Ξ±ΞΉ Ξ±Ξ½Ξ¬Ξ»ΞΏΞ³Ξ± ΞΌΞµ Ο„Ξ± integrations ΞΊΞ±ΞΉ Ο„ΞΏ ΞΌΞ­Ξ³ΞµΞΈΞΏΟ‚. ΞΞµΟ„Ξ¬ Ο„ΞΏ brief ΟƒΞΏΟ… ΟƒΟ„Ξ­Ξ»Ξ½ΞΏΟ…ΞΌΞµ ΞΌΞΉΞ± Ο€Ξ»Ξ®ΟΞ· ΞΊΞ±ΞΉ ΞΎΞµΞΊΞ¬ΞΈΞ±ΟΞ· Ο€ΟΞΏΟƒΟ†ΞΏΟΞ¬." },
+  { question: "Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞΉΞµΞ―Ο„Ξµ WordPress Ξ® Templates;", answer: "ΞΟ‡ΞΉ. Ξ£Ο„Ξ· Hustle Labs Ο‡Ο„Ξ―Ξ¶ΞΏΟ…ΞΌΞµ Ο„ΞΏ ΞΌΞ­Ξ»Ξ»ΞΏΞ½. Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞΉΞΏΟΞΌΞµ custom code (React, Next.js, Tailwind) Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄ΞΉΞ±ΟƒΟ†Ξ±Ξ»Ξ―ΟƒΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ Ο„ΞΏ site ΟƒΞΏΟ… ΞµΞ―Ξ½Ξ±ΞΉ Ο€ΞΉΞΏ Ξ³ΟΞ®Ξ³ΞΏΟΞΏ, Ο€ΞΉΞΏ Ξ±ΟƒΟ†Ξ±Ξ»Ξ­Ο‚ ΞΊΞ±ΞΉ Ο€ΞΉΞΏ ΟΞΌΞΏΟΟ†ΞΏ Ξ±Ο€Ο Ο„ΞΏΞ½ Ξ±Ξ½Ο„Ξ±Ξ³Ο‰Ξ½ΞΉΟƒΞΌΟ." },
+  { question: "Ξ ΟΟƒΞΏ Ο‡ΟΟΞ½ΞΏ Ο€Ξ±Ξ―ΟΞ½ΞµΞΉ Ξ· Ο…Ξ»ΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ·;", answer: "ΞΞ½Ξ± Starter site Ξ±Ο€Ξ±ΞΉΟ„ΞµΞ― Ο€ΞµΟΞ―Ο€ΞΏΟ… 2 ΞµΞ²Ξ΄ΞΏΞΌΞ¬Ξ΄ΞµΟ‚, ΞµΞ½Ο Ξ­Ξ½Ξ± ΟƒΟΞ½ΞΈΞµΟ„ΞΏ Growth Engine Ξ® Scale System ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± Ο‡ΟΞµΞΉΞ±ΟƒΟ„ΞµΞ― Ξ±Ο€Ο 4 Ξ­Ο‰Ο‚ 8 ΞµΞ²Ξ΄ΞΏΞΌΞ¬Ξ΄ΞµΟ‚." },
+  { question: "Ξ¤ΞΉ Ξ³Ξ―Ξ½ΞµΟ„Ξ±ΞΉ ΞΌΞµΟ„Ξ¬ Ο„ΞΏ Launch;", answer: "Ξ”ΞµΞ½ ΟƒΞµ Ξ±Ο†Ξ®Ξ½ΞΏΟ…ΞΌΞµ ΞΌΟΞ½ΞΏ. Ξ Ξ±ΟΞ­Ο‡ΞΏΟ…ΞΌΞµ ΟƒΟ…Ξ½ΞµΟ‡Ξ® Ο…Ο€ΞΏΟƒΟ„Ξ®ΟΞΉΞΎΞ·, speed optimization ΞΊΞ±ΞΉ Ο„ΞµΟ‡Ξ½ΞΉΞΊΞ® Ο€Ξ±ΟΞ±ΞΊΞΏΞ»ΞΏΟΞΈΞ·ΟƒΞ· Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄ΞΉΞ±ΟƒΟ†Ξ±Ξ»Ξ―ΟƒΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ Ξ· ΞµΟ€Ξ­Ξ½Ξ΄Ο…ΟƒΞ® ΟƒΞΏΟ… Ξ±Ο€ΞΏΞ΄Ξ―Ξ΄ΞµΞΉ ΟƒΟ…Ξ½ΞµΟ‡ΟΟ‚." },
 ];
 
-/* ─── Process Protocol (Align with homepage) ─── */
+/* β”€β”€β”€ Process Protocol (Align with homepage) β”€β”€β”€ */
 const processSteps = [
   {
     step: "01",
     title: "Deep Dive",
-    desc: "Καταλαβαίνουμε τι πραγματικά χρειάζεσαι.",
+    desc: "ΞΞ±Ο„Ξ±Ξ»Ξ±Ξ²Ξ±Ξ―Ξ½ΞΏΟ…ΞΌΞµ Ο„ΞΉ Ο€ΟΞ±Ξ³ΞΌΞ±Ο„ΞΉΞΊΞ¬ Ο‡ΟΞµΞΉΞ¬Ξ¶ΞµΟƒΞ±ΞΉ.",
     icon: Search
   },
   {
     step: "02",
     title: "Strategy",
-    desc: "Ορίζουμε τι έχει σημασία.",
+    desc: "ΞΟΞ―Ξ¶ΞΏΟ…ΞΌΞµ Ο„ΞΉ Ξ­Ο‡ΞµΞΉ ΟƒΞ·ΞΌΞ±ΟƒΞ―Ξ±.",
     icon: Target
   },
   {
     step: "03",
     title: "Build",
-    desc: "Χτίζουμε το σωστό σύστημα.",
+    desc: "Ξ§Ο„Ξ―Ξ¶ΞΏΟ…ΞΌΞµ Ο„ΞΏ ΟƒΟ‰ΟƒΟ„Ο ΟƒΟΟƒΟ„Ξ·ΞΌΞ±.",
     icon: Code
   },
   {
     step: "04",
     title: "Growth",
-    desc: "Βελτιώνουμε και εξελίσσουμε.",
+    desc: "Ξ’ΞµΞ»Ο„ΞΉΟΞ½ΞΏΟ…ΞΌΞµ ΞΊΞ±ΞΉ ΞµΞΎΞµΞ»Ξ―ΟƒΟƒΞΏΟ…ΞΌΞµ.",
     icon: TrendingUp
   }
 ];
@@ -145,12 +145,12 @@ const Websites = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Κατασκευή Ιστοσελίδων Chania | High-Performance Web Design - Hustle Labs";
+    document.title = "ΞΞ±Ο„Ξ±ΟƒΞΊΞµΟ…Ξ® Ξ™ΟƒΟ„ΞΏΟƒΞµΞ»Ξ―Ξ΄Ο‰Ξ½ Chania | High-Performance Web Design - Hustle Labs";
     
     // SEO Meta Tags
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', "Premium κατασκευή ιστοσελίδων στα Χανιά. Χρησιμοποιούμε Next.js & React για αστραπιαία ταχύτητα, SEO και κορυφαία αισθητική. Δημιουργούμε ψηφιακά εργαλεία που φέρνουν αποτελέσματα.");
+      metaDesc.setAttribute('content', "Premium ΞΊΞ±Ο„Ξ±ΟƒΞΊΞµΟ…Ξ® ΞΉΟƒΟ„ΞΏΟƒΞµΞ»Ξ―Ξ΄Ο‰Ξ½ ΟƒΟ„Ξ± Ξ§Ξ±Ξ½ΞΉΞ¬. Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞΉΞΏΟΞΌΞµ Next.js & React Ξ³ΞΉΞ± Ξ±ΟƒΟ„ΟΞ±Ο€ΞΉΞ±Ξ―Ξ± Ο„Ξ±Ο‡ΟΟ„Ξ·Ο„Ξ±, SEO ΞΊΞ±ΞΉ ΞΊΞΏΟΟ…Ο†Ξ±Ξ―Ξ± Ξ±ΞΉΟƒΞΈΞ·Ο„ΞΉΞΊΞ®. Ξ”Ξ·ΞΌΞΉΞΏΟ…ΟΞ³ΞΏΟΞΌΞµ ΟΞ·Ο†ΞΉΞ±ΞΊΞ¬ ΞµΟΞ³Ξ±Ξ»ΞµΞ―Ξ± Ο€ΞΏΟ… Ο†Ξ­ΟΞ½ΞΏΟ…Ξ½ Ξ±Ο€ΞΏΟ„ΞµΞ»Ξ­ΟƒΞΌΞ±Ο„Ξ±.");
     }
 
     // SEO: Structured Data
@@ -163,9 +163,9 @@ const Websites = () => {
         "name": "Hustle Labs",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Γαλατάς, Χανιά",
-          "addressLocality": "Χανιά",
-          "addressRegion": "Κρήτη",
+          "streetAddress": "Ξ“Ξ±Ξ»Ξ±Ο„Ξ¬Ο‚, Ξ§Ξ±Ξ½ΞΉΞ¬",
+          "addressLocality": "Ξ§Ξ±Ξ½ΞΉΞ¬",
+          "addressRegion": "ΞΟΞ®Ο„Ξ·",
           "postalCode": "73100",
           "addressCountry": "GR"
         }
@@ -190,7 +190,7 @@ const Websites = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
 
-      {/* ─── Custom Interactive Hero ─── */}
+      {/* β”€β”€β”€ Custom Interactive Hero β”€β”€β”€ */}
       <section 
         onMouseMove={handleMouseMove}
         className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5 group/hero"
@@ -241,7 +241,7 @@ const Websites = () => {
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
                 className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic max-w-4xl mx-auto px-4"
               >
-                Στη Hustle Labs σχεδιάζουμε ψηφιακά οικοσυστήματα που λειτουργούν ως μηχανές ανάπτυξης. <br className="hidden md:block" />
+                Ξ£Ο„Ξ· Hustle Labs ΟƒΟ‡ΞµΞ΄ΞΉΞ¬Ξ¶ΞΏΟ…ΞΌΞµ ΟΞ·Ο†ΞΉΞ±ΞΊΞ¬ ΞΏΞΉΞΊΞΏΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„Ξ± Ο€ΞΏΟ… Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³ΞΏΟΞ½ Ο‰Ο‚ ΞΌΞ·Ο‡Ξ±Ξ½Ξ­Ο‚ Ξ±Ξ½Ξ¬Ο€Ο„Ο…ΞΎΞ·Ο‚. <br className="hidden md:block" />
                 <span className="text-white/20">Performance-First Architecture. Built to Scale.</span>
               </motion.p>
               
@@ -285,23 +285,23 @@ const Websites = () => {
         />
       </section>
 
-      {/* ── SECTION 2: TRANSITION (Dark) ── */}
+      {/* β”€β”€ SECTION 2: TRANSITION (Dark) β”€β”€ */}
       <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.div {...fadeUp()} className="max-w-5xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12 block italic">The Hustle Standard</span>
             <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 italic uppercase text-white">
-              Δεν φτιάχνουμε sites <br className="hidden md:block" /> για να υπάρχουν. <br />
-              <span className="text-white/10 italic">Τα φτιάχνουμε για να αποδίδουν.</span>
+              Ξ”ΞµΞ½ Ο†Ο„ΞΉΞ¬Ο‡Ξ½ΞΏΟ…ΞΌΞµ sites <br className="hidden md:block" /> Ξ³ΞΉΞ± Ξ½Ξ± Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½. <br />
+              <span className="text-white/10 italic">Ξ¤Ξ± Ο†Ο„ΞΉΞ¬Ο‡Ξ½ΞΏΟ…ΞΌΞµ Ξ³ΞΉΞ± Ξ½Ξ± Ξ±Ο€ΞΏΞ΄Ξ―Ξ΄ΞΏΟ…Ξ½.</span>
             </h2>
             <p className="text-xl md:text-3xl text-white/40 font-medium italic leading-relaxed max-w-3xl mx-auto px-4">
-              Κάθε επιλογή, από το UI design μέχρι την αρχιτεκτονική του κώδικα, γίνεται με έναν μόνο σκοπό: το τελικό αποτέλεσμα.
+              ΞΞ¬ΞΈΞµ ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ®, Ξ±Ο€Ο Ο„ΞΏ UI design ΞΌΞ­Ο‡ΟΞΉ Ο„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΟ„ΞµΞΊΟ„ΞΏΞ½ΞΉΞΊΞ® Ο„ΞΏΟ… ΞΊΟΞ΄ΞΉΞΊΞ±, Ξ³Ξ―Ξ½ΞµΟ„Ξ±ΞΉ ΞΌΞµ Ξ­Ξ½Ξ±Ξ½ ΞΌΟΞ½ΞΏ ΟƒΞΊΞΏΟ€Ο: Ο„ΞΏ Ο„ΞµΞ»ΞΉΞΊΟ Ξ±Ο€ΞΏΟ„Ξ­Ξ»ΞµΟƒΞΌΞ±.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── SECTION 3: NEXT-GEN ARCHITECTURE (Darkified) ── */}
+      {/* β”€β”€ SECTION 3: NEXT-GEN ARCHITECTURE (Darkified) β”€β”€ */}
       <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-24">
@@ -340,7 +340,7 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 4: HUSTLE GROWTH ── */}
+      {/* β”€β”€ SECTION 4: HUSTLE GROWTH β”€β”€ */}
       <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,_rgba(208,255,0,0.02),_transparent_50%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
@@ -354,13 +354,13 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 5: CHOICE (Dark Comparison) ── */}
+      {/* β”€β”€ SECTION 5: CHOICE (Dark Comparison) β”€β”€ */}
       <section className="py-24 md:py-48 relative bg-[#050505] border-y border-white/5">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <div className="mb-24">
             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">The Difference</span>
             <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] italic uppercase text-white">
-              Γιατί τα περισσότερα <br /> <span className="text-white/10 italic">δεν αποδίδουν.</span>
+              Ξ“ΞΉΞ±Ο„Ξ― Ο„Ξ± Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ± <br /> <span className="text-white/10 italic">Ξ΄ΞµΞ½ Ξ±Ο€ΞΏΞ΄Ξ―Ξ΄ΞΏΟ…Ξ½.</span>
             </h2>
           </div>
 
@@ -389,16 +389,16 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 6: EXISTING WEBSITE (AUDIT) ── */}
+      {/* β”€β”€ SECTION 6: EXISTING WEBSITE (AUDIT) β”€β”€ */}
       <section className="py-24 md:py-48 relative bg-[#050505] border-b border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white italic uppercase leading-[0.85] mb-12">
-              Έχεις ήδη <br /> <span className="text-primary italic animate-glow">website;</span>
+              ΞΟ‡ΞµΞΉΟ‚ Ξ®Ξ΄Ξ· <br /> <span className="text-primary italic animate-glow">website;</span>
             </h2>
             <p className="text-xl md:text-3xl text-white/40 font-medium italic max-w-2xl mx-auto mb-24 px-4 leading-relaxed">
-              Κάθε pixel πρέπει να δουλεύει για εσένα. <br />
-              Μπορούμε να σου δείξουμε τι δεν λειτουργεί <br className="hidden md:block" /> και πώς διορθώνεται.
+              ΞΞ¬ΞΈΞµ pixel Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ξ΄ΞΏΟ…Ξ»ΞµΟΞµΞΉ Ξ³ΞΉΞ± ΞµΟƒΞ­Ξ½Ξ±. <br />
+              ΞΟ€ΞΏΟΞΏΟΞΌΞµ Ξ½Ξ± ΟƒΞΏΟ… Ξ΄ΞµΞ―ΞΎΞΏΟ…ΞΌΞµ Ο„ΞΉ Ξ΄ΞµΞ½ Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³ΞµΞ― <br className="hidden md:block" /> ΞΊΞ±ΞΉ Ο€ΟΟ‚ Ξ΄ΞΉΞΏΟΞΈΟΞ½ΞµΟ„Ξ±ΞΉ.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 mb-32 justify-center max-w-4xl mx-auto px-4">
@@ -436,12 +436,12 @@ const Websites = () => {
                 >
                   <p className="text-xl md:text-4xl font-black mb-16 italic text-white uppercase tracking-tighter leading-tight">
                     {hasSite
-                      ? "Θα κάνουμε ένα πλήρες SEO & Performance Audit για να δούμε ακριβώς τι χρειάζεται βελτίωση."
-                      : "Θα σχεδιάσουμε από το μηδέν τη δομή που θα φέρει τα βέλτιστα αποτελέσματα για το brand σου."}
+                      ? "ΞΞ± ΞΊΞ¬Ξ½ΞΏΟ…ΞΌΞµ Ξ­Ξ½Ξ± Ο€Ξ»Ξ®ΟΞµΟ‚ SEO & Performance Audit Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄ΞΏΟΞΌΞµ Ξ±ΞΊΟΞΉΞ²ΟΟ‚ Ο„ΞΉ Ο‡ΟΞµΞΉΞ¬Ξ¶ΞµΟ„Ξ±ΞΉ Ξ²ΞµΞ»Ο„Ξ―Ο‰ΟƒΞ·."
+                      : "ΞΞ± ΟƒΟ‡ΞµΞ΄ΞΉΞ¬ΟƒΞΏΟ…ΞΌΞµ Ξ±Ο€Ο Ο„ΞΏ ΞΌΞ·Ξ΄Ξ­Ξ½ Ο„Ξ· Ξ΄ΞΏΞΌΞ® Ο€ΞΏΟ… ΞΈΞ± Ο†Ξ­ΟΞµΞΉ Ο„Ξ± Ξ²Ξ­Ξ»Ο„ΞΉΟƒΟ„Ξ± Ξ±Ο€ΞΏΟ„ΞµΞ»Ξ­ΟƒΞΌΞ±Ο„Ξ± Ξ³ΞΉΞ± Ο„ΞΏ brand ΟƒΞΏΟ…."}
                   </p>
                   <Button size="xl" className="rounded-full px-16 h-24 md:h-28 text-2xl font-black group bg-primary text-black shadow-glow-strong italic border-none" asChild>
                     <Link to={hasSite ? "/book-call" : "/project-brief?subject=websites"}>
-                      {hasSite ? "Κλείστε Δωρεάν Audit" : "Ξεκινήστε το Brief"}
+                      {hasSite ? "ΞΞ»ΞµΞ―ΟƒΟ„Ξµ Ξ”Ο‰ΟΞµΞ¬Ξ½ Audit" : "ΞΞµΞΊΞΉΞ½Ξ®ΟƒΟ„Ξµ Ο„ΞΏ Brief"}
                       <ArrowRight className="ml-3 group-hover:translate-x-3 transition-transform" size={24} />
                     </Link>
                   </Button>
@@ -452,7 +452,7 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 7: PROCESS ── */}
+      {/* β”€β”€ SECTION 7: PROCESS β”€β”€ */}
       <section className="py-24 md:py-56 relative bg-[#050505] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(208,255,0,0.02),_transparent_50%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -485,29 +485,29 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 9: WHY US (STRONGER) ── */}
+      {/* β”€β”€ SECTION 9: WHY US (STRONGER) β”€β”€ */}
       <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505]">
         <div className="container mx-auto px-4 lg:px-8 text-center">
            <motion.div {...fadeUp()} className="max-w-5xl mx-auto">
               <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-12 block italic">Deep Insight</span>
               <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black text-white italic uppercase mb-24 leading-[0.85] tracking-tighter">
-                Γιατί τα <br /> <span className="text-white/10">περισσότερα αποτυγχάνουν.</span>
+                Ξ“ΞΉΞ±Ο„Ξ― Ο„Ξ± <br /> <span className="text-white/10">Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ± Ξ±Ο€ΞΏΟ„Ο…Ξ³Ο‡Ξ¬Ξ½ΞΏΟ…Ξ½.</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-left max-w-4xl mx-auto">
                  <div className="space-y-8 p-10 rounded-[3rem] bg-white/[0.01] border border-white/5 hover:bg-white/[0.02] transition-all">
                     <h4 className="font-display text-2xl md:text-3xl font-black uppercase italic text-primary tracking-tight">Templates & Over-complication</h4>
-                    <p className="text-white/40 italic leading-relaxed text-lg">Τα περισσότερα sites βασίζονται σε έτοιμα συστήματα που τα κάνουν αργά, δυσκίνητα και ίδια με των ανταγωνιστών. Το scaling γίνεται εφιάλτης.</p>
+                    <p className="text-white/40 italic leading-relaxed text-lg">Ξ¤Ξ± Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ± sites Ξ²Ξ±ΟƒΞ―Ξ¶ΞΏΞ½Ο„Ξ±ΞΉ ΟƒΞµ Ξ­Ο„ΞΏΞΉΞΌΞ± ΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„Ξ± Ο€ΞΏΟ… Ο„Ξ± ΞΊΞ¬Ξ½ΞΏΟ…Ξ½ Ξ±ΟΞ³Ξ¬, Ξ΄Ο…ΟƒΞΊΞ―Ξ½Ξ·Ο„Ξ± ΞΊΞ±ΞΉ Ξ―Ξ΄ΞΉΞ± ΞΌΞµ Ο„Ο‰Ξ½ Ξ±Ξ½Ο„Ξ±Ξ³Ο‰Ξ½ΞΉΟƒΟ„ΟΞ½. Ξ¤ΞΏ scaling Ξ³Ξ―Ξ½ΞµΟ„Ξ±ΞΉ ΞµΟ†ΞΉΞ¬Ξ»Ο„Ξ·Ο‚.</p>
                  </div>
                  <div className="space-y-8 p-10 rounded-[3rem] bg-white/[0.01] border border-white/5 hover:bg-white/[0.02] transition-all">
                     <h4 className="font-display text-2xl md:text-3xl font-black uppercase italic text-primary tracking-tight">Lack of Growth Strategy</h4>
-                    <p className="text-white/40 italic leading-relaxed text-lg">Ένα ωραίο design χωρίς στρατηγική conversion είναι απλά μια ψηφιακή αφίσα. Αν δεν υπάρχει σκοπός, δεν υπάρχει ROI.</p>
+                    <p className="text-white/40 italic leading-relaxed text-lg">ΞΞ½Ξ± Ο‰ΟΞ±Ξ―ΞΏ design Ο‡Ο‰ΟΞ―Ο‚ ΟƒΟ„ΟΞ±Ο„Ξ·Ξ³ΞΉΞΊΞ® conversion ΞµΞ―Ξ½Ξ±ΞΉ Ξ±Ο€Ξ»Ξ¬ ΞΌΞΉΞ± ΟΞ·Ο†ΞΉΞ±ΞΊΞ® Ξ±Ο†Ξ―ΟƒΞ±. Ξ‘Ξ½ Ξ΄ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ ΟƒΞΊΞΏΟ€ΟΟ‚, Ξ΄ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ ROI.</p>
                  </div>
               </div>
            </motion.div>
         </div>
       </section>
 
-      {/* ── SECTION 10: PRICING ── */}
+      {/* β”€β”€ SECTION 10: PRICING β”€β”€ */}
       <section id="packages" className="py-24 md:py-56 relative bg-[#050505] border-t border-white/5">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <div className="mb-32">
@@ -554,7 +554,7 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 11: SPEED ── */}
+      {/* β”€β”€ SECTION 11: SPEED β”€β”€ */}
       <section className="py-24 md:py-56 relative bg-[#050505] border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
@@ -564,9 +564,9 @@ const Websites = () => {
                    Speed is <br /> <span className="text-white/10 italic">a feature.</span>
                  </h2>
                  <p className="text-xl md:text-3xl text-white font-black mb-12 italic uppercase leading-tight italic">
-                    Οι χρήστες δεν περιμένουν. <br />
-                    Αν το site σου αργεί, φεύγουν. <br />
-                    <span className="text-white/20">Και μαζί τους φεύγουν και τα conversions.</span>
+                    ΞΞΉ Ο‡ΟΞ®ΟƒΟ„ΞµΟ‚ Ξ΄ΞµΞ½ Ο€ΞµΟΞΉΞΌΞ­Ξ½ΞΏΟ…Ξ½. <br />
+                    Ξ‘Ξ½ Ο„ΞΏ site ΟƒΞΏΟ… Ξ±ΟΞ³ΞµΞ―, Ο†ΞµΟΞ³ΞΏΟ…Ξ½. <br />
+                    <span className="text-white/20">ΞΞ±ΞΉ ΞΌΞ±Ξ¶Ξ― Ο„ΞΏΟ…Ο‚ Ο†ΞµΟΞ³ΞΏΟ…Ξ½ ΞΊΞ±ΞΉ Ο„Ξ± conversions.</span>
                  </p>
                  <div className="flex items-center gap-4 bg-primary/10 border border-primary/20 px-8 py-3 rounded-full inline-flex">
                     <Zap size={20} className="text-primary animate-pulse" />
@@ -590,7 +590,7 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 12: PROJECTS ── */}
+      {/* β”€β”€ SECTION 12: PROJECTS β”€β”€ */}
       <section className="py-24 md:py-64 relative bg-[#050505]">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
            <div className="text-center mb-32 max-w-5xl mx-auto">
@@ -632,13 +632,13 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 13: DELIVERABLES ── */}
+      {/* β”€β”€ SECTION 13: DELIVERABLES β”€β”€ */}
       <section className="py-24 md:py-56 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-32">
             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-12 block italic">Inclusions</span>
             <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] italic uppercase text-white">
-              Τι <br className="md:hidden" /> <span className="text-white/10 italic">περιλαμβάνεται.</span>
+              Ξ¤ΞΉ <br className="md:hidden" /> <span className="text-white/10 italic">Ο€ΞµΟΞΉΞ»Ξ±ΞΌΞ²Ξ¬Ξ½ΞµΟ„Ξ±ΞΉ.</span>
             </h2>
           </div>
 
@@ -660,7 +660,7 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 14: FAQ (Dark) ── */}
+      {/* β”€β”€ SECTION 14: FAQ (Dark) β”€β”€ */}
       <section className="py-24 md:py-48 relative bg-[#050505] overflow-hidden border-t border-white/5">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div {...fadeUp()} className="max-w-5xl mx-auto mb-20">
@@ -676,24 +676,24 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION: CHANIA HUB & LOCAL IMPACT ── */}
+      {/* β”€β”€ SECTION: CHANIA HUB & LOCAL IMPACT β”€β”€ */}
       <section className="py-24 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_rgba(208,255,0,0.03),_transparent_50%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
               <motion.div {...fadeUp()}>
-                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">Regional Hub · Crete</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-10 block italic">Regional Hub Β· Crete</span>
                  <h2 className="font-display text-5xl md:text-8xl font-black text-white mb-12 leading-[0.85] tracking-tighter italic uppercase">
-                    Χτίζουμε το <br /> <span className="text-white/10 italic">Ψηφιακό Μέλλον.</span>
+                    Ξ§Ο„Ξ―Ξ¶ΞΏΟ…ΞΌΞµ Ο„ΞΏ <br /> <span className="text-white/10 italic">Ξ¨Ξ·Ο†ΞΉΞ±ΞΊΟ ΞΞ­Ξ»Ξ»ΞΏΞ½.</span>
                  </h2>
                  <p className="text-xl md:text-2xl text-white/40 leading-relaxed max-w-xl italic mb-12">
-                    Η Hustle Labs εδρεύει στα Χανιά και κατανοεί τις ιδιαιτερότητες της τοπικής αγοράς. Δημιουργούμε ψηφιακά εργαλεία που βοηθούν τις επιχειρήσεις της Κρήτης να ανταγωνιστούν σε παγκόσμιο επίπεδο.
+                    Ξ— Hustle Labs ΞµΞ΄ΟΞµΟΞµΞΉ ΟƒΟ„Ξ± Ξ§Ξ±Ξ½ΞΉΞ¬ ΞΊΞ±ΞΉ ΞΊΞ±Ο„Ξ±Ξ½ΞΏΞµΞ― Ο„ΞΉΟ‚ ΞΉΞ΄ΞΉΞ±ΞΉΟ„ΞµΟΟΟ„Ξ·Ο„ΞµΟ‚ Ο„Ξ·Ο‚ Ο„ΞΏΟ€ΞΉΞΊΞ®Ο‚ Ξ±Ξ³ΞΏΟΞ¬Ο‚. Ξ”Ξ·ΞΌΞΉΞΏΟ…ΟΞ³ΞΏΟΞΌΞµ ΟΞ·Ο†ΞΉΞ±ΞΊΞ¬ ΞµΟΞ³Ξ±Ξ»ΞµΞ―Ξ± Ο€ΞΏΟ… Ξ²ΞΏΞ·ΞΈΞΏΟΞ½ Ο„ΞΉΟ‚ ΞµΟ€ΞΉΟ‡ΞµΞΉΟΞ®ΟƒΞµΞΉΟ‚ Ο„Ξ·Ο‚ ΞΟΞ®Ο„Ξ·Ο‚ Ξ½Ξ± Ξ±Ξ½Ο„Ξ±Ξ³Ο‰Ξ½ΞΉΟƒΟ„ΞΏΟΞ½ ΟƒΞµ Ο€Ξ±Ξ³ΞΊΟΟƒΞΌΞΉΞΏ ΞµΟ€Ξ―Ο€ΞµΞ΄ΞΏ.
                  </p>
                  <div className="space-y-6">
                     {[
-                      "Tourism & Hospitality: Εξειδικευμένα Booking Engines για Villas στα Χανιά.",
-                      "Real Estate: Luxury Platforms για το premium market της Κρήτης.",
-                      "Local Commerce: E-shops που συνδέουν τα Χανιά με την παγκόσμια αγορά."
+                      "Tourism & Hospitality: Ξ•ΞΎΞµΞΉΞ΄ΞΉΞΊΞµΟ…ΞΌΞ­Ξ½Ξ± Booking Engines Ξ³ΞΉΞ± Villas ΟƒΟ„Ξ± Ξ§Ξ±Ξ½ΞΉΞ¬.",
+                      "Real Estate: Luxury Platforms Ξ³ΞΉΞ± Ο„ΞΏ premium market Ο„Ξ·Ο‚ ΞΟΞ®Ο„Ξ·Ο‚.",
+                      "Local Commerce: E-shops Ο€ΞΏΟ… ΟƒΟ…Ξ½Ξ΄Ξ­ΞΏΟ…Ξ½ Ο„Ξ± Ξ§Ξ±Ξ½ΞΉΞ¬ ΞΌΞµ Ο„Ξ·Ξ½ Ο€Ξ±Ξ³ΞΊΟΟƒΞΌΞΉΞ± Ξ±Ξ³ΞΏΟΞ¬."
                     ].map((bullet, idx) => (
                       <div key={idx} className="flex items-start gap-5 group">
                         <div className="w-2 h-2 rounded-full bg-primary mt-3 shrink-0 group-hover:scale-150 transition-transform" />
@@ -705,16 +705,16 @@ const Websites = () => {
 
               <motion.div {...fadeUp(0.2)} className="relative p-12 lg:p-20 rounded-[4rem] bg-white/[0.01] border border-white/5 overflow-hidden group shadow-2xl">
                  <div className="absolute top-0 right-0 p-12">
-                    <MapPin className="text-primary/10 w-48 h-48 -rotate-12 group-hover:rotate-0 transition-transform duration-[2000ms] ease-out shadow-glow" />
+                    <MapPin className="text-primary/10 w-48 h-48 -rotate-12 group-hover:rotate-0 transition-transform duration-2000 ease-out shadow-glow" />
                  </div>
                  <div className="relative z-10">
-                    <h3 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-10 tracking-tighter">Τοπική <br /> Υποστήριξη</h3>
+                    <h3 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-10 tracking-tighter">Ξ¤ΞΏΟ€ΞΉΞΊΞ® <br /> Ξ¥Ο€ΞΏΟƒΟ„Ξ®ΟΞΉΞΎΞ·</h3>
                     <p className="text-xl text-white/40 leading-relaxed mb-12 italic pr-8">
-                       Είμαστε δίπλα σας, από την πρώτη συνάντηση στο γραφείο μας στα Χανιά μέχρι το Go-Live και το συνεχή optimization. Η επιτυχία σας είναι και δική μας επιτυχία.
+                       Ξ•Ξ―ΞΌΞ±ΟƒΟ„Ξµ Ξ΄Ξ―Ο€Ξ»Ξ± ΟƒΞ±Ο‚, Ξ±Ο€Ο Ο„Ξ·Ξ½ Ο€ΟΟΟ„Ξ· ΟƒΟ…Ξ½Ξ¬Ξ½Ο„Ξ·ΟƒΞ· ΟƒΟ„ΞΏ Ξ³ΟΞ±Ο†ΞµΞ―ΞΏ ΞΌΞ±Ο‚ ΟƒΟ„Ξ± Ξ§Ξ±Ξ½ΞΉΞ¬ ΞΌΞ­Ο‡ΟΞΉ Ο„ΞΏ Go-Live ΞΊΞ±ΞΉ Ο„ΞΏ ΟƒΟ…Ξ½ΞµΟ‡Ξ® optimization. Ξ— ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ―Ξ± ΟƒΞ±Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΊΞ±ΞΉ Ξ΄ΞΉΞΊΞ® ΞΌΞ±Ο‚ ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ―Ξ±.
                     </p>
                     <div className="inline-flex flex-col gap-2">
                        <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic mb-2">Primary Location</span>
-                       <span className="text-lg font-black text-white italic uppercase tracking-widest">Γαλατάς, Χανιά, Κρήτη</span>
+                       <span className="text-lg font-black text-white italic uppercase tracking-widest">Ξ“Ξ±Ξ»Ξ±Ο„Ξ¬Ο‚, Ξ§Ξ±Ξ½ΞΉΞ¬, ΞΟΞ®Ο„Ξ·</span>
                     </div>
                  </div>
               </motion.div>
@@ -722,14 +722,14 @@ const Websites = () => {
         </div>
       </section>
 
-      {/* ── SECTION 15: FINAL CTA ── */}
+      {/* β”€β”€ SECTION 15: FINAL CTA β”€β”€ */}
       <section className="py-24 md:py-64 relative bg-[#050505] overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,_rgba(208,255,0,0.1),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div {...fadeUp()}>
             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-primary mb-12 block italic">Ready for Launch</span>
             <h2 className="font-display text-5xl md:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-20 px-4 text-white">
-              Έτοιμος για <br /> <span className="text-primary italic animate-glow">απογείωση;</span>
+              ΞΟ„ΞΏΞΉΞΌΞΏΟ‚ Ξ³ΞΉΞ± <br /> <span className="text-primary italic animate-glow">Ξ±Ο€ΞΏΞ³ΞµΞ―Ο‰ΟƒΞ·;</span>
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-24 max-w-4xl mx-auto">

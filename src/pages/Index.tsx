@@ -11,9 +11,13 @@ import PortfolioCard from "@/components/PortfolioCard";
 import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 
 const Index = () => {
+  const { language, t } = useLanguage();
+
   useEffect(() => {
     // SEO: Page Title
-    document.title = "Hustle Labs | Digital Agency & AI: Κρήτη, Κυκλάδες, Νησιά";
+    document.title = language === "en" 
+      ? "Hustle Labs | Digital Agency & AI: Crete, Cyclades, Islands"
+      : "Hustle Labs | Digital Agency & AI: Κρήτη, Κυκλάδες, Νησιά";
     
     // SEO: Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -22,7 +26,10 @@ const Index = () => {
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', "Hustle Labs: Digital Agency & AI Hub σε Κρήτη, Κυκλάδες και Ελληνικά Νησιά. Εξειδικευόμαστε σε Tourism Automations, Web Design και Growth Strategy για ξενοδοχεία και premium επιχειρήσεις.");
+    const content = language === "en"
+      ? "Hustle Labs: Digital Agency & AI Hub in Crete, Cyclades and Greek Islands. We specialize in Tourism Automations, Web Design and Growth Strategy for hotels and premium businesses."
+      : "Hustle Labs: Digital Agency & AI Hub σε Κρήτη, Κυκλάδες και Ελληνικά Νησιά. Εξειδικευόμαστε σε Tourism Automations, Web Design και Growth Strategy για ξενοδοχεία και premium επιχειρήσεις.";
+    metaDesc.setAttribute('content', content);
 
     // SEO: Structured Data (JSON-LD) - LocalBusiness
     const schemaData = {
@@ -88,7 +95,6 @@ const Index = () => {
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }
   };
 
-  const { t } = useLanguage();
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -165,9 +171,9 @@ const Index = () => {
                  transition={{ duration: 1, delay: 0.3 }}
                  className="flex flex-wrap justify-center gap-x-6 md:gap-x-8 gap-y-2 text-primary font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-xs md:text-sm lg:text-base italic"
               >
-                <span>We build.</span>
-                <span>We back.</span>
-                <span>We grow.</span>
+                <span>{t('hero.motto1')}</span>
+                <span>{t('hero.motto2')}</span>
+                <span>{t('hero.motto3')}</span>
               </motion.div>
             </div>
 
@@ -245,7 +251,7 @@ const Index = () => {
                 {t('forBusinesses.text')}
               </p>
               <ul className="grid grid-cols-1 gap-y-5 mb-24 pr-4">
-                {["Hospitality & Tourism Sites", "AI & Booking Automations", "Premium Marketing Systems", "Growth Strategy"].map((item) => (
+                {[t('forBusinesses.item1'), t('forBusinesses.item2'), t('forBusinesses.item3'), t('forBusinesses.item4')].map((item) => (
                   <li key={item} className="flex items-center gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white/20 border-l border-white/10 pl-8 group-hover:border-primary/50 transition-all italic">
                     {item}
                   </li>
@@ -272,7 +278,7 @@ const Index = () => {
               </p>
               <p className="text-[10px] md:text-[11px] text-white/20 italic mb-16 uppercase tracking-[0.4em] font-black leading-relaxed">{t('forFounders.text2')}</p>
               <ul className="grid grid-cols-1 gap-y-5 mb-24">
-                {["Startup Development", "Strategic Partnership", "Product Building", "Growth Execution"].map((item) => (
+                {[t('forFounders.item1'), t('forFounders.item2'), t('forFounders.item3'), t('forFounders.item4')].map((item) => (
                   <li key={item} className="flex items-center gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white/20 border-l border-white/10 pl-8 group-hover:border-primary/50 transition-all italic">
                     {item}
                   </li>
@@ -316,19 +322,19 @@ const Index = () => {
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#050505]">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto text-center mb-20 md:mb-32">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Η Μεθοδολογία</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">{t('process.badge')}</span>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 uppercase italic leading-[1.1]">
-              Πώς χτίζουμε <br />
-              <span className="text-white/20">το επόμενο επίπεδο.</span>
+              {t('process.title1')} <br />
+              <span className="text-white/20">{t('process.title2')}</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 max-w-7xl mx-auto">
             {[
-              { num: "01", title: "Discovery", desc: "Αναλύουμε το business model και εντοπίζουμε τα bottlenecks που κοστίζουν χρόνο." },
-              { num: "02", title: "Strategy", desc: "Σχεδιάζουμε το αρχιτεκτονικό πλάνο (Web, AI, Marketing) προσαρμοσμένο ακριβώς στα μέτρα σας." },
-              { num: "03", title: "Execution", desc: "Αναλαμβάνουμε όλη την τεχνική υλοποίηση. Χωρίς πειράματα, με αληθινά frameworks." },
-              { num: "04", title: "Scale", desc: "Βελτιστοποιούμε το σύστημα με βάση data, φέρνοντας συνεχώς νέα αποτελέσματα." }
+              { num: "01", title: t('process.step1.title'), desc: t('process.step1.desc') },
+              { num: "02", title: t('process.step2.title'), desc: t('process.step2.desc') },
+              { num: "03", title: t('process.step3.title'), desc: t('process.step3.desc') },
+              { num: "04", title: t('process.step4.title'), desc: t('process.step4.desc') }
             ].map((step, i) => (
               <motion.div 
                 key={i}
@@ -422,29 +428,29 @@ const Index = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.02),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0 mb-20 md:mb-32">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Ιστορίες Πελατών</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">{t('testimonials.badge')}</span>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-12 uppercase italic">
-              Τα αποτελέσματα <br />
-              <span className="text-white/20 text-3xl md:text-5xl lg:text-7xl tracking-normal md:whitespace-nowrap">κάνουν τον θόρυβο.</span>
+              {t('testimonials.title1')} <br />
+              <span className="text-white/20 text-3xl md:text-5xl lg:text-7xl tracking-normal md:whitespace-nowrap">{t('testimonials.title2')}</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
             {[
               {
-                quote: "Γλιτώσαμε πάνω από 40 ώρες χειροκίνητης δουλειάς τον μήνα. Το αυτοματοποιημένο σύστημα κρατήσεων της Hustle Labs άλλαξε τα δεδομένα μας.",
+                quote: t('testimonials.1.quote'),
                 name: "Liv Tours",
                 role: "Luxury Transfers & Tours",
-                result: "40+ Ώρες / Μήνα Εξοικονόμηση"
+                result: "40+ Hours / Month Savings"
               },
               {
-                quote: "Από τη στρατηγική μέχρι το design, η ομάδα καταλαβαίνει ακριβώς τι σημαίνει premium τουρισμός. Οι direct κρατήσεις μας αυξήθηκαν κατακόρυφα.",
+                quote: t('testimonials.2.quote'),
                 name: "Skiathos Travellers",
                 role: "Tourism Engine",
                 result: "+140% Direct Bookings"
               },
               {
-                quote: "Η ταχύτητα και η εμπειρία χρήστη του site είναι ακριβώς αυτό που φανταζόμασταν. Παράλληλα, οι αυτοματισμοί στο custom διαχειριστικό έχουν κάνει την οργάνωση των εκδρομών και των κρατήσεων απίστευτα εύκολη.",
+                quote: t('testimonials.3.quote'),
                 name: "TopTravel Greece",
                 role: "Travel & Tours Agency",
                 result: "Custom Booking Automations"
@@ -495,21 +501,21 @@ const Index = () => {
               { 
                 name: "The Starter", 
                 price: "from €1.8k", 
-                desc: "High-end corporate presence for businesses that deserve a premium digital identity.",
-                features: ["Custom Premium Design", "Operations Setup", "SEO & Speed Optimized", "Lead Generation Flow"]
+                desc: t('growth.starter.desc'),
+                features: [t('growth.starter.f1'), t('growth.starter.f2'), t('growth.starter.f3'), t('growth.starter.f4')]
               },
               { 
                 name: "The Scale", 
                 price: "Custom", 
-                desc: "Full automated systems, custom dashboards and growth engines for high-scale operations.",
-                features: ["Custom Admin Panels", "CRM & ERP Integration", "Multi-channel Automation", "Dedicated Growth Team"],
+                desc: t('growth.scale.desc'),
+                features: [t('growth.scale.f1'), t('growth.scale.f2'), t('growth.scale.f3'), t('growth.scale.f4')],
                 popular: true
               },
               { 
                 name: "The Fractional", 
                 price: "Monthly", 
-                desc: "Your own CTO and Creative Director as a service. Continuous development and strategy.",
-                features: ["On-demand Development", "Strategic Consulting", "Weekly Experiments", "Priority Support"]
+                desc: t('growth.fractional.desc'),
+                features: [t('growth.fractional.f1'), t('growth.fractional.f2'), t('growth.fractional.f3'), t('growth.fractional.f4')]
               }
             ].map((pkg, i) => (
               <motion.div 
@@ -573,10 +579,10 @@ const Index = () => {
               {/* Amenities Grid */}
               <div className="grid grid-cols-2 gap-8 mb-20">
                  {[
-                   { icon: Zap, label: "High-Speed Fiber", desc: "Stable & Fast" },
-                   { icon: Layers, label: "Networking Hub", desc: "Meet Builders" },
-                   { icon: Coffee, label: "Premium Coffee", desc: "Unlimited Fuel" },
-                   { icon: MapPin, label: "Premium Chania", desc: "Galatas Hub" }
+                   { icon: Zap, label: t('space.amenity1'), desc: t('space.amenity1.desc') },
+                   { icon: Layers, label: t('space.amenity2'), desc: t('space.amenity2.desc') },
+                   { icon: Coffee, label: t('space.amenity3'), desc: t('space.amenity3.desc') },
+                   { icon: MapPin, label: t('space.amenity4'), desc: t('space.amenity4.desc') }
                  ].map((item, i) => (
                    <div key={i} className="flex gap-4">
                       <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">

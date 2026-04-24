@@ -14,71 +14,68 @@ import {
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import { useLanguage } from "@/contexts/LanguageContext";
 import WP_MEETUP_1 from "@/assets/chaniawordpressmeetup.JPG";
 import WP_MEETUP_2 from "@/assets/meetup.jpg";
 
-/* ─── Data ─── */
-
-const upcomingMeetups = [
-  {
-    title: "WordPress Performance & Core Web Vitals",
-    date: "TBA, Μάρτιος 2026",
-    time: "19:00 – 21:00",
-    location: "Hustle Space, Χανιά",
-    description:
-      "Πώς να κάνεις το WordPress site σου πιο γρήγορο, πρακτικά tips & live demo.",
-    rsvpLink: "https://www.meetup.com/",
-  },
-  {
-    title: "WooCommerce για Ελληνικές Επιχειρήσεις",
-    date: "TBA, Απρίλιος 2026",
-    time: "19:00 – 21:00",
-    location: "Hustle Space, Χανιά",
-    description:
-      "Setup, πληρωμές, αποστολές, SEO, ό,τι χρειάζεσαι για e-shop στην Ελλάδα.",
-    rsvpLink: "https://www.meetup.com/",
-  },
-  {
-    title: "WordPress + AI: Automations & Content",
-    date: "TBA, Μάιος 2026",
-    time: "19:00 – 21:00",
-    location: "Hustle Space, Χανιά",
-    description:
-      "Πώς το AI μπορεί να σε βοηθήσει με content, SEO και customer support στο WordPress.",
-    rsvpLink: "https://www.meetup.com/",
-  },
-];
-
-const pastMeetups = [
-  { title: "Intro to Gutenberg Blocks", date: "Ιαν 2026", attendees: 24 },
-  { title: "WordPress Security Best Practices", date: "Νοε 2025", attendees: 18 },
-  { title: "Building with Elementor Pro", date: "Σεπ 2025", attendees: 30 },
-  { title: "SEO Masterclass for WordPress", date: "Ιούλ 2025", attendees: 22 },
-  { title: "Headless WordPress & React", date: "Μάι 2025", attendees: 16 },
-  { title: "First Meetup, Hello Chania!", date: "Μαρ 2025", attendees: 35 },
-];
-
-const fade = {
-  initial: { opacity: 0, y: 24 } as const,
-  whileInView: { opacity: 1, y: 0 } as const,
-  viewport: { once: true } as const,
-};
-
 const Meetups = () => {
+  const { t } = useLanguage();
+
+  const upcomingMeetups = [
+    {
+      title: t('meetups.event1.title'),
+      date: "TBA, ΞΞ¬ΟΟ„ΞΉΞΏΟ‚ 2026",
+      time: "19:00 β€“ 21:00",
+      location: "Hustle Space, Ξ§Ξ±Ξ½ΞΉΞ¬",
+      description: t('meetups.event1.desc'),
+      rsvpLink: "https://www.meetup.com/",
+    },
+    {
+      title: t('meetups.event2.title'),
+      date: "TBA, Ξ‘Ο€ΟΞ―Ξ»ΞΉΞΏΟ‚ 2026",
+      time: "19:00 β€“ 21:00",
+      location: "Hustle Space, Ξ§Ξ±Ξ½ΞΉΞ¬",
+      description: t('meetups.event2.desc'),
+      rsvpLink: "https://www.meetup.com/",
+    },
+    {
+      title: t('meetups.event3.title'),
+      date: "TBA, ΞΞ¬ΞΉΞΏΟ‚ 2026",
+      time: "19:00 β€“ 21:00",
+      location: "Hustle Space, Ξ§Ξ±Ξ½ΞΉΞ¬",
+      description: t('meetups.event3.desc'),
+      rsvpLink: "https://www.meetup.com/",
+    },
+  ];
+
+  const pastMeetups = [
+    { title: "Intro to Gutenberg Blocks", date: "Ξ™Ξ±Ξ½ 2026", attendees: 24 },
+    { title: "WordPress Security Best Practices", date: "ΞΞΏΞµ 2025", attendees: 18 },
+    { title: "Building with Elementor Pro", date: "Ξ£ΞµΟ€ 2025", attendees: 30 },
+    { title: "SEO Masterclass for WordPress", date: "Ξ™ΞΏΟΞ» 2025", attendees: 22 },
+    { title: "Headless WordPress & React", date: "ΞΞ¬ΞΉ 2025", attendees: 16 },
+    { title: "First Meetup, Hello Chania!", date: "ΞΞ±Ο 2025", attendees: 35 },
+  ];
+
+  const fade = {
+    initial: { opacity: 0, y: 24 } as const,
+    whileInView: { opacity: 1, y: 0 } as const,
+    viewport: { once: true } as const,
+  };
+
   return (
     <div className="min-h-screen pt-24">
-      {/* ──── Hero ──── */}
+      {/* β”€β”€β”€β”€ Hero β”€β”€β”€β”€ */}
       <PageHero
-        label="Community"
+        label={t('meetups.hero.label')}
         icon={Users}
         floatingIcons={[Calendar, Users, MapPin, Mic, Heart, Clock]}
-        title="Chania WordPress Meetups"
+        title={t('meetups.hero.title')}
         highlight="Meetups"
-        description="Meetups, workshops και networking στον χώρο μας. Ανοιχτά σε όλους, ελεύθερη είσοδος."
+        description={t('meetups.hero.desc')}
       >
         <p className="text-sm text-muted-foreground/60 italic mb-8">
-          Διοργανώνουμε & φιλοξενούμε τα Chania WordPress Meetups στο Hustle
-          Space.
+          {t('meetups.hero.subtitle')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="hero" size="lg" asChild>
@@ -87,17 +84,17 @@ const Meetups = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              RSVP στο Meetup.com{" "}
+              {t('meetups.hero.cta1')}{" "}
               <ExternalLink size={16} className="ml-1" />
             </a>
           </Button>
           <Button variant="hero-outline" size="lg" asChild>
-            <Link to="/hustle-space">Δες τον χώρο</Link>
+            <Link to="/hustle-space">{t('meetups.hero.cta2')}</Link>
           </Button>
         </div>
       </PageHero>
 
-      {/* ──── Intro strip ──── */}
+      {/* β”€β”€β”€β”€ Intro strip β”€β”€β”€β”€ */}
       <section className="border-t border-border bg-card/20">
         <div className="container mx-auto px-4 lg:px-8 py-12 md:py-20">
           <div className="max-w-6xl mx-auto">
@@ -117,22 +114,7 @@ const Meetups = () => {
               </div>
               <div className="flex-1">
                 <p className="text-xl md:text-2xl text-foreground font-medium leading-relaxed italic">
-                  Τα{" "}
-                  <span className="font-black text-primary italic uppercase">
-                    Chania WordPress Meetups
-                  </span>{" "}
-                  διοργανώνονται από την ομάδα του{" "}
-                  <span className="font-black text-foreground italic uppercase">
-                    Hustle Labs
-                  </span>{" "}
-                  και φιλοξενούνται στο{" "}
-                  <Link
-                    to="/hustle-space"
-                    className="text-primary hover:underline underline-offset-4 decoration-primary/30"
-                  >
-                    Hustle Space
-                  </Link>
-                  . Κάθε meetup είναι μια ευκαιρία για γνώση, networking και ανταλλαγή ιδεών σε ένα περιβάλλον υψηλής αισθητικής.
+                  {t('meetups.intro.text')}
                 </p>
               </div>
             </motion.div>
@@ -144,28 +126,28 @@ const Meetups = () => {
                  transition={{ delay: 0.1 }}
                  className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/30 transition-all duration-700 shadow-2xl"
                >
-                 <img src={WP_MEETUP_1} alt="Chania WordPress Meetup Session" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
+                 <img src={WP_MEETUP_1} alt="Chania WordPress Meetup Session" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-2000" />
                </motion.div>
                <motion.div 
                  {...fade} 
                  transition={{ delay: 0.2 }}
                  className="group aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/30 transition-all duration-700 shadow-2xl md:mt-12"
                >
-                 <img src={WP_MEETUP_2} alt="Community Meetup at Hustle Space" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
+                 <img src={WP_MEETUP_2} alt="Community Meetup at Hustle Space" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-2000" />
                </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ──── Upcoming Meetups ──── */}
+      {/* β”€β”€β”€β”€ Upcoming Meetups β”€β”€β”€β”€ */}
       <section className="py-28 border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
-            label="Προσεχώς"
-            title="Επόμενα Meetups"
+            label={t('meetups.upcoming.badge')}
+            title={t('meetups.upcoming.title')}
             highlight="Meetups"
-            description="Κλείσε θέση, τα meetups γίνονται στο Hustle Space. Ελεύθερη είσοδος."
+            description={t('meetups.upcoming.desc')}
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {upcomingMeetups.map((m, i) => (
@@ -210,14 +192,14 @@ const Meetups = () => {
         </div>
       </section>
 
-      {/* ──── Past Meetups ──── */}
+      {/* β”€β”€β”€β”€ Past Meetups β”€β”€β”€β”€ */}
       <section className="py-28 border-t border-border bg-card/20">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
-            label="Αρχείο"
-            title="Προηγούμενα Meetups"
+            label={t('meetups.past.badge')}
+            title={t('meetups.past.title')}
             highlight="Meetups"
-            description="Ένα μικρό ιστορικό από τα meetups μας."
+            description={t('meetups.past.desc')}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {pastMeetups.map((pm, i) => (
@@ -244,7 +226,7 @@ const Meetups = () => {
                     <span>{pm.date}</span>
                     <span className="amber-dot mx-1" />
                     <Users size={12} />
-                    <span>{pm.attendees} άτομα</span>
+                    <span>{pm.attendees} {t('meetups.past.attendees')}</span>
                   </div>
                 </div>
               </motion.div>
@@ -253,7 +235,7 @@ const Meetups = () => {
         </div>
       </section>
 
-      {/* ──── Organizer Note ──── */}
+      {/* β”€β”€β”€β”€ Organizer Note β”€β”€β”€β”€ */}
       <section className="py-16 border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -265,47 +247,30 @@ const Meetups = () => {
             </div>
             <div>
               <span className="text-xs font-medium text-primary-soft uppercase tracking-[0.2em] mb-2 block">
-                Organizer
+                {t('meetups.organizer.badge')}
               </span>
               <p className="text-foreground/80 leading-relaxed">
-                Τα Chania WordPress Meetups διοργανώνονται από την ομάδα του{" "}
-                <Link
-                  to="/"
-                  className="font-semibold text-foreground hover:text-accent transition-colors"
-                >
-                  Hustle Labs
-                </Link>{" "}
-                και φιλοξενούνται στο{" "}
-                <Link
-                  to="/hustle-space"
-                  className="font-semibold text-foreground hover:text-accent transition-colors"
-                >
-                  Hustle Space
-                </Link>{" "}
-                , τον φυσικό μας χώρο στα Χανιά. Στόχος μας: μια ζωντανή
-                τοπική κοινότητα γύρω από το WordPress, το web development
-                και την τεχνολογία.
+                {t('meetups.organizer.text')}
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ──── Speaker CTA ──── */}
+      {/* β”€β”€β”€β”€ Speaker CTA β”€β”€β”€β”€ */}
       <section className="py-28 border-t border-border text-center">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fade}>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Θέλεις να μιλήσεις σε meetup;
+              {t('meetups.speaker.title')}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              Αν έχεις κάτι ενδιαφέρον να μοιραστείς, πες μας. Ψάχνουμε
-              πάντα speakers.
+              {t('meetups.speaker.desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
                 <Link to="/contact?subject=meetup-speaker">
-                  Πρότεινε θέμα{" "}
+                  {t('meetups.speaker.cta')}{" "}
                   <ArrowRight size={18} className="ml-1" />
                 </Link>
               </Button>
@@ -315,7 +280,7 @@ const Meetups = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  RSVP στο Meetup.com{" "}
+                  {t('meetups.hero.cta1')}{" "}
                   <ExternalLink size={16} className="ml-1" />
                 </a>
               </Button>

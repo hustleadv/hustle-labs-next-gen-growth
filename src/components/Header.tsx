@@ -35,6 +35,7 @@ const navItems = [
     submenu: [
       { label: "nav.ecosystem_overview", path: "/ecosystem", icon: Layers, desc: "nav.ecosystem.desc" },
       { label: "nav.about", path: "/about", icon: Users, desc: "nav.about.desc" },
+      { label: "nav.meetups", path: "/hustle-meetups", icon: CalendarDays, desc: "nav.meetups.desc" },
     ]
   },
   { label: "nav.academy", path: "/academy", icon: GraduationCap },
@@ -117,7 +118,7 @@ const Header = () => {
         <Link
           to="/"
           className="flex items-center"
-          aria-label="Hustle Labs, Αρχική"
+          aria-label={t('header.logo_aria')}
         >
           <img
             src="/images/logohustle.svg"
@@ -126,7 +127,7 @@ const Header = () => {
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Κύρια πλοήγηση">
+        <nav className="hidden lg:flex items-center gap-7" aria-label={t('header.nav_aria')}>
           {navItems.map((item) => {
             const isActive = location.pathname === item.path || (item.path !== "/" && location.pathname.startsWith(item.path));
 
@@ -307,7 +308,7 @@ const Header = () => {
         <button
           className="lg:hidden text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md p-1 relative z-[60]"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Κλείσιμο μενού" : "Άνοιγμα μενού"}
+          aria-label={mobileOpen ? t('header.menu_close') : t('header.menu_open')}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
         >
@@ -322,7 +323,7 @@ const Header = () => {
             <motion.div
               id="mobile-nav"
               role="region"
-              aria-label="Μενού πλοήγησης"
+              aria-label={t('header.menu_aria')}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -350,7 +351,7 @@ const Header = () => {
                 <button
                   className="text-foreground p-1"
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Κλείσιμο μενού"
+                  aria-label={t('header.menu_close')}
                 >
                   <X size={24} />
                 </button>
@@ -358,7 +359,7 @@ const Header = () => {
 
               <div className="h-px w-full" style={{ background: "linear-gradient(to right, transparent, hsl(220 85% 55% / 0.3), transparent)" }} />
 
-              <nav className="flex flex-col flex-1 px-6 pt-8 overflow-y-auto" aria-label="Κύρια πλοήγηση (mobile)">
+              <nav className="flex flex-col flex-1 px-6 pt-8 overflow-y-auto" aria-label={t('header.nav_mobile_aria')}>
                 {navItems.map((item, i) => {
                   const isActive = location.pathname === item.path;
 
@@ -374,7 +375,7 @@ const Header = () => {
                         >
                           <span className="flex items-center gap-3">
                             <item.icon size={18} className="text-muted-foreground/50" />
-                            {item.label}
+                            {t(item.label)}
                           </span>
                           <ChevronDown size={18} className={cn("transition-transform duration-200", mobileServicesOpen && "rotate-180")} />
                         </button>
@@ -434,7 +435,7 @@ const Header = () => {
                         <span className="flex items-center justify-between">
                           <span className="flex items-center gap-3">
                             <item.icon size={18} className={isActive ? "text-accent" : "text-muted-foreground/50"} />
-                            {item.label}
+                            {t(item.label)}
                             {item.badge && (
                               <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-black uppercase tracking-tighter">
                                 {item.badge}
@@ -461,7 +462,7 @@ const Header = () => {
                   >
                     <span className="flex items-center gap-3">
                       <FolderKanban size={18} className="text-muted-foreground/50" />
-                      Start a Project
+                      {t('nav.brief')}
                     </span>
                     <ArrowRight size={16} className="text-muted-foreground/30" />
                   </Link>
@@ -480,9 +481,9 @@ const Header = () => {
                     className="flex items-center justify-center gap-3 w-full h-16 rounded-full bg-primary text-primary-foreground font-black uppercase tracking-widest text-sm shadow-2xl shadow-primary/30 transition-all duration-300 active:scale-95"
                   >
                     <CalendarDays size={18} />
-                    Get Your Day Pass
+                    {t('nav.space')}
                   </Link>
-                  <p className="text-[11px] text-muted-foreground/40 text-center mt-3">Work from our space for a day</p>
+                  <p className="text-[11px] text-muted-foreground/40 text-center mt-3">{t('header.mobile.daypass.desc')}</p>
                 </motion.div>
 
                 <motion.p
@@ -491,7 +492,7 @@ const Header = () => {
                   transition={{ delay: 0.45 }}
                   className="text-xs text-muted-foreground/40 text-center mt-auto py-8"
                 >
-                  Χανιά, Κρήτη
+                  {t('header.location')}
                 </motion.p>
               </nav>
             </motion.div>

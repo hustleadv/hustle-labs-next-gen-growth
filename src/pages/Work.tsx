@@ -814,17 +814,17 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-const categories = [
-  { id: "all", label: "Όλα τα Έργα", icon: Layers },
-  { id: "websites", label: "Websites", icon: Monitor },
-  { id: "mobile", label: "Mobile Apps", icon: Smartphone },
-  { id: "growth", label: "Custom Διαχειριστικά", icon: TrendingUp },
-  { id: "ai", label: "AI & Automations", icon: Bot },
-];
-
 const Work = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
   const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categories = [
+    { id: "all", label: t('portfolio.categories.all'), icon: Layers },
+    { id: "websites", label: t('portfolio.categories.websites'), icon: Monitor },
+    { id: "mobile", label: t('portfolio.categories.mobile'), icon: Smartphone },
+    { id: "growth", label: t('portfolio.categories.growth'), icon: TrendingUp },
+    { id: "ai", label: t('portfolio.categories.ai'), icon: Bot },
+  ];
 
   useEffect(() => {
     // SEO: Dynamic Page Title
@@ -992,11 +992,11 @@ const Work = () => {
               <div className="flex-1">
                 <h2 className="font-display leading-[0.95]">
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
-                    Το μεγαλύτερο
+                    {t('portfolio.flagship.title1')}
                   </span>
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-                    <span className="text-primary">build</span>
-                    <span className="text-white/20 ml-4">της Hustle.</span>
+                    <span className="text-primary">{t('portfolio.flagship.title2')}</span>
+                    <span className="text-white/20 ml-4">{t('portfolio.flagship.title3')}</span>
                   </span>
                 </h2>
               </div>
@@ -1004,7 +1004,7 @@ const Work = () => {
               {/* Right: descriptor */}
               <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
                 <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
-                  Το πρώτο παγκοσμίως Agentic AI Command Center για WooCommerce & Shopify. Εισαγωγή του <span className="text-primary/70 font-medium">Vibe Commerce</span> στην πράξη.
+                  {t('portfolio.flagship.desc')}
                 </p>
               </div>
             </div>
@@ -1090,7 +1090,7 @@ const Work = () => {
                 </h2>
                 <div className="lg:max-w-xs xl:max-w-sm shrink-0 lg:pb-2">
                   <p className="text-white/35 text-sm md:text-base font-normal leading-relaxed tracking-normal border-l border-white/10 pl-6">
-                    5 Ενεργοί AI Agents που εκτελούν σύνθετες λειτουργίες, από αυτοματοποιημένο concierge μέχρι trade execution και strategic analysis.
+                    {t('portfolio.agents.desc')}
                   </p>
                 </div>
              </div>
@@ -1244,21 +1244,21 @@ const Work = () => {
         <div className="container mx-auto px-4 lg:px-8">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
               <motion.div {...fadeUp()}>
-                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Region & Expertise · Crete</span>
+                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">{t('portfolio.regional.badge')}</span>
                  <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-10 leading-tight">
-                    Το Ψηφιακό Σημείο <br /> Αναφοράς στα <span className="text-primary italic">Χανιά.</span>
+                    {t('portfolio.regional.title')}
                  </h2>
                  <p className="text-white/40 text-lg md:text-xl leading-relaxed max-w-xl italic">
-                    Η Hustle Labs λειτουργεί ως ένας κόμβος καινοτομίας στην Κρήτη, συνδυάζοντας την παγκόσμια τεχνολογική υπεροχή με την τοπική αγορά των Χανίων. Από την κατασκευή ιστοσελίδων υψηλών προδιαγραφών μέχρι την υλοποίηση AI Agents, είμαστε ο στρατηγικός συνεργάτης για επιχειρήσεις που θέλουν να ξεχωρίσουν.
+                    {t('portfolio.regional.desc')}
                  </p>
               </motion.div>
 
               <motion.div {...fadeUp(0.2)} className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-16">
                  {[
-                   { title: "Web Design Chania", desc: "Κατασκευή ιστοσελίδων με έμφαση στο performance και το premium design (Next.js & React)." },
-                   { title: "AI Solutions Crete", desc: "Υλοποίηση AI Agents & Automations για τουριστικές επιχειρήσεις και startups." },
-                   { title: "Growth Systems", desc: "Custom CRM & διαχειριστικά συστήματα για πλήρη έλεγχο των κρατήσεων και της επιχείρησης." },
-                   { title: "SEO Strategy", desc: "Στρατηγική προώθηση και βελτιστοποίηση για την κατάκτηση της κορυφής στις τοπικές και διεθνείς αναζητήσεις." }
+                   { title: t('portfolio.regional.web.title'), desc: t('portfolio.regional.web.desc') },
+                   { title: t('portfolio.regional.ai.title'), desc: t('portfolio.regional.ai.desc') },
+                   { title: t('portfolio.regional.growth.title'), desc: t('portfolio.regional.growth.desc') },
+                   { title: t('portfolio.regional.seo.title'), desc: t('portfolio.regional.seo.desc') }
                  ].map((item, i) => (
                    <div key={i} className="group cursor-default">
                       <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{item.title}</h4>
@@ -1339,8 +1339,8 @@ const Work = () => {
               viewport={{ once: true }}
            >
               <h2 className="font-display text-[14vw] md:text-[10vw] lg:text-[8vw] leading-[0.8] font-bold tracking-tighter text-white inline-block relative">
-                 More projects
-                 <span className="block text-primary text-right text-[6vw] md:text-[4vw] tracking-normal mt-2">COMING SOON.</span>
+                 {t('portfolio.coming_soon.title')}
+                 <span className="block text-primary text-right text-[6vw] md:text-[4vw] tracking-normal mt-2">{t('portfolio.coming_soon.subtitle')}</span>
               </h2>
            </motion.div>
         </div>

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Code, Globe, Monitor, ArrowRight, Palette, Zap, TrendingUp, Rocket,
   Paintbrush, Smartphone, Search, BarChart3, PenTool, CheckSquare,
@@ -11,8 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion from "@/components/FAQAccordion";
-import PageHero from "@/components/PageHero";
-import CaseStudyCard from "@/components/CaseStudyCard";
+import LabBackground from "@/components/LabBackground";
+import Magnetic from "@/components/Magnetic";
 
 /* ─── Animation helpers ─── */
 const fadeUp = (delay = 0) => ({
@@ -132,6 +132,17 @@ const processSteps = [
 const Websites = () => {
   const [hasSite, setHasSite] = useState<boolean | null>(null);
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Κατασκευή Ιστοσελίδων Chania | High-Performance Web Design - Hustle Labs";
@@ -179,60 +190,99 @@ const Websites = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
 
-      {/* ── SECTION 1: HERO ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-24 md:py-32 overflow-hidden border-b border-white/5 bg-black">
+      {/* ─── Custom Interactive Hero ─── */}
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5 group/hero"
+      >
         <LabBackground />
-        <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black to-transparent z-10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,_rgba(208,255,0,0.05),transparent_70%)] pointer-events-none" />
+        
+        {/* Interactive Mouse Spotlight */}
+        <motion.div 
+          className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+          style={{
+            background: useTransform(
+              [springX, springY],
+              ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(208,255,0,0.06), transparent 80%)`
+            )
+          }}
+        />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-20">
+        {/* Static subtle radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.03),transparent_70%)] pointer-events-none" />
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-12 shadow-inner"
+              className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">Web Architecture</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse mr-2" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/80 italic">Web Architecture</span>
             </motion.div>
 
-            <motion.h1
+            <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 uppercase italic"
+              className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12 uppercase italic"
             >
               Growth Engines <br />
-              <span className="text-primary italic animate-glow md:tracking-normal">disguised as websites.</span>
+              <span className="text-primary block group-hover:scale-[1.02] transition-transform duration-700">disguised as websites.</span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="text-lg md:text-2xl font-medium text-white/50 max-w-4xl mx-auto mb-16 italic leading-relaxed"
-            >
-              Στη Hustle Labs σχεδιάζουμε ψηφιακά οικοσυστήματα που λειτουργούν ως μηχανές ανάπτυξης. Performance-First Architecture. Built to Scale.
-            </motion.p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-              <Button size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
-                <Link to="/project-brief?subject=websites">
-                  Build my website
-                </Link>
-              </Button>
-              <Button variant="outline" size="xl" className="rounded-full px-12 md:px-16 h-20 md:h-24 text-xl md:text-2xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
-                <Link to="/book-call">Book a call</Link>
-              </Button>
+            <div className="space-y-12 mb-16">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
+                className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic max-w-4xl mx-auto px-4"
+              >
+                Στη Hustle Labs σχεδιάζουμε ψηφιακά οικοσυστήματα που λειτουργούν ως μηχανές ανάπτυξης. <br className="hidden md:block" />
+                <span className="text-white/20">Performance-First Architecture. Built to Scale.</span>
+              </motion.p>
+              
+              <motion.div 
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ duration: 1, delay: 0.3 }}
+                 className="flex flex-wrap justify-center gap-x-12 gap-y-2 text-primary font-black uppercase tracking-[0.5em] text-xs md:text-sm italic"
+              >
+                <span className="flex items-center gap-2"><Layout size={14} /> Custom UI</span>
+                <span className="flex items-center gap-2"><Zap size={14} /> Next-Gen Speed</span>
+                <span className="flex items-center gap-2"><TrendingUp size={14} /> Conversion Focus</span>
+              </motion.div>
             </div>
 
-            <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white/20 italic">
-               For businesses that want results . not just presence.
-            </p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            >
+              <Magnetic strength={0.2}>
+                <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" asChild>
+                   <Link to="/project-brief?subject=websites">Build my website</Link>
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+                   <Link to="/book-call">Book a call</Link>
+                </Button>
+              </Magnetic>
+            </motion.div>
           </div>
         </div>
+
+        {/* Decorative elements */}
+        <motion.div 
+          animate={{ y: [0, -20, 0], opacity: [0.1, 0.15, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none"
+        />
       </section>
 
       {/* ── SECTION 2: TRANSITION (Dark) ── */}

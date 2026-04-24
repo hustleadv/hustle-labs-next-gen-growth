@@ -114,6 +114,7 @@ const Clients = () => {
                     <img
                       src={client.logo}
                       alt={client.name}
+                      loading="lazy"
                       className={`w-full h-full object-contain transition-all duration-500 ${client.dark || client.lightBg ? "opacity-90 group-hover:opacity-100" : "opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0"}`}
                     />
                   ) : client.icon ? (

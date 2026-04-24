@@ -15,13 +15,14 @@ import {
   Calendar,
   Timer,
   Video,
-  Sparkles
+  Rocket
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import confetti from "canvas-confetti";
+import { sendEmail, formatEmailHtml } from "@/lib/email";
 
 /* ─── Types ─── */
 type Step = 1 | 2 | 3 | 4 | 5;
@@ -76,28 +77,39 @@ const Book = () => {
     if (step > 1) setStep((s) => (s - 1) as Step);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Booking Requested:", formData);
+    
+    const html = formatEmailHtml("New Discovery Call Request", formData);
+    
+    const { success, error } = await sendEmail({
+      subject: `New Call Request: ${formData.name} - ${formData.sessionType}`,
+      html: html
+    });
 
-    // Trigger Confetti
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    if (success) {
+      // Trigger Confetti
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-    const interval: any = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) return clearInterval(interval);
+      const interval: any = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
 
-      const particleCount = 50 * (timeLeft / duration);
-      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-    }, 250);
+        const particleCount = 50 * (timeLeft / duration);
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+      }, 250);
 
-    toast.success("Το αίτημα στάλθηκε! Θα επικοινωνήσουμε για το κλείσιμο του ραντεβού.");
-    setTimeout(() => navigate("/"), 4000);
+      toast.success("Το αίτημα στάλθηκε! Θα επικοινωνήσουμε για το κλείσιμο του ραντεβού.");
+      setTimeout(() => navigate("/"), 4000);
+    } else {
+      console.error("Submission failed:", error);
+      toast.error("Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.");
+    }
   };
 
   const sessionTypes = [
@@ -116,16 +128,7 @@ const Book = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[50vh] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
       {/* Header Overlay */}
-      <div className="relative z-50 flex items-center justify-between px-6 lg:px-12 py-8">
-        <Link to="/" className="group flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-black text-xl shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
-            H
-          </div>
-          <span className="font-display font-black tracking-tighter text-2xl group-hover:text-primary transition-colors uppercase">
-            Hustle <span className="opacity-40">Labs</span>
-          </span>
-        </Link>
-
+      <div className="relative z-50 flex items-center justify-end px-6 lg:px-12 py-8">
         <Link to={-1 as any} className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm font-medium transition-colors">
           <X size={20} />
           <span className="hidden sm:inline">Ακύρωση</span>
@@ -316,7 +319,7 @@ const Book = () => {
                 {step === 5 && (
                   <div className="space-y-8 text-center">
                     <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6 ring-4 ring-primary/5">
-                      <Sparkles size={40} className="text-primary" />
+                      <Rocket size={40} className="text-primary" />
                     </div>
                     <h2 className="font-display text-4xl font-black mb-3 text-white">Όλα <span className="text-gradient">έτοιμα;</span></h2>
                     <p className="text-white/60 max-w-sm mx-auto mb-8">

@@ -15,7 +15,7 @@ import sigma22 from "@/assets/sigma22.jpg";
 const AILab = () => {
   useEffect(() => {
     // SEO: Page Title
-    document.title = "AI Agency & Automations Χανιά | Hustle Labs";
+    document.title = "AI Agency & Αυτοματισμοί: Κρήτη, Κυκλάδες, Νησιά | Hustle Labs";
     
     // SEO: Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -24,13 +24,25 @@ const AILab = () => {
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', "Κορυφαίο AI Agency στα Χανιά. Αναπτύσσουμε AI Agents, αυτοματισμούς workflows και custom AI λύσεις για να εκτοξεύσουμε την παραγωγικότητα της επιχείρησής σας.");
+    metaDesc.setAttribute('content', "Hustle Labs: Το κορυφαίο AI Agency για ξενοδοχεία, τουρισμό & επιχειρήσεις σε Κρήτη, Κυκλάδες & Ελληνικά Νησιά. AI Αυτοματισμοί, Agents & Custom AI λύσεις.");
 
     // SEO: Structured Data (JSON-LD)
     const schemaData = {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "AI & Automations Agency",
+      "@type": "ProfessionalService",
+      "name": "Hustle Labs AI & Automations",
+      "description": "Κορυφαίες λύσεις Τεχνητής Νοημοσύνης και αυτοματισμών στην Κρήτη.",
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Κρήτη" },
+        { "@type": "AdministrativeArea", "name": "Κυκλάδες" },
+        { "@type": "AdministrativeArea", "name": "Δωδεκάνησα" },
+        { "@type": "AdministrativeArea", "name": "Ιόνια Νησιά" },
+        { "@type": "City", "name": "Μύκονος" },
+        { "@type": "City", "name": "Σαντορίνη" },
+        { "@type": "City", "name": "Ρόδος" },
+        { "@type": "City", "name": "Χανιά" },
+        { "@type": "City", "name": "Ηράκλειο" }
+      ],
       "provider": {
         "@type": "LocalBusiness",
         "name": "Hustle Labs",
@@ -39,8 +51,7 @@ const AILab = () => {
           "addressLocality": "Χανιά",
           "addressRegion": "Κρήτη"
         }
-      },
-      "description": "Specialized AI implementation and automation services based in Chania."
+      }
     };
 
     const script = document.createElement('script');
@@ -120,22 +131,21 @@ const AILab = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-[0.85] mb-8 md:mb-12 uppercase italic"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[0.9] mb-8 md:mb-12 uppercase italic"
             >
               AI που δουλεύει για σένα. <br />
               <span className="text-primary tracking-normal">Όχι το αντίστροφο.</span>
             </motion.h1>
 
             <div className="space-y-8 md:space-y-12 mb-12 md:mb-16">
-              <motion.div 
+              <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-                className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/70 tracking-tight italic max-w-4xl mx-auto"
+                className="text-lg md:text-2xl font-medium text-white/80 leading-relaxed max-w-3xl mx-auto"
               >
-                <p>Σχεδιάζουμε και υλοποιούμε AI systems που αφαιρούν manual δουλειά,</p>
-                <p>αυτοματοποιούν διαδικασίες και βοηθούν τις επιχειρήσεις να κλιμακώσουν.</p>
-              </motion.div>
+                Σχεδιάζουμε και υλοποιούμε AI systems που αφαιρούν manual δουλειά, αυτοματοποιούν διαδικασίες και βοηθούν τις επιχειρήσεις να κλιμακώσουν.
+              </motion.p>
               
               <motion.div 
                  initial={{ opacity: 0 }}
@@ -171,17 +181,15 @@ const AILab = () => {
       {/* ── SECTION 2: PROBLEM (Mirroring Index.tsx Intro Style) ── */}
       <section className="py-32 md:py-48 relative border-t border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto text-center">
+          <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 md:mb-12 block italic">The Hustle AI Audit</span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-12 md:mb-16 uppercase italic px-2">
-              Το πρόβλημα <br />
-              δεν είναι το AI. <br />
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1] mb-12 md:mb-16 uppercase italic px-2">
+              Το πρόβλημα δεν είναι το AI. <br className="md:hidden" />
               <span className="text-white/40">Είναι ότι δεν το χρησιμοποιείς σωστά.</span>
             </h2>
             <div className="space-y-8 md:space-y-12 max-w-3xl mx-auto px-4">
-              <p className="text-xl md:text-3xl lg:text-4xl font-medium text-white/80 leading-tight italic tracking-tight">
-                Οι περισσότερες επιχειρήσεις δοκιμάζουν AI εργαλεία χωρίς στρατηγική. <br className="hidden md:block" />
-                Το αποτέλεσμα; Χάσιμο χρόνου, καμία αυτοματοποίηση.
+              <p className="text-xl md:text-2xl lg:text-3xl font-medium text-white/80 leading-relaxed italic max-w-4xl mx-auto px-4">
+                Οι περισσότερες επιχειρήσεις δοκιμάζουν AI εργαλεία χωρίς στρατηγική. Το αποτέλεσμα; Χάσιμο χρόνου, καμία αυτοματοποίηση.
               </p>
               <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl italic animate-float">We fix that.</p>
             </div>
@@ -194,9 +202,9 @@ const AILab = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="text-center mb-24 md:mb-40 max-w-5xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 md:mb-12 block italic">AI CAPABILITIES</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85]">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight italic uppercase leading-[0.9]">
               Τι χτίζουμε <br />
-              <span className="text-white/20 text-3xl md:text-5xl lg:text-6xl">με τεχνητή νοημοσύνη.</span>
+              <span className="text-white/20 text-3xl md:text-4xl lg:text-5xl">με τεχνητή νοημοσύνη.</span>
             </h2>
           </motion.div>
 
@@ -214,8 +222,8 @@ const AILab = () => {
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 flex items-center justify-center text-white/10 mb-8 md:mb-10 mx-auto group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent group-hover:shadow-[0_0_30px_rgba(208,255,0,0.2)]">
                   <item.icon size={28} className="md:size-9" strokeWidth={1} />
                 </div>
-                <h3 className="font-display text-lg sm:text-xl xl:text-2xl font-black uppercase italic mb-6 md:mb-8 tracking-tighter leading-tight italic">{item.title}</h3>
-                <p className="text-[10px] md:text-[12px] text-white/30 font-black uppercase tracking-[0.4em] leading-relaxed italic px-2">{item.desc}</p>
+                <h3 className="font-display text-lg sm:text-xl xl:text-2xl font-extrabold uppercase italic mb-6 md:mb-8 tracking-tight leading-tight text-white">{item.title}</h3>
+                <p className="text-xs md:text-sm text-white/70 font-medium leading-relaxed italic px-2">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -228,23 +236,23 @@ const AILab = () => {
           <div className="mb-16 md:mb-24">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Operational Freedom</span>
-              <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-12 italic uppercase text-left">
+              <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[0.9] mb-12 italic uppercase text-left">
                 Τι αλλάζει όταν <br />
-                <span className="text-white/20 text-2xl md:text-4xl lg:text-5xl tracking-normal">δουλεύει σωστά.</span>
+                <span className="text-white/20 text-2xl md:text-3xl lg:text-4xl tracking-normal">δουλεύει σωστά.</span>
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16">
                  {[
-                  "Λιγότερος χρόνος σε repetitive tasks",
-                  "Αυξημένη παραγωγικότητα",
-                  "Καλύτερη απόδοση marketing",
-                  "Scalability χωρίς περισσότερα άτομα"
+                  "Τέλος στις χειροκίνητες, επαναλαμβανόμενες εργασίες",
+                  "Κατακόρυφη αύξηση της παραγωγικότητας",
+                  "Βελτίωση απόδοσης στο marketing",
+                  "Ανάπτυξη χωρίς την ανάγκη για νέες προσλήψεις"
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-6 p-10 rounded-[2.5rem] glass-card group">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shrink-0">
                       <CheckCircle2 size={24} />
                     </div>
-                    <span className="text-xl md:text-2xl font-black uppercase italic text-white/60 tracking-tight group-hover:text-primary transition-colors">{item}</span>
+                    <span className="text-lg md:text-xl font-semibold text-white/70 group-hover:text-primary transition-colors">{item}</span>
                   </div>
                 ))}
               </div>
@@ -258,15 +266,15 @@ const AILab = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="text-center mb-24 md:mb-40 max-w-5xl mx-auto">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 md:mb-12 block italic">The AI Implementation Protocol</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85]">Πώς το <br/> υλοποιούμε.</h2>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight italic uppercase leading-[0.9]">Πώς το <br/> υλοποιούμε.</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-7xl mx-auto px-4 text-center">
             {[
-              { icon: Search, title: "Analysis", num: "01" },
-              { icon: Brain, title: "Strategy", num: "02" },
-              { icon: Terminal, title: "Build", num: "03" },
-              { icon: Zap, title: "Optimization", num: "04" }
+              { icon: Search, title: "Analysis", num: "01", desc: "Αναλύουμε πώς δουλεύετε σήμερα και βρίσκουμε τις διαδικασίες που σας κοστίζουν πολύτιμο χρόνο." },
+              { icon: Brain, title: "Strategy", num: "02", desc: "Σχεδιάζουμε το ιδανικό AI σύστημα, επιλέγοντας τα κατάλληλα εργαλεία και τη σωστή αρχιτεκτονική." },
+              { icon: Terminal, title: "Build", num: "03", desc: "Αναπτύσσουμε και δοκιμάζουμε τους αυτοματισμούς, συνδέοντας τα συστήματά σας με απόλυτη ασφάλεια." },
+              { icon: Zap, title: "Optimization", num: "04", desc: "Το σύστημα μπαίνει σε λειτουργία. Παρακολουθούμε τα δεδομένα και το βελτιώνουμε συνεχώς." }
             ].map((step, i) => (
               <motion.div 
                 key={i}
@@ -274,14 +282,15 @@ const AILab = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2, duration: 0.8 }}
-                className="relative flex flex-col items-center group"
+                className="relative flex flex-col items-center group px-4"
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 md:h-12 bg-gradient-to-b from-primary/40 to-transparent group-hover:h-20 transition-all duration-1000" />
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1.5rem] bg-white/5 flex items-center justify-center text-white/10 mb-8 md:mb-12 mx-auto group-hover:bg-primary group-hover:text-black transition-all border border-white/10 group-hover:border-transparent group-hover:shadow-[0_0_30px_rgba(208,255,0,0.2)] relative">
                   <step.icon size={28} className="md:size-9" strokeWidth={1} />
                   <span className="absolute -top-3 -right-3 text-[8px] font-black text-primary uppercase tracking-widest">{step.num}</span>
                 </div>
-                <h3 className="font-display text-2xl md:text-3xl font-black uppercase italic mb-4 tracking-tight">{step.title}</h3>
+                <h3 className="font-display text-xl md:text-2xl font-extrabold uppercase italic mb-4 tracking-tight">{step.title}</h3>
+                <p className="text-sm md:text-base text-white/50 leading-relaxed max-w-xs">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -293,7 +302,7 @@ const AILab = () => {
         <div className="container mx-auto px-4 lg:px-8">
            <div className="max-w-6xl mx-auto">
              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic text-center">Featured Intelligence</span>
-             <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter italic uppercase leading-[0.85] text-center mb-16 md:mb-24">Real <br /> <span className="text-white/20">Results.</span></h2>
+             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight italic uppercase leading-[0.9] text-center mb-16 md:mb-24">Real <br /> <span className="text-white/20">Results.</span></h2>
              
              <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
                 <Link to="/portfolio/sigmalabs-ai" className="group cursor-pointer block">
@@ -306,7 +315,7 @@ const AILab = () => {
                   </div>
                   <div className="px-4 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
                     <div>
-                      <h3 className="font-display text-3xl md:text-5xl font-black text-white italic uppercase mb-2 md:mb-3 tracking-tighter leading-none">Sigmalabs AI</h3>
+                      <h3 className="font-display text-2xl md:text-4xl font-extrabold text-white italic uppercase mb-2 md:mb-3 tracking-tight leading-none">Sigmalabs AI</h3>
                       <p className="text-primary text-[10px] font-black uppercase tracking-[0.4em] italic">The first Vibe Commerce tool. Efficiency Overload.</p>
                     </div>
                     <div className="flex gap-8 border-l border-white/10 pl-8">
@@ -327,21 +336,21 @@ const AILab = () => {
       </section>
 
       {/* ── SECTION: AI & LOCAL INNOVATION ── */}
-      <section className="py-24 md:py-32 relative border-t border-white/5 bg-[#0a0a0b]">
+      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#0a0a0b]">
         <div className="container mx-auto px-4 lg:px-8">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <motion.div {...fadeInUp}>
                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 mb-8 block font-mono">Innovation · Chania Hub</span>
                  <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-10 leading-tight italic uppercase">
-                    Το Μέλλον των Χανίων <br /> είναι <span className="text-primary italic animate-pulse">Intelligent.</span>
+                    Το Μέλλον της Κρήτης <br /> είναι <span className="text-primary italic animate-pulse">Intelligent.</span>
                  </h2>
                  <p className="text-lg text-white/40 leading-relaxed max-w-xl italic mb-8">
-                    Στο AI Lab μας στα Χανιά, αναπτύσσουμε λύσεις που πριν λίγα χρόνια φάνταζαν επιστημονική φαντασία. Βοηθάμε τις τοπικές επιχειρήσεις να υιοθετήσουν το AI όχι ως trend, αλλά ως ένα πανίσχυρο εργαλείο κερδοφορίας.
+                    Με κέντρο το AI Lab μας στα Χανιά, αναπτύσσουμε λύσεις για hospitality brands, ξενοδοχεία και premium επιχειρήσεις σε Κρήτη, Κυκλάδες και όλα τα ελληνικά νησιά. Μετατρέπουμε το AI στο ισχυρότερο εργαλείο κερδοφορίας σας.
                  </p>
                  <div className="space-y-6">
                     {[
-                      { t: "Tourism AI", d: "Αυτόματη οργάνωση κρατήσεων και εξυπηρέτηση πελατών 24/7." },
-                      { t: "Business Logic", d: "Αυτοματοποίηση εσωτερικών διαδικασιών για μείωση κόστους." }
+                      { t: "Hospitality & Tourism AI", d: "Αυτόματη διαχείριση κρατήσεων, 24/7 concierge και AI εξυπηρέτηση πελατών για ξενοδοχεία & βίλες." },
+                      { t: "Business Logic & Scale", d: "Αυτοματοποίηση εσωτερικών διαδικασιών, HR και logistics για τεράστια μείωση λειτουργικού κόστους." }
                     ].map((item, idx) => (
                       <div key={idx} className="group p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-primary/20 transition-all">
                         <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-widest group-hover:text-primary transition-colors">{item.t}</h4>
@@ -361,9 +370,9 @@ const AILab = () => {
                     </div>
                     <h3 className="text-2xl font-black text-white italic uppercase mb-6">Στρατηγική Συνεργασία</h3>
                     <p className="text-white/40 leading-relaxed mb-8 italic">
-                       Δεν είμαστε απλώς ένας προμηθευτής λογισμικού. Είμαστε ο συνεργάτης σας στα Χανιά που θα σας καθοδηγήσει στον περίπλοκο κόσμο του AI, διασφαλίζοντας ότι η επένδυσή σας θα φέρει πραγματικά αποτελέσματα.
+                       Δεν είμαστε απλώς προμηθευτές λογισμικού. Είμαστε ο στρατηγικός σας συνεργάτης για την ψηφιακή μετάβαση. Εξειδικευόμαστε στον τουριστικό τομέα και τις επιχειρήσεις των νησιών, καθοδηγώντας σας με ασφάλεια στην εποχή του AI.
                     </p>
-                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">Based in Chania · Serving the World</div>
+                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">Based in Crete · Serving the Greek Islands</div>
                  </div>
               </motion.div>
            </div>
@@ -377,7 +386,7 @@ const AILab = () => {
           <div className="p-8 md:p-16 lg:p-24 xl:px-40 xl:py-48 border-b lg:border-b-0 lg:border-r border-white/5 hover:bg-white/[0.015] transition-colors group">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 mb-12 block group-hover:text-primary transition-colors italic">EDUCATION</span>
-              <h3 className="font-display text-4xl md:text-7xl font-black tracking-tighter mb-8 italic uppercase leading-none">Θες να μάθεις <br/> <span className="text-primary italic animate-pulse">AI;</span></h3>
+              <h3 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight mb-8 italic uppercase leading-none">Θες να μάθεις <br/> <span className="text-primary italic animate-pulse">AI;</span></h3>
               <p className="text-lg md:text-xl text-white/40 mb-12 leading-relaxed italic pr-4">
                 Μπορείς να ξεκινήσεις από τα workshops μας και να δεις πώς λειτουργεί στην πράξη. Το μέλλον δεν χτίζεται μόνο με κώδικα, αλλά και με σωστή εκπαίδευση.
               </p>
@@ -387,11 +396,11 @@ const AILab = () => {
             </motion.div>
           </div>
 
-          {/* FAQ (Light mode transition mirroring Index.tsx or just consistent) */}
-          <div className="p-8 md:p-16 lg:p-24 xl:px-40 xl:py-48 bg-white text-black transition-colors group">
+          {/* FAQ Section */}
+          <div className="p-8 md:p-16 lg:p-24 xl:px-40 xl:py-48 transition-colors group hover:bg-white/[0.015]">
             <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400 mb-12 block italic">PROTOCOLS FAQ</span>
-              <h3 className="font-display text-4xl md:text-7xl font-black tracking-tighter mb-12 italic uppercase leading-none">Συχνές <br/> <span className="text-black/40">Ερωτήσεις.</span></h3>
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 mb-12 block group-hover:text-primary transition-colors italic">PROTOCOLS FAQ</span>
+              <h3 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight mb-12 italic uppercase leading-none text-white">Συχνές <br/> <span className="text-white/20">Ερωτήσεις.</span></h3>
               <div className="max-w-xl">
                  <FAQAccordion 
                     items={[
@@ -399,7 +408,7 @@ const AILab = () => {
                       { question: "Πόσο χρόνο παίρνει η υλοποίηση;", answer: "Ανάλογα με την πολυπλοκότητα, ένα τυπικό AI automation project μπορεί να είναι live σε 2-4 εβδομάδες." },
                       { question: "Είναι το AI κατάλληλο για τη δική μου επιχείρηση;", answer: "Αν έχετε επαναλαμβανόμενες διαδικασίες, manual data entry ή χρειάζεστε καλύτερη ανάλυση δεδομένων, τότε η απάντηση είναι σχεδόν σίγουρα ναι." }
                     ]} 
-                    dark={false} 
+                    dark={true} 
                   />
               </div>
             </motion.div>
@@ -413,7 +422,7 @@ const AILab = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition}>
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-12 block italic tracking-[0.6em]">ACTIVATE THE LAB</span>
-            <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter italic uppercase leading-[0.85] mb-8">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight italic uppercase leading-[0.9] mb-8">
               Θέλεις το AI <br />
               να δουλεύει <br />
               <span className="text-white/20">για σένα;</span>

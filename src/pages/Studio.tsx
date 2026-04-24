@@ -1,5 +1,6 @@
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Video, Mic, Camera, Monitor,
   Play, Star, MapPin, ArrowRight,
@@ -11,7 +12,8 @@ import {
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion from "@/components/FAQAccordion";
-import PageHero from "@/components/PageHero";
+import LabBackground from "@/components/LabBackground";
+import Magnetic from "@/components/Magnetic";
 
 /* ─── Animation helpers ─── */
 const fadeUp = (delay = 0) => ({
@@ -81,8 +83,19 @@ const faqs = [
 ];
 
 const Studio = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
       {/* ─── Coming Soon Overlay ─── */}
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 overflow-y-auto">
         <div className="absolute inset-0 bg-[#020403]/90 backdrop-blur-3xl" />
@@ -105,7 +118,7 @@ const Studio = () => {
           
           <h1 className="font-sans text-3xl md:text-5xl lg:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.0]">
             Loading <br />
-            <span className="text-gradient">Premium Experience.</span>
+            <span className="text-primary italic">Premium Experience.</span>
           </h1>
           
           <p className="text-base md:text-lg lg:text-xl text-white/50 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">
@@ -129,12 +142,12 @@ const Studio = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button variant="hero-outline" size="lg" className="rounded-full px-10 h-14 text-base font-bold border-white/10 hover:bg-white/5 group" asChild>
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 text-base font-bold border-white/10 hover:bg-white/5 group" asChild>
               <Link to="/">
                 Επιστροφή στην Αρχική
               </Link>
             </Button>
-            <Button variant="hero" size="lg" className="rounded-full px-10 h-14 text-base font-bold shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform" asChild>
+            <Button size="lg" className="rounded-full px-10 h-14 text-base font-bold shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform bg-primary text-black hover:bg-white" asChild>
               <Link to="/contact" className="flex items-center gap-3">
                 Ενημερώσου Πρώτος <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -144,28 +157,83 @@ const Studio = () => {
       </div>
 
       <div className="opacity-50 blur-[2px] pointer-events-none select-none">
-        <PageHero
-        label="Hustle Content Lab"
-        floatingIcons={[Video, Mic, Camera, Headphones, Play, Film, Radio, Music, Star, Zap, Activity, Cpu]}
-        title={
-          <>
-            Create Content that <br />
-            <span className="text-gradient">Actually Hooks.</span>
-          </>
-        }
-        description="Ο κορυφαίος χώρος για content creators στα Χανιά. Από podcasts και vidcasts μέχρι premium video production, σου παρέχουμε τα εργαλεία για να ακουστεί η φωνή σου παγκόσμια."
-      >
-        <div className="flex flex-wrap justify-center gap-6 mt-12">
-          <Button variant="hero" size="lg" className="rounded-full px-12 h-16 text-lg font-bold shadow-2xl shadow-primary/20 group" asChild>
-            <Link to="/book-call?service=studio" className="flex items-center gap-3">
-              Κλείσε Session <ArrowRight className="group-hover:translate-x-2 transition-transform" size={20} />
-            </Link>
-          </Button>
-          <Button variant="hero-outline" size="lg" className="rounded-full px-12 h-16 text-lg font-bold border-white/10 hover:bg-white/5 transition-all" asChild>
-            <Link to="/contact">Custom Production</Link>
-          </Button>
-        </div>
-      </PageHero>
+        {/* ─── Custom Interactive Hero ─── */}
+        <section 
+          onMouseMove={handleMouseMove}
+          className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5 group/hero"
+        >
+          <LabBackground />
+          
+          {/* Interactive Mouse Spotlight */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+            style={{
+              background: useTransform(
+                [springX, springY],
+                ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(208,255,0,0.06), transparent 80%)`
+              )
+            }}
+          />
+
+          {/* Static subtle radial glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.03),transparent_70%)] pointer-events-none" />
+
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <div className="max-w-6xl mx-auto text-center">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">Hustle Content Lab</span>
+              </motion.div>
+
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+                className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12 uppercase italic"
+              >
+                Create Content that <br />
+                <span className="text-primary block group-hover:scale-[1.02] transition-transform duration-700">Actually Hooks.</span>
+              </motion.h1>
+
+              <div className="space-y-12 mb-16">
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
+                  className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic max-w-4xl mx-auto px-4"
+                >
+                  Ο κορυφαίος χώρος για content creators στα Χανιά. <br className="hidden md:block" />
+                  <span className="text-white/20">Από podcasts μέχρι premium video production.</span>
+                </motion.p>
+                
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                  className="flex flex-wrap justify-center gap-x-12 gap-y-2 text-primary font-black uppercase tracking-[0.5em] text-xs md:text-sm italic"
+                >
+                  <span className="flex items-center gap-2"><Mic size={14} /> Podcast</span>
+                  <span className="flex items-center gap-2"><Video size={14} /> Video</span>
+                  <span className="flex items-center gap-2"><Film size={14} /> Reels</span>
+                </motion.div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black bg-primary text-black italic shadow-glow-strong">
+                  Κλείσε Session
+                </Button>
+                <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black border-white/10 italic">
+                  Custom Production
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
 
       {/* ─── Services ─── */}
       <section id="services" className="py-32 section-light relative overflow-hidden">

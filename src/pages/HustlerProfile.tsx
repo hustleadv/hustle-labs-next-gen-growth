@@ -46,7 +46,7 @@ const HustlerProfile = () => {
                             <div className="relative rounded-[3rem] overflow-hidden aspect-square mb-8 glass-card p-1 shadow-2xl">
                                 <div className="w-full h-full rounded-[2.8rem] bg-card/40 flex items-center justify-center relative overflow-hidden">
                                     {hustler.image ? (
-                                        <img src={hustler.image} alt={hustler.name} className="w-full h-full object-cover" />
+                                        <img src={hustler.image} alt={hustler.name} loading="lazy" className="w-full h-full object-cover" />
                                     ) : (
                                         <div className="text-8xl font-display font-black text-primary/10 select-none">{hustler.initials}</div>
                                     )}
@@ -165,7 +165,7 @@ const HustlerProfile = () => {
                                     </p>
                                     <div className="flex flex-col sm:flex-row gap-4 relative z-10">
                                         <Button variant="hero" className="rounded-full px-10 h-14 text-base font-bold flex-1" asChild>
-                                            <Link to="/contact">Book a Strategy Call <ArrowLeft className="rotate-180 ml-2" size={18} /></Link>
+                                            <Link to={`/contact?subject=roster&hustler=${hustler.name}`}>Book a Strategy Call <ArrowLeft className="rotate-180 ml-2" size={18} /></Link>
                                         </Button>
                                         <Button variant="outline" className="rounded-full px-10 h-14 border-border/40 hover:bg-card/40 flex-1" asChild>
                                             <Link to="/roster">Browse Roster</Link>

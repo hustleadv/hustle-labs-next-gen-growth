@@ -5,7 +5,7 @@ import {
   ArrowRight, Zap, Monitor, Rocket, Layers, 
   BarChart3, Bot, Search, Map, Code2, 
   TrendingUp, Globe, MousePointerClick, 
-  Lightbulb, Cpu, GraduationCap, Building2,
+  Lightbulb, Cpu, GraduationCap, Building,
   Mic, Palette, Heart, Target
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -207,7 +207,7 @@ const Ecosystem = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {[
               { icon: GraduationCap, title: t('ecosystem.universe.academy.title'), desc: t('ecosystem.universe.academy.desc'), link: "/academy", label: "Academy", image: ACADEMY_IMG },
-              { icon: Building2, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space", image: SPACE_IMG },
+              { icon: Building, title: t('ecosystem.universe.space.title'), desc: t('ecosystem.universe.space.desc'), link: "/hustle-space", label: "Space", image: SPACE_IMG },
               { icon: Mic, title: t('ecosystem.universe.studio.title'), desc: t('ecosystem.universe.studio.desc'), link: "/studio", label: "Studio", soon: true },
               { icon: Heart, title: t('ecosystem.universe.network.title'), desc: t('ecosystem.universe.network.desc'), link: "/contact", label: "Community" }
             ].map((s, i) => (
@@ -374,10 +374,11 @@ const Ecosystem = () => {
             ))}
           </div>
 
-          <div className="mt-24 text-center">
-            <Button variant="outline" size="xl" className="rounded-full px-16 h-20 text-lg font-bold border-white/10 hover:bg-white hover:text-black transition-all" asChild>
-               <Link to="/clients">{t('ecosystem.network.cta')}</Link>
-            </Button>
+          <div className="mt-24 text-center flex flex-col items-center justify-center gap-4">
+             <div className="w-16 h-px bg-white/10" />
+             <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 italic">
+               +47 ΑΚΟΜΑ BRANDS / ΠΕΛΑΤΕΣ
+             </p>
           </div>
         </div>
       </section>

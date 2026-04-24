@@ -29,6 +29,7 @@ interface ServiceCategory {
     author: string;
     role: string;
   };
+  image: string;
   localFAQ?: {
     q: string;
     a: string;
@@ -66,6 +67,7 @@ const categories: ServiceCategory[] = [
       author: "Γιώργος Μ.",
       role: "Founder, Chania-based Startup"
     },
+    image: "/images/services/websites.png",
     localFAQ: {
       q: "Πόσο χρόνο παίρνει η κατασκευή ενός custom site στα Χανιά;",
       a: "Συνήθως 2-5 εβδομάδες, ανάλογα με τις ανάγκες. Εστιάζουμε στην ποιότητα και το performance."
@@ -101,6 +103,7 @@ const categories: ServiceCategory[] = [
       author: "Ελένη Π.",
       role: "E-commerce Manager, Crete"
     },
+    image: "/images/services/growth.png",
     localFAQ: {
       q: "Πώς εξασφαλίζετε το ROI στις καμπάνιες marketing;",
       a: "Χρησιμοποιούμε advanced tracking και real-time data optimization για να ξέρουμε ακριβώς πού αποδίδει κάθε ευρώ."
@@ -136,6 +139,7 @@ const categories: ServiceCategory[] = [
       author: "Νίκος Σ.",
       role: "Ops Director"
     },
+    image: "/images/services/ai.png",
     localFAQ: {
       q: "Είναι ασφαλής η χρήση AI για την επιχείρησή μου;",
       a: "Απολύτως. Χρησιμοποιούμε enterprise-level LLMs και secure data handling για κάθε υλοποίηση."
@@ -170,6 +174,7 @@ const categories: ServiceCategory[] = [
       author: "Μαρία Κ.",
       role: "CEO"
     },
+    image: "/images/services/strategy.png",
     localFAQ: {
       q: "Γιατί χρειάζομαι στρατηγική πριν το design;",
       a: "Γιατί το design χωρίς σκοπό είναι απλά 'ζωγραφική'. Η στρατηγική χτίζει τα θεμέλια για το ROI."
@@ -252,6 +257,17 @@ const ServiceBlock = ({ service, index }: { service: ServiceCategory; index: num
         </div>
 
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 lg:pt-0 lg:border-l border-white/5 lg:pl-16 self-stretch">
+          {/* Service Image Preview */}
+          <div className="col-span-full mb-4 relative group/img rounded-2xl overflow-hidden border border-white/10 aspect-[21/9]">
+            <img 
+              src={service.image} 
+              alt={service.title} 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover/img:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 border-2 border-primary/20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+          </div>
+
           <div className="flex flex-col">
             <h4 className="font-display text-[11px] font-black text-primary uppercase tracking-[0.5em] mb-10 flex items-center gap-3 italic">
               <Layers size={16} className="opacity-40" /> Τι περιλαμβάνει

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -24,6 +24,11 @@ const HustlerJoin = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { toast } = useToast();
+
+    // Scroll to top when step changes or on mount
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [currentStep]);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -52,34 +57,76 @@ const HustlerJoin = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitted(true);
+        
+        try {
+            const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-email`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+                },
+                body: JSON.stringify({
+                    to: "hustlelabs.gr@gmail.com",
+                    subject: `New Hustler Application: ${formData.name}`,
+                    html: `
+                        <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
+                            <h2 style="color: #d0ff00;">New Hustler Registration</h2>
+                            <p><strong>Name:</strong> ${formData.name}</p>
+                            <p><strong>Email:</strong> ${formData.email}</p>
+                            <p><strong>Phone:</strong> ${formData.phone}</p>
+                            <p><strong>Location:</strong> ${formData.location}</p>
+                            <hr />
+                            <p><strong>Role:</strong> ${formData.role}</p>
+                            <p><strong>Experience:</strong> ${formData.experience}</p>
+                            <p><strong>Main Skill:</strong> ${formData.mainSkill}</p>
+                            <hr />
+                            <p><strong>LinkedIn:</strong> ${formData.linkedin}</p>
+                            <p><strong>Portfolio:</strong> ${formData.portfolio}</p>
+                            <hr />
+                            <p><strong>Bio:</strong> ${formData.bio}</p>
+                            <p><strong>Motivation:</strong> ${formData.motivation}</p>
+                        </div>
+                    `,
+                }),
+            });
 
-        // Trigger confetti
-        const duration = 5 * 1000;
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            if (!response.ok) throw new Error("Failed to send email");
 
-        const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+            setIsSubmitted(true);
 
-        const interval: any = setInterval(function () {
-            const timeLeft = animationEnd - Date.now();
+            // Trigger confetti
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
+            const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-            const particleCount = 50 * (timeLeft / duration);
-            // since particles fall down, start a bit higher than random
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-        }, 250);
+            const interval: any = setInterval(function () {
+                const timeLeft = animationEnd - Date.now();
 
-        toast({
-            title: "Success! 🚀",
-            description: "Η αίτησή σου στάλθηκε στο Lab. Θα επικοινωνήσουμε σύντομα.",
-        });
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+            }, 250);
+
+            toast({
+                title: "Success! 🚀",
+                description: "Η αίτησή σου στάλθηκε στο Lab. Θα επικοινωνήσουμε σύντομα.",
+            });
+        } catch (error) {
+            console.error("Error sending application:", error);
+            toast({
+                title: "Error",
+                description: "Υπήρξε ένα πρόβλημα κατά την αποστολή. Δοκίμασε ξανά.",
+                variant: "destructive",
+            });
+        }
     };
 
     const slideVariants = {

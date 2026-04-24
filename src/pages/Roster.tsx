@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeCheck, MapPin, Search, ExternalLink, Linkedin, Instagram, Globe } from "lucide-react";
+import { ArrowRight, BadgeCheck, MapPin, Search, ExternalLink, Linkedin, Instagram, Globe, Rocket, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
 import { useState } from "react";
 import { hustlers } from "@/data/hustlers";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -14,13 +15,7 @@ const fadeInUp = {
 };
 
 const Roster = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredHustlers = hustlers.filter((h) =>
-    h.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    h.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    h.skills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
@@ -57,10 +52,10 @@ const Roster = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
             >
-              <p className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic mb-4 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/70 tracking-tight mb-4 max-w-3xl mx-auto leading-relaxed">
                 Επιλεγμένοι συνεργάτες που χτίζουν τα projects της Hustle.
               </p>
-              <p className="font-display text-lg md:text-xl font-medium text-white/25 tracking-tight italic max-w-2xl mx-auto">
+              <p className="text-xs md:text-sm uppercase tracking-[0.2em] font-bold text-white/30 max-w-2xl mx-auto">
                 Κάθε άτομο εδώ έχει δουλέψει, δουλεύει ή συνεργάζεται ενεργά στα project μας.
               </p>
             </motion.div>
@@ -76,33 +71,12 @@ const Roster = () => {
       </section>
 
       {/* ── ROSTER GRID ── */}
-      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#0a0a0a]">
+      <section className="py-24 md:py-40 relative">
         <div className="container mx-auto px-4 lg:px-8">
-
-          {/* Search */}
-          <motion.div {...fadeInUp} className="max-w-xl mx-auto mb-20 md:mb-32">
-            <div className="relative group">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-primary transition-colors" size={18} />
-              <input
-                type="text"
-                placeholder="Αναζήτηση με όνομα, skill, ρόλο..."
-                className="w-full pl-14 pr-6 py-5 rounded-full bg-white/5 border border-white/10 focus:border-primary/40 outline-none transition-all font-black text-sm italic text-white placeholder:text-white/20 uppercase tracking-widest"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </motion.div>
-
-          {/* Count */}
-          <div className="max-w-7xl mx-auto mb-12">
-            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 italic">
-              {filteredHustlers.length} {filteredHustlers.length === 1 ? "Member" : "Members"} in the roster
-            </p>
-          </div>
 
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
-            {filteredHustlers.map((h, i) => (
+            {hustlers.map((h, i) => (
               <motion.div
                 key={h.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -180,26 +154,6 @@ const Roster = () => {
                   >
                     Δες προφίλ <ArrowRight size={16} />
                   </Link>
-                  <div className="flex items-center gap-3">
-                    {h.socials.linkedin && (
-                      <a href={h.socials.linkedin} target="_blank" rel="noreferrer"
-                        className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/20 transition-all">
-                        <Linkedin size={14} />
-                      </a>
-                    )}
-                    {h.socials.instagram && (
-                      <a href={h.socials.instagram} target="_blank" rel="noreferrer"
-                        className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/20 transition-all">
-                        <Instagram size={14} />
-                      </a>
-                    )}
-                    {h.socials.website && (
-                      <a href={h.socials.website} target="_blank" rel="noreferrer"
-                        className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/20 transition-all">
-                        <Globe size={14} />
-                      </a>
-                    )}
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -209,59 +163,58 @@ const Roster = () => {
       </section>
 
       {/* ── JOIN CTA ── */}
-      <section className="py-32 md:py-48 relative overflow-hidden bg-[#050505] px-4">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="group relative overflow-hidden rounded-[3rem] md:rounded-[5rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 p-10 md:p-20 lg:p-24 shadow-2xl"
-          >
-            {/* Ambient background effects */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
-
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="text-center lg:text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-10 block tracking-[0.5em]">{t('ecosystem.final.badge')}</span>
-                <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-10">
-                  Είσαι ο επόμενος <br />
-                  <span className="text-white/20">Hustler;</span>
-                </h2>
-                <p className="text-xl text-white/40 font-medium leading-tight mb-12 max-w-md mx-auto lg:mx-0">
-                   Εξειδικεύεσαι σε design, development ή marketing; <br />
-                   <span className="text-white/80">Δούλεψε σε next-gen projects.</span>
-                </p>
+      <section className="py-40 relative overflow-hidden border-t border-white/5">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              
+              <div>
+                <motion.div {...fadeInUp} className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-8">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">The Next Step</span>
+                </motion.div>
                 
-                <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-xl font-bold group bg-primary text-black hover:bg-white transition-all border-none shadow-glow-strong" asChild>
-                    <Link to="/join-hustler">
-                      Γίνε μέλος <ArrowRight size={24} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                    </Link>
+                <motion.h2 {...fadeInUp} transition={{ delay: 0.1 }} className="font-display text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8 uppercase italic">
+                  Είσαι ο <br />
+                  <span className="text-primary">επόμενος Hustler;</span>
+                </motion.h2>
+                
+                <motion.p {...fadeInUp} transition={{ delay: 0.2 }} className="text-xl text-white/50 mb-12 max-w-md leading-relaxed">
+                  Εξειδικεύεσαι σε design, development ή marketing; Δούλεψε σε projects που καθορίζουν το μέλλον.
+                </motion.p>
+                
+                  <Button variant="hero" size="lg" className="rounded-full px-12 h-16 text-lg group" asChild>
+                    <Link to="/join-hustler">Γίνε μέλος <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" /></Link>
                   </Button>
-                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 {[
-                   { icon: Globe, label: "Remote First", desc: "Δούλεψε από οπουδήποτε." },
-                   { icon: Rocket, label: "Next-Gen Projects", desc: "Build the future." },
-                   { icon: BadgeCheck, label: "Expert Network", desc: "Μάθε από τους καλύτερους." },
-                   { icon: Zap, label: "Fast Paced", desc: "Execution over theory." }
-                 ].map((perk, i) => (
-                   <div key={i} className="p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all group/perk">
-                      <perk.icon size={28} className="text-primary/40 mb-6 group-hover/perk:text-primary transition-colors" />
-                      <h4 className="text-base font-bold text-white mb-2">{perk.label}</h4>
-                      <p className="text-xs text-white/30 leading-relaxed">{perk.desc}</p>
-                   </div>
-                 ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { icon: Globe, label: "Remote First", desc: "Ελευθερία κινήσεων." },
+                  { icon: Rocket, label: "Future Built", desc: "Next-gen projects." },
+                  { icon: BadgeCheck, label: "Elite Network", desc: "Expert mentors." },
+                  { icon: Zap, label: "Velocity", desc: "Rapid execution." }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 * i }}
+                    className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all group"
+                  >
+                    <item.icon size={24} className="text-primary/40 group-hover:text-primary transition-colors mb-6" />
+                    <h3 className="text-lg font-bold mb-2">{item.label}</h3>
+                    <p className="text-sm text-white/30 leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
 
+        {/* Decorative elements */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      </section>
     </div>
   );
 };

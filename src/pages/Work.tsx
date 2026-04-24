@@ -283,7 +283,7 @@ export const caseStudies: CaseStudy[] = [
       title: "From Theory to Practice",
       body: "Sigmalabs AI constitutes the cutting edge of Agentic AI. While most talk about AI, we built a system that 'gets to work'. The ability of the Agent to understand the context of an ecommerce store and act autonomously, unlocks a new era of profitability and scale for merchants.",
     },
-    techStack: ["Python", "OpenAI", "Claude", "Gemini", "Node.js", "Redis", "Supabase", "React", "Tailwind CSS"],
+    techStack: ["Python", "OpenAI", "Claude", "Gemini", "Node.js", "Redis", "Supabase", "React", "Vite", "Tailwind CSS"],
     testimonial: {
       quote: "What we built with Sigmalabs is not just a tool, it is the future employee of every e-shop. The ability to execute tasks in WooCommerce and Shopify simultaneously is a game changer.",
       name: "Spyros T. & Vasiliki G.",
@@ -467,7 +467,7 @@ export const caseStudies: CaseStudy[] = [
       title: "Fair Hiring with AI",
       body: "Rekrua solved one of the biggest problems of modern HR: subjectivity. With AI-powered assessment based on reasoning and not on gut feelings, every candidate is treated equally. The feedback report to every candidate eliminates ghosting and builds employer brand that stands out.",
     },
-    techStack: ["React", "Supabase", "PostgreSQL", "Edge Functions", "GPT-5.2 Mini", "Netlify", "Vercel"],
+    techStack: ["React", "Vite", "Supabase", "PostgreSQL", "Edge Functions", "GPT-5.2 Mini", "Netlify", "Vercel"],
     testimonial: {
       quote: "Rekrua changed the way we do hiring. Now every decision is based on data, not on impressions. It is the tool that should have existed earlier.",
       name: "Stavros P.",
@@ -604,7 +604,7 @@ export const caseStudies: CaseStudy[] = [
       title: "Complexity is not always the answer",
       body: "Για μια συμβουλευτική εταιρεία οικονομικών, η καθαρότητα και η ταχύτητα είναι τα πάντα. Εστιάσαμε στο να δώσουμε στον χρήστη αυτό που ψάχνει σε λιγότερο από 2 δευτερόλεπτα.",
     },
-    techStack: ["React", "Tailwind CSS", "Framer Motion", "SEO Best Practices"],
+    techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "SEO Best Practices"],
     testimonial: {
       quote: "Χρειαζόμασταν κάτι γρήγορο και επαγγελματικό χωρίς περιττές περιπλοκές. Η Hustle Labs παρέδωσε ακριβώς αυτό που είχαμε στο μυαλό μας.",
       name: "Νικόλαος Κ.",

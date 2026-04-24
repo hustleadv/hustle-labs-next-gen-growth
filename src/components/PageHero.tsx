@@ -59,7 +59,7 @@ const PageHero = ({
   return (
     <section
       className={`relative overflow-hidden ${
-        size === "large" ? "py-32 md:py-56 lg:py-72" : "py-20 md:py-32"
+        size === "large" ? "pt-12 pb-32 md:pt-20 md:pb-48 lg:pt-24 lg:pb-56" : "pt-6 pb-20 md:pt-10 md:pb-32"
       }`}
       aria-labelledby="page-hero-title"
     >
@@ -96,14 +96,7 @@ const PageHero = ({
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
 
-      {/* ── Top lime accent line ── */}
-      <div
-        className="absolute top-0 inset-x-0 h-px pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 5%, hsl(72 62% 58% / 0.4) 50%, transparent 95%)",
-        }}
-      />
+
 
       {/* ── Subtle dot-grid ── */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.025]">

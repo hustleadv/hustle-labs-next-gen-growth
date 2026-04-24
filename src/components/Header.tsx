@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import {
   Menu, X, ArrowRight, Layers, Palette,
-  GraduationCap, Briefcase, Building2,
+  GraduationCap, Briefcase, Building,
   Heart, Tag, ChevronDown, Rocket,
   Sparkles, Cpu, Monitor, TrendingUp, Users,
   CalendarDays, FolderKanban
@@ -14,9 +14,9 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const NAV_SERVICES = [
-  { label: "nav.websites", path: "/websites", icon: Monitor, desc: "High-end custom development" },
-  { label: "nav.growth", path: "/growth", icon: TrendingUp, desc: "Marketing & sales systems" },
-  { label: "nav.ai_lab", path: "/ai-lab", icon: Cpu, desc: "Automation & Artificial Intelligence" },
+  { label: "nav.websites", path: "/websites", icon: Monitor, desc: "nav.websites.desc" },
+  { label: "nav.growth", path: "/growth", icon: TrendingUp, desc: "nav.growth.desc" },
+  { label: "nav.ai_lab", path: "/ai-lab", icon: Cpu, desc: "nav.ai_lab.desc" },
 ];
 
 const navItems = [
@@ -28,14 +28,22 @@ const navItems = [
   },
   { label: "nav.studio", path: "/studio", icon: Palette, badge: "Soon" },
   { label: "nav.portfolio", path: "/portfolio", icon: Briefcase },
-  { label: "nav.ecosystem", path: "/ecosystem", icon: Layers },
+  {
+    label: "nav.ecosystem",
+    path: "/ecosystem",
+    icon: Layers,
+    submenu: [
+      { label: "nav.ecosystem_overview", path: "/ecosystem", icon: Layers, desc: "nav.ecosystem.desc" },
+      { label: "nav.about", path: "/about", icon: Users, desc: "nav.about.desc" },
+    ]
+  },
   { label: "nav.academy", path: "/academy", icon: GraduationCap },
 ];
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isOverLight, setIsOverLight] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<"daypass" | "project" | null>(null);
@@ -47,7 +55,7 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setServicesDropdownOpen(false);
+        setActiveDropdown(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -85,8 +93,10 @@ const Header = () => {
   // Close on route change
   useEffect(() => {
     setMobileOpen(false);
-    setServicesDropdownOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
+
+  if (location.pathname === "/project-brief") return null;
 
   return (
     <header
@@ -126,8 +136,8 @@ const Header = () => {
                   key={item.path}
                   className="relative"
                   ref={dropdownRef}
-                  onMouseEnter={() => setServicesDropdownOpen(true)}
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
+                  onMouseEnter={() => setActiveDropdown(item.path)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
                     className={cn(
@@ -136,11 +146,11 @@ const Header = () => {
                     )}
                   >
                     {t(item.label)}
-                    <ChevronDown size={14} className={cn("transition-transform duration-200", servicesDropdownOpen && "rotate-180")} />
+                    <ChevronDown size={14} className={cn("transition-transform duration-200", activeDropdown === item.path && "rotate-180")} />
                   </button>
 
                   <AnimatePresence>
-                    {servicesDropdownOpen && (
+                    {activeDropdown === item.path && (
                       <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -161,14 +171,19 @@ const Header = () => {
                                 </div>
                                 <div>
                                   <div className="text-sm font-semibold tracking-wide text-foreground">{t(sub.label)}</div>
-                                  <div className="text-[10px] text-muted-foreground leading-tight">{sub.desc}</div>
+                                  <div className="text-[10px] text-muted-foreground leading-tight">{t(sub.desc)}</div>
                                 </div>
                               </Link>
                             ))}
                           </div>
-                          <Link to="/services" className="block p-3 mt-1 text-center text-xs font-display font-bold text-primary hover:bg-primary/5 rounded-xl transition-colors border-t border-border/5">
-                            See all Services
-                          </Link>
+                          {item.label === "nav.services" && (
+                            <Link 
+                              to="/services" 
+                              className="block p-3.5 mt-1 text-center text-xs font-display font-black uppercase tracking-widest text-primary hover:bg-primary/10 rounded-xl transition-all border-t border-white/5 active:scale-95"
+                            >
+                              {t('nav.all_services')}
+                            </Link>
+                          )}
                         </div>
                       </motion.div>
                     )}
@@ -380,9 +395,17 @@ const Header = () => {
                                   className="flex items-center gap-3 p-4 text-sm text-foreground/80 hover:text-primary transition-colors"
                                 >
                                   <sub.icon size={16} className="text-primary/60" />
-                                  {sub.label}
+                                  {t(sub.label)}
                                 </Link>
                               ))}
+                              <Link
+                                to="/services"
+                                onClick={() => setMobileOpen(false)}
+                                className="flex items-center gap-3 p-4 text-xs font-black uppercase tracking-widest text-primary hover:bg-primary/10 transition-colors border-t border-white/5"
+                              >
+                                <Rocket size={14} className="text-primary" />
+                                {t('nav.all_services')}
+                              </Link>
                             </motion.div>
                           )}
                         </AnimatePresence>

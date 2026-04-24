@@ -117,16 +117,16 @@ const HustleAI = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[100] w-11 h-11 rounded-full bg-black/90 backdrop-blur-2xl text-primary flex items-center justify-center shadow-2xl border border-white/10 hover:border-primary/40 transition-all focus:outline-none"
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] w-14 h-14 md:w-16 md:h-16 rounded-full bg-black/90 backdrop-blur-2xl text-primary flex items-center justify-center shadow-2xl border border-white/10 hover:border-primary/40 hover:shadow-glow transition-all focus:outline-none"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
-              <X size={18} />
+              <X size={24} />
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}>
-              <MessageSquare size={18} />
+              <MessageSquare size={24} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -144,7 +144,7 @@ const HustleAI = () => {
             {/* Header */}
             <div className="p-6 border-b border-white/5 bg-white/[0.01] flex items-center gap-4">
               <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                <Zap size={14} />
+                <Bot size={14} />
               </div>
               <div>
                 <h3 className="font-sans font-bold text-white tracking-[0.2em] text-[10px] uppercase">Lab Buddy</h3>

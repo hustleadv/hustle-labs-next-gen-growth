@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight, ArrowDown, Megaphone, Globe, Cpu, Rocket,
   GraduationCap, BookOpen, Brain, Zap, Target, Award, Trophy,
@@ -11,91 +11,181 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LabBackground from "@/components/LabBackground";
+import Magnetic from "@/components/Magnetic";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ══════════════════════════════════════════════════════
    DATA
 ══════════════════════════════════════════════════════ */
 
 const workshops = [
-  {
-    icon: Megaphone,
-    badge: "Digital Marketing",
-    title: "Mastering Ads",
-    desc: "Πώς στήνεται μια κερδοφόρα διαφημιστική καμπάνια από το μηδέν. Facebook, Instagram, Google.",
-    duration: "2 ώρες · Live",
-    price: "€25",
-    stripeUrl: "https://buy.stripe.com/YOUR_ADS_WORKSHOP_LINK",
-    outcomes: [
-      "Λανσάρεις την πρώτη σου καμπάνια",
-      "Καταλαβαίνεις τι δουλεύει με real data",
-      "Ξέρεις πού πηγαίνουν τα χρήματά σου",
-    ],
-  },
-  {
-    icon: Globe,
-    badge: "Websites",
-    title: "Build Your First Site",
-    desc: "Από zero σε ένα γρήγορο, επαγγελματικό site χωρίς να γράψεις κώδικα.",
-    duration: "2 ώρες · Πρακτικό",
-    price: "€25",
-    outcomes: [
-      "Έχεις έτοιμο live site στο τέλος",
-      "Ξέρεις πώς να κάνεις updates μόνος σου",
-      "Speed & SEO από την αρχή",
-    ],
-  },
+  // 1. FOUNDATION (AI & Strategy)
   {
     icon: Cpu,
-    badge: "AI & Automation",
-    title: "AI for Business",
-    desc: "Βάλε το AI να δουλεύει για σένα. Automation workflows, content creation, εξοικονόμηση ωρών κάθε εβδομάδα.",
-    duration: "2 ώρες · Εντατικό",
-    price: "€30",
-    outcomes: [
-      "Φτιάχνεις το πρώτο σου automation",
-      "Παράγεις περιεχόμενο 10× πιο γρήγορα",
-      "Εξοικονομείς 5+ ώρες την εβδομάδα",
-    ],
+    badge: "Βήμα 1: The Idea",
+    title: "1. Idea & AI Blueprint",
+    desc: "Η αρχή των πάντων. Πώς να χρησιμοποιήσεις το AI για να στήσεις, να ορίσεις και να επικυρώσεις την ιδέα σου πριν γράψεις γραμμή κώδικα.",
+    duration: "Τρίτη 26 Μαΐου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Ορισμός του Business Model με AI", "Ανάλυση ανταγωνισμού σε δευτερόλεπτα"],
   },
   {
-    icon: BarChart3,
-    badge: "Growth Strategy",
-    title: "Growth Strategy",
-    desc: "Ένα ολοκληρωμένο πλάνο ανάπτυξης για το επόμενο τρίμηνο. Real frameworks, όχι θεωρία.",
-    duration: "4 ώρες · Bootcamp",
-    price: "€80",
-    outcomes: [
-      "Φεύγεις με έτοιμο 90-day plan",
-      "Ξέρεις τα KPIs που μετρούν",
-      "Εντοπίζεις τα quick wins σου",
-    ],
+    icon: Sparkles,
+    badge: "Βήμα 2: AI Copywriting",
+    title: "2. Master The Prompt",
+    desc: "Μάθε πώς να 'μιλάς' στο AI για να γράψει το ιδανικό κείμενο (copy) για την ιστοσελίδα και το project σου.",
+    duration: "Πέμπτη 28 Μαΐου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Δημιουργία Sales Copy με AI", "Τα δικά σου custom prompts"],
   },
   {
-    icon: TrendingUp,
-    badge: "Content & Social",
-    title: "Content Creation Lab",
-    desc: "Περιεχόμενο που χτίζει κοινό, αυξάνει εμπιστοσύνη και φέρνει πελάτες.",
-    duration: "2 ώρες · Workshop",
-    price: "€35",
-    outcomes: [
-      "Φτιάχνεις 30-day content calendar",
-      "Ξέρεις τι format δουλεύει ανά platform",
-      "Αρχίζεις να δημοσιεύεις με σιγουριά",
-    ],
+    icon: CircleDollarSign,
+    badge: "Βήμα 3: The Offer",
+    title: "3. The Irresistible Offer",
+    desc: "Τι ακριβώς θα πουλήσεις μέσα από το site σου; Στήσε πακέτα και υπηρεσίες που οι πελάτες νιώθουν 'χαζοί' να αρνηθούν.",
+    duration: "Σάββατο 30 Μαΐου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Στρατηγική Premium Pricing", "Επανασχεδιασμός του Offer σου"],
+  },
+  {
+    icon: ShieldCheck,
+    badge: "Βήμα 4: Branding",
+    title: "4. Brand Identity & Vibe",
+    desc: "Η αισθητική δικαιολογεί την τιμή σου. Πώς θα φαίνεται το brand σου πριν καν ξεκινήσουμε να χτίζουμε την ιστοσελίδα.",
+    duration: "Τρίτη 2 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Το Visual Moodboard του brand σου", "Οδηγός αισθητικής (Quiet Luxury)"],
+  },
+
+  // 2. BUILDING THE WEBSITE
+  {
+    icon: Globe,
+    badge: "Βήμα 5: Web Strategy",
+    title: "5. Website Architecture",
+    desc: "Το site σου δεν είναι ψηφιακό φυλλάδιο, είναι ο 24/7 πωλητής σου. Πώς να δομήσεις τις σελίδες σου στρατηγικά.",
+    duration: "Πέμπτη 4 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Wireframe του site στο χαρτί", "User Journey Mapping"],
   },
   {
     icon: MousePointerClick,
-    badge: "Email Marketing",
-    title: "Email Flows που Πουλάνε",
-    desc: "Email sequences που λειτουργούν αυτόματα και φέρνουν revenue ενώ κοιμάσαι.",
-    duration: "2 ώρες · Hands-on",
-    price: "€30",
-    outcomes: [
-      "Welcome sequence έτοιμο να πάει live",
-      "Abandoned cart flow που ανακτά πωλήσεις",
-      "Open rates πάνω από τον μέσο όρο",
-    ],
+    badge: "Βήμα 6: Landing Page",
+    title: "6. High-Converting Pages",
+    desc: "Η ανατομία μιας σελίδας που μετατρέπει τους επισκέπτες σε πελάτες. Hooks, Social Proof και CTAs.",
+    duration: "Σάββατο 6 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Σχεδιασμός της κεντρικής σελίδας", "Ψυχολογία πωλήσεων στο web"],
+  },
+  {
+    icon: Wrench,
+    badge: "Βήμα 7: Build It",
+    title: "7. The No-Code Build",
+    desc: "Ήρθε η ώρα της υλοποίησης. Στήσε την ιστοσελίδα σου πρακτικά στην οθόνη, χρησιμοποιώντας σύγχρονα No-Code εργαλεία.",
+    duration: "Τρίτη 9 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Μεταφορά του wireframe στην οθόνη", "Hands-on Website Building"],
+  },
+  {
+    icon: Target,
+    badge: "Βήμα 8: Go Live",
+    title: "8. The Launch Protocol",
+    desc: "Συνδέουμε domains, ελέγχουμε την ταχύτητα και την εμπειρία (UX) και πατάμε Publish. Το site σου είναι Live.",
+    duration: "Πέμπτη 11 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Το πρώτο σου λειτουργικό Live Site", "Τελικός έλεγχος (QA & SEO basics)"],
+  },
+
+  // 3. AUTOMATION & SYSTEMS
+  {
+    icon: Activity,
+    badge: "Βήμα 9: Funnels",
+    title: "9. The 1st Funnel",
+    desc: "Τώρα που το site είναι live, τι γίνεται; Πώς να στήσεις το πρώτο σου Customer Journey για να 'πιάσεις' τα leads.",
+    duration: "Σάββατο 13 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Το Funnel Map σου", "Ορισμός των Conversion Points"],
+  },
+  {
+    icon: Zap,
+    badge: "Βήμα 10: Automations",
+    title: "10. Backend Automations",
+    desc: "Όταν κάποιος συμπληρώνει μια φόρμα στο νέο σου site, τι συμβαίνει στο παρασκήνιο; Μάθε πώς να αυτοματοποιείς τα πάντα.",
+    duration: "Τρίτη 16 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["1 ενεργός αυτοματισμός με Zapier/Make", "Auto-reply emails"],
+  },
+  {
+    icon: Users,
+    badge: "Βήμα 11: Psychology",
+    title: "11. Buyer's Brain",
+    desc: "Πώς θα φέρεις κόσμο στο site που πραγματικά θέλει να αγοράσει. Τι πυροδοτεί την απόφαση αγοράς.",
+    duration: "Πέμπτη 18 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Εφαρμογή Psychological Triggers", "Κατανόηση των αγοραστικών εμποδίων"],
+  },
+  {
+    icon: TrendingUp,
+    badge: "Βήμα 12: Traffic Strategy",
+    title: "12. Revenue Marketing",
+    desc: "Πώς θα φέρεις επισκέπτες στο νέο σου website. Μια καθαρή Go-To-Market στρατηγική που φέρνει μετρήσιμο κέρδος.",
+    duration: "Σάββατο 20 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Mini Growth Strategy", "Ξεκάθαρο Positioning"],
+  },
+
+  // 4. CONTENT & SCALE
+  {
+    icon: BookOpen,
+    badge: "Βήμα 13: Content Strategy",
+    title: "13. Strategic Content",
+    desc: "Σταμάτα να ποστάρεις στην τύχη. Πώς να δημιουργήσεις content που στέλνει στοχευμένο traffic στο site σου.",
+    duration: "Τρίτη 23 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Τα δικά σου Content Pillars", "Στρατηγική περιεχομένου 30 ημερών"],
+  },
+  {
+    icon: Brain,
+    badge: "Βήμα 14: Content Machine",
+    title: "14. AI Content Machine",
+    desc: "Πώς να παράγεις τα posts ενός ολόκληρου μήνα σε 1 απόγευμα με τη βοήθεια της τεχνητής νοημοσύνης.",
+    duration: "Πέμπτη 25 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["1 έτοιμο Content Set (Visual + Copy)", "Το προσωπικό σου AI Pipeline"],
+  },
+  {
+    icon: Megaphone,
+    badge: "Βήμα 15: Ads & Copy",
+    title: "15. Persuasive Copywriting",
+    desc: "Λέξεις που πουλάνε. Πώς να γράφεις διαφημίσεις και social posts που μαγνητίζουν την προσοχή του πελάτη.",
+    duration: "Σάββατο 27 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["3 έτοιμα High-Converting κείμενα", "Εξοικείωση με τα copywriting frameworks"],
+  },
+  {
+    icon: Award,
+    badge: "Βήμα 16: The Empire",
+    title: "16. Brand Authority",
+    desc: "Από ένα απλό site, στο απόλυτο Authority. Πώς να χτίσεις τυφλή εμπιστοσύνη και να κλιμακώσεις (scale) το project σου.",
+    duration: "Τρίτη 30 Ιουνίου | 19:30 - 21:00",
+    price: "€49",
+    stripeUrl: "https://buy.stripe.com/fZu7sE3bMbYE4i58060co01",
+    outcomes: ["Το Core Brand Story σου", "Scale Plan για τους επόμενους μήνες"],
   },
 ];
 
@@ -127,7 +217,7 @@ const priveMentoring = {
   price: "€120 / session",
   benefits: [
     "90' αποκλειστικής εστίασης στο δικό σου project",
-    "Personalized strategy βασισμένη σε real data",
+    "Στρατηγική βασισμένη σε αληθινά νούμερα, όχι υποθέσεις",
     "Video recording & post-session action plan",
     "Chat support μεταξύ sessions",
     "Ειλικρινής feedback, όχι γενικές συμβουλές",
@@ -157,24 +247,24 @@ const testimonials = [
 
 const faqs = [
   {
-    question: "Χρειάζομαι εμπειρία για να συμμετέχω;",
-    answer: "Όχι. Τα workshops είναι σχεδιασμένα για αρχάριους και intermediate. Αν ξέρεις τι θέλεις να χτίσεις, είσαι έτοιμος.",
+    question: "Χρειάζομαι τεχνικές γνώσεις ή εμπειρία για να συμμετέχω;",
+    answer: "Όχι. Η 'Αλυσίδα' είναι σχεδιασμένη ώστε να σε πάει από το απόλυτο μηδέν μέχρι την πλήρη κυκλοφορία του project σου. Χρησιμοποιούμε No-Code εργαλεία και AI για να παρακάμψουμε την πολυπλοκότητα.",
   },
   {
-    question: "Πόσο χρόνο θα χρειαστώ;",
-    answer: "Τα Group Workshops είναι 2 ώρες. Τα Bootcamps 4 ώρες. Μπορείς να δεις αποτελέσματα από την πρώτη μέρα, χωρίς μήνες θεωρίας.",
-  },
-  {
-    question: "Τι θα φτιάξω συγκεκριμένα;",
-    answer: "Κάτι πραγματικό: site, καμπάνια, automation pipeline, content plan ή email flow. Κάθε workshop έχει παραδοτέο αποτέλεσμα.",
+    question: "Ποια είναι η διάρκεια και το πρόγραμμα των μαθημάτων;",
+    answer: "Κάθε μάθημα διαρκεί ακριβώς 1,5 ώρα (19:30 - 21:00). Τα μαθήματα γίνονται 3 φορές την εβδομάδα (Τρίτη, Πέμπτη, Σάββατο) ξεκινώντας από τις 26 Μαΐου.",
   },
   {
     question: "Πόσες θέσεις υπάρχουν;",
-    answer: "Κρατάμε μέγιστο 12 άτομα σε κάθε group για να είναι πρακτικό και όχι θεωρητικό. Κλείνονται γρήγορα.",
+    answer: "Υπάρχει αυστηρό όριο 6 ατόμων ανά τμήμα. Αυτό διασφαλίζει ότι υπάρχει χρόνος για να δουλέψουμε πάνω στο δικό σου, προσωπικό project χωρίς εκπτώσεις στην ποιότητα.",
   },
   {
-    question: "Γίνονται και online;",
-    answer: "Επιλεγμένα workshops γίνονται hybrid. Τα περισσότερα είναι δια ζώσης στο Hustle Space στα Χανιά.",
+    question: "Γίνονται τα μαθήματα online;",
+    answer: "Όχι. Τα συγκεκριμένα classes διεξάγονται αποκλειστικά δια ζώσης στο Hustle Space (Χανιά). Πιστεύουμε στην αξία της φυσικής συνεργασίας (in-person execution) για να χτιστούν άμεσα και πραγματικά αποτελέσματα.",
+  },
+  {
+    question: "Τι θα έχω καταφέρει στο τέλος;",
+    answer: "Δεν θα φύγεις απλώς με σημειώσεις. Θα έχεις μια ολοκληρωμένη ψηφιακή παρουσία: με καθαρό brand, έτοιμο website, αυτοματοποιημένα funnels, και ξεκάθαρη στρατηγική περιεχομένου και marketing.",
   },
 ];
 
@@ -202,33 +292,69 @@ const fadeUpDelay = (delay: number) => ({
 
 const Academy = () => {
   const { toast } = useToast();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
-  const [selectedItem, setSelectedItem] = useState<any>(null);
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const { t } = useLanguage();
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
+  useEffect(() => {
+    // SEO: Page Title
+    document.title = "Σεμινάρια Marketing, AI & Web Κρήτη (Χανιά, Ηράκλειο) | Hustle Academy";
+    
+    // SEO: Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Τα κορυφαία πρακτικά σεμινάρια Digital Marketing, Τεχνητής Νοημοσύνης (AI) και Αυτοματισμών σε όλη την Κρήτη (Χανιά, Ηράκλειο, Ρέθυμνο, Λασίθι).");
+
+    // SEO: Structured Data (JSON-LD)
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Hustle Labs Academy",
+      "description": "Πρακτικά workshops Digital Marketing, Websites & AI σε όλη την Κρήτη.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Hustle Labs",
+        "sameAs": "https://hustlelabs.gr"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Χανιά" },
+        { "@type": "City", "name": "Ηράκλειο" },
+        { "@type": "City", "name": "Ρέθυμνο" },
+        { "@type": "City", "name": "Άγιος Νικόλαος" },
+        { "@type": "AdministrativeArea", "name": "Κρήτη" }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const openModal = (item?: any) => {
-    setSelectedItem(item || null);
-    setIsModalOpen(true);
-    setCurrentStep(1);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) {
-      toast({ title: "Συμπλήρωσε τα απαραίτητα πεδία", variant: "destructive" });
-      return;
+    if (item?.stripeUrl) {
+      window.location.href = item.stripeUrl;
+    } else {
+      window.location.href = `mailto:hello@hustlelabs.gr?subject=${encodeURIComponent("Application: " + (item?.name || 'Academy'))}`;
     }
-    // Redirect to Stripe Checkout
-    const stripeUrl = selectedItem?.stripeUrl || "https://buy.stripe.com/YOUR_DEFAULT_LINK";
-    window.open(stripeUrl, '_blank');
-    setCurrentStep(2);
-  };
-
-  const handlePayment = () => {
-    setCurrentStep(3);
-    toast({ title: "Επιτυχημένη κράτηση!", description: "Η θέση σου κατοχυρώθηκε." });
   };
 
   const scrollTo = (id: string) =>
@@ -237,94 +363,97 @@ const Academy = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-primary selection:text-black overflow-x-hidden">
 
-      {/* ════════════════════════════════════════
-          1. HERO
-      ════════════════════════════════════════ */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img src="/images/hustle-academy.jpg" alt="" className="w-full h-full object-cover object-center opacity-55" style={{filter: "grayscale(30%)"}} />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/50 to-[#050505]" />
-        </div>
-
+      {/* ─── Custom Interactive Hero ─── */}
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden border-b border-white/5 group/hero"
+      >
         <LabBackground />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.04),transparent_70%)] pointer-events-none" />
+        
+        {/* Interactive Mouse Spotlight */}
+        <motion.div 
+          className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+          style={{
+            background: useTransform(
+              [springX, springY],
+              ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(208,255,0,0.06), transparent 80%)`
+            )
+          }}
+        />
+
+        {/* Static subtle radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.03),transparent_70%)] pointer-events-none" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
-
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20 mb-10"
+              className="inline-flex items-center px-5 py-1.5 rounded-full bg-primary/5 border border-primary/20 mb-10"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 italic">Hustle Academy · Χανιά</span>
             </motion.div>
 
-            <motion.h1
+            <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-normal tracking-normal leading-[1.1] mb-10 uppercase italic"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+              className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12 uppercase italic"
             >
-              Δεν χρειάζεσαι <br />
-              <span className="text-primary">άλλα courses.</span>
+              Ξεκίνα να χτίζεις <br />
+              <span className="text-primary block group-hover:scale-[1.02] transition-transform duration-700">αυτό που φαντάζεσαι.</span>
             </motion.h1>
 
-            <motion.div
+            <div className="space-y-12 mb-16">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any }}
+                className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic max-w-3xl mx-auto"
+              >
+                Think Wild. Build Smart. <br className="hidden md:block" />
+                <span className="text-white/20">Μετάτρεψε τη θεωρία σε πραγματικό execution.</span>
+              </motion.p>
+              
+              <motion.div 
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ duration: 1, delay: 0.3 }}
+                 className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-primary font-black uppercase tracking-[0.5em] text-xs md:text-sm italic"
+              >
+                <span>AI First.</span>
+                <span>Real Projects.</span>
+                <span>Zero Theory.</span>
+              </motion.div>
+            </div>
+
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white/50 tracking-tight italic mb-10 max-w-3xl mx-auto"
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
-              <p>Χρειάζεσαι κάτι που δουλεύει.</p>
-              <p className="text-white/25 mt-2 text-lg md:text-xl">Πρακτική εκπαίδευση, real execution.</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
-            >
-              <Button
-                size="xl"
-                className="w-full sm:w-auto rounded-full px-10 md:px-14 h-16 md:h-20 text-lg md:text-xl font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow"
-                onClick={() => scrollTo("workshops")}
-              >
-                Δες τα Workshops
-                <ArrowDown size={20} className="ml-2 group-hover:translate-y-1 transition-transform" />
-              </Button>
-              <Button
-                variant="outline"
-                size="xl"
-                className="w-full sm:w-auto rounded-full px-10 md:px-14 h-16 md:h-20 text-lg md:text-xl font-black border-white/10 hover:bg-white hover:text-black transition-all italic"
-                onClick={() => openModal({ name: "Γενική Εγγραφή" })}
-              >
-                Μίλα μαζί μας
-              </Button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-x-10 md:gap-x-16 gap-y-3 text-primary font-black uppercase tracking-[0.4em] text-xs md:text-sm italic"
-            >
-              <span>4 εβδ. για το Πρώτο project</span>
-              <span>90% hands-on</span>
-              <span>€25 ξεκινάει από</span>
+              <Magnetic strength={0.2}>
+                <Button size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black group bg-primary text-black hover:bg-white transition-all border-none italic shadow-glow-strong" onClick={() => scrollTo("workshops")}>
+                  Δες τα Workshops
+                  <ArrowDown size={20} className="ml-2 group-hover:translate-y-1 transition-transform" />
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button variant="outline" size="xl" className="w-full sm:w-auto rounded-full px-12 h-20 text-lg font-black border-white/10 hover:bg-white hover:text-black transition-all italic" asChild>
+                  <Link to="/contact">Αίτηση Συμμετοχής</Link>
+                </Button>
+              </Magnetic>
             </motion.div>
           </div>
         </div>
 
-        <motion.div
-          animate={{ y: [0, -20, 0], opacity: [0.08, 0.18, 0.08] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        {/* Decorative elements */}
+        <motion.div 
+          animate={{ y: [0, -20, 0], opacity: [0.08, 0.15, 0.08] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none"
         />
       </section>
@@ -335,20 +464,19 @@ const Academy = () => {
       <section className="py-32 md:py-48 relative border-t border-white/5 overflow-hidden bg-[#0a0a0a]">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div {...fadeUp} className="max-w-5xl mx-auto text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Τι κερδίζεις</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Το Μανιφέστο μας</span>
             <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-normal tracking-normal leading-[1.1] mb-14 uppercase italic px-2">
-              Όχι videos. <br />
-              Όχι notes. <br />
-              <span className="text-white/20">Αποτελέσματα.</span>
+              Ξέχνα τα videos. <br />
+              Κάψε τις σημειώσεις. <br />
+              <span className="text-white/20">Γίνε ο δημιουργός.</span>
             </h2>
             <div className="space-y-6 max-w-3xl mx-auto">
-              <p className="text-xl md:text-3xl font-medium text-white/70 leading-tight italic tracking-tight">
-                Φτιάχνεις πραγματικά πράγματα, μαθαίνεις από execution
-                και φεύγεις με αποτέλεσμα στα χέρια.
+              <p className="text-xl md:text-3xl font-medium text-white/90 leading-tight tracking-tight">
+                Η γνώση χωρίς πράξη είναι απλώς θόρυβος. Εδώ, η γνώση αποκτά μορφή, κίνηση και αξία.
               </p>
-              <p className="text-lg md:text-xl font-medium text-white/30 leading-relaxed italic">
-                Κάθε workshop έχει παραδοτέο αποτέλεσμα.
-                Φεύγεις με κάτι έτοιμο, όχι notes.
+              <p className="text-lg md:text-xl font-normal text-white/50 leading-relaxed">
+                Δεν φεύγεις με μια λίστα από "θα". Φεύγεις με το δικό σου project έτοιμο να κατακτήσει την αγορά. 
+                Εδώ δεν μαθαίνουμε. Εδώ εκτελούμε.
               </p>
             </div>
           </motion.div>
@@ -373,8 +501,12 @@ const Academy = () => {
                   <pillar.icon size={32} strokeWidth={1} />
                 </div>
                 <h3 className="font-display text-4xl md:text-6xl font-normal tracking-normal mb-6 italic uppercase group-hover:text-primary transition-colors leading-[1.1]">{pillar.title}</h3>
-                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-primary mb-10 italic">{pillar.learn}</p>
-                <p className="text-lg md:text-xl text-white/40 leading-relaxed italic pr-4">{pillar.achieve}</p>
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary/80 mb-10 italic">Μετάτρεψε τη θεωρία σε δύναμη.</p>
+                <p className="text-lg md:text-xl text-white/60 leading-relaxed pr-4">
+                  {i === 0 && "Το AI δεν θα σε αντικαταστήσει. Θα σε κάνει ανίκητο. Μάθε να το ελέγχεις πριν γίνει ο κανόνας."}
+                  {i === 1 && "Μην ψάχνεις για πελάτες. Φτιάξε ένα σύστημα που τους κάνει να σε ψάχνουν αυτοί."}
+                  {i === 2 && "Η ιδέα σου δεν αξίζει τίποτα χωρίς το execution. Εδώ, η ιδέα σου γίνεται πραγματικότητα σε λίγες ώρες."}
+                </p>
               </motion.div>
             </div>
           ))}
@@ -387,13 +519,17 @@ const Academy = () => {
       <section id="workshops" className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808] scroll-mt-20">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto lg:mx-0 mb-20 md:mb-32">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Ομαδική Μάθηση</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">16 Δια Ζωσης Classes · Μονο 6 Διαθεσιμες Θεσεις</span>
             <h2 className="font-display text-3xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[1.1] mb-8 italic uppercase">
-              Ένα workshop. <span className="text-white/20 text-xl md:text-4xl lg:text-5xl tracking-normal">Ένα πραγματικό αποτέλεσμα.</span>
+              Η απόλυτη <span className="text-white/20 tracking-normal">Αλυσίδα.</span>
             </h2>
-            <p className="text-primary font-black uppercase tracking-[0.4em] text-sm italic animate-pulse">
-              Κάθε workshop είναι product, όχι μάθημα.
+            <p className="text-xl text-white/60 font-medium mb-8 max-w-2xl italic">
+              16 δια ζώσης μαθήματα στο Lab, δομημένα σαν αλυσίδα: <span className="text-primary font-black">Από τη σύλληψη της ιδέας, στο χτίσιμο και λανσάρισμα του Website, μέχρι το Marketing και τις Πωλήσεις.</span> Κάθε μάθημα διαρκεί 1,5 ώρα. Κάθε μάθημα ένα χειροπιαστό αποτέλεσμα. Ξεκινάμε από <span className="text-white font-bold">26 Μαΐου</span>.
             </p>
+            <div className="flex flex-wrap gap-4">
+               <span className="px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-widest italic">Τριτη, Πεμπτη, Σαββατο</span>
+               <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/50 text-[10px] font-black uppercase tracking-widest italic">19:30 - 21:00</span>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
@@ -415,13 +551,13 @@ const Academy = () => {
 
                 <div className="flex-1">
                   <span className="text-[9px] font-black uppercase tracking-[0.5em] text-primary/60 italic block mb-4">{w.badge}</span>
-                  <h3 className="font-display text-2xl md:text-4xl font-black uppercase italic mb-6 tracking-tighter leading-none group-hover:text-primary transition-colors">{w.title}</h3>
-                  <p className="text-[11px] md:text-[12px] text-white/30 font-black uppercase tracking-[0.4em] leading-relaxed italic mb-12 px-4">{w.desc}</p>
+                  <h3 className="font-display text-2xl md:text-4xl font-bold uppercase italic mb-6 tracking-tight leading-none group-hover:text-primary transition-colors">{w.title}</h3>
+                  <p className="text-sm text-white/60 leading-relaxed mb-12 px-4">{w.desc}</p>
 
                   {/* Outcomes */}
                   <ul className="grid grid-cols-1 gap-y-4 mb-14 text-left border-t border-white/5 pt-10">
                     {w.outcomes.map((o, j) => (
-                      <li key={j} className="flex items-start gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white/20 border-l border-white/10 pl-6 group-hover:border-primary/40 transition-all italic">
+                      <li key={j} className="flex items-start gap-4 text-xs font-medium text-white/70 border-l border-primary/20 pl-6 transition-all">
                         {o}
                       </li>
                     ))}
@@ -447,23 +583,31 @@ const Academy = () => {
           </div>
 
           {/* All-access pass */}
-          <motion.div {...fadeUpDelay(0.3)} className="mt-16 md:mt-24 max-w-4xl mx-auto">
-            <div className="p-10 md:p-16 rounded-[2.5rem] md:rounded-[4rem] border border-primary/20 bg-white/[0.015] flex flex-col md:flex-row items-center gap-10 overflow-hidden relative">
+          <motion.div {...fadeUpDelay(0.3)} className="mt-16 md:mt-24 max-w-5xl mx-auto">
+            <div className="group relative p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] glass-card flex flex-col md:flex-row items-center gap-10 overflow-hidden hover:shadow-glow-strong/10 transition-all duration-700">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-primary/40 to-transparent group-hover:h-32 transition-all duration-1000" />
               <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              
               <div className="relative z-10 flex-1 text-center md:text-left">
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-primary block mb-3 italic">All Access Pass</span>
-                <h3 className="font-display text-3xl md:text-5xl font-black uppercase italic tracking-tighter mb-3">Όλα τα workshops του μήνα</h3>
-                <p className="text-white/30 text-sm font-black uppercase tracking-widest italic">Απεριόριστη συμμετοχή. Ένα πρόγραμμα, μέγιστη εξέλιξη.</p>
+                <span className="text-[9px] font-black uppercase tracking-[0.5em] text-primary/60 block mb-4 italic">The Master Pass</span>
+                <h3 className="font-display text-3xl md:text-5xl font-bold uppercase italic tracking-tight mb-4 group-hover:text-primary transition-colors leading-[1.1]">Ξεκλείδωσε όλη την Αλυσίδα.</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                  Απεριόριστη συμμετοχή και στα 16 μαθήματα (AI, Websites, Marketing, Content). <strong className="text-white font-bold">Εξοικονόμηση €294</strong> σε σχέση με την αγορά τους ένα-ένα.
+                </p>
               </div>
-              <div className="relative z-10 shrink-0 text-center">
-                <p className="text-5xl font-black text-primary italic mb-1">€180</p>
-                <p className="text-white/30 text-xs font-black uppercase tracking-widest italic mb-6">/ μήνα</p>
-                <button
-                  onClick={() => openModal({ name: "All Access Pass" })}
-                  className="rounded-full px-10 h-14 bg-primary text-black font-black text-xs uppercase tracking-widest italic hover:bg-white transition-all shadow-glow"
+              
+              <div className="relative z-10 shrink-0 text-center flex flex-col items-center md:items-end border-t md:border-t-0 md:border-l border-white/5 pt-8 md:pt-0 md:pl-10 mt-4 md:mt-0 w-full md:w-auto">
+                <div className="flex flex-col items-center gap-2 mb-8">
+                  <span className="text-[10px] font-black text-white/20 uppercase tracking-widest italic line-through decoration-primary/30">ΑΝΤΙ ΓΙΑ €784</span>
+                  <span className="text-5xl md:text-6xl font-black text-primary italic tracking-tight leading-none">€490</span>
+                </div>
+                <Button
+                  size="xl"
+                  onClick={() => openModal({ name: "The Master Pass", stripeUrl: "https://buy.stripe.com/28E14g3bM0fW01Pcgm0co00" })}
+                  className="w-full md:w-auto rounded-full px-10 h-16 bg-white text-black hover:bg-primary transition-all border-none font-black text-xs uppercase tracking-widest italic shadow-xl group-hover:shadow-glow"
                 >
-                  Αγορά Πακέτου
-                </button>
+                  Αγορά Master Pass
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -471,19 +615,174 @@ const Academy = () => {
       </section>
 
       {/* ════════════════════════════════════════
-          5. PRIVATE MENTORING
+          5. 8-WEEK PROGRAM
+      ════════════════════════════════════════ */}
+      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#050505] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(208,255,0,0.05),transparent_60%)] pointer-events-none" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+
+          {/* Header */}
+          <motion.div {...fadeUp} className="max-w-5xl mx-auto mb-20 md:mb-32">
+            <div className="flex items-center gap-4 mb-8">
+               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary italic">Flagship Program</span>
+               <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
+            </div>
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 lg:items-center">
+              <div className="flex-1">
+                <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-normal tracking-normal leading-[1.1] mb-8 uppercase italic">
+                  Build From <br /><span className="text-primary drop-shadow-[0_0_30px_rgba(208,255,0,0.2)]">Zero.</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-white/70 leading-relaxed max-w-xl mb-6 italic">
+                  8 εβδομάδες. Ένα project από μηδέν μέχρι launch.<br />
+                  Δεν θα φύγεις με γνώσεις. <strong className="text-white">Θα φύγεις με κάτι που υπάρχει.</strong>
+                </p>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-primary/60 mb-12 italic leading-relaxed">
+                  2 φορές / εβδομάδα (3 ώρες ανά session) <br />
+                  Δευτέρα, Τετάρτη & Παρασκευή | 18:00 - 21:00
+                </p>
+                <div className="flex flex-wrap items-center gap-4">
+                   <div className="px-6 py-4 rounded-full border border-primary/30 bg-primary/10 flex items-center gap-3 shadow-glow-strong/20">
+                      <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-[0.2em] text-primary italic">Εναρξη: 25 Μαιου 2026</span>
+                   </div>
+                   <Button 
+                     size="xl" 
+                     onClick={() => openModal({ name: "Build From Zero — 8 Week Program", price: "€1.400", stripeUrl: "https://buy.stripe.com/00wdR2bIi9Qwg0NgwC0co02" })}
+                     className="rounded-full px-10 h-14 bg-white text-black hover:bg-primary transition-all border-none font-black text-xs uppercase tracking-widest italic shadow-xl"
+                   >
+                     Κλεισε Θεση
+                   </Button>
+                </div>
+              </div>
+              <div className="shrink-0 text-center flex flex-col items-center justify-center p-10 md:p-14 rounded-[3rem] border border-primary/20 bg-gradient-to-b from-primary/10 to-transparent relative overflow-hidden group">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/80 mb-4 italic">Strictly</p>
+                <p className="font-display text-8xl md:text-9xl font-black text-primary italic leading-none drop-shadow-[0_0_40px_rgba(208,255,0,0.3)] group-hover:scale-105 transition-transform duration-700">6</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 italic mt-6">Θεσεις ανα κυκλο</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Curriculum Timeline */}
+          <div className="max-w-5xl mx-auto mb-20 md:mb-32">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { week: "01", title: "Idea Breakdown", desc: "Validation, target audience, competitor analysis & positioning. Ξεκάθαρη ιδέα + κοινό." },
+                { week: "02", title: "Branding & Offer", desc: "Brand identity, value proposition & irresistible offer. Το πρώτο 'wow'." },
+                { week: "03", title: "Product Build", desc: "Δομή υπηρεσίας, pricing strategy & funnels. Έτοιμο προϊόν." },
+                { week: "04", title: "Website / Landing", desc: "Η Hustle Labs κατασκευάζει μαζί σου την ιστοσελίδα σου. Landing page που πουλάει, με UX psychology. Φεύγεις με live site." },
+                { week: "05", title: "Content Machine", desc: "Δημιουργούμε μαζί το περιεχόμενο για το site σου. Content pillars, video strategy & AI παραγωγή. 10–20 έτοιμα pieces." },
+                { week: "06", title: "Marketing System", desc: "Funnels, email basics & audience building. Σύστημα, όχι τυχαία posts." },
+                { week: "07", title: "Sales & Launch", desc: "Closing techniques, soft selling & πρώτο launch. Πρώτες πωλήσεις." },
+                { week: "08", title: "Scale & Next Move", desc: "Optimization, scaling ideas & automation. Plan για growth." },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  {...fadeUpDelay(i * 0.05)}
+                  className="group flex gap-6 p-7 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-500"
+                >
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:border-transparent transition-all duration-500">
+                    <span className="text-xs font-black text-primary group-hover:text-black transition-colors">{item.week}</span>
+                  </div>
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/60 mb-2 italic">Week {i + 1}</p>
+                    <h3 className="text-base font-bold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pricing Card */}
+          <motion.div {...fadeUpDelay(0.2)} className="max-w-5xl mx-auto">
+            <div className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden glass-card group hover:shadow-glow-strong/10 transition-all duration-700">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-primary/40 to-transparent group-hover:h-32 transition-all duration-1000" />
+              <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2">
+                {/* Left — Copy */}
+                <div className="p-10 md:p-16 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
+                  <span className="text-[9px] font-black uppercase tracking-[0.5em] text-primary/60 block mb-4 italic">8 Weeks · Max 6 Ατομα</span>
+                  <h3 className="font-display text-4xl md:text-6xl font-bold uppercase mb-6 leading-[1.1] tracking-tight italic group-hover:text-primary transition-colors">
+                    Build From Zero
+                  </h3>
+                  <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 italic">
+                    8 εβδομάδες. Ένα project από μηδέν μέχρι launch.<br />
+                    Δεν θα φύγεις με γνώσεις. <strong className="text-white font-bold italic underline decoration-primary/30 underline-offset-8">Θα φύγεις με κάτι που υπάρχει.</strong>
+                  </p>
+                  <ul className="space-y-4 border-t border-white/5 pt-8">
+                    {[
+                      "8 εβδομάδες εντατικής υλοποίησης",
+                      "2 φορές / εβδομάδα (3 ώρες ανά session)",
+                      "Δευτέρα, Τετάρτη & Παρασκευή | 18:00 - 21:00",
+                      "Live sessions + recordings",
+                      "1-on-1 feedback σε κάθε εβδομάδα",
+                      "Private community & support",
+                      "Μέγιστο 6 συμμετέχοντες ανά κύκλο"
+                    ].map((b, i) => (
+                      <li key={i} className="flex items-center gap-4 text-xs font-medium text-white/70 border-l border-primary/20 pl-6 transition-all">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Right — Pricing */}
+                <div className="p-10 md:p-16 flex flex-col justify-center">
+                  <div className="space-y-4 mb-10">
+                    {/* Early Bird */}
+                    <div className="p-8 rounded-[2rem] border border-primary/30 bg-primary/5 relative overflow-hidden group/price hover:bg-primary/10 transition-all duration-500">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(208,255,0,0.1),transparent_70%)] pointer-events-none" />
+                      <div className="flex items-center justify-between mb-4 relative z-10">
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">Εκπτωση εγκαιρης εγγραφης</p>
+                        <span className="text-[9px] font-black uppercase tracking-widest text-black bg-primary px-3 py-1 rounded-full shrink-0 ml-2 shadow-glow">EARLY BIRD</span>
+                      </div>
+                      <p className="text-6xl font-black text-primary leading-none tracking-tight italic drop-shadow-[0_0_20px_rgba(208,255,0,0.3)]">€1.400</p>
+                    </div>
+                    {/* Regular */}
+                    <div className="p-6 rounded-[2rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 italic mb-2">Κανονικη τιμη</p>
+                      <p className="text-4xl font-black text-white/50 leading-none tracking-tight italic">€1.800</p>
+                    </div>
+                    {/* Payment Plan */}
+                    <div className="p-6 rounded-[2rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 italic mb-2">Δοσεις</p>
+                      <p className="text-3xl font-black text-white/40 leading-none tracking-tight italic">3 × €600</p>
+                    </div>
+                  </div>
+
+                  <Button
+                    size="xl"
+                    onClick={() => openModal({ name: "Build From Zero — 8 Week Program", price: "€1.400", stripeUrl: "https://buy.stripe.com/00wdR2bIi9Qwg0NgwC0co02" })}
+                    className="w-full rounded-full h-18 bg-white text-black font-black text-xs uppercase tracking-widest italic hover:bg-primary transition-all border-none shadow-xl group-hover:shadow-glow"
+                  >
+                    Κλεισε Θεση
+                  </Button>
+                  <p className="text-center text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mt-6 italic">Μονο 6 θεσεις. Κλεινουν γρηγορα.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          6. PRIVATE MENTORING
       ════════════════════════════════════════ */}
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#050505]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.04),transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
 
           <motion.div {...fadeUp} className="text-center mb-20 md:mb-32 max-w-5xl mx-auto">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">1-on-1 Sessions</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Η Απόλυτη Εστίαση</span>
             <h2 className="font-display text-4xl md:text-7xl lg:text-9xl font-normal tracking-normal italic uppercase leading-[1.1] mb-8">
-              Private <br /><span className="text-white/20">Mentoring.</span>
+              Private <br /><span className="text-white/20">Alchemy.</span>
             </h2>
             <p className="text-primary font-black uppercase tracking-[0.4em] text-lg md:text-2xl italic animate-pulse">
-              Απόλυτη εστίαση στο δικό σου project.
+              90 λεπτά που θα αλλάξουν την τροχιά του business σου.
             </p>
           </motion.div>
 
@@ -495,13 +794,13 @@ const Academy = () => {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 flex items-center justify-center text-primary mb-10 group-hover:scale-110 transition-transform border border-white/10">
                   <UserCheck size={28} />
                 </div>
-                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-primary mb-6 italic">Δουλεύουμε αποκλειστικά πάνω στο δικό σου project.</p>
-                <p className="text-xl md:text-2xl text-white/60 leading-relaxed italic mb-10">
-                  Δεν σου δίνω γενικές συμβουλές. Σου δείχνω ακριβώς τι να κάνεις και πώς.
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary/80 mb-6 italic">Δουλεύουμε αποκλειστικά πάνω στο δικό σου project.</p>
+                <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-10">
+                  Δεν δίνουμε γενικές συμβουλές. Σου δείχνουμε ακριβώς τι να κάνεις και πώς.
                 </p>
                 <ul className="grid grid-cols-1 gap-y-5">
                   {priveMentoring.benefits.map((b, i) => (
-                    <li key={i} className="flex items-start gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white/20 border-l border-white/10 pl-6 group-hover:border-primary/40 transition-colors italic">
+                    <li key={i} className="flex items-start gap-4 text-sm font-medium text-white/70 border-l border-primary/20 pl-6 transition-colors">
                       {b}
                     </li>
                   ))}
@@ -521,7 +820,7 @@ const Academy = () => {
                 <Button
                   size="xl"
                   className="w-full rounded-full px-10 h-14 md:h-18 bg-white text-black hover:bg-primary transition-all font-black text-xs uppercase tracking-widest italic"
-                  onClick={() => openModal({ name: "Private Mentoring", price: "€120" })}
+                  onClick={() => openModal({ name: "Private Mentoring", price: "€120", stripeUrl: "https://buy.stripe.com/28EfZabIi1k0aGtgwC0co03" })}
                 >
                   Κλείσε Session
                 </Button>
@@ -563,7 +862,7 @@ const Academy = () => {
                   ))}
                 </div>
 
-                <p className="text-white/50 text-base leading-relaxed italic mb-10 font-medium">
+                <p className="text-white/80 text-lg leading-relaxed mb-10 font-medium">
                   "{t.quote}"
                 </p>
 
@@ -626,7 +925,7 @@ const Academy = () => {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-8 text-white/40 text-base md:text-lg italic font-medium leading-relaxed pl-0 border-l border-primary/20 pl-6">
+                      <p className="pb-8 text-white/70 text-base md:text-lg font-normal leading-relaxed pl-0 border-l border-primary/40 pl-6">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -639,7 +938,84 @@ const Academy = () => {
       </section>
 
       {/* ════════════════════════════════════════
-          8. FINAL CTA
+          8. NEWSLETTER / LEAD MAGNET
+      ════════════════════════════════════════ */}
+      <section className="py-24 relative overflow-hidden bg-[#050505]">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div 
+            {...fadeUp}
+            className="max-w-5xl mx-auto p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] glass-card border border-white/10 relative group overflow-hidden"
+          >
+            <div className="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 blur-[100px] pointer-events-none" />
+            
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              <div className="flex-1 text-center lg:text-left">
+                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-6 block italic">{t('academy.newsletter.badge')}</span>
+                <h2 className="font-display text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 leading-tight">
+                  {t('academy.newsletter.title1')} <br />
+                  <span className="text-white/20">{t('academy.newsletter.title2')}</span>
+                </h2>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed italic">
+                  {t('academy.newsletter.text')}
+                </p>
+              </div>
+
+              <div className="w-full lg:w-auto min-w-[320px] md:min-w-[400px]">
+                <form 
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const email = (e.target as any).email.value;
+                    try {
+                      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+                      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+                      
+                      const response = await fetch(`${supabaseUrl}/functions/v1/newsletter-signup`, {
+                        method: "POST",
+                        headers: { 
+                          'Content-Type': 'application/json',
+                          'Authorization': `Bearer ${supabaseAnonKey}`
+                        },
+                        body: JSON.stringify({ email }),
+                      });
+                      if (response.ok) {
+                        toast({ title: "Welcome to the Circle!", description: "Τσέκαρε το email σου για το πρώτο δώρο." });
+                        (e.target as any).reset();
+                      } else {
+                        toast({ title: "Error", description: "Κάτι πήγε στραβά. Δοκίμασε ξανά.", variant: "destructive" });
+                      }
+                    } catch (err) {
+                      toast({ title: "Error", description: "Κάτι πήγε στραβά. Δοκίμασε ξανά.", variant: "destructive" });
+                    }
+                  }}
+                  className="relative space-y-4"
+                >
+                  <div className="relative">
+                    <input 
+                      type="email" 
+                      name="email"
+                      required
+                      placeholder={t('academy.newsletter.placeholder')}
+                      className="w-full px-8 py-6 rounded-full bg-white/5 border border-white/10 focus:border-primary/40 focus:bg-white/10 transition-all outline-none italic text-white placeholder:text-white/20"
+                    />
+                    <Button 
+                      type="submit"
+                      className="absolute right-2 top-2 bottom-2 rounded-full px-8 bg-white text-black hover:bg-primary font-black uppercase text-[10px] tracking-widest italic shadow-xl"
+                    >
+                      {t('academy.newsletter.button')}
+                    </Button>
+                  </div>
+                  <p className="text-[9px] text-white/20 uppercase tracking-widest text-center italic font-bold">
+                    {t('academy.newsletter.social')}
+                  </p>
+                </form>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          9. FINAL CTA
       ════════════════════════════════════════ */}
       <section className="py-32 md:py-48 lg:py-64 relative bg-[#050505]">
         <div className="container mx-auto px-4 text-center">
@@ -672,166 +1048,14 @@ const Academy = () => {
               </Button>
             </div>
 
-            <p className="text-lg md:text-2xl font-display font-medium text-white/20 italic tracking-tight uppercase">
-              Και φέρε κάτι να χτίσουμε μαζί.
+            <p className="text-2xl md:text-4xl font-display font-black text-primary italic tracking-[0.2em] uppercase">
+              Think Wild. Build Smart.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          REGISTRATION MODAL
-      ════════════════════════════════════════ */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/98 backdrop-blur-xl overflow-y-auto p-4"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(208,255,0,0.06),transparent)] pointer-events-none" />
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              className="relative w-full max-w-xl flex flex-col items-center justify-center py-12 text-white"
-            >
-              {/* Close */}
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-0 right-0 p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <X size={20} className="text-white" />
-              </button>
-
-              {/* Step indicators */}
-              <div className="flex items-center gap-3 mb-12">
-                {[1, 2, 3].map((step) => (
-                  <div key={step} className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-sm italic transition-all ${currentStep >= step ? "bg-primary text-black scale-110 shadow-glow" : "bg-white/5 text-white/20"}`}>
-                      {currentStep > step ? <CheckCircle2 size={18} /> : step}
-                    </div>
-                    {step < 3 && <div className={`w-10 md:w-16 h-px ${currentStep > step ? "bg-primary" : "bg-white/10"}`} />}
-                  </div>
-                ))}
-              </div>
-
-              <AnimatePresence mode="wait">
-                {/* Step 1 — Details */}
-                {currentStep === 1 && (
-                  <motion.div
-                    key="step1"
-                    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
-                    className="w-full bg-white/[0.03] border border-white/10 p-8 md:p-12 rounded-[3rem]"
-                  >
-                    <div className="text-center mb-10">
-                      <h2 className="font-display text-3xl font-black italic uppercase tracking-tighter mb-2">Στοιχεία Εγγραφής</h2>
-                      {selectedItem?.name && (
-                        <span className="text-xs text-primary/80 font-black uppercase tracking-widest italic">{selectedItem.name}</span>
-                      )}
-                    </div>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div>
-                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1 mb-2 block italic">Ονοματεπώνυμο</label>
-                        <input
-                          type="text" required autoComplete="name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 focus:bg-white/10 focus:border-primary/20 transition-all placeholder:text-white/10 text-white outline-none italic"
-                          placeholder="Το όνομά σου"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ml-1 mb-2 block italic">Email</label>
-                        <input
-                          type="email" required autoComplete="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 focus:bg-white/10 focus:border-primary/20 transition-all placeholder:text-white/10 text-white outline-none italic"
-                          placeholder="email@example.com"
-                        />
-                      </div>
-                      <button type="submit" className="w-full rounded-full h-16 bg-primary text-black font-black text-sm uppercase tracking-widest italic hover:bg-white transition-all shadow-glow">
-                        Συνέχεια στην Πληρωμή →
-                      </button>
-                    </form>
-                  </motion.div>
-                )}
-
-                {/* Step 2 — Payment */}
-                {currentStep === 2 && (
-                  <motion.div
-                    key="step2"
-                    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
-                    className="w-full bg-white/[0.03] border border-white/10 p-8 md:p-12 rounded-[3rem]"
-                  >
-                    <div className="flex items-center justify-between mb-10 pb-8 border-b border-white/5">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-black">
-                          <CreditCard size={22} />
-                        </div>
-                        <div>
-                          <p className="font-black text-lg italic uppercase tracking-tight">Ασφαλής Πληρωμή</p>
-                          <p className="text-[10px] font-black text-white/30 uppercase tracking-widest flex items-center gap-1.5 italic">
-                            <ShieldCheck size={10} className="text-primary" /> Verified by Stripe
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-3xl font-black text-primary italic">{selectedItem?.price || "€25"}</p>
-                    </div>
-                    <div className="space-y-6">
-                      <div>
-                        <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] ml-1 mb-2 block italic">Στοιχεία Κάρτας</label>
-                        <div className="space-y-px">
-                          <input type="text" className="w-full px-6 py-5 rounded-t-2xl bg-white/5 border border-white/5 outline-none placeholder:text-white/10 text-white italic" placeholder="4242 4242 4242 4242" />
-                          <div className="flex">
-                            <input type="text" className="w-1/2 px-6 py-5 rounded-bl-2xl bg-white/5 border border-white/5 border-r-0 outline-none placeholder:text-white/10 text-white italic" placeholder="MM / YY" />
-                            <input type="text" className="w-1/2 px-6 py-5 rounded-br-2xl bg-white/5 border border-white/5 outline-none placeholder:text-white/10 text-white italic" placeholder="CVC" />
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        onClick={handlePayment}
-                        className="w-full rounded-full h-16 bg-primary text-black font-black text-sm uppercase tracking-widest italic hover:bg-white transition-all shadow-glow flex items-center justify-center gap-3"
-                      >
-                        <Lock size={16} />
-                        Επιβεβαίωση & Πληρωμή
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Step 3 — Success */}
-                {currentStep === 3 && (
-                  <motion.div
-                    key="step3"
-                    initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
-                    className="w-full bg-white/[0.03] border border-white/10 p-12 md:p-16 rounded-[3rem] text-center"
-                  >
-                    <motion.div
-                      initial={{ scale: 0 }} animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-8 shadow-glow"
-                    >
-                      <CheckCircle2 size={38} className="text-primary" />
-                    </motion.div>
-                    <h2 className="font-display text-3xl font-black italic uppercase tracking-tighter mb-3">Η θέση σου κατοχυρώθηκε!</h2>
-                    <p className="text-white/40 italic mb-10 leading-relaxed">Θα λάβεις email επιβεβαίωσης σύντομα. Τα λεπτομέρειες σε 24h πριν το workshop.</p>
-                    <button
-                      onClick={() => setIsModalOpen(false)}
-                      className="rounded-full px-12 h-14 border border-white/10 hover:border-primary/40 font-black uppercase tracking-widest text-sm italic hover:bg-white hover:text-black transition-all"
-                    >
-                      Κλείσιμο
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

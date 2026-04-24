@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building2, Mic, Heart, MousePointer2, Coffee, MapPin } from "lucide-react";
+import { ArrowRight, Zap, Monitor, Rocket, Layers, BarChart3, Bot, Search, Map, Code2, TrendingUp, GraduationCap, Building, Mic, Heart, MousePointer2, Coffee, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LabBackground from "@/components/LabBackground";
@@ -13,7 +13,7 @@ import CommunityTrustStrip from "@/components/CommunityTrustStrip";
 const Index = () => {
   useEffect(() => {
     // SEO: Page Title
-    document.title = "Hustle Labs | Η Κορυφαία Digital Agency στα Χανιά";
+    document.title = "Hustle Labs | Digital Agency & AI: Κρήτη, Κυκλάδες, Νησιά";
     
     // SEO: Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -22,7 +22,7 @@ const Index = () => {
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', "Η Hustle Labs είναι η κορυφαία digital agency στα Χανιά. Εξειδικευόμαστε σε Web Design, AI Automations και Growth Strategy για επιχειρήσεις που θέλουν να ξεχωρίσουν.");
+    metaDesc.setAttribute('content', "Hustle Labs: Digital Agency & AI Hub σε Κρήτη, Κυκλάδες και Ελληνικά Νησιά. Εξειδικευόμαστε σε Tourism Automations, Web Design και Growth Strategy για ξενοδοχεία και premium επιχειρήσεις.");
 
     // SEO: Structured Data (JSON-LD) - LocalBusiness
     const schemaData = {
@@ -32,6 +32,14 @@ const Index = () => {
       "image": "https://hustlelabs.gr/logo.png", // Assume logo path
       "url": "https://hustlelabs.gr",
       "telephone": "+302821000000",
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Κρήτη" },
+        { "@type": "AdministrativeArea", "name": "Κυκλάδες" },
+        { "@type": "AdministrativeArea", "name": "Ιόνια Νησιά" },
+        { "@type": "City", "name": "Μύκονος" },
+        { "@type": "City", "name": "Σαντορίνη" },
+        { "@type": "City", "name": "Ρόδος" }
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Ελευθερίου Σκοπευτού 15",
@@ -200,17 +208,17 @@ const Index = () => {
       <section className="py-32 md:py-48 relative border-t border-white/5 overflow-hidden bg-[#0a0a0a]">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-5xl mx-auto text-center">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-12 block">{t('intro.badge')}</span>
-            <h2 className="font-sans text-4xl md:text-6xl lg:text-8xl xl:text-8xl font-bold tracking-tight leading-[1.0] mb-16 px-2 flex flex-col items-center gap-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">{t('intro.badge')}</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[1.1] mb-14 px-2 flex flex-col items-center gap-2 uppercase italic">
               <span className="text-white">{t('intro.title1')}</span>
               <span className="text-white">{t('intro.title2')}</span>
-              <span className="text-white/30">{t('intro.title3')}</span>
+              <span className="text-white/20">{t('intro.title3')}</span>
             </h2>
-            <div className="space-y-12 md:space-y-16 max-w-4xl mx-auto px-4">
-              <p className="text-2xl md:text-4xl lg:text-5xl font-medium text-white/80 leading-[1.1] italic tracking-tight">
+            <div className="space-y-6 max-w-3xl mx-auto px-4">
+              <p className="text-xl md:text-3xl font-medium text-white/90 leading-tight tracking-tight">
                 {t('intro.text1')}
               </p>
-              <p className="text-xl md:text-2xl lg:text-3xl font-medium text-white/40 leading-relaxed italic">
+              <p className="text-lg md:text-xl font-normal text-white/50 leading-relaxed">
                 {t('intro.text2')}
               </p>
             </div>
@@ -237,7 +245,7 @@ const Index = () => {
                 {t('forBusinesses.text')}
               </p>
               <ul className="grid grid-cols-1 gap-y-5 mb-24 pr-4">
-                {["Websites & Platforms", "Automation & AI Tools", "Marketing Systems", "Growth Strategy"].map((item) => (
+                {["Hospitality & Tourism Sites", "AI & Booking Automations", "Premium Marketing Systems", "Growth Strategy"].map((item) => (
                   <li key={item} className="flex items-center gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white/20 border-l border-white/10 pl-8 group-hover:border-primary/50 transition-all italic">
                     {item}
                   </li>
@@ -304,6 +312,44 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── SECTION 4: THE PROCESS ── */}
+      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#050505]">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto text-center mb-20 md:mb-32">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-10 block italic">Η Μεθοδολογία</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 uppercase italic leading-[1.1]">
+              Πώς χτίζουμε <br />
+              <span className="text-white/20">το επόμενο επίπεδο.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 max-w-7xl mx-auto">
+            {[
+              { num: "01", title: "Discovery", desc: "Αναλύουμε το business model και εντοπίζουμε τα bottlenecks που κοστίζουν χρόνο." },
+              { num: "02", title: "Strategy", desc: "Σχεδιάζουμε το αρχιτεκτονικό πλάνο (Web, AI, Marketing) προσαρμοσμένο ακριβώς στα μέτρα σας." },
+              { num: "03", title: "Execution", desc: "Αναλαμβάνουμε όλη την τεχνική υλοποίηση. Χωρίς πειράματα, με αληθινά frameworks." },
+              { num: "04", title: "Scale", desc: "Βελτιστοποιούμε το σύστημα με βάση data, φέρνοντας συνεχώς νέα αποτελέσματα." }
+            ].map((step, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative p-8 md:p-10 border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] rounded-3xl transition-all group overflow-hidden"
+              >
+                <span className="text-5xl md:text-7xl font-display font-black text-white/5 group-hover:text-primary/10 transition-colors absolute top-6 right-6 italic">{step.num}</span>
+                <div className="relative z-10 pt-10">
+                  <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-widest">{step.title}</h3>
+                  <p className="text-sm text-white/40 leading-relaxed italic">{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: ROSTER ── */}
       <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#080808]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-16 md:mb-24">
@@ -371,7 +417,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── SECTION 5: GROWTH PACKAGES ── */}
+      {/* ── SECTION 6: CLIENT STORIES ── */}
+      <section className="py-32 md:py-48 relative border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(208,255,0,0.02),transparent_70%)] pointer-events-none" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <motion.div initial={fadeInUp.initial} whileInView={fadeInUp.whileInView} viewport={fadeInUp.viewport} transition={fadeInUp.transition} className="max-w-4xl mx-auto lg:mx-0 mb-20 md:mb-32">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 block italic">Ιστορίες Πελατών</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.9] mb-12 uppercase italic">
+              Τα αποτελέσματα <br />
+              <span className="text-white/20 text-3xl md:text-5xl lg:text-7xl tracking-normal md:whitespace-nowrap">κάνουν τον θόρυβο.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
+            {[
+              {
+                quote: "Γλιτώσαμε πάνω από 40 ώρες χειροκίνητης δουλειάς τον μήνα. Το αυτοματοποιημένο σύστημα κρατήσεων της Hustle Labs άλλαξε τα δεδομένα μας.",
+                name: "Liv Tours",
+                role: "Luxury Transfers & Tours",
+                result: "40+ Ώρες / Μήνα Εξοικονόμηση"
+              },
+              {
+                quote: "Από τη στρατηγική μέχρι το design, η ομάδα καταλαβαίνει ακριβώς τι σημαίνει premium τουρισμός. Οι direct κρατήσεις μας αυξήθηκαν κατακόρυφα.",
+                name: "Skiathos Travellers",
+                role: "Tourism Engine",
+                result: "+140% Direct Bookings"
+              },
+              {
+                quote: "Η ταχύτητα και η εμπειρία χρήστη του site είναι ακριβώς αυτό που φανταζόμασταν. Παράλληλα, οι αυτοματισμοί στο custom διαχειριστικό έχουν κάνει την οργάνωση των εκδρομών και των κρατήσεων απίστευτα εύκολη.",
+                name: "TopTravel Greece",
+                role: "Travel & Tours Agency",
+                result: "Custom Booking Automations"
+              }
+            ].map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative p-10 md:p-14 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-700"
+              >
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-primary/40 to-transparent group-hover:h-20 transition-all duration-700" />
+                
+                <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 font-medium italic">
+                  "{t.quote}"
+                </p>
+
+                <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic mb-8 border-l border-primary/30 pl-5">
+                  {t.result}
+                </p>
+
+                <div className="flex items-center gap-4 pt-8 border-t border-white/5">
+                  <div>
+                    <p className="text-sm font-black italic uppercase tracking-tight text-white">{t.name}</p>
+                    <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em] italic mt-0.5">{t.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: GROWTH PACKAGES ── */}
       <section className="py-32 md:py-48 relative bg-[#050505] overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
